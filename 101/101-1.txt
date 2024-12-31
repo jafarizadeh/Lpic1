@@ -1,0 +1,283 @@
+101.1
+
+1- When typing to enable or disable motherboard-integrated peripherals, which component of the system is typically used?
+
+- The BIOS or UEFI configuration utility
+- The Linux kernel's initrd
+- The /boot partition
+- The lsusb command
+
+-> The BIOS or UEFI configuration
+
+==============================================
+
+2- Which command lists devices currently connected to the PCI bus?
+
+- modprobe
+- lsmode
+- lspci
+- lshw
+
+-> lspci
+
+==============================================
+
+3- Which of the following commands helps you list USB devices in a tree-like hierarchy?
+
+- lsusb -a
+- lsusb -s
+- lsusb -f
+- lsusb -t
+
+-> lsusb -t
+
+==============================================
+
+4- To remove a kernel module (along with its dependencies) while the system is running, which command should be used?
+
+- modinfo -r
+- modprobe -r
+- rmmod --all
+- lsmod -r
+
+-> modprobe -r
+
+==============================================
+
+5- On modern Linux system SATA disks are generally identified as which kind of device name?
+
+- /dev/sdX
+- /dev/hdX
+- /dev/nvmeXnY
+- /dev/fdX
+
+-> /dev/sdX
+
+==============================================
+
+6- Which file below would you edit to permanently blacklist a problematic kernel module such that it doesn't load automatically?
+
+- /etc/rc.local
+- /etc/modprobe.d/blacklist.conf
+- /boot/grub/grub.cfg
+- /proc/blacklist/modules
+
+-> /etc/modprob.d/blacklist.conf
+
+==============================================
+
+7- Which pseudo-filesystem is most specifically devoted to storing device and kernel data related to hardware?
+
+- /dev
+- /proc
+- /sys
+- /home
+
+-> /sys
+
+==============================================
+
+8- Which command line will show a specific USB device's verbose information using its vedor:product ID (e.g., 1781:0c9f)?
+
+- lsusb -d 1781:0c9f -v
+- lsusb -p 1781:0c9f -v
+- lsusb -i 1781:0c9f
+- lsusb -v -s 01:02
+
+-> lsusb -d 1781:0c9f -v
+
+==============================================
+
+9- In the output of lsmod, the "Used by" column indicates
+
+- the file size of the module on disk
+- the user-level applications that installed the module
+- the modules or processes depending on that module
+- kernel version compatibility for that module
+
+-> the modules or processes depending on that module
+
+==============================================
+
+10- If you need to confirm which kernel driver is i use by a particular PCI device, which lspci option combination is most helpful on recent distributions?
+
+- lspci -m
+- lspci -k
+- lspci -D
+- lspci --driver
+
+-> lspci -k
+
+==============================================
+
+11- What does the output of lsusb -t specifically highlight that differs from plain lsusb?
+- The exact partition layout of attached USB drives
+- A hierarchical (tree-like) representation of USB devices and drivers
+- The SCSI ID mappings of USB-attached deveces
+- A summary of device's kernel modules only
+
+-> A hierarchical (tree-like) representation of USB devices and deivers
+
+==============================================
+
+12- Which best describes the function of the modinfo command?
+
+- It removes the specified module from the kernel
+- It displays all processes currently using a kernel module
+- It list detailed information about a specified module, including parameters
+- It inserts the specified module and resolves dependencies
+
+-> It list detailed information about a specified module, including parameters
+
+==============================================
+
+13- What is the role of udev on a modern Linux system?
+
+- It is a pseudo-filesystem used to track hardware devies in /sys
+- It permanently stores device drivers in /boot
+- It manages device nodes in /dev, handling hotplug/coldplug events
+- It only configures CPU frequency scaling
+
+-> It manage device nodes in /dev, handling hotplug/coldplug events
+
+==============================================
+
+14- Which file inside /proc would you inspect to see how many interrupts have occurred for each device?
+
+- /proc/ioports
+- /proc/dma
+- /proc/cpuinfo
+- /proc/interrupts
+
+-> /proc/interrupts
+
+==============================================
+
+15- If a device is recognized by the kernel but not functioning correctly, which of the following is the most likely underlying cause?
+
+- The BIOS is not set to read the device's firmware
+- The associated kernel module (drive) is not loaded or is misconfigured
+- The CPU lacks the required SSE instruction set
+- The devicewas not assigned a correct IRQ in the /etc/fstab
+
+-> The associated kernel module (drive) is not loaded or is misconfigured
+
+==============================================
+
+16- Which file is typically used to pass persistent module load option like options nouveau modeset=0?
+
+- /etc/udev/rules.d/99-custom.rules
+- /proc/meminfo
+- /etc/modprpbe.d/<module>.conf
+- /etc/moudules-load.d/module.options
+
+-> 
+
+==============================================
+
+17- What is the main purpose of SysFS(/sys) in a Linux system?
+
+- Stores process information like CPU usege
+- Holds user configuration data for /home
+- Exports device and driver information from the kernel to user space
+- Contains scrips to mount all system filesystems
+
+-> Export device and driver information from the kernel to user space
+
+==============================================
+
+18- Which command is most appropriate for listing all currently loaded kernel modules?
+
+- ls -la /lib/modules/$(uname -r)
+- depmod -a
+- lsmod
+- insmod
+
+-> lsmod
+
+==============================================
+
+19- To selectively unload the snd-hda-intel module along with related dependent modules, which command would you use?
+
+- modinfo snd-hda-intel --remove
+- lsmod --unload snd-hda-intel
+- depmod -r snd-hda-intel
+- modprobe -r snd-hda-intel
+
+==============================================
+
+20- If you see a disk labeled as /dev/mmcbkj0p1, 
+
+- A SATA SSD
+- An older IDE HDD
+- An SD card or MMC device
+- A USB DVD drive
+
+-> An SD card or MMC device
+
+==============================================
+==============================================
+
+FILL-IN-THE-BLACK QUESTIONS
+
+==============================================
+
+1- The older firmware commonly used before the UEFI standard is called _____.
+
+-> BIOS
+
+==============================================
+
+2- The _____ command list all kernel modules currently loaded into the system.
+
+-> lsmod
+
+==============================================
+
+3- A kernel module responsible for ocntrolling hardware in Linux is often referred to as a _____.
+
+-> driver
+
+==============================================
+
+4- The Linux subsystem that manages device node creation in /dev and handles hotplug/coldplug events is called _____.
+
+-> udev
+
+==============================================
+
+5- The special, memory-based filesystem used for storing process and hardware information is the _____ directory.
+
+-> /proc
+
+==============================================
+
+6- To configure boot device priority and enable ot disable onboard peripherals, a user must typically access the _____ or UEFI setup utility.
+
+-> BIOS
+
+==============================================
+
+7- In Linux, disks commonly appear under /dev as _____ devices (e.g., /dev/sda, /dev/sdb) on modern systems.
+
+-> SCSI
+
+==============================================
+
+8- The _____ command is used to insert or removekernel modules and their dependencies.
+
+-> modprobe
+
+==============================================
+
+9- When blacklisting a kernel module to prevent it from loading automatically, the configuration file is often placed in _____.
+
+-> /etc/modprobe.d
+
+==============================================
+
+10- To see a hierarchical (tree-like) view of USB devies and the drivers handling them, you can run _____ with the -t option.
+
+-> lsusb
+
+==============================================

@@ -1,0 +1,294 @@
+102.5
+
+Which rpm parameter is used to remove (erase) an installed package?
+
+A) -U
+B) -e
+C) -F
+D) -qa
+
+-> B) -e
+
+==============================================
+
+2- Which rpm command allows you to query an uninstalled package file for information (name, version, etc.)?
+
+A) rpm -qi
+B) rpm -ql
+C) rpm -qa
+D) rpm -qip
+
+-> D) rpm -qip
+
+==============================================
+
+3- Which yum command installs a package named vim from the configured repositories?
+
+A) yum install vim
+B) yum remove vim
+C) yum info vim
+D) yum repolist
+
+-> A) yum install vim
+
+==============================================
+
+4- Which yum subcommand removes an installed package from your system?
+
+A) yum whatprovides
+B) yum info
+C) yum remove
+D) yum repolist
+
+-> C) yum remove
+
+==============================================
+
+5- Using yum, which command do you run to find the package that provides /usr/bin/unzip
+
+A) yum search /usr/bin/unzip
+B) yum repolist /usr/bin/unzip
+C) yum list installed /usr/bin/unzip
+D) yum whatprovides /usr/bin/unzip
+
+-> D) yum whatprovides /usr/bin/unzip
+
+==============================================
+
+6- Which of the following rpm parameters lists all installed packages on the system?
+
+A) -e
+B) -qa
+C) -U
+D) -ql
+
+-> B) -qa
+
+==============================================
+
+7- What is the main purpose of the rpm2cpio utility?
+
+A) It converts an RPM file into a .cpio archive
+B) It lists installed .cpio packages
+C) It creates a .tar.gz archive from an RPM
+D) It checks package signatures in cpio format
+
+-> It converts an RPM file into a .cpio archive
+
+==============================================
+
+8- Which rpm command could forcibly install (ignoring dependencies) a package named mypkg.rpm?
+
+A) rpm -Uvh --nodeps mypkg.rpm
+B) rpm -e mypkg.rpm
+C) rpm -ql mypkg.rpm
+D) rpm -qa --nodeps mypkg.rpm
+
+-> A) rpm -Uvh --nodeps my pkg.rpm
+
+==============================================
+
+9- Which dnf command updates all installed packages on the system to their latest version?
+
+A) dnf info
+B) dnf remove
+C) dnf upgrade
+D) dnf list --installed
+
+-> C) dnf upgrade
+
+==============================================
+
+10- When using dnf, how do you find which package provides /usr/bin/unzip?
+
+A) dnf list /usr/bin/unzip
+B) dnf provides /usr/bin/unzip
+C) dnf repoquery --installed /usr/bin/unzip
+D) dnf info /usr/bin/unzip
+
+-> B) dnf provides /usr/bin/unzip
+
+==============================================
+
+11- Which zypper command lets you install an RPM file on disk(e.g., /home/user/newpkg.rpm) while also resolving dependencies from repositories?
+
+A) zypper update /home/user/newpkg.rpm
+B) zypper refresh /home/user/newpkg.rpm
+C) zypper query /home/user/newpkg.rpm
+D) zypper in /home/user/newpkg.rpm
+
+-> D) zypper in /home/user/newpkg.rpm
+
+==============================================
+
+12- Which zypper operator should you use to remove a package named unzip from your system?
+
+A) zypper refresh unzip
+B) zypper rm unzip
+C) zypper se -i unzip
+D) zypper up unzip
+
+-> B) zypper rm unzip
+
+==============================================
+
+13- Which zypper command syntax is used to see which packages provide a specific file, e.g., /usr/lib64/libgimpui-2.0.so.0?
+
+A) zypper se --provides /usr/lib64/libgimpui-2.0.so.0
+B) zypper addrepo --provide /usr/lib64/libgimpui-2.0.so.0
+C) zypper info --provide /usr/lib64/libgimpui-2.0.so.0
+D) zypper up --provide /usr/lib64/libgimpui-2.0.so.0
+
+-> A) zypper se --provide /usr/lib64/libgimpui-2.0.so.0
+
+==============================================
+
+14- Which zypper operator refreshes all enabled repositories to get the latest metadata?
+
+A) zypper se
+B) zypper info
+C) zypper rm
+D) zypper refresh
+
+-> D) zypper refresh
+
+==============================================
+
+15- If you only want to list available updates (without installing them) using zypper, which command would you use?
+
+A) zypper up --list
+B) zypper se updates
+C) zypper list-updates
+D) zypper in --updates-only
+
+-> C) zypper list-updates
+
+==============================================
+
+16- How do you disable an existing repository named repo-non-oss using zypper?
+
+A) zypper addrepo -d repo-non-oss
+B) zypper rm repo-non-oss
+C) zypper se -d repo-non-oss
+D) zypper modifyrepo -d repo-non-oss
+
+-> D) zypper modifyrepo -d repo-non-oss
+
+==============================================
+
+17- What does the yum-config-manager --add-repo <URL> command do?
+
+A) It removea repository from /etc/yum.conf
+B) It adds a new .repo file in /etc/yum.repos.d/ based on the specified URL
+C) It automatically upgrades yum to the latest version
+D) It disables all repositories except the one specified
+
+-> B) It adds a new .repo file in /etc/yum.repos.d/ based on the specified URL
+
+==============================================
+
+18- Which dnf command removes an installed package from your system?
+
+A) dnf remove PACKAGENAME
+B) dnf fetch PACKAGENAME
+C) dnf localinstall PACKAGENAME
+D) dnf whatprovides PACKAGENAME
+
+-> A) dnf remove PACKAGENAME
+
+==============================================
+
+19- Which yum command checks if a new version of a package (e.g., wget) is available, without installing it?
+
+A) yum whatprovides wget
+B) yum info wget
+C) yum check-update wget
+D) yum clean metaata wget
+
+-> C) yum check-update wget
+
+==============================================
+
+20- Which file stores the primary configuration for yum by default?
+
+A) /etc/rpm.conf
+B) /etc/log/yum.conf
+C) /etc/yum.conf
+D) /etc/dnf.conf
+
+-> C) /etc/yum.conf
+
+==============================================
+==============================================
+
+FILL-IN-THE-BLACK QUESTIONS
+
+==============================================
+
+1- To remove a package using rpm, we use:
+rpm _____ PAKAGENAME
+
+-> -e
+
+==============================================
+
+2- On Debian-based system, the tool analogous to yum is:
+
+-> apt
+
+==============================================
+
+3- To search for a package with zypper, you can use either:
+zypper _____ or zypper _____
+
+-> search or se
+
+==============================================
+
+4- When using dnf, the command to uninstall a package named curl is:
+dnf _____ curl
+
+-> remove
+
+==============================================
+
+5- The main configuration file for yum is located at: _____
+
+-> /etc/yum.conf
+
+==============================================
+
+6- On RPM-based systems, the command rpm -qa means "query _____"
+
+-> all
+
+==============================================
+
+7- If you want to list all available update using yum without installing them, you can run:
+yum _____
+
+-> check-update
+
+==============================================
+
+8- To view the metadata of the gimp package using zyyper, type:
+zypper _____ gimp
+
+-> info
+
+==============================================
+
+9- The tool that is considered a "fork" or newer version of YUM is called: _____
+
+-> dnf
+
+==============================================
+
+10- To list the files installed by a package named wget using rpm, you would use:
+rpm-_____ wget
+
+-> -ql
+
+==============================================
+
+

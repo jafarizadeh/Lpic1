@@ -1,0 +1,287 @@
+102.1
+
+1- Which statement best desctibes the purpose of a partition table on a disk?
+
+A) It is the directory on the filesystem that contains user data
+B) It is the bootloader used to start the opertating system
+C) It contains information about the sectors and types of partitions on the disk
+D) It is the tool used to create logical volumes
+
+-> C) It contiens information about the sectors and types of partitions on the disk
+
+==============================================
+
+2- On most Linux distributions, removable media (e.g., USB drives, memory cards) are:
+
+A) Automatically mounted under /media/USER/LABEL
+B) Expected to be manually mounted under /opt
+C) Required to be unmounted only after a reboot
+D) Limited to read-only access by default
+
+-> A) Automatically mounted under /media/USER/LABEL
+
+==============================================
+
+3- What is one benefit of creating a dedicated /boot partition?
+
+A) It automatically encrypts the disk to improve security
+B) It merges multiple storage devices into a single volume
+C) It allows /home to remain untouched during upgrades
+D) It ensures the system can still boot if the root filesystem is corrupted
+
+-> D) It ensures the system can still boot if the root filesystem is corruoted
+
+==============================================
+
+4- Which of the following is a directory that frequently benefits from being put on a separate partition, due to porential growth of log files and database data?
+
+A) /bin
+B) /var
+C) /root
+D) /tmp
+
+-> B) var
+
+==============================================
+
+5- The EFI System Partition (ESP) on a UEFI-based system is typically:
+
+A) Formatted with an ext4 filesystem
+B) Formatted with a FAT-based filesystem
+C) Placed at the end of the disk to maximize disk space
+D) Laveled as /swap in the /etc/fstab file
+
+-> B) Formatted with a FAT-based filesystem
+
+==============================================
+
+6- What is the primary putpose pf the swap partition?
+
+A) To store user home directories
+B) To store kernel bootloader files for GRUB
+C) To hold system logs and databese files
+D) To provide virtual memory (swap out pages from RAM)
+
+-> D) To provide virtual memory (swap out pages from RAM)
+
+==============================================
+
+7- Which of the following is NOT a reason to create a separate /home partition?
+
+A) To prevent boot issues on legacy BIOS systems
+B) To simplify system reinstallation while keeping user data
+C) To allow for different filesystem choices for user data
+D) To avoid overwriting user data during an OS upgrde
+
+-> A) To prevent boot issues on lagacy BIOS systems
+
+==============================================
+
+8- A mount point is best desctibed as:
+
+A) A command used to set the filesystem read-only
+B) A method to copy data from one partition to another
+C) A directory where a filesystem is attached to the directory tree
+D) A device driver for SATA disks
+
+-> C) A direcrory where a filesystem is attached to the directory tree
+
+==============================================
+
+9- Which directory command holds the Apache Web Server data by default?
+
+A) /home/apache
+B) /var/www/html
+C) /srv/httpd
+D) /apachr/www
+
+-> B) /var/www/html
+
+==============================================
+
+10- Under Logical Volume Manager (LVM), which statement is correct about Volume Groups (VGs)?
+
+A) VGs cannot be reduced in size after creation
+B) VGs are used only for enctypting partitions
+C) VGs aggregate multiple physical volumes into one large pool of storage
+D) VGs must reside on a separate /vg partition
+
+-> C) VGs aggregate multiple physical volumes into one larg pool of storage
+
+==============================================
+
+11- Which of the following directories is typically not located under /home on a Linux system?
+
+A) /root
+B) /john
+C) /jack
+D) /carol
+
+-> A) /root
+
+==============================================
+
+12- Which bootloader is most commanly used on modern Linux systems for loading the operating system?
+
+A) syslinux
+B) LILO
+C) rEFIt
+D) GRUB2
+
+-> D) GRUB2
+
+==============================================
+
+13- The EFI System Partition (ESP) is generally mounted under which derectory on a Linux system?
+
+A) /boot
+B) /ESP
+C) /boot/efi
+D) /usr/local/esp
+
+-> C) /boot/efi
+
+==============================================
+
+14- Which directory contains "variable data" and is known to grow due to logs and other services?
+
+A) /etc
+B) /var
+C) /mnt
+D) /bin
+
+-> B) /var
+
+==============================================
+
+15- Which of the following statement correctly describes Physical Volumes (PVs) in LVM?
+
+A) They are the mount points for the swap partition
+B) They are user directories that can be encrypted
+C) They are used only for backing up the master boot recoed
+D) They are block devices (partition, disks) that become part of a volume group
+
+-> D) They are block device (partition, disk) that become part of a volume group
+
+==============================================
+
+16- Why might a system administrator place /home and /var on separate physical disks?
+
+A) To reduce the impact of one disk's failure on another
+B) To comply with GPT partition ID requirements
+C) To ensure that /boot remains fully accessible
+D) To use a unique journaling filesystem only on /home
+
+-> A) To reduce the impact of one disk's failure on another
+
+==============================================
+
+17- Logical Volumes (LVs) in an LVM setup appear to the operating system as:
+
+A) Symbolic links pointing to /boot
+B) BIOS-level CHS addresses
+C) A direcroty tree with unlimited capacity 
+D) Normal block devices (e.g., /dev/VGNAME/LVNAME)
+
+-> D) Normal block devices (e.g., /dev/VGNAME/LVNAME)
+
+==============================================
+
+18- If you need to manually mount an additional filesystem that is not removable media, the vest practice is typically to mount it under which directory?
+
+A) /var
+B) /home
+C) /mnt
+D) /opt/extra
+
+-> C) /mnt
+
+==============================================
+
+19- According to common recommrndations, placing system logs and database files under a dedicated /var partition helps:
+
+A) Precent swap space from being used
+B) Protect the root filesystem if /var fills up
+C) Force all logs to ve read-only
+D) Make the system boot faster
+
+-> B) Protect the root filesystem if /var fills up
+
+==============================================
+
+20- Which of the following descrives a swap file?
+
+A) A regular file residing on an existing filesystem, configured to provide additional swap space
+B) A partition created at the beginning of the disk and labeled as 0xEF
+C) A mount point used only for kernel boot files
+D) A special utility run by the BIOS to load the operating system
+
+-> A) A regular file residing on an existing filesystem, configured to provide additional swap space
+
+==============================================
+==============================================
+
+FILL-IN-THE-BLACK QUESTIONS
+
+==============================================
+
+1- The folder where user data files and preferences are typically stored is _____ .
+
+-> /home
+
+==============================================
+
+2- The BIOS limitation of 1024 cylinders initially required a dedicated _____ partition to be placed at the beginning of the disk for bootloader files.
+
+-> /boot
+
+==============================================
+
+3- A _____ is the logical subdivision of a physical disk, sroting data separately from other subdivisions on the same disk.
+
+-> partition
+
+==============================================
+
+4- On systems with UEFI firmware, the _____ partition stores boot loader and kernel files in a FAT-base filesystem
+
+-> EFI System (or EFI Sysrtem Partition / ESP)
+
+==============================================
+
+5- The command that prepares a partition for use as swap space is _____ .
+
+-> mkswap
+
+==============================================
+
+6- The directory _____ is used for "variable data" such as logs, datavase files, caches, and spool directories.
+
+-> /var
+
+==============================================
+
+7- A filesystem must be "attached" to the system via a process called _____ before you can access its contents.
+
+-> mounting
+
+==============================================
+
+8- In LVM, multile Physical Volumes can be combined to form a larger _____ .
+
+-> Volume Group (VG)
+
+==============================================
+
+9- A _____ is a file that can serve as additional swap space without requiring a dedicated swap partition.
+
+-> swap file
+
+==============================================
+
+10- Traditional partitioning can be inflexible when allocating disk space. One way to overvome this limitation is by using _____ .
+
+-> LVM (Logical Volume Management)
+
+==============================================
+

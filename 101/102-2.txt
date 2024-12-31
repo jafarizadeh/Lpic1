@@ -1,0 +1,287 @@
+102.2
+
+1- Which of the following statement correctly describes the putpose of the Master Boot Record (MBR)?
+
+A) It is a legacy BIOS setting used to store GPU firmware information
+B) It is a reserved partition for the /boot directory on GPT disks
+C) It contains a high-level overview of the Linux file system hierarchy
+D) It contains a partition table and minimal bootstrap code used to start the boot process
+
+-> D) It contains a partition table and minimal bootstrap code to start the boot process
+
+==============================================
+
+2- Which command is commonly used to generate a new GRUB 2 configuration file?
+
+A) grub-init /dev/sda
+B) update-grub (or grub-mkconfig -o /boot/grub/grub.cfg)
+C) mkconfig -g
+D) grub-legecy -o /boot/grub/menu.lst
+
+-> B) update-grub (or grub-mkconfig -o /boot/grub/grub.cfg)
+
+==============================================
+
+3- In GRUB 2, which file is recommended for manual editing to permanently change bootloader settings?
+
+A) /boot/grub/menu.lst
+B) /etc/grub.d/custom.cfg
+C) /etc/default/grub
+D) /boot/grub/grub.cfg
+
+-> C) /etc/default/grub
+
+==============================================
+
+4- Which directive in /etc/default/grub a;;pws the last chosen boot option to become the default on the next reboot?
+
+A) GRUB_SAVEDEFAULT=
+B) GRUB_ENABLE_CRYPTODISK=
+C) GRUB_TIMEOUT=
+D) GRUB_CMDLINE_LINUX=
+
+-> A) GRUB_SAVEDEFAULT=
+
+==============================================
+
+5- What is the main purpose of an initial RAM disk (initrd)?
+
+A) It is another name for the GRUB 2 configuration file
+B) It is a dedicated swap partition to store kernel crash dumps
+C) It compresses the kernel to reduce its size in /boot
+D) It provides a minimal root filesystem so the kernel can mount the real root filesystem
+
+-> D) It provides a minimal root filesystem so the kernel can mount the real root filesystem
+
+==============================================
+
+6- Which GRUB 2 command is used in a manual (interactive) session to load the Linux kernel?
+
+A) linux
+B) initrd
+C) chainloader
+D) set root=
+
+-> A) linux
+
+==============================================
+
+7- Which of the following is not true regarding GPT?
+
+A) It is part of the UEFI specification
+B) It is incompatible with BIOS-based systems
+C) It supports disks larger than 2 TB
+D) It uses GUIDs to identify partitions
+
+-> B) It is incompatible with BIOS-based systems
+
+==============================================
+
+8- When chainloading Windows from GRUB Legacy or GRUB 2, which command loads the Windows bootloader from the first sector of its partition?
+
+A) initrd /windows.img
+B) search --set=root --fs-uuid <uuid>
+C) chainloader +1
+D) module /boot/grub/i386-pc/chain.mod
+
+-> C) chainloader +1
+
+==============================================
+
+9- In GRUB Legacy, which file typically stores the boot menu configuration?
+
+A) /boot/grub/menu.lst
+B) /boot/grub/grub.cfg
+C) /etc/default/grub
+D) /etc/grub.d/menu.cfg
+
+-> A) /boot/grub/menu.lst
+
+==============================================
+
+10- You are using a Live CD to rescue a system. You have mounted the dedicated boot partitionat /mnt/bootpartition. Which command corretly installs GRUB 2 to the MBR on /dev/sda?
+
+A) grub-install --root-directory=/mnt/bootpartition /dev/sda
+B) update-grub -d /dev/sda /mnt/bootpartition
+C) grub-mkconfig -o /dev/sda
+D) grub-install --boot-directory=/mnt/bootpartition /dev/sda
+
+-> D) grub-install --boot-directory=/mnt/bootpartition /dev/sda
+
+==============================================
+
+11- In the context of GRUB 2, which file is not recommended for direct editing?
+
+A) /etc/grub.d/40_custom
+B) /boot/grub/grub.cfg
+C) /boot/grub/fonts/unicode.pf2
+D) /etc/default/grub
+
+-> B) /boot/grub/grub.cfg
+
+==============================================
+
+12- Which of the following describes a scenario where a separate /boot partition is particularly useful?
+
+A) When you want to mount /boot as a swap partition
+B) When you plan to store the entire root filesystem on MBR with no separate partitions
+C) When you want all boot files in /bin/boot for convenience
+D) When you use encryption or compression methods not supported by the bootloader
+
+-> D) When you use encryption or compression methods not supported by the bootloader
+
+==============================================
+
+13- Which GRUB 2 command can help you identify partitions and disks form GRUB shell?
+
+A) ls
+B) disklist
+C) list-devices
+D) find /boot/grub/stage1
+
+-> A) ls
+
+==============================================
+
+14- What is the typical name of the Linux kernel file found in /boot?
+
+A) System.map-VERSION
+B) initrd.img-VERSION
+C) vmlinuz-VERSION
+D) config-VERSION
+
+-> C) vmlinuz-VERSIOIN
+
+==============================================
+
+15- Which of the following lines in a GRUB 2 menuentry block is responsible for loading the initial RAM disk?
+
+A) chainloader +1
+B) initrd /inited.img
+C) set root=(hd0,1)
+D) linux /vmlinuz root=/dev/sda1 ro
+
+-> B) initrd /initrd.img
+
+==============================================
+
+16- When using GRUB Legacy from a bootable rescue image, which command installs GRUB to the MBR after setting the coeerct root device?
+
+A) update-grub (hd0)
+B) mkconfig -o (hd0)
+C) install (hd0, msdos1)
+D) setup (hd0)
+
+-> D) setup (hd0)
+
+==============================================
+
+17- Which line in /etc/default/grub disables the boot menu countdown and wairs indefinitely for user input?
+
+A) GRUB_DEFAULT= saved
+B) GRUB_ENABLE_CRYPTODISK=y
+C) GRUB_TIMEOUT=-1
+D) GRUB_CMDLINE_LINUX_DEFAULT=""
+
+-> C) GRUB_TIMEOUT=-1
+
+==============================================
+
+18- Which component of the Linux filesystem organizes kernel symbols (variables, functions) with their memory addresses for debugging?
+
+A) vmlinuz-VERSION
+B) config-VERSION
+C) initrd-VERSION
+D) System.map-VERSION
+
+-> D) System.map-VERSION
+
+==============================================
+
+19- Which GRUB 2 command would you use within the shell to specify the disk or partition containing the root filesystem?
+
+A) chainloader +1
+B) set root=(hd0,1)
+C) root (hd0,0)
+D) initrd /initrd.img
+
+-> B) set root=(hd0,1)
+
+==============================================
+
+20- If a misconfiguration causes GRUB 2 to drop into a rescue shell (grub rescue>), which modules often need to be loaded manually to regain the normal GRUB shell functionality?
+
+A) normal and linux
+B) fs_uuid and configfile
+C) chainloader and search
+D) ls and initrd
+
+-> A) normal and linux
+
+==============================================
+==============================================
+
+FILL-IN-THE-BLACK QUESTIONS
+
+==============================================
+
+1- When a computer is powered on, the first software component to run is the _____ .
+
+-> boot loader
+
+==============================================
+
+2- On a BIOS sysytem using MBR paritioning, the very first 512-byte sector of the disk is called the _____ .
+
+-> Master Boot Record (MBR)
+
+==============================================
+
+3- The Linux kernel is typically stored in a compressed file named _____-VERSION in th e/boot directory.
+
+-> vmlinuz
+
+==============================================
+
+4- The minimal root filesystem required to load the real root filesystem is contained in the _____ file.
+
+-> initrd.img (or initial RAM disk)
+
+==============================================
+
+5- The file _____-VERSION contains a look-up table used for debugging kernel panics.
+
+-> System.map
+
+==============================================
+
+6- In GRUB 2, manual edit to the bootloader settings should be done in _____, rather than directly editing /boot/grub/grub.cfg.
+
+-> /etc/default/grub
+
+==============================================
+
+7- The _____ command scans availabel disks and partitions to build a list of operating systems for GRUB 2.
+
+-> update-grub (or grub-mkconfig)
+
+
+==============================================
+
+8- A dedicated _____ partition is often used to store all files needed for the process seprately from the root filesystem.
+
+-> /boot
+
+==============================================
+
+9- GRUB Legacy stores its main configuration in the file _____.
+
+-> /boot/grub/menu.lst
+
+==============================================
+
+10- A technique kniwn as _____ is used by GRUB to load other operating systems bootloaders (e.g., Windows) from their first sector.
+
+-> chainloading
+
+==============================================

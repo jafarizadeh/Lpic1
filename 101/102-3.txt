@@ -1,0 +1,285 @@
+102.3
+
+1- What is the purpose of having a dynamic library as opposed to a static one?
+
+A) It embeds all external library code into the final executable
+B) It decreases the chance of version conflicts between libraries
+C) It simplifies the debugging process by combining all symbols in one file
+D) It allows multiple programs to share the same library file in memory at runtime
+
+-> D) It allows multiple programs to share the same library file in memory at runtime
+
+==============================================
+
+2- Which directory is commonly used by Linux system to store 64-bit libraries?
+
+A) /etc/x86_64-linux-gnu
+B) /lib64
+C) /bin64
+D) /usr/local/opt/lib64
+
+-> B) /lib64
+
+==============================================
+
+3- When you install a new library in a custom location, which environment variable can you set to let the system know about the additional library path?
+
+A) LIB_EXTRA_PATH
+B) LD_DEBUG_PATH
+C) LD_LIBRARY_PATH
+D) PATHLIB
+
+-> C) LD_LIBRARY_PATH
+
+==============================================
+
+4- After adding a new .conf file under /etc/ld.so.conf.d/, which command should you usually run to ensure the changes take effect?
+
+A) sudo ldconfig
+B) echo $LD_LIBRARY_PATH
+C) ldd -u /etc/ld.so.conf
+D) touch /etc/ld.so.cashe
+
+-> A) sudo ldconfig
+
+==============================================
+
+5- A static library is characterized by:
+
+A) Having no effect on program size
+B) Being dunamically loaded at runtime
+C) Residing exclusively under /usr/local/lib
+D) Being fully integrated into the binary during link time
+
+-> D) Begin fully integrated intp the binary during link time
+
+==============================================
+
+6- Which file typically holds symbolic links to the actual versioned shared library files and speeds up library lookups?
+
+A) /etc/bash.bashrc
+B) /etc/ld.so.conf.d/
+C) /etc/ld.so.cache
+D) /etc/profile
+
+-> C) /etc/ld.so.cache
+
+==============================================
+
+7- Wath is the main function of the command ldd /usr/bin/git?
+
+A) It loads any missing library into memory for the executable
+B) It displays which shared libraries and memory addresses the program will use
+C) It modifies /etc/ld.so.conf to remove outdated references
+D) It compiles the binary from source code
+
+-> B) It displays which shared libraries and memory addreses the program will use
+
+==============================================
+
+8- Which statement is true regarding the file /etc/ld.so.conf on many modern Linux distributions?
+
+A) It direcrly lists all directories containing library files witchout any incluseion mechanisms
+B) It typically has an include line that references additional .conf files in /etc/ld.so.conf.d/
+C) It is unrelated to dynamic library configuration
+D) It must only contain symboliclinks, not absolute paths
+
+-> B) It typically has an include line that references additional .conf files in /etc/ld.so.conf.d/
+
+==============================================
+
+9- Which command option would show unused direct library dependencies for an executable?
+
+A) ldconfig -v
+B) ldconfig -p
+C) ldd --verbose
+D) ldd -u
+
+-> D) ldd -u
+
+==============================================
+
+10- The logical name given to a shared library (like libm.so.6) is called the:
+
+A) Full path reference
+B) Statically linked file name
+C) Base library handle
+D) Soname
+
+-> D) Soname
+
+==============================================
+
+11- Which directory is not typically part of the defult library search path?
+
+A) /opt/libraries/
+B) /lib/
+C) /usr/lib/
+D) /usr/local/lib/
+
+-> A) /opt/libraries/
+
+==============================================
+
+12- In a typical modern Linux system,if you run ldconfig -p, what does the -p option do?
+
+A) It permanently deletes old cach entries from /etc/ls.so.cash
+B) It lists the directories and candidate libraries in the current cache
+C) It prints out any undefined symbols in the loaded libraries
+D) It prompts the user for additional library paths
+
+-> B) It lists out any undefined symbols in the loaded libraries
+
+==============================================
+
+13- During the build process, an excutable may merk certin libraries as NEEDED even if they aren't used at runtime. This often happens because of:
+
+A) Accidental corruption in the library file
+B) Missing environment variables in the developer's system
+C) Linker flags that reference multiple libraries
+D) Repeated calls to ldcofig
+
+-> C) Linker flags that reference multiple libraries
+
+==============================================
+
+14- Which of the following best describes what ld-linux.so (or ld.so) does?
+
+A) It locates, loads, and links the needed shared libraries at runtime
+B) It complies source code into object files for linking
+C) It performs static linking of libbraries during application build time
+D) It generates symbolic links in /etc/ld.so.conf.d/ automatically
+
+-> A) It locates, loads, and linkg the needed shared libraries at runtime
+
+==============================================
+
+15- What is a key advantage of using shared libraries on a system with many processes?
+
+A) Each application runs in its own memory space withput any shared code
+B) You never need to update libraries since they are compiled into each executable
+C) They can be loaded in user space without root privilages
+D) Only one copy of the library is loaded into memory and used by multiple processes
+
+-> D) Only one copy of the library is loaded into memory and used by multiple processes
+
+==============================================
+
+16- If a program is statically linked against a library, then:
+
+A) You do not need the library on the system at runtime for the program to function
+B) you must always place a copy of the library in/lib/x86_64-linux-gnu
+C) The linker will load the library into memory each time it's called
+D) There must be an exact match between librart version and kernel version
+
+-> A) You do not need the library on the system at runtime for the program to function
+
+==============================================
+
+17- What does the command ldconfig -v do in addition to updating the library cache?
+
+A) It permanently locks the library version in place
+B) It displays verbose details about the libraries found, links created, and directories scanned
+C) It only updates symbolic links, but not the cache
+D) It filters out symbolic links that are unused or broken
+
+-> B) It displays verbose details about the libraries found, links created, and directories scanned
+
+==============================================
+
+18- Which of these files would you most likely edit or create to specify a custom library directory (e.g., /opt/mylib)?
+
+A) /etc/ld.so.conf.d/custom.conf
+B) /usr/local/lib/custom.ld.so.conf
+C) /var/run/ldcongif/ld.so.conf
+D) /etc/bash.bashrc
+
+-> A) /etc/ld.so.conf.d/custo,.conf
+
+==============================================
+
+19- LD_LIBRARY_PATH is similar to PATH in the sense that:
+
+A) Both are used solely for system administrators to track dependencies
+B) Both contain hashed references to libraries that get pre_loaded
+C) Both are environment variables that list directories to search, but for different purposes
+D) Neither can be exported in a user shell
+
+-> C) Both are environment variables that list directories to search, but for different purposes
+
+==============================================
+
+20- Which statement accurately describes the role of symbolic links like libpthread.so.0 -> libpthread-2.31.so?
+
+A) They are stored in /etc/ld.so.cache for quick loading of kernel modules
+B) They connect older kernel releases to new libraries
+C) They enable the system to reference a library by its soname while pointing to the actual versioned file
+D) They are used exclusively for statically linking code
+
+-> C) They enable the system to reference a library by its soname while pointing to the actual versioned file
+
+==============================================
+==============================================
+
+FILL-IN-THE-BLACK QUESTIONS
+
+==============================================
+
+1- The utility used to check the shared libraries required by a specific program is _____ .
+-> ldd
+
+==============================================
+
+2- The environment vatiable that can be set to add or override library paths at runtime is _____ .
+
+-> LD_LIBRARY_PATH
+
+==============================================
+
+3- On many Linux systems, the file /etc/ld.so.conf includes a line pointing to configuration files in the _____ directory.
+
+-> /etc/ld.so.conf.d
+
+==============================================
+
+4- When building an application, if the library code is copied into the excutable at link time, we say the program is using _____ liking.
+
+-> static
+
+==============================================
+
+5- If we install a new library in /usr/local/mylib and do not want to modify system-wide configurations, we can temporarily set _____=/usr/local/mylib.
+
+-> LD_LIBRARY_PATH
+
+==============================================
+
+6- A library name like libfuse.so.2 is often a symbolic link pointing to a versioned file such as libfuse.so.2.9.7; this more general filename is often called the _____.
+
+-> soname
+
+==============================================
+
+7- The command _____-p lists the directories and candidate libraries store in the current library cache.
+
+-> ldconfig
+
+==============================================
+
+8- We typically run _____ after modifying or adding a new .conf file under /etc/ld.so.conf.d/ to update the library the library chache.
+
+-> sudo ldconfig
+
+==============================================
+
+9- The file /etc/ld.so.cache is used to speed up the lookup of _____ .
+
+-> libraries
+
+==============================================
+
+10- A static library file typically ends in the extension _____ .
+
+-> .a
+
+==============================================

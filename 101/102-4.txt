@@ -1,0 +1,290 @@
+102.4
+
+1- Which parametr in dpkg is used to remove both a package and its configuration files?
+
+A) -r
+B) -I
+C) -S
+D) -P
+
+-> D) -P
+
+==============================================
+
+2- Which of the following commands updates the local package index using APT?
+
+A) apt-get remove
+B) apt-get install -f
+C) apt-get update
+D) apt-get pruge
+
+-> C) apt-get update
+
+==============================================
+
+3- Which dpkg command option allows you to list all files that a package has installed on the system?
+
+A) dpkg --get-selections
+B) dpkg -I
+C) dpkg-reconfigutr
+D) dpkg -L
+
+-> D) dpkg -L
+
+==============================================
+
+4- Which commnad is used to remove a package but keep its configuration files?
+
+A) dpkg -P
+B) apt-get remove
+C) apt-get install -f
+D) apt-get purge
+
+-> B) apt-get remove
+
+==============================================
+
+5- What is the correct Archive type that indicates a repository contains ready-to-run packages?
+
+A) deb-src
+B) main
+C) deb
+D) contrib
+
+-> C) deb
+
+==============================================
+
+6- What is the default location of the local cache where .deb files are downdoaded vvefore installation?
+
+A) /etc/apt/sources.list
+B) /var/cache/apt/archives
+C) /usr/local/cache/dpkg
+D) /var/dpkg/archives/partial
+
+-> B) /var/cache/apt/archives
+
+==============================================
+
+7- Which ocmmand helps you restore or re-run the initial configuration process of a package?
+
+A) dpkg --get-selections
+B) dpkg -L
+C) dpkg-reconfigure
+D) dpkg -S
+
+-> C) dpkg-reconfigure
+
+==============================================
+
+8- Which dpkg option can show you which package owns a specific file on the filesystem (e.g., /usr/bin/example)?
+
+A) dpkg -I
+B) dpkg -L
+C) dpkg -P
+D) dpkg -S
+
+-> D) dpkg -S
+
+==============================================
+
+9- Which of the following statements is true about apt-get install -f?
+
+A) It attempts to fix broken dependencies by installing missing packages
+B) It renoves all configuration files of broken packages
+C) It renoves all broken packages from the system
+D) It upgrades all packages to the latest version
+
+-> A) It attempts to fix broken dependencies by installing missing packages
+
+==============================================
+
+10- Which command can be used to search for a package by a keyword in the APT package index?
+
+A) apt-get show
+B) apt-cache search
+C) dpkg -L
+D) dpkg-query -S
+
+-> B) apt-cache search
+
+==============================================
+
+11- Which parameter of dpkg lists the basic metadate (like version, architecture, dependencies) of a .deb package file?
+
+A) -I
+B) -r
+C) -P
+D) -L
+
+-> A) -I
+
+==============================================
+
+12- Which of these lines in /etc/apt/sources.list indicates a repository of source packages rather than binary packages?
+
+A) deb-src
+B) deb http://repo.example.com stable main
+C) deb /var/cache/apt/archives stable main
+D) deb http://repo.example.com sources main
+
+-> A) deb-src
+
+==============================================
+
+13- Which command is used to remove unnecessary .deb files in the local cache under /var/cache/apt/archives?
+
+A) apt-get remove
+B) apt-get purge
+C) apt-get update
+D) apt-get clean
+
+-> D) apt-get clean
+
+==============================================
+
+14- Which dpkg parameter performs the same function as dpkg -r but leaves configuration files behind?
+
+A) -r
+B) -P
+C) -S
+D) -I
+
+-> A) -r
+
+==============================================
+
+15- Which APT command will remove a package along with its configuration files?
+
+A) apt-get remove
+B) apt-get update
+C) apt-get install -f
+D) apt-get purge
+
+-> D) apt-get purge
+
+==============================================
+
+16- When a Debian-based system warns that certain packages are "kept back", which command would you generally use to upgrade them?
+
+A) apt-get dist-upgrade
+B) apt-file search
+C) dpkg -P
+D) dpkg -i
+
+-> A) apt-get dist-upgrade
+
+==============================================
+
+17- Which Debian repository component includes software that is DFSG-compliant but depends on non-free components?
+
+A) main
+B) contrib
+C) multiverse
+D) restricted
+
+-> B) contrib
+
+==============================================
+
+18- Which APT utility focuses on searching for package information and displaying metadata about packages?
+
+A) dpkg
+B) apt-file
+C) apt-cache
+D) dpkg-query
+
+-> C) apt-cache
+
+==============================================
+
+19- Which main Debian repository contains packages that are compliant with the Debian Free Software Guidelines (DFSG)?
+
+A) restricted
+B) non-free
+C) main
+D) multiverse
+
+-> C) main
+
+==============================================
+
+20- Which of the following apt-get commands will remove a package but leave the configuration file on the system?
+
+A) apt-get purge
+B) apt-get remove
+C) apt-get install -f
+D) apt-get upgrade
+
+-> B) apt-get remove
+
+==============================================
+==============================================
+
+FILL-IN-THE-BLACK QUESTIONS
+
+==============================================
+
+1- To list al installed package on a Debian-based system using dpkg, you can run:
+dpkg --get-_____ 
+
+-> selections
+
+==============================================
+
+2- The Advance Package Tool, also known as APT, uses repository information from the file:
+/etc/apt/_____.list
+
+-> sources
+
+==============================================
+
+3- If tou have missing dependencies after a failed install, you can attempt to fix them with:
+apt-get instell _____
+
+-> -f
+
+==============================================
+
+4- You can use dpkg with the -I parameter to get _____ about a .deb package file.
+
+-> information
+
+==============================================
+
+5- The package list that APT uses is also known as the APT _____.
+
+-> cache or index
+
+==============================================
+
+6- The parameter dpkg -L lets you list the _____ installed by a particular package.
+
+-> file
+
+==============================================
+
+7- Lines beginning with a _____ character in /etc/apt/sources.list are ignored because they are comments.
+
+-> #
+==============================================
+
+8- The command:
+apt-_____ searche p7sip
+is used to searche for a package containing the term "p7zip"
+
+-> cache
+
+==============================================
+
+9- To renove all downdoaded package file and reclaim disk space, you run:
+apt-get _____
+
+-> clean
+
+==============================================
+
+10- The configuration files are only completely removed when you use the dpkg parameter -p, which stands fot:
+dpkg -p _____
+
+-> purge

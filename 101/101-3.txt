@@ -1,0 +1,293 @@
+101.3
+
+
+1- Which file traditionally defines the default runlevel in a SysViit system?
+
+A) /ect/inittab
+B) /etc/rc.vonf
+C) /etc/systemd/system.conf
+D) /etc/default/runlevel
+
+
+-> A) /etc/inittab
+
+==============================================
+
+2- In SysVinit, which runlevel usually corresponds to system restart?
+
+A) Runlevel 1
+B) Runlevel 3
+C) Runlevel 5
+D) Runlevel 6
+
+-> A) Runlevel 6
+
+==============================================
+
+3- Which command is used on a SysVinit system to check the current runlevel?
+
+A) who -r
+B) runlevel
+C) init
+D) sysvcheck
+
+-> B) runlevel
+
+==============================================
+
+4- On a SysVinit system, which runlevel is typically reseved for multi-user mode without a graphical environment?
+
+A) Runlevel 0
+B) Runlevel 1
+C) Runlevel 3
+D) Runlevel 6
+
+-> C) Runlevel 3
+
+==============================================
+
+5- Which command reloads the /etc/inittab file after changes are made (on a SysVinit system)?
+
+A) telinit q
+B) init reload
+C) systemctl daemon-reload
+D) reload runlevel
+
+-> A) telinit q
+
+==============================================
+
+6- Which systemd unit type is used for grouping other units so they can be controlled as a single entity?
+
+A) service
+B) automount
+C) target
+D) socket
+
+-> C) target
+
+==============================================
+
+7- On a systemd system, which comand would you use to switch the system to multi-user.target immediately?
+
+A) systemvtl default multi-user.target
+B) systemctl multi-user.taret
+C)systemctl reload multi-user.target
+D) systemctl isolate multi-user.target
+
+-> D) systemctl isolate multi-user.target
+
+==============================================
+
+8- Which command is commonly used on SysVinit systems to change the current runlevel without rebooting?
+
+A) systemctl isolate
+B) telinit
+C) initctrl
+D) switchrun
+
+-> B) telinit
+
+==============================================
+
+9- In a SysVinit layout, script in directories like /etc/rc3.d/ typically start with what letter if they are launched upon entering that runlevel?
+
+A) R
+B) G
+C) S
+D) T
+
+-> C) S
+
+==============================================
+
+10- Which runlevel or mode is typically used for maintenance when the system is only available to the administrator (no network services)?
+
+A) Single-user (Runlevel 1)
+B) Graphical mode (Runlevel 5)
+C) Multi-user mode (Runlevel 3)
+D) Runlevel 2
+
+-> A) single-mode (Runlevel 1)
+
+==============================================
+
+11- Which SysVinit command can be used to hatl the system, after modifying the /etc/inittab entry for Ctrl+Alt+Del with the -a option?
+
+A) halt -a
+B) shutdown
+C) poweroff
+D) stop system
+
+-> B) shutdown
+
+==============================================
+
+12- Which systemctl command would you use to turn off the system innediately on a systemd host?
+
+A) systemctl shutdown
+B) sustemctl down
+C) systemctl isolate runlevel0.target
+D) systemctl poweroff
+
+-> D) systemctl poweroff
+
+==============================================
+
+13- Which systemd unit type is used for hardware devices identified by the kernel?
+
+A) target
+B) service
+C) device
+D) mount
+
+-> C) device
+
+==============================================
+
+14- Which file is not used by systemd to set the default system target?
+
+A) /etc/sytemd/sytem/default.target
+B) /lib/systemd/system/multi-user.target
+C) /lib/systemd/system/graphical.target
+D) /etc/inittab
+
+-> A) /etc/systemd/system/default.target
+
+==============================================
+
+15- If you see the output tty5 start/running/, process 1764 on an Ubuntu system, which init system is likely in use?
+
+A) SysVinit
+B) Upstart
+C) systemd
+D) OpenRC
+
+-> B) Upstart
+
+==============================================
+
+16- On a system, which command reboots the machine?
+
+A) systemctl shutdown -r
+B) systemctl kill
+C) systemctl isolate reboot.target
+D) systemctl reboot
+
+-> D) systemctl reboot
+
+==============================================
+
+17- Which systemd unit type is used to define an on-demand mount point?
+
+A) device
+B) service
+C) socket
+D) automount
+
+-> C) socket
+
+==============================================
+
+18- Which Upstart command is used to stop a current running job or service?
+
+A) upstartctl kill
+B) stop
+C) service halt
+D) haltjob
+
+-> B) stop
+
+==============================================
+
+19- Which command is typically used to send a message to all lohhed-in users terminals?
+
+A) wall
+B) announce
+C) globalmsg
+D) bcast
+
+-> A) wall
+
+==============================================
+
+20- In the SysVinit scheme, which directory contains startup scripts (symbolin link) specifically for runlevel 2?
+
+A) /etc/init.d2/
+B) /etc/rc.d/2/
+C) /etc/rc2.d/
+D) /etc/sysinit/2/
+
+-> D) /etc/systint/2/
+
+==============================================
+
+==============================================
+==============================================
+
+FILL-IN-THE-BLACK QUESTIONS
+
+==============================================
+
+1- In a SysVinit system, the default runlevel is configured in the file __________.
+
+-> /etc/inittab
+
+==============================================
+
+2- To switch the system to single-user mode (runlevel 1) on a SysVinit system, you can type __________ 1 or __________ s.
+
+-> telinit 1 or telinit s
+
+==============================================
+
+3- The command __________ q is used to make init re-read the /etc/inittab file after changes are made.
+
+-> telinit q
+
+==============================================
+
+4- In System V style initialization, scripts controlling services are located in __________, while each runlevel (e.g., runlevel 3, 5) has its own subdirectory like /etc/rc3.d/ or /etc/rc5.d/.
+
+-> /etc/init.d/
+
+==============================================
+
+5- Under systemd, each background process or subsystem is referred to as a __________ (e.g., httpd.service).
+
+-> unit
+
+==============================================
+
+6- To change the default target in systemd without editing kernel parameters directly, you can use the command systemctl set-default __________.target.
+
+-> Possible examples:
+multi-user.target
+graphical.target
+(Any valid systemd target name is acceptable here.)
+
+==============================================
+
+7- In systemd, if you want to switch to multi-user mode without rebooting, you can execute systemctl __________ multi-user.target.
+
+-> isolate
+
+==============================================
+
+8- When switching from Upstart, Ubuntu replaced its init system with __________.
+
+-> systemd
+
+==============================================
+
+9- The __________ command sends a message to the terminal sessions of all logged-in users and is useful before shutting down or switching runlevels.
+
+-> wall
+
+==============================================
+
+10- In a SysVinit system, Runlevel 0 corresponds to __________, while Runlevel 6 corresponds to a restart of the system.
+
+-> shutdown
+
+==============================================
