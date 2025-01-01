@@ -7,7 +7,23 @@
 \usepackage{amssymb}
 \usepackage{enumerate}
 \usepackage{setspace}
+\usepackage{listings}
+\usepackage{xcolor}
 
+% Configuration pour les listings de code
+\definecolor{codebg}{RGB}{245,245,245}
+\lstset{
+    language=bash,
+    backgroundcolor=\color{codebg},
+    basicstyle=\ttfamily\small,
+    frame=single,
+    breaklines=true,
+    columns=fullflexible,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{orange},
+    showstringspaces=false
+}
 \setstretch{1.15}
 
 \begin{document}
@@ -38,15 +54,15 @@
 %=======================================================
 \chapter{Topic 101: System Architecture}
 
-\section{101.1 Determine and Configure Hardware Settings}
+\section*{101.1 Determine and Configure Hardware Settings}
 
-\subsubsection*{Reference to LPI Objectives:}
+\textbf{Reference to LPI Objectives:}  
 \begin{itemize}
     \item \textbf{LPIC-1 v5, Exam 101, Objective 101.1}
-    \item \textbf{Weight: 2}
+    \item \textbf{Weight:} 2
 \end{itemize}
 
-\subsubsection*{Key Knowledge Areas}
+\subsection*{Key Knowledge Areas}
 \begin{itemize}
     \item Enabling/disabling integrated peripherals (BIOS/UEFI).
     \item Identifying different types of mass storage devices.
@@ -56,149 +72,131 @@
     \item Understanding \texttt{sysfs}, \texttt{udev}, and \texttt{dbus} concepts.
 \end{itemize}
 
-\subsubsection*{Important Files, Terms, and Utilities}
+\subsection*{Important Files, Terms, and Utilities}
 \begin{itemize}
-    \item \texttt{/sys/}
-    \item \texttt{/proc/}
-    \item \texttt{/dev/}
+    \item \textbf{/sys/}
+    \item \textbf{/proc/}
+    \item \textbf{/dev/}
     \item \texttt{modprobe}
     \item \texttt{lsmod}
     \item \texttt{lspci}
     \item \texttt{lsusb}
 \end{itemize}
 
-\subsection*{Lesson Overview}
+\section*{Lesson Overview}
+
 Modern computers rely on standards for firmware and hardware interaction. On x86 platforms, the firmware could be traditional \textbf{BIOS} or newer \textbf{UEFI}. Both allow for configuring hardware resources (e.g., integrated peripherals, IRQs, DMA settings) even before the operating system loads.
 
-Once Linux is running, device detection and configuration rely on the kernel and support from user-space utilities such as \texttt{lspci}, \texttt{lsusb}, \texttt{lsmod}, and various pseudo-filesystems in \texttt{/proc} and \texttt{/sys}.
+Once Linux is running, device detection and configuration rely on the kernel and support from user-space utilities such as \texttt{lspci}, \texttt{lsusb}, \texttt{lsmod}, and various pseudo-filesystems in \textbf{/proc} and \textbf{/sys}.
 
-\subsubsection*{1. BIOS and UEFI Configuration}
+\subsection*{1. BIOS and UEFI Configuration}
 \begin{itemize}
     \item \textbf{Accessing Firmware:} Typically press \texttt{Del}, \texttt{F2}, or \texttt{F12} at startup.
     \item \textbf{Common Configurations:}
     \begin{itemize}
-      \item Enable/disable integrated peripherals (USB ports, onboard audio, etc.).
-      \item Set boot order and define the primary device for the bootloader.
-      \item Adjust CPU features or RAM parameters if needed.
+        \item Enable/disable integrated peripherals (USB ports, onboard audio, etc.).
+        \item Set boot order and define the primary device for the bootloader.
+        \item Adjust CPU features or RAM parameters if needed.
     \end{itemize}
     \item \textbf{Impact:} Misconfiguration (e.g., wrong boot device) can prevent the OS from loading.
 \end{itemize}
 
-\subsubsection*{2. Device Detection in Linux}
-\textbf{Goal:} Match hardware parts to the correct driver (\textit{kernel module}).
+\subsection*{2. Device Detection in Linux}
+\begin{itemize}
+    \item \textbf{Goal:} Match hardware parts to the correct driver (\textbf{kernel module}).
+    \item \textbf{Basic Workflow:}
+    \begin{enumerate}
+        \item \textbf{Check if hardware is detected} (e.g., \texttt{lspci}, \texttt{lsusb}).
+        \item \textbf{Verify if a driver is loaded} (e.g., \texttt{lsmod}, \texttt{lspci -k}).
+        \item \textbf{Confirm functionality} via logs, testing, or additional tools.
+    \end{enumerate}
+\end{itemize}
+
+\subsection*{3. Commands for Hardware Inspection}
+
 \begin{enumerate}
-    \item \textbf{Check if hardware is detected} (e.g., \texttt{lspci}, \texttt{lsusb}).
-    \item \textbf{Verify if a driver is loaded} (e.g., \texttt{lsmod}, \texttt{lspci -k}).
-    \item \textbf{Confirm functionality} via logs, testing, or additional tools.
+    \item \textbf{\texttt{lspci}}
+    \begin{itemize}
+        \item Lists PCI devices (graphics cards, network interfaces, etc.).
+        \item Use \texttt{-v} for more detail and \texttt{-k} to see which kernel modules are in use.
+        \item Example:
+        \begin{lstlisting}[language=bash]
+lspci -s 04:02.0 -v
+lspci -s 01:00.0 -k
+        \end{lstlisting}
+    \end{itemize}
+
+    \item \textbf{\texttt{lsusb}}
+    \begin{itemize}
+        \item Lists USB devices (keyboards, mice, USB hubs, etc.).
+        \item Use \texttt{-v} for verbose output and \texttt{-d <vendor:product>} to focus on a specific device.
+        \item Example:
+        \begin{lstlisting}[language=bash]
+lsusb -v -d 1781:0c9f
+lsusb -t  # Show devices in a tree structure
+        \end{lstlisting}
+    \end{itemize}
+
+    \item \textbf{\texttt{lsmod}}
+    \begin{itemize}
+        \item Shows loaded kernel modules.
+        \item Columns: \textbf{Module}, \textbf{Size}, \textbf{Used by} (dependency information).
+        \item Example:
+        \begin{lstlisting}[language=bash]
+lsmod | grep snd_hda_intel
+        \end{lstlisting}
+    \end{itemize}
+
+    \item \textbf{\texttt{modprobe}}
+    \begin{itemize}
+        \item Loads or unloads modules (with dependencies).
+        \item \texttt{modprobe -r <module>} removes a module if not in use.
+        \item \texttt{modinfo <module>} shows module details (author, license, parameters, etc.).
+        \item Configuration files in \texttt{/etc/modprobe.d/} can blacklist or set module parameters.
+    \end{itemize}
 \end{enumerate}
 
-\subsubsection*{3. Commands for Hardware Inspection}
-\paragraph{\texttt{lspci}}
+\subsection*{4. Hardware Information Files}
 \begin{itemize}
-    \item Lists PCI devices (graphics cards, network interfaces, etc.).
-    \item Use \texttt{-v} for more detail and \texttt{-k} to see which kernel modules are in use.
-\end{itemize}
-
-\paragraph{\texttt{lsusb}}
-\begin{itemize}
-    \item Lists USB devices (keyboards, mice, USB hubs, etc.).
-    \item Use \texttt{-v} for verbose output and \texttt{-d <vendor:product>} to focus on a specific device.
-\end{itemize}
-
-\paragraph{\texttt{lsmod}}
-\begin{itemize}
-    \item Shows loaded kernel modules.
-    \item Columns: \textbf{Module}, \textbf{Size}, \textbf{Used by}.
-\end{itemize}
-
-\paragraph{\texttt{modprobe}}
-\begin{itemize}
-    \item Loads or unloads modules (with dependencies).
-    \item \texttt{modprobe -r <module>} removes a module if not in use.
-    \item \texttt{modinfo <module>} shows module details (author, license, parameters).
-\end{itemize}
-
-\subsubsection*{4. Hardware Information Files}
-\begin{itemize}
-    \item \textbf{/proc} (pseudo-filesystem for processes and hardware info)  
-      Examples: \texttt{/proc/cpuinfo}, \texttt{/proc/interrupts}, \texttt{/proc/ioports}, \texttt{/proc/dma}.
-    \item \textbf{/sys} (sysfs for device and kernel data)  
-      Mirrors hardware hierarchy, used heavily by \texttt{udev}.
-    \item \textbf{/dev} (device files)  
-      Each entry represents a device (e.g., \texttt{/dev/sda1}, \texttt{/dev/fd0}).  
-      \texttt{udev} dynamically creates/removes these files as devices connect or disconnect.
-\end{itemize}
-
-\subsubsection*{5. Storage Devices}
-\begin{itemize}
-    \item \textbf{Block Devices}: Accessed in fixed-size blocks (hard disks, SSDs, etc.).
-    \item \textbf{Naming Conventions}:
+    \item \textbf{/proc} (pseudo-filesystem for processes and hardware info)
     \begin{itemize}
-      \item Newer kernels use \texttt{sd} prefix for most disks (\texttt{/dev/sda1}).
-      \item IDE devices also appear as \texttt{sd} on modern kernels.
-      \item NVMe devices get names like \texttt{/dev/nvme0n1p1}.
-      \item SD Cards often appear as \texttt{/dev/mmcblk0p1}.
+        \item \texttt{/proc/cpuinfo}, \texttt{/proc/interrupts}, \texttt{/proc/ioports}, \texttt{/proc/dma}
     \end{itemize}
-    \item \textbf{Hotplug and Coldplug}:
+    \item \textbf{/sys} (\texttt{sysfs} for device and kernel data)
+    \item \textbf{/dev} (device files)
     \begin{itemize}
-      \item \textbf{Hotplug}: device recognized after boot (e.g., USB).
-      \item \textbf{Coldplug}: device recognized during boot (built-in or already connected).
+        \item Each entry represents a device (e.g., \texttt{/dev/sda1}, \texttt{/dev/fd0}).
+        \item \textbf{\texttt{udev}} dynamically creates/removes these files as devices connect or disconnect.
     \end{itemize}
 \end{itemize}
 
-\subsection*{Workbook Exercises}
+\subsection*{5. Storage Devices}
+\begin{itemize}
+    \item \textbf{Block Devices:} Accessed in fixed-size blocks (hard disks, SSDs, etc.).
+    \item \textbf{Naming Conventions:}
+    \begin{itemize}
+        \item Newer kernels use \texttt{sd} prefix for most disks; partitions are numbered (\texttt{/dev/sda1}).
+        \item \textbf{NVMe} devices get names like \texttt{/dev/nvme0n1p1}.
+        \item \textbf{SD Cards} often appear as \texttt{/dev/mmcblk0p1}.
+    \end{itemize}
+\end{itemize}
+
+\section*{Workbook Exercises}
+
 \begin{enumerate}
     \item \textbf{Accessing BIOS/UEFI}
     \begin{itemize}
         \item Reboot a test machine and enter BIOS/UEFI.
         \item Locate the sections that let you enable/disable integrated peripherals.
-        \item Identify the menu where boot order is set.
-    \end{itemize}
-
-    \item \textbf{Listing Hardware}
-    \begin{itemize}
-        \item On a Linux system, run \texttt{lspci -k}.
-        \begin{itemize}
-          \item Identify which driver is used by the video card.
-        \end{itemize}
-        \item Run \texttt{lsusb -t}.
-        \begin{itemize}
-          \item Check which USB driver modules are in use (e.g., \texttt{btusb}, \texttt{usbhid}).
-        \end{itemize}
-    \end{itemize}
-
-    \item \textbf{Exploring /proc and /sys}
-    \begin{itemize}
-        \item View CPU details with \texttt{cat /proc/cpuinfo}.
-        \item Inspect interrupts with \texttt{cat /proc/interrupts}.
-        \item Explore \texttt{/sys/class} and \texttt{/sys/block} to see how devices are represented.
-    \end{itemize}
-
-    \item \textbf{Managing Kernel Modules}
-    \begin{itemize}
-        \item Use \texttt{lsmod} to list all loaded modules.
-        \item Pick a module (e.g., a sound driver) and unload it with \texttt{sudo modprobe -r <module>}.
-        \begin{itemize}
-          \item Check if removal is allowed (the module should not be in use).
-        \end{itemize}
-        \item Use \texttt{modinfo -p <module>} to see possible parameters, and note how you might apply them in \texttt{/etc/modprobe.d/}.
-    \end{itemize}
-
-    \item \textbf{Blacklisting a Module}
-    \begin{itemize}
-        \item Create a test file in \texttt{/etc/modprobe.d/} to blacklist an unwanted module (e.g., \texttt{nouveau}).
-        \item Reboot and confirm it is not loaded by checking \texttt{lsmod}.
     \end{itemize}
 \end{enumerate}
 
-\subsection*{Summary}
+\section*{Summary}
 \begin{itemize}
     \item Modern systems rely on firmware (BIOS/UEFI) for initial hardware configuration.
     \item Linux identifies devices via kernel modules; tools like \texttt{lspci}, \texttt{lsusb}, \texttt{lsmod}, and \texttt{modprobe} allow you to inspect and manage hardware.
-    \item \texttt{/proc} and \texttt{/sys} provide detailed, real-time system information; \texttt{udev} dynamically manages device nodes in \texttt{/dev}.
-    \item Storage device naming follows standard patterns (\texttt{sd}, \texttt{nvme}, \texttt{mmcblk}, etc.).
-    \item Understanding how to enable/disable devices, load/unload modules, and explore hardware information files is crucial for system administration and LPIC-1 success.
 \end{itemize}
+
 
 %-------------------------------------------------------
 % Multiple-Choice Questions (101.1)
