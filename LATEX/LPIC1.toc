@@ -54,3 +54,5 @@
 \contentsline {section}{\numberline {10.1}110.1 Perform security administration tasks}{22}{section.10.1}%
 \contentsline {section}{\numberline {10.2}110.2 Setup host security}{22}{section.10.2}%
 \contentsline {section}{\numberline {10.3}110.3 Securing data with encryption}{22}{section.10.3}%
+\contentsline {chapter}{Answers}{23}{chapter*.22}%
+\contentsline {section}{Topic 101: System Architecture}{23}{section*.23}%
