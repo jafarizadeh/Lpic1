@@ -1,0 +1,288 @@
+102.6
+
+1- Which hypervisor is descrived as a Type-1 (bare-metal) hypervisor that not rely on an underlying operating system?
+
+A) VirtualBox
+B) VMware Workstation
+C) KVM
+D) Xen
+
+-> D) Xen
+
+==============================================
+
+2- What is the main purpose of a guest driver in a paravitualized environment?
+
+A) They hamper performance by adding extra overhead
+B) They replace the hypervisor entirely
+C) They help the guest OS interact with the hypervisor hardware more efficiently
+D) They prevent kernel modules from loading
+
+-> D) They help the guest OS interact with the hypervisor hardware more efficiently
+
+==============================================
+
+3- Which of the following statement about disk images is correct?
+
+A) The raw image format is always smaller in phisical size
+B) A 10 GB raw image file only uses 5 GB by default
+C) Copy-on-write images cannot support snapshots
+D) qcow2 is a copy-on-wtite disk image format used by QEMU
+
+-> D) qcow2 is a copy-on-write disk image format used by QEMU
+
+==============================================
+
+4- Which statement accurately describes containers?
+
+A) Containers require a fully emulated BIOS and disk controllers
+B) Containers cannot be mihrated from one host to another
+C) Containers are identical to fully virtualized machies
+D) Containers isolate applications while sharing the host's operating system kernel
+
+-> D) Containers isolate application while sharing the host's operating system kernel
+
+==============================================
+
+5- Which of the following is an example of a Type-2 hypervisor?
+
+A) VirtualBox
+B) Xen
+C) KVM
+D) Docker
+
+-> A) VirtualBox
+
+==============================================
+
+6- Which command can be used to ensure a system has a D-Bus machine ID or to henerate one if missing?
+
+A) systemctl machine-id
+B) uuidgen
+C) cloud-init --machine-id
+D) dbus-uuid --ensure
+
+-> dbus-uudid --ensure
+
+==============================================
+
+7- which best describes cloud-init?
+
+A) A virtualization environment used to create containers
+B) A network configuration tool for bridging
+C) A propriatary cloud computing platform
+D) A vendor-neutral utility for automatically configuring new cloud-based systems at first boot
+
+-> D) A vendor-naural utility for automatically configuring new cloud-based systems at first boot
+
+==============================================
+
+8- What is the recommended procedure when cloning a Linux VM that needs a unique D-Bus machine ID?
+
+A) Reboot the system, and it will generate a new ID automatically
+B) No action is needed; the hypervisor handles ID generation
+C) Remove /etc/machine-id and generate a new one with dbus-uuidgen
+D) Request a new license from LPI
+
+-> C) Remove /etc/machine-id and generate a new one with dbus-uuidgen
+
+==============================================
+
+9- Which is true regarding copuing SSH public keys with the ssh-copy-id command?
+
+A) ssh-copy-id can only be used on local machines, not remote servers
+B) ssh-copy-id places the public key into the authorized_keys file on the remote server
+C) The private key is automatically transferred to the remote server
+D) ssh-copy-id sets the public key file permission to 700
+
+-> ssh-copy-id placed the public key into the authorized_keys file on the remote server
+
+==============================================
+
+10- In a libvirt network configuration, which statement is correct regarding bridging?
+
+A) Btidging is never used by VMs
+B) The default.xml might define a bridge interface named virbr0
+C) NAT is never used with bridging
+D) The bridging device must have the same name as the hypervisor
+
+-> B) The default.xml might define a bridge interface named virbr0
+
+==============================================
+
+11- Which of the following statements is true about NAT in the libvirt default network definition?
+
+A) NAT is never used in libvrt
+B) The default network uses NAT to forward packets to other networks
+C) NAT requires advanced bridging configuration
+D) NAT can only be used with a single VM
+
+-> B) The default network uses NAT toforward packets to other networks
+
+==============================================
+
+12- Which file typically stores a symbolic link to /etc/machine-id?
+
+A) /usr/lib/dbus/machine-id
+B) /run/machine-id
+C) /var/lib/dbus/machine-id
+D) /etc/dbus/machin-id
+
+-> C) /var/lib/dbus/machine-id
+
+==============================================
+
+13- Which virtualization disk provisioning approach only grows in size as new data is written to the disk image?
+
+A) RAW
+B) Copy-on-write (COW)
+C) Partiton-based allocation
+D) LVM-based thick providioning
+
+-> B) Copy-on-write
+
+==============================================
+
+14- Which of the following are considered IaaS computing elements for cloud-based virtualization?
+
+A) Computing instances, block storage, and virtual networking
+B) Word processoes, spreadsheets, and messaging apps
+C) Email. datavases, and printers
+D) Standard Operating Procedures (SOPs)
+
+-> A) Computing instances, blockstorage, and virtual networking
+
+==============================================
+
+15- Which hypervisor is described in the text as both Type-1 and Type-2 because it integrates with the Linux kernel but also runs on a host OS?
+
+A) KVM
+B) VirtualBox
+C) Xen
+D) VMware ESXi
+
+-> KVM
+
+==============================================
+
+16- When using ssh-keygen to generate an SSH key pair, which file extension typically indicates the public key file?
+
+A) .priv
+B) .pub
+C) .asc
+D) .id
+
+-> B) .pub
+
+==============================================
+
+17- What is the main advantage of paravitualized drivers (guest drivers) over fully virtualized drivers?
+
+A) They are less secure
+B) They require specialized hardware that is not widely supported
+C) They typically offer better performance by allowing the guest OS to interact directly with the hypervisor
+D) They reduce memory usage by 70%
+
+-> C) They typically offer better performance by allowing the guest OS to interact directly with the hypervisor
+
+==============================================
+
+18- Which of the following statements about container technology is correct?
+
+A) It always requires a seprate OS kernel per container
+B) It is always slower thatn a fully virtualized solution
+C) It allows applications to run in isolated environments while sharing the host kernel
+D) Containers cannot be migrated between hosts
+
+-> C) It allows applications to run in isolated environments while sharing the host kernel
+
+==============================================
+
+19- Which command is used to add a public SSH key to the remote server's authorized_keys file automatically?
+
+A) ssh-copy-id
+B) scp
+C) scp-pub
+D) sftp
+
+-> A) ssh-copy-id
+
+==============================================
+
+20- Which statement accurately describes live migration in virtualization?
+
+A) Live migration is the process of moving a running VM from one hypervisor to another without downtime
+B) Live migration means the guest OS must be halted first
+C) Live migraton is only possible with container technology
+D) Live migration requires external srotage whith no snapshots
+
+-> A) Live migration is the process of moving a running VM from one hypervisor to another without downtime
+
+==============================================
+==============================================
+
+FILL-IN-THE-BLACK QUESTIONS
+
+==============================================
+
+1- The  software platform responsible for managing hardware resources for virtual machines is called the _____.
+
+-> hypervisor
+
+==============================================
+
+2- When a virtual machine is aware that it is a VM and uses specialized driers, it is referred to as a _____ guest.
+
+-> paravirtualized
+
+==============================================
+
+3- The _____ file format (used by QEMU) supports copy-on-write functionality.
+
+-> qcow2
+
+==============================================
+
+4- In a KVM setup, the XML configuration files for virtual machines are often located under _____.
+
+-> /etc/libvirt/qemu
+
+==============================================
+
+5- The _____ command can generate a new D-Bus machine ID if one does not alreade exist.
+
+-> dbus-uuid --ensure
+
+==============================================
+
+6- A symbolic link for the machine ID is typically found at /var/lib/dbus/machine-id, pointing back to _____.
+
+-> /etc/machine-id
+
+==============================================
+
+7- When a virtual machine is copied to act as a _____, certain unique properties (like SSH keys or machine IDs) must be changed.
+
+-> template
+
+==============================================
+
+8- _____ is a vendor-neutral utility used to automatically configure new cloud-based virtual machines at first boot.
+
+-> cloud-init
+
+==============================================
+
+9- An example of a Type-2 hepervisor, that runs on top of an existing OS is _____.
+
+-> VirtualBox
+
+==============================================
+
+10- _____ is a method that allows a virtual machine to be moved from one hypervisor to another with minimal ro no downtime.
+
+-> Live migration
+
+==============================================
+
+

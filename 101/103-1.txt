@@ -1,0 +1,457 @@
+103.1
+
+1- Which of the following commands quickly displays only the absolute pathname of an executable (without additional information)?
+
+A) type
+B) file
+C) whereis
+D) which
+
+-> D) which
+
+==============================================
+
+2- When using bash, which key sequence allows you to recall and edit preciously typed commands?
+
+A) Ctrl+H and Ctrl+G
+B) The Up/Down arrow keys
+C) Left-clicking on the command line
+D) The Tab key
+
+-> B) The Up/Down arrow keys
+
+==============================================
+
+3- Which of the following commands can be used to remove an environment variable from the current shell session?
+
+A) unsetenv
+B) erase
+C) export --remove
+D) unset
+
+-> D) unset
+
+==============================================
+
+4- Which uname option prints all available system information?
+
+A) -r
+B) -o
+C) -a
+D) -v
+
+-> C) -a
+
+==============================================
+
+5- Which command will remove the file my big file if the file name has embedded spaces and you do NOT use quotes or backslashes correctly?
+
+A) rm my_big_file
+B) rm my big file (interpreted as removing three seprate files)
+C) rm 'my big file'
+D) rm "my big file"
+
+-> B) rm my big file (interpreted as removing three seprate files)
+
+==============================================
+
+6- Which command outputs the environment variables that are exported and accessible to child processes?
+
+A) env
+B) set
+C) grep
+D) apropos
+
+-> A) env
+
+==============================================
+
+7- Which of the following statements is true regarding type uname showing "uname is hashed (/bin/uname")?
+
+A) It means uname was used previously and is cached for faster lookups
+B) It means the command is a shell builtin
+C) It means the command no longer exists on disk
+D) It means there is a conflict with the uname command location
+
+-> A) It means uname was used previously and is cached for faster lookups
+
+==============================================
+
+8- By default, new local variables set in the Bash shell are only available:
+
+A) In the current shell session
+B) To al newly created shells and user sessions
+C) After a reboot only
+D) To all users on the system
+
+-> In the current shell session
+
+==============================================
+
+9- When you type set | grep myvar and see a result, but env | grep myvar returns nothing, what does that tell you about myvar?
+
+A) myvar is stored in .bashrc
+B) myvar is a local shell variable (not exported)
+C) myvar is inherited from a parent environment
+D) myvar is actually a path variable
+
+-> B) myvar is a local shell variable (not exported)
+
+==============================================
+
+10- Which command is used to list all recent commands executed in the current user's shell session?
+
+A) man
+B) history
+C) ls -a
+D) mare
+
+-> B) history
+
+==============================================
+
+11- The fiel ~/.bash_history typically contains:
+
+A) A script that runs every time you open your shell
+B) A record of previously executed commands in Bash
+C) User-defined functions
+D) Environment vatiable that persist after logout
+
+-> B) A record of previously executable commands in Bash
+
+==============================================
+
+12- Which command is the quickest way to verify whether the directory /usr/local/bin/ is in your $PATH?
+
+A) echo $PATH
+B) man path
+C) apropos local
+D) ls /usr/local/bin
+
+-> A) echo $PATH
+
+==============================================
+
+13- Which command is most suitable for searching through the names and descriptions of all installed man pages when you do not remember the exact command name you need?
+
+A) more
+B) info
+C) apropos
+D) tail
+
+-> C) apropos
+
+==============================================
+
+14- Which of these statements regarding man is true?
+
+A) man files are stored in /etc/bash_completion.d/
+B) man pages are often organized into seprate sections
+C) man only lists synonyms for commands; it does not provide usage
+D) man must be run as root to view system documentation
+
+-> B) man pages are often organized into seprate sections
+
+==============================================
+
+15- If you type myvar=hello (with no spaces), what happens?
+
+A) This sets an environment variable globally for all shells
+B) A local shell variable myvar is created with value hello
+C) The variable is appended to the path
+D) You must run env to permanently store that variable
+
+-> B) A local shell variable myvar is created with value hello
+
+==============================================
+
+16- Which of the following methods will not preserve special characters in a filename?
+
+A) Using double quotes
+B) Using single quotes
+C) Escaping them wiht a backslash (\)
+D) Typing them as is, without quotes or escapes
+
+-> D) Typing them as is, without quotes or escapes
+
+==============================================
+
+17- If you run exit within a child shell, what happens?
+
+A) You return to the parent shell
+B) The system reboots
+C) It logs you out completely
+D) The variable $PATH is cleared
+
+-> A) You return to the parent shell
+
+==============================================
+
+18- Which command's output is typically the largest and includes all variables and functions (both local and exported)?
+
+A) env
+B) type
+C) apropos
+D) set
+
+-> D) set
+
+==============================================
+
+19- Which of these commands is a shell builtin by default on most Linux system using Bash?
+
+A) uname
+B) cp
+C) which
+D) kill
+
+-> D) kill
+
+==============================================
+
+20- What does pressing the Up Arrow key multiple time in Bash do?
+
+A) Automatically corrects the last typed command
+B) Displays man pages for previously run commands
+C) Logs the useer out if pressed 3 times in succession
+D) Cycles through the recent command history
+
+-> D) Cycle through the recent command history
+
+==============================================
+
+21- The help command is Bash provides usage information about
+
+A) Shell builtin commands
+B) Kernel configuration files
+C) System hardware details
+D) Running processes
+
+-> shell builtin commands
+
+==============================================
+
+22- Which of the following commands would be most appropriate to check for available system commands that are associated with the keyword "kernel"?
+
+A) type kernel
+B) history kernel
+C) apropos kernel
+D) which kernel
+
+-> apropos kernel
+
+==============================================
+
+23- The file .bash_history is typically updated with new commands:
+
+A) Instantly, as soon as you press Enter
+B) Evrty 10 commands
+C) When you log out or exit your shell
+D) When you run history -u
+
+-> C) When you log out or exit your shell
+
+==============================================
+
+24- Single quotes in Bash will preserve all characters except for:
+
+A) $ and !
+B) Spaces and tabs
+C) They preserve all characters literally
+D) *
+
+-> C) They preserve all characters literally
+
+==============================================
+
+25- If you want to "repeat" exactly what you type to the screen, use the _____ command with a plain text argument.
+
+A) help
+B) set
+C) echo
+D) apropos
+
+-> C) echo
+
+==============================================
+
+26- Which of the following lines would properly unset (remove) the shell variable names MYVAR?
+
+A) remove MYVAR
+B) unset $MYVAR
+C) export MYVAR=
+D) unset MYVAR
+
+-> D) usnet MYVAR
+
+==============================================
+
+27- After calling export myvar, howcan you confirm that myvar is now set for child shells?
+
+A) Reboot the system
+B) Use help myvar
+C) Open a new shell run echo $myvar
+D) Check /etc/environment
+
+-> C) Open a new shell run echo $myvar
+
+==============================================
+
+28- Which utility is generally used to create an empty file or update an ecisting file's timestamp?
+
+A) touch
+B) echo
+C) man
+D) kill
+
+-> A) touch
+
+==============================================
+
+29- If you type hash -d uname, what is the immediate effect?
+
+A) It removes the uname command from yout PATH
+B) It unsets the myvar variable
+C) It permanently disables the uname commands system-wide
+D) It clears uname from the shell's hash table
+
+-> It clear uname from the shell's hash table
+
+==============================================
+
+30- Which command below is used to display essential system information like kernel release, nodename, and hardware platform without reading from a man page or script file?
+
+A) env
+B) type
+C) uname
+D) which
+
+-> C) uname
+
+==============================================
+==============================================
+
+FILL-IN-THE-BLACK QUESTIONS
+
+==============================================
+
+1- The command _____ is used to display the system's manual pages for a given command.
+
+-> man
+
+==============================================
+
+2- To search through the descriptions of available man pages by keyword, you would use the _____ command.
+
+-> apropos
+
+==============================================
+
+3- By default, the _____ command displays a list of all prevously executed commands in the current shell session
+
+-> history
+
+==============================================
+
+4- The environment variable that contains a list of directiories where executables can be found without specifying a full path is _____.
+
+-> PATH
+
+==============================================
+
+5- The command _____ prints your current working directory.
+
+-> pwd
+
+==============================================
+
+6- When you type vash inside an existing Bash shell, you staer a new (child) shell; typing _____ exits that child shell.
+
+-> exit
+
+==============================================
+
+7- The _____ command will display the value of a variable if you put a $ in front of the varialbe name.
+
+-> echo
+
+==============================================
+
+8- When you run type on a command like uname, and it says "uname is hashed," it means the command is stored in the shell's _____.
+
+-> hash (or "hash table")
+
+==============================================
+
+9- The file name _____ in your home directory contains a recoed of recent Bash commands when you exit the shell.
+
+-> .bash_history
+
+==============================================
+
+10- The command _____ can be used to remove or unset an existing environment variable from the current session.
+
+-> unset
+
+==============================================
+
+11- Variables created without using export are sometimes referred to as _____ variables because they are not passed to child processes.
+
+-> local
+
+==============================================
+
+12- To turn a local variable into an environment vaiable, you use the _____ command.
+
+-> export
+
+==============================================
+
+13- Quoting is necessary when a file name includes _____ or other spacial characters.
+
+-> whitespace
+
+==============================================
+
+14- _____ preserve everything literally, whiledouvle quotes still allow expansion of vertin characters like $ or backticks.
+
+-> Single quotes
+
+==============================================
+
+15- To see a command's absolute path without any extra text, the command _____ can be used.
+
+-> which
+
+==============================================
+
+16- When you do not remember the exact name of a command but know its function. you can use _____ to locate it by description.
+
+-> apropos
+
+==============================================
+
+17- The command _____ -a prints all information about the running kernel, CPU architecture, and more.
+
+-> uneme
+
+==============================================
+
+18- When you type touch "my big file", the double quotes tell Bash to trat the spaces as part of the _____.
+
+-> filename
+
+==============================================
+
+19- The _____ file inside your user's home directory is often used to persist custom environment variables or shell settings.
+
+-> .bashrc
+
+==============================================
+
+20- A quicker way to remove the hashed entry for a specidic command (like uname) is by running hash -d followed by the _____ you want to remove.
+
+-> command
+
+==============================================
+
