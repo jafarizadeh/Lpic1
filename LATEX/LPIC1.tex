@@ -1,0 +1,614 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{setspace}
+
+\setstretch{1.15}
+
+\begin{document}
+
+%-------------------------------------------------------
+% Title Page
+%-------------------------------------------------------
+\begin{titlepage}
+    \centering
+    \vspace*{3cm}
+    {\Huge \textbf{LPIC-1 Exam Workbook}}\\
+    \vspace{1cm}
+    {\large \textit{A Chapter-by-Chapter Syllabus with Practice Questions}}\\
+    \vfill
+    {\large \textbf{Version 1.0}}\\
+    \vspace{2cm}
+    \vfill
+    \textbf{Author:} Mehdi JAFARIZADEH \\
+    \textbf{Date:} \today
+    \vspace{2cm}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+%=======================================================
+% TOPIC 101: SYSTEM ARCHITECTURE
+%=======================================================
+\chapter{Topic 101: System Architecture}
+
+\section{101.1 Determine and Configure Hardware Settings}
+
+\subsubsection*{Reference to LPI Objectives:}
+\begin{itemize}
+    \item \textbf{LPIC-1 v5, Exam 101, Objective 101.1}
+    \item \textbf{Weight: 2}
+\end{itemize}
+
+\subsubsection*{Key Knowledge Areas}
+\begin{itemize}
+    \item Enabling/disabling integrated peripherals (BIOS/UEFI).
+    \item Identifying different types of mass storage devices.
+    \item Determining hardware resources for devices (IRQ, DMA, etc.).
+    \item Using tools (\texttt{lsusb}, \texttt{lspci}, \texttt{lsmod}) for hardware inspection.
+    \item Manipulating USB devices.
+    \item Understanding \texttt{sysfs}, \texttt{udev}, and \texttt{dbus} concepts.
+\end{itemize}
+
+\subsubsection*{Important Files, Terms, and Utilities}
+\begin{itemize}
+    \item \texttt{/sys/}
+    \item \texttt{/proc/}
+    \item \texttt{/dev/}
+    \item \texttt{modprobe}
+    \item \texttt{lsmod}
+    \item \texttt{lspci}
+    \item \texttt{lsusb}
+\end{itemize}
+
+\subsection*{Lesson Overview}
+Modern computers rely on standards for firmware and hardware interaction. On x86 platforms, the firmware could be traditional \textbf{BIOS} or newer \textbf{UEFI}. Both allow for configuring hardware resources (e.g., integrated peripherals, IRQs, DMA settings) even before the operating system loads.
+
+Once Linux is running, device detection and configuration rely on the kernel and support from user-space utilities such as \texttt{lspci}, \texttt{lsusb}, \texttt{lsmod}, and various pseudo-filesystems in \texttt{/proc} and \texttt{/sys}.
+
+\subsubsection*{1. BIOS and UEFI Configuration}
+\begin{itemize}
+    \item \textbf{Accessing Firmware:} Typically press \texttt{Del}, \texttt{F2}, or \texttt{F12} at startup.
+    \item \textbf{Common Configurations:}
+    \begin{itemize}
+      \item Enable/disable integrated peripherals (USB ports, onboard audio, etc.).
+      \item Set boot order and define the primary device for the bootloader.
+      \item Adjust CPU features or RAM parameters if needed.
+    \end{itemize}
+    \item \textbf{Impact:} Misconfiguration (e.g., wrong boot device) can prevent the OS from loading.
+\end{itemize}
+
+\subsubsection*{2. Device Detection in Linux}
+\textbf{Goal:} Match hardware parts to the correct driver (\textit{kernel module}).
+\begin{enumerate}
+    \item \textbf{Check if hardware is detected} (e.g., \texttt{lspci}, \texttt{lsusb}).
+    \item \textbf{Verify if a driver is loaded} (e.g., \texttt{lsmod}, \texttt{lspci -k}).
+    \item \textbf{Confirm functionality} via logs, testing, or additional tools.
+\end{enumerate}
+
+\subsubsection*{3. Commands for Hardware Inspection}
+\paragraph{\texttt{lspci}}
+\begin{itemize}
+    \item Lists PCI devices (graphics cards, network interfaces, etc.).
+    \item Use \texttt{-v} for more detail and \texttt{-k} to see which kernel modules are in use.
+\end{itemize}
+
+\paragraph{\texttt{lsusb}}
+\begin{itemize}
+    \item Lists USB devices (keyboards, mice, USB hubs, etc.).
+    \item Use \texttt{-v} for verbose output and \texttt{-d <vendor:product>} to focus on a specific device.
+\end{itemize}
+
+\paragraph{\texttt{lsmod}}
+\begin{itemize}
+    \item Shows loaded kernel modules.
+    \item Columns: \textbf{Module}, \textbf{Size}, \textbf{Used by}.
+\end{itemize}
+
+\paragraph{\texttt{modprobe}}
+\begin{itemize}
+    \item Loads or unloads modules (with dependencies).
+    \item \texttt{modprobe -r <module>} removes a module if not in use.
+    \item \texttt{modinfo <module>} shows module details (author, license, parameters).
+\end{itemize}
+
+\subsubsection*{4. Hardware Information Files}
+\begin{itemize}
+    \item \textbf{/proc} (pseudo-filesystem for processes and hardware info)  
+      Examples: \texttt{/proc/cpuinfo}, \texttt{/proc/interrupts}, \texttt{/proc/ioports}, \texttt{/proc/dma}.
+    \item \textbf{/sys} (sysfs for device and kernel data)  
+      Mirrors hardware hierarchy, used heavily by \texttt{udev}.
+    \item \textbf{/dev} (device files)  
+      Each entry represents a device (e.g., \texttt{/dev/sda1}, \texttt{/dev/fd0}).  
+      \texttt{udev} dynamically creates/removes these files as devices connect or disconnect.
+\end{itemize}
+
+\subsubsection*{5. Storage Devices}
+\begin{itemize}
+    \item \textbf{Block Devices}: Accessed in fixed-size blocks (hard disks, SSDs, etc.).
+    \item \textbf{Naming Conventions}:
+    \begin{itemize}
+      \item Newer kernels use \texttt{sd} prefix for most disks (\texttt{/dev/sda1}).
+      \item IDE devices also appear as \texttt{sd} on modern kernels.
+      \item NVMe devices get names like \texttt{/dev/nvme0n1p1}.
+      \item SD Cards often appear as \texttt{/dev/mmcblk0p1}.
+    \end{itemize}
+    \item \textbf{Hotplug and Coldplug}:
+    \begin{itemize}
+      \item \textbf{Hotplug}: device recognized after boot (e.g., USB).
+      \item \textbf{Coldplug}: device recognized during boot (built-in or already connected).
+    \end{itemize}
+\end{itemize}
+
+\subsection*{Workbook Exercises}
+\begin{enumerate}
+    \item \textbf{Accessing BIOS/UEFI}
+    \begin{itemize}
+        \item Reboot a test machine and enter BIOS/UEFI.
+        \item Locate the sections that let you enable/disable integrated peripherals.
+        \item Identify the menu where boot order is set.
+    \end{itemize}
+
+    \item \textbf{Listing Hardware}
+    \begin{itemize}
+        \item On a Linux system, run \texttt{lspci -k}.
+        \begin{itemize}
+          \item Identify which driver is used by the video card.
+        \end{itemize}
+        \item Run \texttt{lsusb -t}.
+        \begin{itemize}
+          \item Check which USB driver modules are in use (e.g., \texttt{btusb}, \texttt{usbhid}).
+        \end{itemize}
+    \end{itemize}
+
+    \item \textbf{Exploring /proc and /sys}
+    \begin{itemize}
+        \item View CPU details with \texttt{cat /proc/cpuinfo}.
+        \item Inspect interrupts with \texttt{cat /proc/interrupts}.
+        \item Explore \texttt{/sys/class} and \texttt{/sys/block} to see how devices are represented.
+    \end{itemize}
+
+    \item \textbf{Managing Kernel Modules}
+    \begin{itemize}
+        \item Use \texttt{lsmod} to list all loaded modules.
+        \item Pick a module (e.g., a sound driver) and unload it with \texttt{sudo modprobe -r <module>}.
+        \begin{itemize}
+          \item Check if removal is allowed (the module should not be in use).
+        \end{itemize}
+        \item Use \texttt{modinfo -p <module>} to see possible parameters, and note how you might apply them in \texttt{/etc/modprobe.d/}.
+    \end{itemize}
+
+    \item \textbf{Blacklisting a Module}
+    \begin{itemize}
+        \item Create a test file in \texttt{/etc/modprobe.d/} to blacklist an unwanted module (e.g., \texttt{nouveau}).
+        \item Reboot and confirm it is not loaded by checking \texttt{lsmod}.
+    \end{itemize}
+\end{enumerate}
+
+\subsection*{Summary}
+\begin{itemize}
+    \item Modern systems rely on firmware (BIOS/UEFI) for initial hardware configuration.
+    \item Linux identifies devices via kernel modules; tools like \texttt{lspci}, \texttt{lsusb}, \texttt{lsmod}, and \texttt{modprobe} allow you to inspect and manage hardware.
+    \item \texttt{/proc} and \texttt{/sys} provide detailed, real-time system information; \texttt{udev} dynamically manages device nodes in \texttt{/dev}.
+    \item Storage device naming follows standard patterns (\texttt{sd}, \texttt{nvme}, \texttt{mmcblk}, etc.).
+    \item Understanding how to enable/disable devices, load/unload modules, and explore hardware information files is crucial for system administration and LPIC-1 success.
+\end{itemize}
+
+%-------------------------------------------------------
+% Multiple-Choice Questions (101.1)
+%-------------------------------------------------------
+\section*{Multiple-Choice Questions for 101.1}
+
+\begin{enumerate}[1.]
+\item When trying to enable or disable motherboard-integrated peripherals, which component of the system is typically used?
+  \begin{enumerate}[A)]
+    \item The BIOS or UEFI configuration utility
+    \item The Linux kernel's initrd
+    \item The /boot partition
+    \item The lsusb command
+  \end{enumerate}
+
+\item Which command lists devices currently connected to the PCI bus?
+  \begin{enumerate}[A)]
+    \item modprobe
+    \item lsmode
+    \item lspci
+    \item lshw
+  \end{enumerate}
+
+\item Which of the following commands helps you list USB devices in a tree-like hierarchy?
+  \begin{enumerate}[A)]
+    \item lsusb -a
+    \item lsusb -s
+    \item lsusb -f
+    \item lsusb -t
+  \end{enumerate}
+
+\item To remove a kernel module (along with its dependencies) while the system is running, which command should be used?
+  \begin{enumerate}[A)]
+    \item modinfo -r
+    \item modprobe -r
+    \item rmmod --all
+    \item lsmod -r
+  \end{enumerate}
+
+\item On modern Linux systems, SATA disks are generally identified as which kind of device name?
+  \begin{enumerate}[A)]
+    \item /dev/sdX
+    \item /dev/hdX
+    \item /dev/nvmeXnY
+    \item /dev/fdX
+  \end{enumerate}
+
+\item Which file below would you edit to permanently blacklist a problematic kernel module such that it doesn't load automatically?
+  \begin{enumerate}[A)]
+    \item /etc/rc.local
+    \item /etc/modprobe.d/blacklist.conf
+    \item /boot/grub/grub.cfg
+    \item /proc/blacklist/modules
+  \end{enumerate}
+
+\item Which pseudo-filesystem is most specifically devoted to storing device and kernel data related to hardware?
+  \begin{enumerate}[A)]
+    \item /dev
+    \item /proc
+    \item /sys
+    \item /home
+  \end{enumerate}
+
+\item Which command line will show a specific USB device's verbose information using its vendor:product ID (e.g., 1781:0c9f)?
+  \begin{enumerate}[A)]
+    \item lsusb -d 1781:0c9f -v
+    \item lsusb -p 1781:0c9f -v
+    \item lsusb -i 1781:0c9f
+    \item lsusb -v -s 01:02
+  \end{enumerate}
+
+\item In the output of \texttt{lsmod}, the "Used by" column indicates:
+  \begin{enumerate}[A)]
+    \item The file size of the module on disk
+    \item The user-level applications that installed the module
+    \item The modules or processes depending on that module
+    \item Kernel version compatibility for that module
+  \end{enumerate}
+
+\item If you need to confirm which kernel driver is in use by a particular PCI device, which \texttt{lspci} option combination is most helpful on recent distributions?
+  \begin{enumerate}[A)]
+    \item lspci -m
+    \item lspci -k
+    \item lspci -D
+    \item lspci --driver
+  \end{enumerate}
+
+\item What does the output of \texttt{lsusb -t} specifically highlight that differs from plain \texttt{lsusb}?
+  \begin{enumerate}[A)]
+    \item The exact partition layout of attached USB drives
+    \item A hierarchical (tree-like) representation of USB devices and drivers
+    \item The SCSI ID mappings of USB-attached devices
+    \item A summary of device's kernel modules only
+  \end{enumerate}
+
+\item Which best describes the function of the \texttt{modinfo} command?
+  \begin{enumerate}[A)]
+    \item It removes the specified module from the kernel
+    \item It displays all processes currently using a kernel module
+    \item It lists detailed information about a specified module, including parameters
+    \item It inserts the specified module and resolves dependencies
+  \end{enumerate}
+
+\item What is the role of \texttt{udev} on a modern Linux system?
+  \begin{enumerate}[A)]
+    \item It is a pseudo-filesystem used to track hardware devices in /sys
+    \item It permanently stores device drivers in /boot
+    \item It manages device nodes in /dev, handling hotplug/coldplug events
+    \item It only configures CPU frequency scaling
+  \end{enumerate}
+
+\item Which file inside \texttt{/proc} would you inspect to see how many interrupts have occurred for each device?
+  \begin{enumerate}[A)]
+    \item /proc/ioports
+    \item /proc/dma
+    \item /proc/cpuinfo
+    \item /proc/interrupts
+  \end{enumerate}
+
+\item If a device is recognized by the kernel but not functioning correctly, which of the following is the most likely underlying cause?
+  \begin{enumerate}[A)]
+    \item The BIOS is not set to read the device's firmware
+    \item The associated kernel module (driver) is not loaded or is misconfigured
+    \item The CPU lacks the required SSE instruction set
+    \item The device was not assigned a correct IRQ in the /etc/fstab
+  \end{enumerate}
+
+\item Which file is typically used to pass persistent module load options like \texttt{options nouveau modeset=0}?
+  \begin{enumerate}[A)]
+    \item /etc/udev/rules.d/99-custom.rules
+    \item /proc/meminfo
+    \item /etc/modprobe.d/<module>.conf
+    \item /etc/modules-load.d/module.options
+  \end{enumerate}
+
+\item What is the main purpose of SysFS (\texttt{/sys}) in a Linux system?
+  \begin{enumerate}[A)]
+    \item Stores process information like CPU usage
+    \item Holds user configuration data for /home
+    \item Exports device and driver information from the kernel to user space
+    \item Contains scripts to mount all system filesystems
+  \end{enumerate}
+
+\item Which command is most appropriate for listing all currently loaded kernel modules?
+  \begin{enumerate}[A)]
+    \item ls -la /lib/modules/\$(uname -r)
+    \item depmod -a
+    \item lsmod
+    \item insmod
+  \end{enumerate}
+
+\item To selectively unload the \texttt{snd-hda-intel} module along with related dependent modules, which command would you use?
+  \begin{enumerate}[A)]
+    \item \texttt{modinfo snd-hda-intel --remove}
+    \item \texttt{lsmod --unload snd-hda-intel}
+    \item \texttt{depmod -r snd-hda-intel}
+    \item \texttt{modprobe -r snd-hda-intel}
+  \end{enumerate}
+
+\item If you see a disk labeled as \texttt{/dev/mmcblk0p1}, it is most likely:
+  \begin{enumerate}[A)]
+    \item A SATA SSD
+    \item An older IDE HDD
+    \item An SD card or MMC device
+    \item A USB DVD drive
+  \end{enumerate}
+\end{enumerate}
+
+%-------------------------------------------------------
+% Fill-in-the-Blank Questions (101.1)
+%-------------------------------------------------------
+\section*{Fill-in-the-Blank Questions for 101.1}
+
+\begin{enumerate}[1.]
+\item The older firmware commonly used before the UEFI standard is called \underline{\hspace{2cm}}.  
+
+\item The \underline{\hspace{2cm}} command lists all kernel modules currently loaded into the system.  
+
+\item A kernel module responsible for controlling hardware in Linux is often referred to as a \underline{\hspace{2cm}}.  
+
+\item The Linux subsystem that manages device node creation in \texttt{/dev} and handles hotplug/coldplug events is called \underline{\hspace{2cm}}.  
+
+\item The special, memory-based filesystem used for storing process and hardware information is the \underline{\hspace{2cm}} directory.  
+
+\item To configure boot device priority and enable or disable onboard peripherals, a user must typically access the \underline{\hspace{2cm}} or UEFI setup utility.  
+
+\item In Linux, disks commonly appear under \texttt{/dev} as \underline{\hspace{2cm}} devices (e.g., \texttt{/dev/sda}, \texttt{/dev/sdb}) on modern systems.  
+
+\item The \underline{\hspace{2cm}} command is used to insert or remove kernel modules and their dependencies.  
+
+\item When blacklisting a kernel module to prevent it from loading automatically, the configuration file is often placed in \underline{\hspace{2cm}}.  
+
+\item To see a hierarchical (tree-like) view of USB devices and the drivers handling them, you can run \underline{\hspace{2cm}} with the \texttt{-t} option.  
+\end{enumerate}
+
+%-------------------------------------------------------
+% (Placeholders for Other Sections)
+%-------------------------------------------------------
+
+\section{101.2 Boot the System}
+\textit{[Brief syllabus and questions to be added here]}
+
+\section{101.3 Change Runlevels / Boot Targets and Shutdown or Reboot System}
+\textit{[Brief syllabus and questions to be added here]}
+
+%=======================================================
+% TOPIC 102: LINUX INSTALLATION AND PACKAGE MANAGEMENT
+%=======================================================
+\chapter{Topic 102: Linux Installation and Package Management}
+\section{102.1 Design hard disk layout}
+\textit{[Brief syllabus and questions to be added here]}
+
+\section{102.2 Install a boot manager}
+\textit{[Brief syllabus and questions to be added here]}
+
+\section{102.3 Manage shared libraries}
+\textit{[Brief syllabus and questions to be added here]}
+
+\section{102.4 Use Debian package management}
+\textit{[Brief syllabus and questions to be added here]}
+
+\section{102.5 Use RPM and YUM package management}
+\textit{[Brief syllabus and questions to be added here]}
+
+\section{102.6 Linux as a virtualization guest}
+\textit{[Brief syllabus and questions to be added here]}
+
+%=======================================================
+% TOPIC 103: GNU AND UNIX COMMANDS
+%=======================================================
+\chapter{Topic 103: GNU and UNIX Commands}
+\section{103.1 Work on the command line}
+\textit{[Brief syllabus and questions to be added here]}
+
+\section{103.2 Process text streams using filters}
+\textit{[Brief syllabus and questions to be added here]}
+
+\section{103.3 Perform basic file management}
+\textit{[Brief syllabus and questions to be added here]}
+
+\section{103.4 Use streams, pipes and redirects}
+\textit{[Brief syllabus and questions to be added here]}
+
+\subsection*{103.4 Lesson 1}
+\textit{[Brief syllabus and questions to be added here]}
+
+\section{103.5 Create, monitor and kill processes}
+\textit{[Brief syllabus and questions to be added here]}
+
+\section{103.6 Modify process execution priorities}
+\textit{[Brief syllabus and questions to be added here]}
+
+\subsection*{103.6 Lesson 1}
+\textit{[Brief syllabus and questions to be added here]}
+
+\section{103.7 Search text files using regular expressions}
+\textit{[Brief syllabus and questions to be added here]}
+
+\section{103.8 Basic file editing}
+\textit{[Brief syllabus and questions to be added here]}
+
+%=======================================================
+% TOPIC 104: DEVICES, LINUX FILESYSTEMS, FHS
+%=======================================================
+\chapter{Topic 104: Devices, Linux Filesystems, Filesystem Hierarchy Standard}
+
+\section{104.1 Create partitions and filesystems}
+\textit{[Brief syllabus and questions to be added here]}
+
+\section{104.2 Maintain the integrity of filesystems}
+\textit{[Brief syllabus and questions to be added here]}
+
+\section{104.3 Control mounting and unmounting of filesystems}
+\textit{[Brief syllabus and questions to be added here]}
+
+\section{104.5 Manage file permissions and ownership}
+\textit{[Brief syllabus and questions to be added here]}
+
+\subsection*{104.5 Lesson 1}
+\textit{[Brief syllabus and questions to be added here]}
+
+\section{104.6 Create and change hard and symbolic links}
+\textit{[Brief syllabus and questions to be added here]}
+
+\section{104.7 Find system files and place files in the correct location}
+\textit{[Brief syllabus and questions to be added here]}
+
+%=======================================================
+% TOPIC 105: SHELLS AND SHELL SCRIPTING
+%=======================================================
+\chapter{Topic 105: Shells and Shell Scripting}
+\section{105.1 Customize and use the shell environment}
+\textit{[Brief syllabus and questions to be added here]}
+
+\section{105.2 Customize or write simple scripts}
+\textit{[Brief syllabus and questions to be added here]}
+
+%=======================================================
+% TOPIC 106: USER INTERFACES AND DESKTOPS
+%=======================================================
+\chapter{Topic 106: User Interfaces and Desktops}
+\section{106.1 Install and configure X11}
+\textit{[Brief syllabus and questions to be added here]}
+
+\section{106.2 Graphical Desktops}
+\textit{[Brief syllabus and questions to be added here]}
+
+\section{106.3 Accessibility}
+\textit{[Brief syllabus and questions to be added here]}
+
+%=======================================================
+% TOPIC 107: ADMINISTRATIVE TASKS
+%=======================================================
+\chapter{Topic 107: Administrative Tasks}
+\section{107.1 Manage user and group accounts and related system files}
+\textit{[Brief syllabus and questions to be added here]}
+
+\section{107.2 Automate system administration tasks by scheduling jobs}
+\textit{[Brief syllabus and questions to be added here]}
+
+\section{107.3 Localisation and internationalisation}
+\textit{[Brief syllabus and questions to be added here]}
+
+%=======================================================
+% TOPIC 108: ESSENTIAL SYSTEM SERVICES
+%=======================================================
+\chapter{Topic 108: Essential System Services}
+\section{108.1 Maintain system time}
+\textit{[Brief syllabus and questions to be added here]}
+
+\section{108.2 System logging}
+\textit{[Brief syllabus and questions to be added here]}
+
+\section{108.3 Mail Transfer Agent (MTA) basics}
+\textit{[Brief syllabus and questions to be added here]}
+
+\section{108.4 Manage printers and printing}
+\textit{[Brief syllabus and questions to be added here]}
+
+%=======================================================
+% TOPIC 109: NETWORKING FUNDAMENTALS
+%=======================================================
+\chapter{Topic 109: Networking Fundamentals}
+\section{109.1 Fundamentals of internet protocols}
+\textit{[Brief syllabus and questions to be added here]}
+
+\section{109.2 Persistent network configuration}
+\textit{[Brief syllabus and questions to be added here]}
+
+\section{109.3 Basic network troubleshooting}
+\textit{[Brief syllabus and questions to be added here]}
+
+\section{109.4 Configure client side DNS}
+\textit{[Brief syllabus and questions to be added here]}
+
+%=======================================================
+% TOPIC 110: SECURITY
+%=======================================================
+\chapter{Topic 110: Security}
+\section{110.1 Perform security administration tasks}
+\textit{[Brief syllabus and questions to be added here]}
+
+\section{110.2 Setup host security}
+\textit{[Brief syllabus and questions to be added here]}
+
+\section{110.3 Securing data with encryption}
+\textit{[Brief syllabus and questions to be added here]}
+
+%-------------------------------------------------------
+% ANSWERS SECTION
+%-------------------------------------------------------
+\newpage
+\section*{Answers}
+
+\subsection*{Multiple-Choice Questions (101.1)}
+\begin{enumerate}[1.]
+\item A
+\item C
+\item D
+\item B
+\item A
+\item B
+\item C
+\item A
+\item C
+\item B
+\item B
+\item C
+\item C
+\item D
+\item B
+\item C
+\item C
+\item C
+\item D
+\item C
+\end{enumerate}
+
+\subsection*{Fill-in-the-Blank Questions (101.1)}
+\begin{enumerate}[1.]
+\item BIOS
+\item lsmod
+\item driver
+\item udev
+\item /proc
+\item BIOS
+\item SCSI
+\item modprobe
+\item /etc/modprobe.d
+\item lsusb
+\end{enumerate}
+
+\end{document}
