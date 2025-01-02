@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.8.31)  2 JAN 2025 00:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.8.31)  2 JAN 2025 01:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -374,7 +374,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.30 ...er Interfaces and Desktops}{17}{chapter.6}
+l.31 ...er Interfaces and Desktops}{27}{chapter.6}
                                                   % [1
 
 ])
@@ -383,78 +383,88 @@ l.30 ...er Interfaces and Desktops}{17}{chapter.6}
 
  [2]
 Chapter 1.
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 70.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 71.
 (C:\Users\Lord\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 ) [3
 
 ]
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 118.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 119.
  [4]
-Overfull \hbox (7.73854pt too wide) in paragraph at lines 178--179
+Overfull \hbox (7.73854pt too wide) in paragraph at lines 179--180
 []\T1/cmr/m/n/12 Newer ker-nels use \T1/cmtt/m/n/12 sd \T1/cmr/m/n/12 pre-fix for most disks; par-ti-tions are num-bered (\T1/cmtt/m/n/12 /dev/sda1\T1/cmr/m/n/12 ). 
  []
 
-[5] [6] [7] [8] [9] [10]
+[5] [6] [7] [8] [9] [10] [11] [12] [13]
+Overfull \hbox (44.23141pt too wide) in paragraph at lines 555--556
+[]\T1/cmr/m/n/12 Traditional log files also found in \T1/cmtt/m/n/12 /var/log/\T1/cmr/m/n/12 , e.g., \T1/cmtt/m/n/12 /var/log/messages \T1/cmr/m/n/12 or \T1/cmtt/m/n/12 /var/log/syslog\T1/cmr/m/n/12 . 
+ []
+
+[14]
+Overfull \hbox (13.74203pt too wide) in paragraph at lines 596--597
+[]\T1/cmr/m/n/12 Locate your initramfs file (com-monly in \T1/cmtt/m/n/12 /boot\T1/cmr/m/n/12 , e.g., \T1/cmtt/m/n/12 initramfs-<version>.img\T1/cmr/m/n/12 ). 
+ []
+
+[15] [16] [17] [18] [19] [20] [21]
 Chapter 2.
-[11
+[22
 
 ]
 Chapter 3.
-[12
+[23
 
-] [13]
+] [24]
 Chapter 4.
-[14
+[25
 
-] [15]
+] [26]
 Chapter 5.
-[16
+[27
 
 ]
 Chapter 6.
-[17
+[28
 
 ]
 Chapter 7.
-[18
+[29
 
 ]
 Chapter 8.
-[19
+[30
 
 ]
 Chapter 9.
-[20
+[31
 
 ]
 Chapter 10.
-[21
+[32
 
-] [22
+] [33
 
 
-] [23] (LPIC1.aux)
+] [34] (LPIC1.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
 Package rerunfilecheck Info: File `LPIC1.out' has not changed.
-(rerunfilecheck)             Checksum: BE24F148AEFA3D49A48520FE0415AD80;13372.
+(rerunfilecheck)             Checksum: 495E9BB1553244DBCAFBC112214E4A99;13676.
  ) 
 Here is how much of TeX's memory you used:
- 12589 strings out of 474486
- 186451 string characters out of 5744227
- 1961542 words of memory out of 5000000
- 34460 multiletter control sequences out of 15000+600000
+ 12705 strings out of 474486
+ 187671 string characters out of 5744227
+ 1976542 words of memory out of 5000000
+ 34488 multiletter control sequences out of 15000+600000
  571223 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,5n,79p,500b,1370s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1440.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk>
-Output written on LPIC1.pdf (24 pages, 254404 bytes).
+Output written on LPIC1.pdf (35 pages, 298930 bytes).
 PDF statistics:
- 1078 PDF objects out of 1200 (max. 8388607)
- 266 named destinations out of 1000 (max. 500000)
- 425 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1256 PDF objects out of 1440 (max. 8388607)
+ 354 named destinations out of 1000 (max. 500000)
+ 433 words of extra memory for PDF output out of 10000 (max. 10000000)
 

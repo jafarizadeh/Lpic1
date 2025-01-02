@@ -55,6 +55,7 @@
 \chapter{Topic 101: System Architecture}
 
 \section*{101.1 Determine and Configure Hardware Settings}
+\addcontentsline{toc}{section}{101.1 Determine and Configure Hardware Settings}
 
 \textbf{Reference to LPI Objectives:}  
 \begin{itemize}
@@ -176,8 +177,15 @@ lsmod | grep snd_hda_intel
     \item \textbf{Naming Conventions:}
     \begin{itemize}
         \item Newer kernels use \texttt{sd} prefix for most disks; partitions are numbered (\texttt{/dev/sda1}).
+        \item \textbf{IDE} devices also appear as \texttt{sd} on modern kernels
         \item \textbf{NVMe} devices get names like \texttt{/dev/nvme0n1p1}.
         \item \textbf{SD Cards} often appear as \texttt{/dev/mmcblk0p1}.
+    \end{itemize}
+
+    \item \textbf{Hotplug and Coldplug:}
+    \begin{itemize}
+        \item \textbf{Hotplug:} device recognized after boot (e.g., USB).
+        \item \textbf{Coldplug:} device recognized during boot (built-in or already connected).
     \end{itemize}
 \end{itemize}
 
@@ -188,6 +196,43 @@ lsmod | grep snd_hda_intel
     \begin{itemize}
         \item Reboot a test machine and enter BIOS/UEFI.
         \item Locate the sections that let you enable/disable integrated peripherals.
+        \item Identify the menu where boot order is set.
+    \end{itemize}
+
+    \item \textbf{Listing Hardware}
+    \begin{itemize}
+        \item On a Linux system, run \texttt{lspci -k}.
+        \begin{itemize}
+            \item Identify which driver is used by the video card.
+        \end{itemize}
+        \item Run \texttt{lsusb -t}.
+        \begin{itemize}
+            \item Check which USB driver modules are in use (e.g., \texttt{btusb, usbhid}).
+        \end{itemize}
+    \end{itemize}
+
+    \item \textbf{Exploring /proc and /sys}
+    \begin{itemize}
+        \item View CPU details with \texttt{cat /proc/cpuinfo}.
+        \item Inspect interrupts with \texttt{cat /proc/interrupts}.
+        \item Explore \texttt{/sys/class} and \texttt{/sys/block} to see how devices are represented.
+    \end{itemize}
+
+    \item \textbf{Managing Kernel Modules}
+    \begin{itemize}
+        \item Use  \texttt{lsmod} to list all loaded modules.
+        \item Pick a module (e.g., a sound driver) and unload it with \texttt{sudo modprobe -r <module>}.
+        \begin{itemize}
+            \item Check if removal is allowed (the module should not be in use).
+        \end{itemize}
+        \item Use \texttt{modinfo -p <module>} to see possible parameters, and note how you might apply them in \texttt{/etc/modprobe.d/}.
+        
+    \end{itemize}
+
+    \item \textbf{Blacklisting a Module}
+    \begin{itemize}
+        \item Create a test file in \texttt{/etc/modprobe.d/} to blacklist an unwanted module (e.g., \texttt{nouveau}).
+        \item Reboot and confirm it is not loaded by checking \texttt{lsmod}.
     \end{itemize}
 \end{enumerate}
 
@@ -195,7 +240,12 @@ lsmod | grep snd_hda_intel
 \begin{itemize}
     \item Modern systems rely on firmware (BIOS/UEFI) for initial hardware configuration.
     \item Linux identifies devices via kernel modules; tools like \texttt{lspci}, \texttt{lsusb}, \texttt{lsmod}, and \texttt{modprobe} allow you to inspect and manage hardware.
+    \item \texttt{/proc} and \texttt{/sys} provide detailed, real-time system information, while \texttt{udev} dynamically manages device nodes in \texttt{/dev}.
+    \item Storage device naming conventions follow standard patterns such as \texttt{sd}, \texttt{nvme}, \texttt{mmcblk}, and partition numbers like \texttt{/dev/sda1}.
+    \item Understanding how to enable/disable devices, load/unload modules, and explore hardware information files is crucial for effective system administration and LPIC-1 success.
 \end{itemize}
+
+
 
 
 %-------------------------------------------------------
@@ -398,16 +448,429 @@ lsmod | grep snd_hda_intel
 %-------------------------------------------------------
 % (Placeholders for Other Sections)
 %-------------------------------------------------------
+\newpage
 
-\section{101.2 Boot the System}
-\textit{[Brief syllabus and questions to be added here]}
+\section*{101.2 Boot the System}
+\addcontentsline{toc}{section}{101.2 Boot the System}
 
-\section{101.3 Change Runlevels / Boot Targets and Shutdown or Reboot System}
-\textit{[Brief syllabus and questions to be added here]}
+\textbf{Reference to LPI Objectives:}  
+\begin{itemize}
+    \item \textbf{LPIC-1 v5, Exam 101, Objective 101.2}
+    \item \textbf{Weight:} 3
+\end{itemize}
+
+\subsection*{Key Knowledge Areas}
+\begin{itemize}
+    \item Providing common bootloader commands and kernel options at boot.
+    \item Understanding the boot sequence (BIOS/UEFI through OS startup).
+    \item Familiarity with SysVinit, systemd, and Upstart.
+    \item Checking boot events and logs (\texttt{dmesg}, \texttt{journalctl}).
+\end{itemize}
+
+\subsection*{Important Files, Terms, and Utilities}
+\begin{itemize}
+    \item \textbf{dmesg}
+    \item \textbf{journalctl}
+    \item \textbf{BIOS} / \textbf{UEFI}
+    \item \textbf{bootloader} (GRUB)
+    \item \textbf{kernel}
+    \item \textbf{initramfs}
+    \item \textbf{init} (SysVinit, systemd, Upstart)
+    \item \textbf{/proc/cmdline}
+    \item \textbf{/var/log/}
+\end{itemize}
+
+\section*{Lesson Overview}
+
+Booting a Linux system involves multiple stages:
+\begin{enumerate}
+    \item \textbf{Firmware Load:} BIOS or UEFI initializes basic hardware.
+    \item \textbf{Bootloader:} Typically \textbf{GRUB}, which locates and loads the kernel.
+    \item \textbf{Kernel \& initramfs:} Kernel initializes hardware and reads modules from the initramfs.
+    \item \textbf{System Initialization:} \textbf{init} (SysVinit, systemd, Upstart) starts services and completes the boot process.
+\end{enumerate}
+
+\subsection*{1. BIOS vs. UEFI}
+\begin{itemize}
+\item\textbf{BIOS}  
+\begin{itemize}
+    \item Uses MBR (first 512 bytes) to load boot code (GRUB stage 1).
+    \item Relies on a DOS partition scheme and the Master Boot Record.
+    \item Boots the second stage of the bootloader, which in turn loads the kernel.
+\end{itemize}
+
+\item\textbf{UEFI}
+\begin{itemize}
+    \item Looks at entries in \textbf{NVRAM} to find an \textbf{EFI application} (usually GRUB).
+    \item Loads the EFI application from a dedicated \textbf{EFI System Partition (ESP)}.
+    \item Supports \textbf{Secure Boot} to allow only signed EFI applications.
+\end{itemize}
+\end{itemize}
+
+\subsection*{2. Bootloader (GRUB)}
+\begin{itemize}
+    \item Presents a menu of installed kernels or operating systems.
+    \item Enables passing \textbf{kernel parameters} (e.g., \texttt{quiet}, \texttt{acpi=off}, \texttt{root=/dev/sdaX}, etc.).
+    \item Kernel parameters can be made persistent in \texttt{/etc/default/grub} and then updated with:
+\end{itemize}
+
+\begin{lstlisting}[language=bash]
+grub-mkconfig -o /boot/grub/grub.cfg
+\end{lstlisting}
+
+\begin{itemize}
+    \item Current kernel parameters are visible in \texttt{/proc/cmdline}.
+\end{itemize}
+
+\subsection*{3. System Initialization}
+
+\begin{enumerate}
+    \item \textbf{initramfs}
+    \begin{itemize}
+        \item Temporary root filesystem with essential drivers/modules.
+        \item Lets the kernel mount the actual root filesystem.
+    \end{itemize}
+    \item \textbf{init}
+    \begin{itemize}
+        \item The “first process” in user space.
+        \item \textbf{SysVinit:} uses \textbf{runlevels} (0–6).
+        \item \textbf{systemd:} uses \textbf{targets}, concurrency, D-Bus, cgroups. Most common in modern distros.
+        \item \textbf{Upstart:} parallel boot focusing on faster startup. Largely replaced by systemd.
+    \end{itemize}
+\end{enumerate}
+
+\subsection*{4. Boot Logging and Inspection}
+\begin{itemize}
+    \item \textbf{dmesg}
+    \begin{itemize}
+        \item Displays the \textbf{kernel ring buffer} (including boot messages).
+        \item Clears with \texttt{dmesg --clear}.
+    \end{itemize}
+    \item \textbf{journalctl}
+    \begin{itemize}
+        \item Systemd-based logging tool.
+        \item \texttt{journalctl -b} shows current boot messages.
+        \item \texttt{journalctl --list-boots} lists previous boots.
+    \end{itemize}
+    \item Traditional log files also found in \texttt{/var/log/}, e.g., \texttt{/var/log/messages} or \texttt{/var/log/syslog}.
+\end{itemize}
+
+\section*{Workbook Exercises}
+
+\begin{enumerate}
+    \item \textbf{Firmware Awareness}
+    \begin{itemize}
+        \item Reboot a test machine.
+        \item Determine whether it uses \textbf{BIOS} or \textbf{UEFI}.
+        \item In BIOS: Find where the boot order is set.
+        \item In UEFI: Locate the ESP partition and explore contents if possible.
+    \end{itemize}
+    \item \textbf{GRUB Menu and Kernel Parameters}
+    \begin{itemize}
+        \item Boot into the GRUB menu by pressing \textbf{Shift} (BIOS) or \textbf{Esc} (UEFI).
+        \item Edit a menu entry to add or change a kernel parameter (e.g., \texttt{init=/bin/bash}, \texttt{acpi=off}).
+        \item After boot, check \texttt{/proc/cmdline} to confirm your changes.
+    \end{itemize}
+    \item \textbf{System Initialization Tools}
+    \begin{itemize}
+        \item Identify which init system your distribution uses (\texttt{ps -p 1 -o comm=}).
+        \item If it’s systemd, compare output of these commands:
+\end{itemize}
+
+\begin{lstlisting}[language=bash]
+systemctl list-units --type=service
+journalctl -b
+\end{lstlisting}
+
+\begin{itemize}
+        \item If SysVinit is present, inspect runlevel scripts in \texttt{/etc/rc.d/} or \texttt{/etc/init.d/}.
+    \end{itemize}
+    \item \textbf{Inspecting Boot Logs}
+    \begin{itemize}
+        \item Run \texttt{dmesg | less} to page through the kernel ring buffer.
+        \item If using systemd, run \texttt{journalctl --list-boots} to see previous boots.
+        \item View the logs for the current boot with \texttt{journalctl -b 0}.
+    \end{itemize}
+    \item \textbf{initramfs Exploration}
+    \begin{itemize}
+        \item Locate your initramfs file (commonly in \texttt{/boot}, e.g., \texttt{initramfs-<version>.img}).
+        \item List contents using \texttt{lsinitrd} or \texttt{unmkinitramfs} (may require additional packages).
+        \item Identify which modules are included for the root filesystem.
+    \end{itemize}
+\end{enumerate}
+
+\section*{Summary}
+\begin{itemize}
+    \item The boot process starts with \textbf{BIOS/UEFI} firmware, which calls \textbf{GRUB} to load the \textbf{kernel}.
+    \item The \textbf{initramfs} contains essential modules and mounts the real root filesystem.
+    \item An \textbf{init} system (SysVinit, systemd, Upstart) then starts daemons and services.
+    \item \textbf{dmesg} and \textbf{journalctl} provide essential logs for troubleshooting.
+    \item Understanding these steps ensures you can troubleshoot common startup issues and manage kernel parameters effectively.
+\end{itemize}
+
+
+\newpage
+
+\section*{101.3 Change Runlevels / Boot Targets and Shutdown or Reboot System}
+\addcontentsline{toc}{section}{101.3 Change Runlevels / Boot Targets and Shutdown or Reboot System}
+
+\textbf{Reference to LPI Objectives:}  
+\begin{itemize}
+    \item \textbf{LPIC-1 v5, Exam 101, Objective 101.3}
+    \item \textbf{Weight:} 3
+\end{itemize}
+
+\subsection*{Key Knowledge Areas}
+\begin{itemize}
+    \item Setting the default runlevel/boot target.
+    \item Changing between runlevels/targets, including single-user mode.
+    \item Shutting down and rebooting from the command line.
+    \item Alerting users before switching runlevels/boot targets or major system events.
+    \item Properly terminating processes.
+    \item Awareness of \textbf{acpid} (power management).
+\end{itemize}
+
+\subsection*{Important Files, Terms, and Utilities}
+\begin{itemize}
+    \item \textbf{/etc/inittab} (SysVinit)
+    \item \textbf{shutdown}
+    \item \textbf{init}, \textbf{telinit} (SysVinit)
+    \item \textbf{/etc/init.d/} (SysVinit scripts)
+    \item \textbf{systemd}, \textbf{systemctl}
+    \item \textbf{/etc/systemd/}, \textbf{/usr/lib/systemd/}
+    \item \textbf{wall} (send messages to all logged-in users)
+\end{itemize}
+
+\section*{Lesson Overview}
+
+Linux can operate in different “states” or “modes” called \textbf{runlevels} in SysVinit or \textbf{targets} in systemd. Being able to switch between them and perform system shutdowns or reboots is essential for system administration.
+
+\section*{1. SysVinit Runlevels}
+
+\subsection*{1. Runlevels}
+\begin{itemize}
+    \item \textbf{0} – Shutdown
+    \item \textbf{1 (single), s} – Single-user (maintenance) mode
+    \item \textbf{2, 3, 4} – Multi-user modes (3 is typical, 2/4 vary by distro)
+    \item \textbf{5} – Multi-user plus graphical mode
+    \item \textbf{6} – Reboot
+\end{itemize}
+
+\subsection*{2. Configuration}
+\begin{itemize}
+    \item \textbf{/etc/inittab} defines default runlevel (\texttt{id:x:initdefault:})
+    \item Each runlevel has a dedicated directory: \textbf{/etc/rc0.d/}, \textbf{/etc/rc1.d/}, etc.
+    \item Scripts in \textbf{/etc/init.d/} are symlinked to these runlevel directories.
+    \begin{itemize}
+        \item Names starting with \textbf{S} start services.
+        \item Names starting with \textbf{K} kill services.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{3. Switching Runlevels}
+\begin{itemize}
+    \item \textbf{init} or \textbf{telinit} commands set the current runlevel.
+    \item \texttt{telinit 1}: move to runlevel 1 (maintenance mode).
+    \item \texttt{runlevel}: shows current and previous runlevel (e.g., \texttt{N 3} means currently 3 and no prior change).
+\end{itemize}
+
+\subsection*{4. Reloading \textbf{/etc/inittab}}
+\begin{itemize}
+    \item After editing \textbf{/etc/inittab}, run \texttt{telinit q} to re-read the config.
+\end{itemize}
+
+\section*{2. systemd Targets}
+
+\subsection*{1. systemd Concepts}
+\begin{itemize}
+    \item \textbf{Units} represent services, sockets, devices, mounts, automounts, targets, and snapshots.
+    \item \textbf{systemctl} is the primary command to manage these units (start, stop, enable, etc.).
+\end{itemize}
+
+\subsection*{2. Targets}
+\begin{itemize}
+    \item systemd uses \textbf{targets} to group units. Examples:
+    \begin{itemize}
+        \item \textbf{multi-user.target} – analogous to runlevel 3 (no GUI).
+        \item \textbf{graphical.target} – analogous to runlevel 5 (GUI mode).
+    \end{itemize}
+    \item You can isolate a target:
+\end{itemize}
+
+\begin{lstlisting}[language=bash]
+systemctl isolate multi-user.target
+\end{lstlisting}
+
+\subsection*{3. Default Target}
+\begin{itemize}
+    \item Change default target:
+\end{itemize}
+
+\begin{lstlisting}[language=bash]
+systemctl set-default multi-user.target
+\end{lstlisting}
+
+\begin{itemize}
+    \item View current default:
+\end{itemize}
+
+\begin{lstlisting}[language=bash]
+systemctl get-default
+\end{lstlisting}
+
+\begin{itemize}
+    \item Avoid pointing to \textbf{shutdown.target} or \textbf{reboot.target}.
+\end{itemize}
+
+\subsection*{4. Service Management}
+\begin{itemize}
+    \item \texttt{systemctl start/stop/restart} \texttt{<service>.service}
+    \item \texttt{systemctl enable/disable} \texttt{<service>.service} (at boot)
+    \item \texttt{systemctl status} \texttt{<service>.service}
+    \item \texttt{systemctl list-unit-files --type=service} – list available services
+    \item \texttt{systemctl list-units --type=service} – list loaded/running services
+\end{itemize}
+
+\subsection*{5. Power Management}
+\begin{itemize}
+    \item \texttt{systemctl suspend}, \texttt{systemctl hibernate}
+    \item For finer power-event control (e.g., lid close), \textbf{acpid} can be used instead of systemd’s built-in power management.
+\end{itemize}
+
+\section*{3. Upstart (Historical)}
+
+\begin{enumerate}
+    \item \textbf{Upstart} was used in older Ubuntu-based systems before switching to systemd.
+    \item \textbf{Commands}:
+    \begin{itemize}
+        \item \texttt{initctl list} – list services and states
+        \item \texttt{start / stop / status <service>} – control services
+        \item Initialization scripts: \textbf{/etc/init/}
+    \end{itemize}
+    \item \texttt{runlevel} and \texttt{telinit} still work for basic runlevel tasks.
+\end{enumerate}
+
+\section*{4. Shutting Down and Rebooting}
+
+\subsection*{1. shutdown}
+\begin{itemize}
+    \item Syntax:
+\end{itemize}
+
+\begin{lstlisting}[language=bash]
+shutdown [option] time [message]
+\end{lstlisting}
+
+\begin{itemize}
+    \item \textbf{time} can be \texttt{now}, \texttt{+m} (minutes from now), or \texttt{hh:mm} (absolute time).
+    \item Common options:
+    \begin{itemize}
+        \item \textbf{-h} – halt/power off
+        \item \textbf{-r} – reboot
+    \end{itemize}
+    \item Notifies logged-in users and prevents new logins (unless overridden).
+\end{itemize}
+
+\subsection*{2. systemctl (systemd)}
+\begin{itemize}
+    \item \texttt{systemctl reboot} – reboot system
+    \item \texttt{systemctl poweroff} – power off system
+    \item Sometimes distros alias \texttt{poweroff} and \texttt{reboot} to systemd commands.
+\end{itemize}
+
+\subsection*{3. wall}
+\begin{itemize}
+    \item Sends a message to all logged-in users’ terminals (similar to \texttt{shutdown}’s broadcast).
+    \item Useful for manual warnings before switching to single-user mode or shutting down.
+\end{itemize}
+
+\section*{Workbook Exercises}
+
+\begin{enumerate}
+    \item \textbf{Identify Your Init System}
+    \begin{itemize}
+        \item Run \texttt{ps -p 1 -o comm=} to see if your system uses \textbf{systemd}, \textbf{init}, or \textbf{Upstart}.
+    \end{itemize}
+    \item \textbf{Practice Switching Runlevels (SysV)}
+    \begin{itemize}
+        \item On a SysVinit system, edit \textbf{/etc/inittab} to set default runlevel to \textbf{3}.
+        \item Run \texttt{telinit q} and verify with \texttt{runlevel}.
+        \item Switch to single-user mode: \texttt{telinit 1}.
+    \end{itemize}
+    \item \textbf{Practice Managing systemd Targets}
+    \begin{itemize}
+        \item Show the current default target: \texttt{systemctl get-default}.
+        \item Switch from \textbf{graphical.target} to \textbf{multi-user.target} using:
+\end{itemize}
+
+\begin{lstlisting}[language=bash]
+systemctl isolate multi-user.target
+\end{lstlisting}
+
+\begin{itemize}
+        \item Confirm the change: \texttt{systemctl status multi-user.target}.
+    \end{itemize}
+    \item \textbf{Service Control with systemd}
+    \begin{itemize}
+        \item Start a service (e.g., \texttt{ssh.service}):
+\end{itemize}
+
+\begin{lstlisting}[language=bash]
+sudo systemctl start ssh
+\end{lstlisting}
+
+\begin{itemize}
+        \item Check service status: \texttt{systemctl status ssh}.
+        \item Enable service at boot: \texttt{systemctl enable ssh}.
+    \end{itemize}
+    \item \textbf{Shutdown Commands}
+    \begin{itemize}
+        \item Schedule a reboot in 10 minutes, sending a warning message:
+\end{itemize}
+
+\begin{lstlisting}[language=bash]
+sudo shutdown -r +10 "System will reboot in 10 minutes."
+\end{lstlisting}
+
+\begin{itemize}
+        \item Cancel a scheduled shutdown with:
+\end{itemize}
+
+\begin{lstlisting}[language=bash]
+sudo shutdown -c
+\end{lstlisting}
+
+\begin{itemize}
+        \item Use \textbf{systemctl} to reboot immediately: \texttt{systemctl reboot}.
+    \end{itemize}
+    \item \textbf{Sending Warnings}
+    \begin{itemize}
+        \item Open a second terminal and log in as a test user.
+        \item From the admin terminal, run:
+\end{itemize}
+
+\begin{lstlisting}[language=bash]
+wall "Warning! System moving to single-user mode in 1 minute."
+\end{lstlisting}
+
+\begin{itemize}
+        \item Confirm the message appears in the other terminal.
+    \end{itemize}
+\end{enumerate}
+
+\section*{Summary}
+\begin{itemize}
+    \item \textbf{SysVinit} uses numbered runlevels (0–6), configured via \textbf{/etc/inittab}, and manages services in \textbf{/etc/init.d/}.
+    \item \textbf{systemd} uses \textbf{targets} and \textbf{units}, with \textbf{systemctl} providing service control and target isolation.
+    \item \textbf{Upstart} (historical) uses \textbf{initctl} and scripts in \textbf{/etc/init/}.
+    \item Shutting down, rebooting, or switching modes should alert current users (via \textbf{wall} or \textbf{shutdown}’s broadcast).
+    \item Proper runlevel/target configuration ensures the correct set of services starts at boot, maximizing system stability and user support.
+\end{itemize}
 
 %=======================================================
 % TOPIC 102: LINUX INSTALLATION AND PACKAGE MANAGEMENT
 %=======================================================
+
 \chapter{Topic 102: Linux Installation and Package Management}
 \section{102.1 Design hard disk layout}
 \textit{[Brief syllabus and questions to be added here]}
