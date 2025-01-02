@@ -2,12 +2,28 @@
 \usepackage[margin=1in]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{enumerate}
 \usepackage{setspace}
+\usepackage{listings}
+\usepackage{xcolor}
 
+% Configuration pour les listings de code
+\definecolor{codebg}{RGB}{245,245,245}
+\lstset{
+    language=bash,
+    backgroundcolor=\color{codebg},
+    basicstyle=\ttfamily\small,
+    frame=single,
+    breaklines=true,
+    columns=fullflexible,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{orange},
+    showstringspaces=false
+}
 \setstretch{1.15}
 
 \begin{document}
@@ -26,7 +42,7 @@
     \vspace{2cm}
     \vfill
     \textbf{Author:} Mehdi JAFARIZADEH \\
-    \textbf{Date:} \today
+    \textbf{Date:} January 1, 2025
     \vspace{2cm}
 \end{titlepage}
 
@@ -38,15 +54,16 @@
 %=======================================================
 \chapter{Topic 101: System Architecture}
 
-\section{101.1 Determine and Configure Hardware Settings}
+\section*{101.1 Determine and Configure Hardware Settings}
+\addcontentsline{toc}{section}{101.1 Determine and Configure Hardware Settings}
 
-\subsubsection*{Reference to LPI Objectives:}
+\textbf{Reference to LPI Objectives:}  
 \begin{itemize}
     \item \textbf{LPIC-1 v5, Exam 101, Objective 101.1}
-    \item \textbf{Weight: 2}
+    \item \textbf{Weight:} 2
 \end{itemize}
 
-\subsubsection*{Key Knowledge Areas}
+\subsection*{Key Knowledge Areas}
 \begin{itemize}
     \item Enabling/disabling integrated peripherals (BIOS/UEFI).
     \item Identifying different types of mass storage devices.
@@ -56,97 +73,124 @@
     \item Understanding \texttt{sysfs}, \texttt{udev}, and \texttt{dbus} concepts.
 \end{itemize}
 
-\subsubsection*{Important Files, Terms, and Utilities}
+\subsection*{Important Files, Terms, and Utilities}
 \begin{itemize}
-    \item \texttt{/sys/}
-    \item \texttt{/proc/}
-    \item \texttt{/dev/}
+    \item \textbf{/sys/}
+    \item \textbf{/proc/}
+    \item \textbf{/dev/}
     \item \texttt{modprobe}
     \item \texttt{lsmod}
     \item \texttt{lspci}
     \item \texttt{lsusb}
 \end{itemize}
 
-\subsection*{Lesson Overview}
+\section*{Lesson Overview}
+
 Modern computers rely on standards for firmware and hardware interaction. On x86 platforms, the firmware could be traditional \textbf{BIOS} or newer \textbf{UEFI}. Both allow for configuring hardware resources (e.g., integrated peripherals, IRQs, DMA settings) even before the operating system loads.
 
-Once Linux is running, device detection and configuration rely on the kernel and support from user-space utilities such as \texttt{lspci}, \texttt{lsusb}, \texttt{lsmod}, and various pseudo-filesystems in \texttt{/proc} and \texttt{/sys}.
+Once Linux is running, device detection and configuration rely on the kernel and support from user-space utilities such as \texttt{lspci}, \texttt{lsusb}, \texttt{lsmod}, and various pseudo-filesystems in \textbf{/proc} and \textbf{/sys}.
 
-\subsubsection*{1. BIOS and UEFI Configuration}
+\subsection*{1. BIOS and UEFI Configuration}
 \begin{itemize}
     \item \textbf{Accessing Firmware:} Typically press \texttt{Del}, \texttt{F2}, or \texttt{F12} at startup.
     \item \textbf{Common Configurations:}
     \begin{itemize}
-      \item Enable/disable integrated peripherals (USB ports, onboard audio, etc.).
-      \item Set boot order and define the primary device for the bootloader.
-      \item Adjust CPU features or RAM parameters if needed.
+        \item Enable/disable integrated peripherals (USB ports, onboard audio, etc.).
+        \item Set boot order and define the primary device for the bootloader.
+        \item Adjust CPU features or RAM parameters if needed.
     \end{itemize}
     \item \textbf{Impact:} Misconfiguration (e.g., wrong boot device) can prevent the OS from loading.
 \end{itemize}
 
-\subsubsection*{2. Device Detection in Linux}
-\textbf{Goal:} Match hardware parts to the correct driver (\textit{kernel module}).
+\subsection*{2. Device Detection in Linux}
+\begin{itemize}
+    \item \textbf{Goal:} Match hardware parts to the correct driver (\textbf{kernel module}).
+    \item \textbf{Basic Workflow:}
+    \begin{enumerate}
+        \item \textbf{Check if hardware is detected} (e.g., \texttt{lspci}, \texttt{lsusb}).
+        \item \textbf{Verify if a driver is loaded} (e.g., \texttt{lsmod}, \texttt{lspci -k}).
+        \item \textbf{Confirm functionality} via logs, testing, or additional tools.
+    \end{enumerate}
+\end{itemize}
+
+\subsection*{3. Commands for Hardware Inspection}
+
 \begin{enumerate}
-    \item \textbf{Check if hardware is detected} (e.g., \texttt{lspci}, \texttt{lsusb}).
-    \item \textbf{Verify if a driver is loaded} (e.g., \texttt{lsmod}, \texttt{lspci -k}).
-    \item \textbf{Confirm functionality} via logs, testing, or additional tools.
+    \item \textbf{\texttt{lspci}}
+    \begin{itemize}
+        \item Lists PCI devices (graphics cards, network interfaces, etc.).
+        \item Use \texttt{-v} for more detail and \texttt{-k} to see which kernel modules are in use.
+        \item Example:
+        \begin{lstlisting}[language=bash]
+lspci -s 04:02.0 -v
+lspci -s 01:00.0 -k
+        \end{lstlisting}
+    \end{itemize}
+
+    \item \textbf{\texttt{lsusb}}
+    \begin{itemize}
+        \item Lists USB devices (keyboards, mice, USB hubs, etc.).
+        \item Use \texttt{-v} for verbose output and \texttt{-d <vendor:product>} to focus on a specific device.
+        \item Example:
+        \begin{lstlisting}[language=bash]
+lsusb -v -d 1781:0c9f
+lsusb -t  # Show devices in a tree structure
+        \end{lstlisting}
+    \end{itemize}
+
+    \item \textbf{\texttt{lsmod}}
+    \begin{itemize}
+        \item Shows loaded kernel modules.
+        \item Columns: \textbf{Module}, \textbf{Size}, \textbf{Used by} (dependency information).
+        \item Example:
+        \begin{lstlisting}[language=bash]
+lsmod | grep snd_hda_intel
+        \end{lstlisting}
+    \end{itemize}
+
+    \item \textbf{\texttt{modprobe}}
+    \begin{itemize}
+        \item Loads or unloads modules (with dependencies).
+        \item \texttt{modprobe -r <module>} removes a module if not in use.
+        \item \texttt{modinfo <module>} shows module details (author, license, parameters, etc.).
+        \item Configuration files in \texttt{/etc/modprobe.d/} can blacklist or set module parameters.
+    \end{itemize}
 \end{enumerate}
 
-\subsubsection*{3. Commands for Hardware Inspection}
-\paragraph{\texttt{lspci}}
+\subsection*{4. Hardware Information Files}
 \begin{itemize}
-    \item Lists PCI devices (graphics cards, network interfaces, etc.).
-    \item Use \texttt{-v} for more detail and \texttt{-k} to see which kernel modules are in use.
-\end{itemize}
-
-\paragraph{\texttt{lsusb}}
-\begin{itemize}
-    \item Lists USB devices (keyboards, mice, USB hubs, etc.).
-    \item Use \texttt{-v} for verbose output and \texttt{-d <vendor:product>} to focus on a specific device.
-\end{itemize}
-
-\paragraph{\texttt{lsmod}}
-\begin{itemize}
-    \item Shows loaded kernel modules.
-    \item Columns: \textbf{Module}, \textbf{Size}, \textbf{Used by}.
-\end{itemize}
-
-\paragraph{\texttt{modprobe}}
-\begin{itemize}
-    \item Loads or unloads modules (with dependencies).
-    \item \texttt{modprobe -r <module>} removes a module if not in use.
-    \item \texttt{modinfo <module>} shows module details (author, license, parameters).
-\end{itemize}
-
-\subsubsection*{4. Hardware Information Files}
-\begin{itemize}
-    \item \textbf{/proc} (pseudo-filesystem for processes and hardware info)  
-      Examples: \texttt{/proc/cpuinfo}, \texttt{/proc/interrupts}, \texttt{/proc/ioports}, \texttt{/proc/dma}.
-    \item \textbf{/sys} (sysfs for device and kernel data)  
-      Mirrors hardware hierarchy, used heavily by \texttt{udev}.
-    \item \textbf{/dev} (device files)  
-      Each entry represents a device (e.g., \texttt{/dev/sda1}, \texttt{/dev/fd0}).  
-      \texttt{udev} dynamically creates/removes these files as devices connect or disconnect.
-\end{itemize}
-
-\subsubsection*{5. Storage Devices}
-\begin{itemize}
-    \item \textbf{Block Devices}: Accessed in fixed-size blocks (hard disks, SSDs, etc.).
-    \item \textbf{Naming Conventions}:
+    \item \textbf{/proc} (pseudo-filesystem for processes and hardware info)
     \begin{itemize}
-      \item Newer kernels use \texttt{sd} prefix for most disks (\texttt{/dev/sda1}).
-      \item IDE devices also appear as \texttt{sd} on modern kernels.
-      \item NVMe devices get names like \texttt{/dev/nvme0n1p1}.
-      \item SD Cards often appear as \texttt{/dev/mmcblk0p1}.
+        \item \texttt{/proc/cpuinfo}, \texttt{/proc/interrupts}, \texttt{/proc/ioports}, \texttt{/proc/dma}
     \end{itemize}
-    \item \textbf{Hotplug and Coldplug}:
+    \item \textbf{/sys} (\texttt{sysfs} for device and kernel data)
+    \item \textbf{/dev} (device files)
     \begin{itemize}
-      \item \textbf{Hotplug}: device recognized after boot (e.g., USB).
-      \item \textbf{Coldplug}: device recognized during boot (built-in or already connected).
+        \item Each entry represents a device (e.g., \texttt{/dev/sda1}, \texttt{/dev/fd0}).
+        \item \textbf{\texttt{udev}} dynamically creates/removes these files as devices connect or disconnect.
     \end{itemize}
 \end{itemize}
 
-\subsection*{Workbook Exercises}
+\subsection*{5. Storage Devices}
+\begin{itemize}
+    \item \textbf{Block Devices:} Accessed in fixed-size blocks (hard disks, SSDs, etc.).
+    \item \textbf{Naming Conventions:}
+    \begin{itemize}
+        \item Newer kernels use \texttt{sd} prefix for most disks; partitions are numbered (\texttt{/dev/sda1}).
+        \item \textbf{IDE} devices also appear as \texttt{sd} on modern kernels
+        \item \textbf{NVMe} devices get names like \texttt{/dev/nvme0n1p1}.
+        \item \textbf{SD Cards} often appear as \texttt{/dev/mmcblk0p1}.
+    \end{itemize}
+
+    \item \textbf{Hotplug and Coldplug:}
+    \begin{itemize}
+        \item \textbf{Hotplug:} device recognized after boot (e.g., USB).
+        \item \textbf{Coldplug:} device recognized during boot (built-in or already connected).
+    \end{itemize}
+\end{itemize}
+
+\section*{Workbook Exercises}
+
 \begin{enumerate}
     \item \textbf{Accessing BIOS/UEFI}
     \begin{itemize}
@@ -159,11 +203,11 @@ Once Linux is running, device detection and configuration rely on the kernel and
     \begin{itemize}
         \item On a Linux system, run \texttt{lspci -k}.
         \begin{itemize}
-          \item Identify which driver is used by the video card.
+            \item Identify which driver is used by the video card.
         \end{itemize}
         \item Run \texttt{lsusb -t}.
         \begin{itemize}
-          \item Check which USB driver modules are in use (e.g., \texttt{btusb}, \texttt{usbhid}).
+            \item Check which USB driver modules are in use (e.g., \texttt{btusb, usbhid}).
         \end{itemize}
     \end{itemize}
 
@@ -176,12 +220,13 @@ Once Linux is running, device detection and configuration rely on the kernel and
 
     \item \textbf{Managing Kernel Modules}
     \begin{itemize}
-        \item Use \texttt{lsmod} to list all loaded modules.
+        \item Use  \texttt{lsmod} to list all loaded modules.
         \item Pick a module (e.g., a sound driver) and unload it with \texttt{sudo modprobe -r <module>}.
         \begin{itemize}
-          \item Check if removal is allowed (the module should not be in use).
+            \item Check if removal is allowed (the module should not be in use).
         \end{itemize}
         \item Use \texttt{modinfo -p <module>} to see possible parameters, and note how you might apply them in \texttt{/etc/modprobe.d/}.
+        
     \end{itemize}
 
     \item \textbf{Blacklisting a Module}
@@ -191,14 +236,17 @@ Once Linux is running, device detection and configuration rely on the kernel and
     \end{itemize}
 \end{enumerate}
 
-\subsection*{Summary}
+\section*{Summary}
 \begin{itemize}
     \item Modern systems rely on firmware (BIOS/UEFI) for initial hardware configuration.
     \item Linux identifies devices via kernel modules; tools like \texttt{lspci}, \texttt{lsusb}, \texttt{lsmod}, and \texttt{modprobe} allow you to inspect and manage hardware.
-    \item \texttt{/proc} and \texttt{/sys} provide detailed, real-time system information; \texttt{udev} dynamically manages device nodes in \texttt{/dev}.
-    \item Storage device naming follows standard patterns (\texttt{sd}, \texttt{nvme}, \texttt{mmcblk}, etc.).
-    \item Understanding how to enable/disable devices, load/unload modules, and explore hardware information files is crucial for system administration and LPIC-1 success.
+    \item \texttt{/proc} and \texttt{/sys} provide detailed, real-time system information, while \texttt{udev} dynamically manages device nodes in \texttt{/dev}.
+    \item Storage device naming conventions follow standard patterns such as \texttt{sd}, \texttt{nvme}, \texttt{mmcblk}, and partition numbers like \texttt{/dev/sda1}.
+    \item Understanding how to enable/disable devices, load/unload modules, and explore hardware information files is crucial for effective system administration and LPIC-1 success.
 \end{itemize}
+
+
+
 
 %-------------------------------------------------------
 % Multiple-Choice Questions (101.1)
@@ -209,17 +257,18 @@ Once Linux is running, device detection and configuration rely on the kernel and
 \item When trying to enable or disable motherboard-integrated peripherals, which component of the system is typically used?
   \begin{enumerate}[A)]
     \item The BIOS or UEFI configuration utility
-    \item The Linux kernel's initrd
-    \item The /boot partition
-    \item The lsusb command
+    \item The Linux kernel’s initrd
+    \item The \texttt{/boot} partition
+    \item The \texttt{lsusb} command
+
   \end{enumerate}
 
 \item Which command lists devices currently connected to the PCI bus?
   \begin{enumerate}[A)]
-    \item modprobe
-    \item lsmode
-    \item lspci
-    \item lshw
+    \item \texttt{modprobe}
+    \item \texttt{lsmod}
+    \item \texttt{lspci}
+    \item \texttt{lshw}
   \end{enumerate}
 
 \item Which of the following commands helps you list USB devices in a tree-like hierarchy?
@@ -246,7 +295,7 @@ Once Linux is running, device detection and configuration rely on the kernel and
     \item /dev/fdX
   \end{enumerate}
 
-\item Which file below would you edit to permanently blacklist a problematic kernel module such that it doesn't load automatically?
+\item Which file below would you edit to permanently blacklist a problematic kernel module such that it doesn’t load automatically?
   \begin{enumerate}[A)]
     \item /etc/rc.local
     \item /etc/modprobe.d/blacklist.conf
@@ -262,7 +311,7 @@ Once Linux is running, device detection and configuration rely on the kernel and
     \item /home
   \end{enumerate}
 
-\item Which command line will show a specific USB device's verbose information using its vendor:product ID (e.g., 1781:0c9f)?
+\item Which command line will show a specific USB device’s verbose information using its vendor:product ID (e.g., 1781:0c9f)?
   \begin{enumerate}[A)]
     \item lsusb -d 1781:0c9f -v
     \item lsusb -p 1781:0c9f -v
@@ -270,12 +319,12 @@ Once Linux is running, device detection and configuration rely on the kernel and
     \item lsusb -v -s 01:02
   \end{enumerate}
 
-\item In the output of \texttt{lsmod}, the "Used by" column indicates:
+\item In the output of lsmod, the “Used by” column indicates:
   \begin{enumerate}[A)]
-    \item The file size of the module on disk
-    \item The user-level applications that installed the module
-    \item The modules or processes depending on that module
-    \item Kernel version compatibility for that module
+    \item the file size of the module on disk
+    \item the user-level applications that installed the module
+    \item the modules or processes depending on that module
+    \item kernel version compatibility for that module
   \end{enumerate}
 
 \item If you need to confirm which kernel driver is in use by a particular PCI device, which \texttt{lspci} option combination is most helpful on recent distributions?
@@ -291,7 +340,7 @@ Once Linux is running, device detection and configuration rely on the kernel and
     \item The exact partition layout of attached USB drives
     \item A hierarchical (tree-like) representation of USB devices and drivers
     \item The SCSI ID mappings of USB-attached devices
-    \item A summary of device's kernel modules only
+    \item A summary of device’s kernel modules only
   \end{enumerate}
 
 \item Which best describes the function of the \texttt{modinfo} command?
@@ -304,50 +353,50 @@ Once Linux is running, device detection and configuration rely on the kernel and
 
 \item What is the role of \texttt{udev} on a modern Linux system?
   \begin{enumerate}[A)]
-    \item It is a pseudo-filesystem used to track hardware devices in /sys
-    \item It permanently stores device drivers in /boot
-    \item It manages device nodes in /dev, handling hotplug/coldplug events
+    \item It is a pseudo-filesystem used to track hardware devices in \texttt{/sys}
+    \item It permanently stores device drivers in \texttt{/boot}
+    \item It manages device nodes in \texttt{/dev}, handling hotplug/coldplug events
     \item It only configures CPU frequency scaling
   \end{enumerate}
 
 \item Which file inside \texttt{/proc} would you inspect to see how many interrupts have occurred for each device?
   \begin{enumerate}[A)]
-    \item /proc/ioports
-    \item /proc/dma
-    \item /proc/cpuinfo
-    \item /proc/interrupts
+    \item \texttt{/proc/ioports}
+    \item \texttt{/proc/dma}
+    \item \texttt{/proc/cpuinfo}
+    \item \texttt{/proc/interrupts}
   \end{enumerate}
 
 \item If a device is recognized by the kernel but not functioning correctly, which of the following is the most likely underlying cause?
   \begin{enumerate}[A)]
-    \item The BIOS is not set to read the device's firmware
+    \item The BIOS is not set to read the device’s firmware
     \item The associated kernel module (driver) is not loaded or is misconfigured
     \item The CPU lacks the required SSE instruction set
-    \item The device was not assigned a correct IRQ in the /etc/fstab
+    \item The device was not assigned a correct IRQ in the \texttt{/etc/fstab}
   \end{enumerate}
 
 \item Which file is typically used to pass persistent module load options like \texttt{options nouveau modeset=0}?
   \begin{enumerate}[A)]
-    \item /etc/udev/rules.d/99-custom.rules
-    \item /proc/meminfo
-    \item /etc/modprobe.d/<module>.conf
-    \item /etc/modules-load.d/module.options
+    \item \texttt{/etc/udev/rules.d/99-custom.rules}
+    \item \texttt{/proc/meminfo}
+    \item \texttt{/etc/modprobe.d/<module>.conf}
+    \item \texttt{/etc/modules-load.d/module.options}
   \end{enumerate}
 
 \item What is the main purpose of SysFS (\texttt{/sys}) in a Linux system?
   \begin{enumerate}[A)]
     \item Stores process information like CPU usage
-    \item Holds user configuration data for /home
+    \item Holds user configuration data for \texttt{/home}
     \item Exports device and driver information from the kernel to user space
     \item Contains scripts to mount all system filesystems
   \end{enumerate}
 
 \item Which command is most appropriate for listing all currently loaded kernel modules?
   \begin{enumerate}[A)]
-    \item ls -la /lib/modules/\$(uname -r)
-    \item depmod -a
-    \item lsmod
-    \item insmod
+    \item \texttt{ls -la /lib/modules/\$(uname -r)}
+    \item \texttt{depmod -a}
+    \item \texttt{lsmod}
+    \item \texttt{insmod}
   \end{enumerate}
 
 \item To selectively unload the \texttt{snd-hda-intel} module along with related dependent modules, which command would you use?
@@ -358,7 +407,7 @@ Once Linux is running, device detection and configuration rely on the kernel and
     \item \texttt{modprobe -r snd-hda-intel}
   \end{enumerate}
 
-\item If you see a disk labeled as \texttt{/dev/mmcblk0p1}, it is most likely:
+\item If you see a disk labeled as \texttt{/dev/mmcblk0p1}, which type of physical device is this likely referring to?
   \begin{enumerate}[A)]
     \item A SATA SSD
     \item An older IDE HDD
@@ -373,40 +422,455 @@ Once Linux is running, device detection and configuration rely on the kernel and
 \section*{Fill-in-the-Blank Questions for 101.1}
 
 \begin{enumerate}[1.]
-\item The older firmware commonly used before the UEFI standard is called \underline{\hspace{2cm}}.  
 
-\item The \underline{\hspace{2cm}} command lists all kernel modules currently loaded into the system.  
+\item The older firmware commonly used before the UEFI standard is called \underline{\hspace{2cm}}.
 
-\item A kernel module responsible for controlling hardware in Linux is often referred to as a \underline{\hspace{2cm}}.  
+\item The \underline{\hspace{2cm}} command lists all kernel modules currently loaded into the system.
 
-\item The Linux subsystem that manages device node creation in \texttt{/dev} and handles hotplug/coldplug events is called \underline{\hspace{2cm}}.  
+\item A kernel module responsible for controlling hardware in Linux is often referred to as a \underline{\hspace{2cm}}.
 
-\item The special, memory-based filesystem used for storing process and hardware information is the \underline{\hspace{2cm}} directory.  
+\item The Linux subsystem that manages device node creation in \texttt{/dev} and handles hotplug/coldplug events is called \underline{\hspace{2cm}}.
 
-\item To configure boot device priority and enable or disable onboard peripherals, a user must typically access the \underline{\hspace{2cm}} or UEFI setup utility.  
+\item The special, memory-based filesystem used for storing process and hardware information is the \underline{\hspace{2cm}} directory.
 
-\item In Linux, disks commonly appear under \texttt{/dev} as \underline{\hspace{2cm}} devices (e.g., \texttt{/dev/sda}, \texttt{/dev/sdb}) on modern systems.  
+\item To configure boot device priority and enable or disable onboard peripherals, a user must typically access the \underline{\hspace{2cm}} or UEFI setup utility.
 
-\item The \underline{\hspace{2cm}} command is used to insert or remove kernel modules and their dependencies.  
+\item In Linux, disks commonly appear under \texttt{/dev} as \underline{\hspace{2cm}} devices (e.g., \texttt{/dev/sda}, \texttt{/dev/sdb}) on modern systems.
 
-\item When blacklisting a kernel module to prevent it from loading automatically, the configuration file is often placed in \underline{\hspace{2cm}}.  
+\item The \underline{\hspace{2cm}} command is used to insert or remove kernel modules and their dependencies.
 
-\item To see a hierarchical (tree-like) view of USB devices and the drivers handling them, you can run \underline{\hspace{2cm}} with the \texttt{-t} option.  
+\item When blacklisting a kernel module to prevent it from loading automatically, the configuration file is often placed in \underline{\hspace{2cm}}.
+
+\item To see a hierarchical (tree-like) view of USB devices and the drivers handling them, you can run \underline{\hspace{2cm}} with the \texttt{-t} option.
+ 
 \end{enumerate}
 
 %-------------------------------------------------------
 % (Placeholders for Other Sections)
 %-------------------------------------------------------
+\newpage
 
-\section{101.2 Boot the System}
-\textit{[Brief syllabus and questions to be added here]}
+\section*{101.2 Boot the System}
+\addcontentsline{toc}{section}{101.2 Boot the System}
 
-\section{101.3 Change Runlevels / Boot Targets and Shutdown or Reboot System}
-\textit{[Brief syllabus and questions to be added here]}
+\textbf{Reference to LPI Objectives:}  
+\begin{itemize}
+    \item \textbf{LPIC-1 v5, Exam 101, Objective 101.2}
+    \item \textbf{Weight:} 3
+\end{itemize}
+
+\subsection*{Key Knowledge Areas}
+\begin{itemize}
+    \item Providing common bootloader commands and kernel options at boot.
+    \item Understanding the boot sequence (BIOS/UEFI through OS startup).
+    \item Familiarity with SysVinit, systemd, and Upstart.
+    \item Checking boot events and logs (\texttt{dmesg}, \texttt{journalctl}).
+\end{itemize}
+
+\subsection*{Important Files, Terms, and Utilities}
+\begin{itemize}
+    \item \textbf{dmesg}
+    \item \textbf{journalctl}
+    \item \textbf{BIOS} / \textbf{UEFI}
+    \item \textbf{bootloader} (GRUB)
+    \item \textbf{kernel}
+    \item \textbf{initramfs}
+    \item \textbf{init} (SysVinit, systemd, Upstart)
+    \item \textbf{/proc/cmdline}
+    \item \textbf{/var/log/}
+\end{itemize}
+
+\section*{Lesson Overview}
+
+Booting a Linux system involves multiple stages:
+\begin{enumerate}
+    \item \textbf{Firmware Load:} BIOS or UEFI initializes basic hardware.
+    \item \textbf{Bootloader:} Typically \textbf{GRUB}, which locates and loads the kernel.
+    \item \textbf{Kernel \& initramfs:} Kernel initializes hardware and reads modules from the initramfs.
+    \item \textbf{System Initialization:} \textbf{init} (SysVinit, systemd, Upstart) starts services and completes the boot process.
+\end{enumerate}
+
+\subsection*{1. BIOS vs. UEFI}
+\begin{itemize}
+\item\textbf{BIOS}  
+\begin{itemize}
+    \item Uses MBR (first 512 bytes) to load boot code (GRUB stage 1).
+    \item Relies on a DOS partition scheme and the Master Boot Record.
+    \item Boots the second stage of the bootloader, which in turn loads the kernel.
+\end{itemize}
+
+\item\textbf{UEFI}
+\begin{itemize}
+    \item Looks at entries in \textbf{NVRAM} to find an \textbf{EFI application} (usually GRUB).
+    \item Loads the EFI application from a dedicated \textbf{EFI System Partition (ESP)}.
+    \item Supports \textbf{Secure Boot} to allow only signed EFI applications.
+\end{itemize}
+\end{itemize}
+
+\subsection*{2. Bootloader (GRUB)}
+\begin{itemize}
+    \item Presents a menu of installed kernels or operating systems.
+    \item Enables passing \textbf{kernel parameters} (e.g., \texttt{quiet}, \texttt{acpi=off}, \texttt{root=/dev/sdaX}, etc.).
+    \item Kernel parameters can be made persistent in \texttt{/etc/default/grub} and then updated with:
+\end{itemize}
+
+\begin{lstlisting}[language=bash]
+grub-mkconfig -o /boot/grub/grub.cfg
+\end{lstlisting}
+
+\begin{itemize}
+    \item Current kernel parameters are visible in \texttt{/proc/cmdline}.
+\end{itemize}
+
+\subsection*{3. System Initialization}
+
+\begin{enumerate}
+    \item \textbf{initramfs}
+    \begin{itemize}
+        \item Temporary root filesystem with essential drivers/modules.
+        \item Lets the kernel mount the actual root filesystem.
+    \end{itemize}
+    \item \textbf{init}
+    \begin{itemize}
+        \item The “first process” in user space.
+        \item \textbf{SysVinit:} uses \textbf{runlevels} (0–6).
+        \item \textbf{systemd:} uses \textbf{targets}, concurrency, D-Bus, cgroups. Most common in modern distros.
+        \item \textbf{Upstart:} parallel boot focusing on faster startup. Largely replaced by systemd.
+    \end{itemize}
+\end{enumerate}
+
+\subsection*{4. Boot Logging and Inspection}
+\begin{itemize}
+    \item \textbf{dmesg}
+    \begin{itemize}
+        \item Displays the \textbf{kernel ring buffer} (including boot messages).
+        \item Clears with \texttt{dmesg --clear}.
+    \end{itemize}
+    \item \textbf{journalctl}
+    \begin{itemize}
+        \item Systemd-based logging tool.
+        \item \texttt{journalctl -b} shows current boot messages.
+        \item \texttt{journalctl --list-boots} lists previous boots.
+    \end{itemize}
+    \item Traditional log files also found in \texttt{/var/log/}, e.g., \texttt{/var/log/messages} or \texttt{/var/log/syslog}.
+\end{itemize}
+
+\section*{Workbook Exercises}
+
+\begin{enumerate}
+    \item \textbf{Firmware Awareness}
+    \begin{itemize}
+        \item Reboot a test machine.
+        \item Determine whether it uses \textbf{BIOS} or \textbf{UEFI}.
+        \item In BIOS: Find where the boot order is set.
+        \item In UEFI: Locate the ESP partition and explore contents if possible.
+    \end{itemize}
+    \item \textbf{GRUB Menu and Kernel Parameters}
+    \begin{itemize}
+        \item Boot into the GRUB menu by pressing \textbf{Shift} (BIOS) or \textbf{Esc} (UEFI).
+        \item Edit a menu entry to add or change a kernel parameter (e.g., \texttt{init=/bin/bash}, \texttt{acpi=off}).
+        \item After boot, check \texttt{/proc/cmdline} to confirm your changes.
+    \end{itemize}
+    \item \textbf{System Initialization Tools}
+    \begin{itemize}
+        \item Identify which init system your distribution uses (\texttt{ps -p 1 -o comm=}).
+        \item If it’s systemd, compare output of these commands:
+\end{itemize}
+
+\begin{lstlisting}[language=bash]
+systemctl list-units --type=service
+journalctl -b
+\end{lstlisting}
+
+\begin{itemize}
+        \item If SysVinit is present, inspect runlevel scripts in \texttt{/etc/rc.d/} or \texttt{/etc/init.d/}.
+    \end{itemize}
+    \item \textbf{Inspecting Boot Logs}
+    \begin{itemize}
+        \item Run \texttt{dmesg | less} to page through the kernel ring buffer.
+        \item If using systemd, run \texttt{journalctl --list-boots} to see previous boots.
+        \item View the logs for the current boot with \texttt{journalctl -b 0}.
+    \end{itemize}
+    \item \textbf{initramfs Exploration}
+    \begin{itemize}
+        \item Locate your initramfs file (commonly in \texttt{/boot}, e.g., \texttt{initramfs-<version>.img}).
+        \item List contents using \texttt{lsinitrd} or \texttt{unmkinitramfs} (may require additional packages).
+        \item Identify which modules are included for the root filesystem.
+    \end{itemize}
+\end{enumerate}
+
+\section*{Summary}
+\begin{itemize}
+    \item The boot process starts with \textbf{BIOS/UEFI} firmware, which calls \textbf{GRUB} to load the \textbf{kernel}.
+    \item The \textbf{initramfs} contains essential modules and mounts the real root filesystem.
+    \item An \textbf{init} system (SysVinit, systemd, Upstart) then starts daemons and services.
+    \item \textbf{dmesg} and \textbf{journalctl} provide essential logs for troubleshooting.
+    \item Understanding these steps ensures you can troubleshoot common startup issues and manage kernel parameters effectively.
+\end{itemize}
+
+
+\newpage
+
+\section*{101.3 Change Runlevels / Boot Targets and Shutdown or Reboot System}
+\addcontentsline{toc}{section}{101.3 Change Runlevels / Boot Targets and Shutdown or Reboot System}
+
+\textbf{Reference to LPI Objectives:}  
+\begin{itemize}
+    \item \textbf{LPIC-1 v5, Exam 101, Objective 101.3}
+    \item \textbf{Weight:} 3
+\end{itemize}
+
+\subsection*{Key Knowledge Areas}
+\begin{itemize}
+    \item Setting the default runlevel/boot target.
+    \item Changing between runlevels/targets, including single-user mode.
+    \item Shutting down and rebooting from the command line.
+    \item Alerting users before switching runlevels/boot targets or major system events.
+    \item Properly terminating processes.
+    \item Awareness of \textbf{acpid} (power management).
+\end{itemize}
+
+\subsection*{Important Files, Terms, and Utilities}
+\begin{itemize}
+    \item \textbf{/etc/inittab} (SysVinit)
+    \item \textbf{shutdown}
+    \item \textbf{init}, \textbf{telinit} (SysVinit)
+    \item \textbf{/etc/init.d/} (SysVinit scripts)
+    \item \textbf{systemd}, \textbf{systemctl}
+    \item \textbf{/etc/systemd/}, \textbf{/usr/lib/systemd/}
+    \item \textbf{wall} (send messages to all logged-in users)
+\end{itemize}
+
+\section*{Lesson Overview}
+
+Linux can operate in different “states” or “modes” called \textbf{runlevels} in SysVinit or \textbf{targets} in systemd. Being able to switch between them and perform system shutdowns or reboots is essential for system administration.
+
+\section*{1. SysVinit Runlevels}
+
+\subsection*{1. Runlevels}
+\begin{itemize}
+    \item \textbf{0} – Shutdown
+    \item \textbf{1 (single), s} – Single-user (maintenance) mode
+    \item \textbf{2, 3, 4} – Multi-user modes (3 is typical, 2/4 vary by distro)
+    \item \textbf{5} – Multi-user plus graphical mode
+    \item \textbf{6} – Reboot
+\end{itemize}
+
+\subsection*{2. Configuration}
+\begin{itemize}
+    \item \textbf{/etc/inittab} defines default runlevel (\texttt{id:x:initdefault:})
+    \item Each runlevel has a dedicated directory: \textbf{/etc/rc0.d/}, \textbf{/etc/rc1.d/}, etc.
+    \item Scripts in \textbf{/etc/init.d/} are symlinked to these runlevel directories.
+    \begin{itemize}
+        \item Names starting with \textbf{S} start services.
+        \item Names starting with \textbf{K} kill services.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{3. Switching Runlevels}
+\begin{itemize}
+    \item \textbf{init} or \textbf{telinit} commands set the current runlevel.
+    \item \texttt{telinit 1}: move to runlevel 1 (maintenance mode).
+    \item \texttt{runlevel}: shows current and previous runlevel (e.g., \texttt{N 3} means currently 3 and no prior change).
+\end{itemize}
+
+\subsection*{4. Reloading \textbf{/etc/inittab}}
+\begin{itemize}
+    \item After editing \textbf{/etc/inittab}, run \texttt{telinit q} to re-read the config.
+\end{itemize}
+
+\section*{2. systemd Targets}
+
+\subsection*{1. systemd Concepts}
+\begin{itemize}
+    \item \textbf{Units} represent services, sockets, devices, mounts, automounts, targets, and snapshots.
+    \item \textbf{systemctl} is the primary command to manage these units (start, stop, enable, etc.).
+\end{itemize}
+
+\subsection*{2. Targets}
+\begin{itemize}
+    \item systemd uses \textbf{targets} to group units. Examples:
+    \begin{itemize}
+        \item \textbf{multi-user.target} – analogous to runlevel 3 (no GUI).
+        \item \textbf{graphical.target} – analogous to runlevel 5 (GUI mode).
+    \end{itemize}
+    \item You can isolate a target:
+\end{itemize}
+
+\begin{lstlisting}[language=bash]
+systemctl isolate multi-user.target
+\end{lstlisting}
+
+\subsection*{3. Default Target}
+\begin{itemize}
+    \item Change default target:
+\end{itemize}
+
+\begin{lstlisting}[language=bash]
+systemctl set-default multi-user.target
+\end{lstlisting}
+
+\begin{itemize}
+    \item View current default:
+\end{itemize}
+
+\begin{lstlisting}[language=bash]
+systemctl get-default
+\end{lstlisting}
+
+\begin{itemize}
+    \item Avoid pointing to \textbf{shutdown.target} or \textbf{reboot.target}.
+\end{itemize}
+
+\subsection*{4. Service Management}
+\begin{itemize}
+    \item \texttt{systemctl start/stop/restart} \texttt{<service>.service}
+    \item \texttt{systemctl enable/disable} \texttt{<service>.service} (at boot)
+    \item \texttt{systemctl status} \texttt{<service>.service}
+    \item \texttt{systemctl list-unit-files --type=service} – list available services
+    \item \texttt{systemctl list-units --type=service} – list loaded/running services
+\end{itemize}
+
+\subsection*{5. Power Management}
+\begin{itemize}
+    \item \texttt{systemctl suspend}, \texttt{systemctl hibernate}
+    \item For finer power-event control (e.g., lid close), \textbf{acpid} can be used instead of systemd’s built-in power management.
+\end{itemize}
+
+\section*{3. Upstart (Historical)}
+
+\begin{enumerate}
+    \item \textbf{Upstart} was used in older Ubuntu-based systems before switching to systemd.
+    \item \textbf{Commands}:
+    \begin{itemize}
+        \item \texttt{initctl list} – list services and states
+        \item \texttt{start / stop / status <service>} – control services
+        \item Initialization scripts: \textbf{/etc/init/}
+    \end{itemize}
+    \item \texttt{runlevel} and \texttt{telinit} still work for basic runlevel tasks.
+\end{enumerate}
+
+\section*{4. Shutting Down and Rebooting}
+
+\subsection*{1. shutdown}
+\begin{itemize}
+    \item Syntax:
+\end{itemize}
+
+\begin{lstlisting}[language=bash]
+shutdown [option] time [message]
+\end{lstlisting}
+
+\begin{itemize}
+    \item \textbf{time} can be \texttt{now}, \texttt{+m} (minutes from now), or \texttt{hh:mm} (absolute time).
+    \item Common options:
+    \begin{itemize}
+        \item \textbf{-h} – halt/power off
+        \item \textbf{-r} – reboot
+    \end{itemize}
+    \item Notifies logged-in users and prevents new logins (unless overridden).
+\end{itemize}
+
+\subsection*{2. systemctl (systemd)}
+\begin{itemize}
+    \item \texttt{systemctl reboot} – reboot system
+    \item \texttt{systemctl poweroff} – power off system
+    \item Sometimes distros alias \texttt{poweroff} and \texttt{reboot} to systemd commands.
+\end{itemize}
+
+\subsection*{3. wall}
+\begin{itemize}
+    \item Sends a message to all logged-in users’ terminals (similar to \texttt{shutdown}’s broadcast).
+    \item Useful for manual warnings before switching to single-user mode or shutting down.
+\end{itemize}
+
+\section*{Workbook Exercises}
+
+\begin{enumerate}
+    \item \textbf{Identify Your Init System}
+    \begin{itemize}
+        \item Run \texttt{ps -p 1 -o comm=} to see if your system uses \textbf{systemd}, \textbf{init}, or \textbf{Upstart}.
+    \end{itemize}
+    \item \textbf{Practice Switching Runlevels (SysV)}
+    \begin{itemize}
+        \item On a SysVinit system, edit \textbf{/etc/inittab} to set default runlevel to \textbf{3}.
+        \item Run \texttt{telinit q} and verify with \texttt{runlevel}.
+        \item Switch to single-user mode: \texttt{telinit 1}.
+    \end{itemize}
+    \item \textbf{Practice Managing systemd Targets}
+    \begin{itemize}
+        \item Show the current default target: \texttt{systemctl get-default}.
+        \item Switch from \textbf{graphical.target} to \textbf{multi-user.target} using:
+\end{itemize}
+
+\begin{lstlisting}[language=bash]
+systemctl isolate multi-user.target
+\end{lstlisting}
+
+\begin{itemize}
+        \item Confirm the change: \texttt{systemctl status multi-user.target}.
+    \end{itemize}
+    \item \textbf{Service Control with systemd}
+    \begin{itemize}
+        \item Start a service (e.g., \texttt{ssh.service}):
+\end{itemize}
+
+\begin{lstlisting}[language=bash]
+sudo systemctl start ssh
+\end{lstlisting}
+
+\begin{itemize}
+        \item Check service status: \texttt{systemctl status ssh}.
+        \item Enable service at boot: \texttt{systemctl enable ssh}.
+    \end{itemize}
+    \item \textbf{Shutdown Commands}
+    \begin{itemize}
+        \item Schedule a reboot in 10 minutes, sending a warning message:
+\end{itemize}
+
+\begin{lstlisting}[language=bash]
+sudo shutdown -r +10 "System will reboot in 10 minutes."
+\end{lstlisting}
+
+\begin{itemize}
+        \item Cancel a scheduled shutdown with:
+\end{itemize}
+
+\begin{lstlisting}[language=bash]
+sudo shutdown -c
+\end{lstlisting}
+
+\begin{itemize}
+        \item Use \textbf{systemctl} to reboot immediately: \texttt{systemctl reboot}.
+    \end{itemize}
+    \item \textbf{Sending Warnings}
+    \begin{itemize}
+        \item Open a second terminal and log in as a test user.
+        \item From the admin terminal, run:
+\end{itemize}
+
+\begin{lstlisting}[language=bash]
+wall "Warning! System moving to single-user mode in 1 minute."
+\end{lstlisting}
+
+\begin{itemize}
+        \item Confirm the message appears in the other terminal.
+    \end{itemize}
+\end{enumerate}
+
+\section*{Summary}
+\begin{itemize}
+    \item \textbf{SysVinit} uses numbered runlevels (0–6), configured via \textbf{/etc/inittab}, and manages services in \textbf{/etc/init.d/}.
+    \item \textbf{systemd} uses \textbf{targets} and \textbf{units}, with \textbf{systemctl} providing service control and target isolation.
+    \item \textbf{Upstart} (historical) uses \textbf{initctl} and scripts in \textbf{/etc/init/}.
+    \item Shutting down, rebooting, or switching modes should alert current users (via \textbf{wall} or \textbf{shutdown}’s broadcast).
+    \item Proper runlevel/target configuration ensures the correct set of services starts at boot, maximizing system stability and user support.
+\end{itemize}
 
 %=======================================================
 % TOPIC 102: LINUX INSTALLATION AND PACKAGE MANAGEMENT
 %=======================================================
+
 \chapter{Topic 102: Linux Installation and Package Management}
 \section{102.1 Design hard disk layout}
 \textit{[Brief syllabus and questions to be added here]}
@@ -570,45 +1034,74 @@ Once Linux is running, device detection and configuration rely on the kernel and
 %-------------------------------------------------------
 % ANSWERS SECTION
 %-------------------------------------------------------
-\newpage
-\section*{Answers}
+\clearpage
 
-\subsection*{Multiple-Choice Questions (101.1)}
+\chapter*{Answers} 
+\addcontentsline{toc}{chapter}{Answers} 
+
+%=======================================================
+% ANSWERS FOR TOPIC 101
+%=======================================================
+\section*{Topic 101: System Architecture}
+\addcontentsline{toc}{section}{Topic 101: System Architecture}
+
+\subsection*{101.1 Determine and Configure Hardware Settings}
+\subsubsection*{Multiple-Choice Questions (101.1)}
 \begin{enumerate}[1.]
-\item A
-\item C
-\item D
-\item B
-\item A
-\item B
-\item C
-\item A
-\item C
-\item B
-\item B
-\item C
-\item C
-\item D
-\item B
-\item C
-\item C
-\item C
-\item D
-\item C
+    \item A
+    \item C
+    \item D
+    \item B
+    \item A
+    \item B
+    \item C
+    \item A
+    \item C
+    \item B
+    \item B
+    \item C
+    \item C
+    \item D
+    \item B
+    \item C
+    \item C
+    \item C
+    \item D
+    \item C
+    \end{enumerate}
+
+\subsubsection*{Fill-in-the-Blank Questions (101.1)}
+\begin{enumerate}[1.]
+    \item BIOS
+    \item lsmod
+    \item driver
+    \item udev
+    \item /proc
+    \item BIOS
+    \item SCSI
+    \item modprobe
+    \item /etc/modprobe.d
+    \item lsusb
+    \end{enumerate}
+
+\subsection*{101.2 Boot the System}
+\subsubsection*{Multiple-Choice Questions (101.2)}
+
+\begin{enumerate}[1.]
+    \item \textbf{D}
+    \item \textbf{A}
+    \item \textbf{C}
+    \item \textbf{B}
+    \item \textbf{A}
 \end{enumerate}
 
-\subsection*{Fill-in-the-Blank Questions (101.1)}
+\subsubsection*{Fill-in-the-Blank Questions (101.2)}
 \begin{enumerate}[1.]
-\item BIOS
-\item lsmod
-\item driver
-\item udev
-\item /proc
-\item BIOS
-\item SCSI
-\item modprobe
-\item /etc/modprobe.d
-\item lsusb
+    \item \textbf{kernel}
+    \item \textbf{grub}
+    \item \textbf{/boot}
+    \item \textbf{initrd}
+    \item \textbf{systemd}
 \end{enumerate}
 
 \end{document}
