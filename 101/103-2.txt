@@ -1,0 +1,288 @@
+103.2
+
+1- Which command reads from standard input if no file is specified and echoes the input to standard output?
+
+A) grep
+B) tail
+C) sed
+D) cat
+
+-> D) cat
+
+==============================================
+
+2- Which redirection operator creat or overwrites a file with the output of a command?
+
+A) >
+B) >>
+C) |
+D) &>
+
+-> A) >
+
+==============================================
+
+3- Which command can be used to display specific lines that match a pattern in a text file, ignoring case differences when the -i option is used?
+
+A) sort
+B) head
+C) grep
+D) md5sum
+
+-> C) grep
+
+==============================================
+
+4- Which command is commonly used to paginate output, allowing you to scroll through text using the arrow keys?
+
+A) less
+B) cat
+C) nl
+D) tail
+
+-> A) less
+
+==============================================
+
+5- Which command show only the last ten lines of a file by default?
+
+A) head
+B) tail
+C) cut
+D) split
+
+-> B) tail
+
+==============================================
+
+6- Which command can be used to henerate or check the cryptographic integrity of a file using MD5 hashing?
+
+A) md5sum
+B) sha256sum
+C) sha512sum
+D) od
+
+-> A) md5sum
+
+==============================================
+
+7- Which command is considered a stream editor that can filter and transform text, including find-and-replace operations?
+
+A) nl
+B) wc
+C) uniq
+D) sed
+
+-> D) sed
+
+==============================================
+
+8- Which command can be used to displat a file in octal ot hexadecimal representation (helpful for debugging)?
+
+A) less
+B) paste
+C) od
+D) zcat
+
+-> C) od
+
+==============================================
+
+9- If you want to append the output of a command to an existing file (without overwriting), which redirection operator should you use?
+
+A) >
+B) &>
+C) 2>
+D) >>
+
+-> D) >>
+
+==============================================
+
+10- Which command, by default, displays the first 10 line of a file?
+
+A) tail
+B) wc
+C) head
+D) cut
+
+-> C) head
+
+==============================================
+
+11- Which command is used to decompress and display the content of a .gz file without explicitly creating an uncompressed file?
+
+A) gzip
+B) bzcat
+C) xzcat
+D) zcat
+
+-> D) zcat
+
+==============================================
+
+12- Which option with gzip activates vervose mode to show what is happening during compression?
+
+A) -v
+B) -n
+C) -c
+D) -q
+
+-> A) -v
+
+==============================================
+
+13- Which command can enumerate lines of output (by placing a line number at the befinning of each line)?
+
+A) wc
+B) nl
+C) sed
+D) sha512sum
+
+-> B) nl
+
+==============================================
+
+14- Which cammand can merge lines from multiple files side-by-side into columns?
+
+A) sort
+B) uniq
+C) paste
+D) split
+
+-> C) paste
+
+==============================================
+
+15- Which command is commonly used to sort lines of text in alphabetical or numerical order?
+
+A) split
+B) sort
+C) tr
+D) nl
+
+-> B) sort
+
+==============================================
+
+16- Which command is used to transform or translate characters from standard input (for example, converting uppercase to lowecase)?
+
+A) od
+B) cat
+C) tr
+D) head
+
+-> C) tr
+
+==============================================
+
+17- Which tool can be used to verify file integrity using an SHA-256 hash?
+
+A) sha256sum
+B) zcat
+C) md5sum
+D) tail
+
+-> A) sha256sum
+
+==============================================
+
+18- Which of these commands decompresses a file using the bzip2 algorithm and sends its content to standaed outbut?
+
+A) zcat
+B) bzcat
+C) sha512sum
+D) nl
+
+-> B) bzcat
+
+==============================================
+
+19- Which of the following commands will remove duplicate lines from a sorted list?
+
+A) paste
+B) uniq
+C) od
+D) grep
+
+-> B) uniq
+
+==============================================
+
+20- Which command is used to split large files into smaller parts?
+
+A) tr
+B) md5sum
+C) nl
+D) split
+
+-> D) split
+
+==============================================
+==============================================
+
+FILL-IN-THE-BLACK QUESTIONS
+
+==============================================
+
+1- When you use the command _____ ftu.txt.gz, it will decompress and display the file's contents on the screen without vreating an uncompressed file.
+
+-> zcat
+
+==============================================
+
+2- The command _____ can be used to extract lines from a file that match a given pattern, and it supports the -i option for case-insensitive searches.
+
+-> grep
+
+==============================================
+
+3- By deafult, _____ shows the first ten lines of a file, whereas tail shows the last ten lines.
+
+-> head
+
+==============================================
+
+4- The command _____ can perform in-place edits on a file when combined with the -i option, and it is known as a stream editor.
+
+-> sed
+
+==============================================
+
+5- Using > myfile redirects the standaed output of a command to a file, whereas _____ myfile appends it wihout overweiting.
+
+-> >>
+
+==============================================
+
+6- The command _____ computes a 128-bit ceyprographic hash value of a file, often displayed as a 32-character hexadecimal number.
+
+-> md5sum
+
+==============================================
+
+7- Typing cat ftu.txt | _____ 'this' will output lines containing "this" in the file, ignoring character-case differences if the -i switch is used.
+
+-> grep
+
+==============================================
+
+8- The command _____ can be used to paginate output one screen at a time, allowing you to sxroll using arrow keys or vi-like shortcuts.
+
+-> less
+
+==============================================
+
+9- To display the contents of a compressed file created by bzip2 without decompressing it to disk you should use the _____ command.
+
+-> bzcat
+
+==============================================
+
+10- When you run _____ -c sha256.txt, it compares the saved SHA256 sum with the current file's hash value to verify data integrity.
+
+-> sha256sum
+
+==============================================
+
+
