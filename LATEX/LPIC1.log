@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.8.31)  2 JAN 2025 01:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.8.31)  3 JAN 2025 01:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -374,7 +374,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.31 ...er Interfaces and Desktops}{27}{chapter.6}
+l.31 ...er Interfaces and Desktops}{39}{chapter.6}
                                                   % [1
 
 ])
@@ -396,75 +396,75 @@ Overfull \hbox (7.73854pt too wide) in paragraph at lines 179--180
 []\T1/cmr/m/n/12 Newer ker-nels use \T1/cmtt/m/n/12 sd \T1/cmr/m/n/12 pre-fix for most disks; par-ti-tions are num-bered (\T1/cmtt/m/n/12 /dev/sda1\T1/cmr/m/n/12 ). 
  []
 
-[5] [6] [7] [8] [9] [10] [11] [12] [13]
-Overfull \hbox (44.23141pt too wide) in paragraph at lines 555--556
+[5] [6] [7] [8] [9] [10] [11] [12] [13] [14]
+Overfull \hbox (44.23141pt too wide) in paragraph at lines 556--557
 []\T1/cmr/m/n/12 Traditional log files also found in \T1/cmtt/m/n/12 /var/log/\T1/cmr/m/n/12 , e.g., \T1/cmtt/m/n/12 /var/log/messages \T1/cmr/m/n/12 or \T1/cmtt/m/n/12 /var/log/syslog\T1/cmr/m/n/12 . 
  []
 
-[14]
-Overfull \hbox (13.74203pt too wide) in paragraph at lines 596--597
+[15]
+Overfull \hbox (13.74203pt too wide) in paragraph at lines 597--598
 []\T1/cmr/m/n/12 Locate your initramfs file (com-monly in \T1/cmtt/m/n/12 /boot\T1/cmr/m/n/12 , e.g., \T1/cmtt/m/n/12 initramfs-<version>.img\T1/cmr/m/n/12 ). 
  []
 
-[15] [16] [17] [18] [19] [20] [21]
+[16] [17] [18] [19] [20] [21] [22] [23] [24] [25] [26] [27] [28] [29] [30] [31] [32]
 Chapter 2.
-[22
+[33
 
 ]
 Chapter 3.
-[23
+[34
 
-] [24]
+] [35]
 Chapter 4.
-[25
+[36
 
-] [26]
+] [37]
 Chapter 5.
-[27
+[38
 
 ]
 Chapter 6.
-[28
+[39
 
 ]
 Chapter 7.
-[29
+[40
 
 ]
 Chapter 8.
-[30
+[41
 
 ]
 Chapter 9.
-[31
+[42
 
 ]
 Chapter 10.
-[32
+[43
 
-] [33
+] [44
 
 
-] [34] (LPIC1.aux)
+] [45] [46] [47] [48] (LPIC1.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
 Package rerunfilecheck Info: File `LPIC1.out' has not changed.
-(rerunfilecheck)             Checksum: 495E9BB1553244DBCAFBC112214E4A99;13676.
+(rerunfilecheck)             Checksum: 9F0072F925FDD358361756FC2BD9A31A;13676.
  ) 
 Here is how much of TeX's memory you used:
- 12705 strings out of 474486
- 187671 string characters out of 5744227
+ 12996 strings out of 474486
+ 190006 string characters out of 5744227
  1976542 words of memory out of 5000000
  34488 multiletter control sequences out of 15000+600000
  571223 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,5n,79p,500b,1370s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1440.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk>
-Output written on LPIC1.pdf (35 pages, 298930 bytes).
+Output written on LPIC1.pdf (49 pages, 359204 bytes).
 PDF statistics:
- 1256 PDF objects out of 1440 (max. 8388607)
- 354 named destinations out of 1000 (max. 500000)
+ 1670 PDF objects out of 1728 (max. 8388607)
+ 645 named destinations out of 1000 (max. 500000)
  433 words of extra memory for PDF output out of 10000 (max. 10000000)
 
