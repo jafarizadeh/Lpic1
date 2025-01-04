@@ -1,0 +1,288 @@
+103.4
+
+What file descriptor corresponds to standard output in Linux?
+
+A) 0
+B) 2
+C) 1
+D) 3
+
+-> C) 1
+
+==============================================
+
+2- Which special file represents standard error in Linux?
+
+A) /dev/stdin
+B) /dev/stdout
+C) /dev/stderr
+D) /dev/null
+
+-> C) /dev/stderr
+
+==============================================
+
+3- How can you redirect standard output to a file in Linux?
+
+A) 2>
+B) >
+C) 1>
+D) <<EOF
+
+-> B >
+
+==============================================
+
+4- What does 2>&1 achieve in a shell command?
+
+A) Redirects stdout to a file
+B) Appends stderr to a file
+C) Discards stderr output
+D) Redirects stderr to stdout
+
+-> D) Redirects stderr to stdout
+
+==============================================
+
+5- Which command can redirect the output of one command as arguments to another?
+
+A) xargs
+B) tee
+C) uniq
+D) wc
+
+-> A) xargs
+
+==============================================
+
+6- What is the purpose of /dev/null in Linux?
+
+A) Save debug messages
+B) Discard unwanted output
+C) Combine stdout and stderr
+D) Parse error messages
+
+-> B) Discard unwanted output
+
+==============================================
+
+7- Which symbol is used to append data to an existing file in Linux?
+
+A) >
+B) >>
+C) <
+D) |
+
+-> B) >>
+
+==============================================
+
+8- Which command displays repeated lines in a file along with their count?
+
+A) wc
+B) unic -c
+C) tee
+D) cat
+
+-> B) uniq -c
+
+==============================================
+
+9- How can you avoid overwriting files with redirection in Bash?
+
+A) Enable the noclobber option
+B) Use the > sybol carefully
+C) Append redirections always
+D) Use /dev/null
+
+-> A) Enable the noclobber option
+
+==============================================
+
+10- Which redirection sends both stdout and stderr to the same target?
+
+A) &>
+B) 1>
+C) 2>
+D) <
+
+-> A) &>
+
+==============================================
+
+11- What happends if you redirect stdout to a directory?
+
+A) The directory is overwritten
+B) Bash creates a new file
+C) The process fails without error
+D) An error message is displayed
+
+-> D) An error message is displayed
+
+==============================================
+
+12- How do you write multi-line input direcrly to stdin of a command?
+
+A) <<<
+B) 1<<
+C) /dev/stdin
+D) <<EOF
+
+-> D) <<EOF
+
+==============================================
+
+13- What character is used to specify a file descriptor when redirecting output?
+
+A) A number
+B) A tilde (~)
+C) A hyphen (-)
+D) An amprersand (&)
+
+-> A) A number
+
+==============================================
+
+14- Which redirection allows input from a single string?
+
+A) >>
+B) <<
+C) <<<
+D) 2>
+
+-> C) <<<
+
+==============================================
+
+15- In the command cat /tmp/error.txt >>log.txt, when is the function of >>?
+
+A) Overwrites log.txt
+B) Combines stderr and stdout
+C) Appends to log.txt
+D) Redirects input
+
+-> C) Appends to log.txt
+
+==============================================
+
+16- Which command allows simultaneous writing to stdout and a file?
+
+A) uniq
+B) tee
+C) wc
+D) cat
+
+-> B) tee
+
+==============================================
+
+17- How do you specify the noclobber option for a single session in Bash?
+
+A) Set -o noclobber
+B) enable noclobber
+C) noclobber on
+D) bash --noclobber
+
+-> Set -o noclobber
+
+==============================================
+
+18- What happend if a file descriptor is redirected to itself?
+
+A) The poeration fails silently 
+B) It causes an infinite loop
+C) No data flows
+D) It works normally
+
+-> D) It works normally
+
+==============================================
+
+19- What symbol combines stdout and stderr for redirection?
+
+A) >>
+B) <
+C) |
+D) &>
+
+-> D) &>
+
+==============================================
+
+20- What command can redirect the output of one command to be used as stdin for another?
+
+A) uniq
+B) tee
+C) xarg
+D) wc
+
+-> C) xarg
+
+==============================================
+==============================================
+
+FILL-IN-THE-BLACK QUESTIONS
+
+==============================================
+
+1- The file descriptor for standard error in Linux is represented by the number _____.
+
+-> 2
+
+==============================================
+
+2- The _____ command allows the output of a command to be written to both a file and the standard output simultaneously.
+
+-> tee
+
+==============================================
+
+3- To redirect both standard output and standard error to a file, the operator _____ can be used.
+
+-> &>
+
+==============================================
+
+4- In a Bash shell, the _____ file is used to discard unwanted output permanently.
+
+-> /dev/null
+
+==============================================
+
+5- To append output to an existing file without overwriting is content, use the _____redirection operator.
+
+-> >>
+
+==============================================
+
+6- The special character _____ is used to redirect input from a file to the standard input of a command.
+
+-> <
+
+==============================================
+
+7- The Here Document redirection syntax vegins with _____ followed by an ending term like EOF.
+
+-> <<
+
+==============================================
+
+8- The _____ command is commonly used to process standaed input data line by line, applying filters or transformations.
+
+-> uniq
+
+==============================================
+
+9- Enabling the _____ option in Bash prevents output redirection from overwriting existing files
+
+-> noclobber
+
+==============================================
+
+10- A file descriptor can be used for both input and output by using the redirection syntax _____.
+
+-> <>
+
+==============================================
+
+
