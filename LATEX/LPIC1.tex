@@ -1281,191 +1281,187 @@ wall "Warning! System moving to single-user mode in 1 minute."
 \section*{102.1 Design Hard Disk Layout}
 \addcontentsline{toc}{section}{102.1 Design Hard Disk Layout}
 
-\textbf{Reference to LPI Objectives:}  
+
+\subsection*{Reference to LPI Objectives:}
 \begin{itemize}
-    \item \textbf{LPIC-1 v5, Exam 102, Objective 102.1}  
-    \item \textbf{Weight:} 2  
+    \item \textbf{LPIC-1 v5, Exam 102, Objective 102.1}
+    \item \textbf{Weight:} 2
 \end{itemize}
 
 \subsection*{Key Knowledge Areas}
 \begin{itemize}
-    \item Allocating filesystems and swap space to separate partitions or disks.  
-    \item Tailoring the partitioning scheme to system usage.  
-    \item Understanding /boot or EFI System Partition requirements for booting.  
+    \item Allocating filesystems and swap space to separate partitions or disks.
+    \item Tailoring the partitioning scheme to system usage.
+    \item Understanding \texttt{/boot} or EFI System Partition requirements for booting.
     \item Basic familiarity with LVM (Logical Volume Manager).
 \end{itemize}
 
 \subsection*{Important Terms and Utilities}
 \begin{itemize}
-    \item \textbf{/ (root)}, \textbf{/boot}, \textbf{/home}, \textbf{/var}  
-    \item \textbf{EFI System Partition (ESP)}  
-    \item \textbf{swap}  
-    \item \textbf{mount points} (e.g., \texttt{/mnt}, \texttt{/media/USER/LABEL})  
-    \item \textbf{partitions} and \textbf{logical volumes}  
+    \item \texttt{/ (root)}, \texttt{/boot}, \texttt{/home}, \texttt{/var}
+    \item \textbf{EFI System Partition (ESP)}
+    \item \textbf{swap}
+    \item \textbf{mount points} (e.g., \texttt{/mnt}, \texttt{/media/USER/LABEL})
+    \item \textbf{partitions} and \textbf{logical volumes}
     \item \textbf{LVM} (Physical Volumes, Volume Groups, Logical Volumes)
 \end{itemize}
-
-
 
 \section*{Lesson Overview}
 
 Designing an effective disk layout is critical for system stability, performance, and ease of administration. You must understand partitions, filesystems, mount points, swap, and how LVM can simplify storage allocation.
 
-
-
 \section*{1. Partitions, Filesystems, and Mount Points}
 
-\subsection*{1.1 Partitions}
-\begin{itemize}
-    \item Logical “fences” on a disk; each partition has its own filesystem.  
-    \item Partition information is stored in the \textbf{partition table}.  
-    \item Partitions \textbf{cannot} span multiple disks (unless using LVM or RAID).  
-\end{itemize}
-
-\subsection*{1.2 Filesystems}
-\begin{itemize}
-    \item Define how data is organized in directories, files, and metadata.  
-    \item Must be \textbf{mounted} on a mount point (e.g., \texttt{/mnt/mydata}).  
-\end{itemize}
-
-\subsection*{1.3 Mount Points}
-\begin{itemize}
-    \item Directory where a filesystem is attached.  
-    \item Common directories:  
+\begin{enumerate}
+    \item \textbf{Partitions}
     \begin{itemize}
-        \item \textbf{/mnt/} – traditional manual mount point.  
-        \item \textbf{/media/} – automatic mounting of removable media.  
+        \item Logical “fences” on a disk; each partition has its own filesystem.
+        \item Partition information is stored in the \textbf{partition table}.
+        \item Partitions \textbf{cannot} span multiple disks (unless using LVM or RAID).
     \end{itemize}
-    \item Existing contents of a mount point become hidden while another filesystem is mounted.
-\end{itemize}
 
+    \item \textbf{Filesystems}
+    \begin{itemize}
+        \item Define how data is organized in directories, files, and metadata.
+        \item Must be \textbf{mounted} on a mount point (e.g., \texttt{/mnt/mydata}).
+    \end{itemize}
 
+    \item \textbf{Mount Points}
+    \begin{itemize}
+        \item Directory where a filesystem is attached.
+        \item Common directories:
+        \begin{itemize}
+            \item \texttt{/mnt/} – traditional manual mount point.
+            \item \texttt{/media/} – automatic mounting of removable media.
+        \end{itemize}
+        \item Existing contents of a mount point become hidden while another filesystem is mounted.
+    \end{itemize}
+\end{enumerate}
 
 \section*{2. Recommended Partitions and Their Uses}
 
-\subsection*{2.1 Root Partition (/)}
-\begin{itemize}
-    \item Base of the Linux directory structure.  
-    \item Typically holds OS binaries and system config if not separated elsewhere.
-\end{itemize}
+\begin{enumerate}
+    \item \textbf{Root Partition (\texttt{/})}
+    \begin{itemize}
+        \item Base of the Linux directory structure.
+        \item Typically holds OS binaries and system config if not separated elsewhere.
+    \end{itemize}
 
-\subsection*{2.2 /boot or EFI System Partition (ESP)}
-\begin{itemize}
-    \item \textbf{/boot} stores bootloader files (kernel images, initramfs, GRUB).  
-    \item ESP is used on UEFI systems (formatted as FAT).  
-    \item Usually 200–300 MB in size is sufficient for either.  
-    \item Keeping boot files separate can help ensure the system can still boot if root is damaged.
-\end{itemize}
+    \item \textbf{\texttt{/boot} or EFI System Partition (ESP)}
+    \begin{itemize}
+        \item \texttt{/boot} stores bootloader files (kernel images, initramfs, GRUB).
+        \item ESP is used on UEFI systems (formatted as FAT).
+        \item Usually 200–300 MB in size is sufficient for either.
+        \item Keeping boot files separate can help ensure the system can still boot if root is damaged.
+    \end{itemize}
 
-\subsection*{2.3 /home}
-\begin{itemize}
-    \item Houses users’ personal files and preferences.  
-    \item Separating \textbf{/home} allows OS reinstallation without erasing user data.  
-    \item Size depends on user data and expected usage.
-\end{itemize}
+    \item \textbf{\texttt{/home}}
+    \begin{itemize}
+        \item Houses users’ personal files and preferences.
+        \item Separating \texttt{/home} allows OS reinstallation without erasing user data.
+        \item Size depends on user data and expected usage.
+    \end{itemize}
 
-\subsection*{2.4 /var}
-\begin{itemize}
-    \item Contains variable data: logs (\texttt{/var/log}), caches (\texttt{/var/cache}), temp data (\texttt{/var/tmp}), etc.  
-    \item On servers, \textbf{/var} can grow significantly (e.g., web or database data).  
-    \item Putting \textbf{/var} on a separate partition (or disk) improves stability and prevents root from filling up.
-\end{itemize}
+    \item \textbf{\texttt{/var}}
+    \begin{itemize}
+        \item Contains variable data: logs (\texttt{/var/log}), caches (\texttt{/var/cache}), temp data (\texttt{/var/tmp}), etc.
+        \item On servers, \texttt{/var} can grow significantly (e.g., web or database data).
+        \item Putting \texttt{/var} on a separate partition (or disk) improves stability and prevents root from filling up.
+    \end{itemize}
 
-\subsection*{2.5 Swap}
-\begin{itemize}
-    \item Extension of RAM to disk; cannot be mounted as a normal directory.  
-    \item Often sized according to usage (e.g., old rule was 2×RAM; modern guidelines vary).  
-    \item Consider \textbf{hibernation} requirements (swap $\geq$ RAM if hibernation is used).
-\end{itemize}
-
-
+    \item \textbf{Swap}
+    \begin{itemize}
+        \item Extension of RAM to disk; cannot be mounted as a normal directory.
+        \item Often sized according to usage (e.g., old rule was 2×RAM; modern guidelines vary).
+        \item Consider \textbf{hibernation} requirements (swap $\geq$ RAM if hibernation is used).
+    \end{itemize}
+\end{enumerate}
 
 \section*{3. LVM (Logical Volume Manager)}
 
-\subsection*{3.1 Overview}
-\begin{itemize}
-    \item Provides flexible “virtual” partitions called \textbf{Logical Volumes (LVs)}.  
-    \item \textbf{Physical Volumes (PVs)} $\rightarrow$ grouped into \textbf{Volume Groups (VGs)} $\rightarrow$ split into \textbf{Logical Volumes (LVs)}.  
-    \item LVM allows resizing or adding storage more easily than traditional partitions.
-\end{itemize}
-
-\subsection*{3.2 Advantages}
-\begin{itemize}
-    \item \textbf{Ease of extension}: add space without reformatting or migrating data.  
-    \item \textbf{Abstracts} underlying physical disks.  
-    \item Logical volumes appear in \texttt{/dev/VG\_NAME/LV\_NAME}.
-\end{itemize}
-
-\subsection*{3.3 Basic Workflow (High-level)}
 \begin{enumerate}
-    \item Create or identify a \textbf{partition} (or entire disk) as a PV (\texttt{pvcreate /dev/sdaX}).  
-    \item Combine PVs into a \textbf{Volume Group} (\texttt{vgcreate MYVG /dev/sdaX}).  
-    \item Create a \textbf{Logical Volume} (\texttt{lvcreate -L 20G -n MYSERVICELV MYVG}).  
-    \item Format LV with a filesystem (\texttt{mkfs.ext4 /dev/MYVG/MYSERVICELV}).  
-    \item Mount where desired (\texttt{/etc/fstab} entry or \texttt{mount} command).
+    \item \textbf{Overview}
+    \begin{itemize}
+        \item Provides flexible “virtual” partitions called \textbf{Logical Volumes (LVs)}.
+        \item \textbf{Physical Volumes (PVs)} $\to$ grouped into \textbf{Volume Groups (VGs)} $\to$ split into \textbf{Logical Volumes (LVs)}.
+        \item LVM allows resizing or adding storage more easily than traditional partitions.
+    \end{itemize}
+
+    \item \textbf{Advantages}
+    \begin{itemize}
+        \item \textbf{Ease of extension:} add space without reformatting or migrating data.
+        \item \textbf{Abstracts} underlying physical disks.
+        \item Logical volumes appear in \texttt{/dev/VG\_NAME/LV\_NAME}.
+    \end{itemize}
+
+    \item \textbf{Basic Workflow (High-level)}
+    \begin{enumerate}
+        \item Create or identify a \textbf{partition} (or entire disk) as a PV (\texttt{pvcreate /dev/sdaX}).
+        \item Combine PVs into a \textbf{Volume Group} (\texttt{vgcreate MYVG /dev/sdaX}).
+        \item Create a \textbf{Logical Volume} (\texttt{lvcreate -L 20G -n MYSERVICELV MYVG}).
+        \item Format LV with a filesystem (\texttt{mkfs.ext4 /dev/MYVG/MYSERVICELV}).
+        \item Mount where desired (\texttt{/etc/fstab} entry or \texttt{mount} command).
+    \end{enumerate}
 \end{enumerate}
-
-
 
 \section*{Workbook Exercises}
 
 \begin{enumerate}
-    \item \textbf{Plan a Basic Partition Scheme}  
+    \item \textbf{Plan a Basic Partition Scheme}
     \begin{itemize}
-        \item Imagine you have a 500 GB disk for a personal workstation.  
-        \item Sketch out your proposed partition table: \texttt{/boot} (300 MB), root (\texttt{/}), \texttt{/home}, \texttt{/var}, and swap.  
+        \item Imagine you have a 500 GB disk for a personal workstation.
+        \item Sketch out your proposed partition table: \texttt{/boot} (300 MB), root (\texttt{/}), \texttt{/home}, \texttt{/var}, and swap.
         \item Consider sizes for each partition and justify your choices.
     \end{itemize}
 
-    \item \textbf{Identify ESP/BIOS Partitions}  
+    \item \textbf{Identify ESP/BIOS Partitions}
     \begin{itemize}
-        \item On a UEFI-based system, locate and identify the \textbf{EFI System Partition} (\texttt{/boot/efi}).  
-        \item Check partition type using \texttt{gdisk -l /dev/sda} or \texttt{fdisk -l /dev/sda}.  
+        \item On a UEFI-based system, locate and identify the \textbf{EFI System Partition} (\texttt{/boot/efi}).
+        \item Check partition type using \texttt{gdisk -l /dev/sda} or \texttt{fdisk -l /dev/sda}.
         \item Verify its filesystem (FAT-based) with \texttt{lsblk -f} or \texttt{blkid}.
     \end{itemize}
 
-    \item \textbf{Decide on Swap Size}  
+    \item \textbf{Decide on Swap Size}
     \begin{itemize}
-        \item If your system has 8 GB of RAM, use Red Hat’s guidelines to propose a recommended swap size.  
+        \item If your system has 8 GB of RAM, use Red Hat’s guidelines to propose a recommended swap size.
         \item If planning hibernation, recalculate.
     \end{itemize}
 
-    \item \textbf{Mount Points}  
+    \item \textbf{Mount Points}
     \begin{itemize}
-        \item Create a directory \texttt{/mnt/testmount}.  
-        \item Using an existing spare partition (or loopback device), manually mount it on \texttt{/mnt/testmount}.  
+        \item Create a directory \texttt{/mnt/testmount}.
+        \item Using an existing spare partition (or loopback device), manually mount it on \texttt{/mnt/testmount}.
         \item Verify it is mounted with \texttt{mount | grep /mnt/testmount}.
     \end{itemize}
 
-    \item \textbf{LVM Planning}  
+    \item \textbf{LVM Planning}
     \begin{itemize}
-        \item Using a virtual environment with two disks, plan an LVM layout:  
+        \item Using a virtual environment with two disks, plan an LVM layout:
         \begin{enumerate}
-            \item Convert one partition from each disk into PVs.  
-            \item Create a Volume Group that spans both.  
-            \item Create one or more Logical Volumes for \texttt{/data}.  
+            \item Convert one partition from each disk into PVs.
+            \item Create a Volume Group that spans both.
+            \item Create one or more Logical Volumes for \texttt{/data}.
         \end{enumerate}
         \item Write down how you will format and mount \texttt{/data}.
     \end{itemize}
 
-    \item \textbf{Storage Scenarios}  
+    \item \textbf{Storage Scenarios}
     \begin{itemize}
-        \item You run out of disk space on \texttt{/home}. What steps can you take with LVM to add more space?  
+        \item You run out of disk space on \texttt{/home}. What steps can you take with LVM to add more space?
         \item If \texttt{/var} was not separated and you frequently run out of space due to logs, how might you redesign?
     \end{itemize}
 \end{enumerate}
 
-
-
 \section*{Summary}
 
 \begin{itemize}
-    \item \textbf{Partitions} define logical divisions of a disk, while \textbf{filesystems} define how data is stored.  
-    \item Strategic partitioning improves \textbf{stability, security, and maintenance} (e.g., \texttt{/boot}, \texttt{/home}, \texttt{/var} separate).  
-    \item \textbf{UEFI} systems require an \textbf{EFI System Partition (ESP)}; BIOS systems may benefit from a separate \texttt{/boot}.  
-    \item Adequate \textbf{swap} is essential; guidelines depend on RAM, system usage, and whether hibernation is used.  
-    \item \textbf{LVM} adds flexibility for resizing and pooling storage among multiple physical disks.  
+    \item \textbf{Partitions} define logical divisions of a disk, while \textbf{filesystems} define how data is stored.
+    \item Strategic partitioning improves \textbf{stability, security, and maintenance} (e.g., \texttt{/boot}, \texttt{/home}, \texttt{/var} separate).
+    \item \textbf{UEFI} systems require an \textbf{EFI System Partition (ESP)}; BIOS systems may benefit from a separate \texttt{/boot}.
+    \item Adequate \textbf{swap} is essential; guidelines depend on RAM, system usage, and whether hibernation is used.
+    \item \textbf{LVM} adds flexibility for resizing and pooling storage among multiple physical disks.
 \end{itemize}
+
 
 %-------------------------------------------------------
 % Multiple-Choice Questions for (102.1)
@@ -1484,245 +1480,236 @@ Designing an effective disk layout is critical for system stability, performance
 \section*{102.2 Install a Boot Manager}
 \addcontentsline{toc}{section}{102.2 Install a Boot Manager}
 
-\textbf{Reference to LPI Objectives:}  
+\subsection*{Reference to LPI Objectives:}
 \begin{itemize}
-    \item \textbf{LPIC-1 v5, Exam 102, Objective 102.2}  
-    \item \textbf{Weight:} 2  
+    \item \textbf{LPIC-1 v5, Exam 102, Objective 102.2}
+    \item \textbf{Weight:} 2
 \end{itemize}
 
 \subsection*{Key Knowledge Areas}
 \begin{itemize}
-    \item Providing alternate or backup boot options.  
-    \item Installing and configuring boot loaders (GRUB Legacy, GRUB 2).  
-    \item Performing basic GRUB 2 configuration changes.  
+    \item Providing alternate or backup boot options.
+    \item Installing and configuring boot loaders (GRUB Legacy, GRUB 2).
+    \item Performing basic GRUB 2 configuration changes.
     \item Interacting with the boot loader at startup.
 \end{itemize}
 
 \subsection*{Important Files, Terms, and Utilities}
 \begin{itemize}
-    \item \textbf{MBR} (Master Boot Record)  
-    \item \texttt{/boot} directory or partition (often containing GRUB files, kernels, initrd)  
-    \item \texttt{menu.lst}, \texttt{grub.cfg}, and \texttt{grub.conf}  
-    \item \texttt{grub-install}, \texttt{grub-mkconfig} (or \texttt{update-grub})  
+    \item \textbf{MBR} (Master Boot Record)
+    \item \texttt{/boot} directory or partition (often containing GRUB files, kernels, initrd)
+    \item \texttt{menu.lst}, \texttt{grub.cfg}, and \texttt{grub.conf}
+    \item \texttt{grub-install}, \texttt{grub-mkconfig} (or \texttt{update-grub})
     \item \textbf{chainloading} (for non-Linux OS, e.g., Windows)
 \end{itemize}
-
-
 
 \section*{Lesson Overview}
 
 A system’s boot loader is the first software executed when a machine powers on. On Linux, this is typically \textbf{GRUB} (either Legacy or GRUB 2). GRUB loads the kernel and passes control to it. Having a working knowledge of installing and configuring GRUB is essential for system recovery and customizing boot behavior.
 
-
-
 \section*{1. GRUB Legacy vs. GRUB 2}
 
-\subsection*{1.1 GRUB Legacy}
-\begin{itemize}
-    \item Older, no longer actively developed (last release 0.97 from 2005).  
-    \item Configuration file: \texttt{/boot/grub/menu.lst} (sometimes \texttt{grub.conf}).  
-    \item Simpler configuration, fewer features.
-\end{itemize}
-
-\subsection*{1.2 GRUB 2}
-\begin{itemize}
-    \item Complete rewrite, default on most modern distributions.  
-    \item Configuration files:  
+\begin{enumerate}
+    \item \textbf{GRUB Legacy}
     \begin{itemize}
-        \item \texttt{/etc/default/grub} (main user-editable file)  
-        \item \texttt{/boot/grub/grub.cfg} (auto-generated, do not edit manually)  
+        \item Older, no longer actively developed (last release 0.97 from 2005).
+        \item Configuration file: \texttt{/boot/grub/menu.lst} (sometimes \texttt{grub.conf}).
+        \item Simpler configuration, fewer features.
     \end{itemize}
-    \item More modular, supports more filesystems, better scripting, theming, etc.
-\end{itemize}
 
-
+    \item \textbf{GRUB 2}
+    \begin{itemize}
+        \item Complete rewrite, default on most modern distributions.
+        \item Configuration files:
+        \begin{itemize}
+            \item \texttt{/etc/default/grub} (main user-editable file)
+            \item \texttt{/boot/grub/grub.cfg} (auto-generated, do not edit manually)
+        \end{itemize}
+        \item More modular, supports more filesystems, better scripting, theming, etc.
+    \end{itemize}
+\end{enumerate}
 
 \section*{2. Bootloader Locations and Partitions}
 
-\subsection*{2.1 MBR Partition Scheme}
-\begin{itemize}
-    \item Legacy layout where the first 512 bytes of the disk contain the MBR (boot code + partition table).  
-    \item Boot loader code often placed in MBR + post-MBR gap (32 KB) before the first partition.
-\end{itemize}
+\begin{enumerate}
+    \item \textbf{MBR Partition Scheme}
+    \begin{itemize}
+        \item Legacy layout where the first 512 bytes of the disk contain the MBR (boot code + partition table).
+        \item Boot loader code often placed in MBR + post-MBR gap (32 KB) before the first partition.
+    \end{itemize}
 
-\subsection*{2.2 GPT (GUID Partition Table)}
-\begin{itemize}
-    \item Modern layout for large disks (>2 TB).  
-    \item Requires a \textbf{BIOS boot partition} (for BIOS systems) or uses \textbf{EFI System Partition (ESP)} on UEFI systems.
-\end{itemize}
+    \item \textbf{GPT (GUID Partition Table)}
+    \begin{itemize}
+        \item Modern layout for large disks ($>$2 TB).
+        \item Requires a \textbf{BIOS boot partition} (for BIOS systems) or uses \textbf{EFI System Partition (ESP)} on UEFI systems.
+    \end{itemize}
 
-\subsection*{2.3 /boot Partition}
-\begin{itemize}
-    \item Often first partition on the disk, historically to avoid BIOS cylinder limits.  
-    \item Typically $\sim$300 MB in size, containing kernel images (\texttt{vmlinuz}), initrd, GRUB files, etc.  
-    \item Helps ensure boot files remain accessible (especially if \texttt{/} uses encryption or an unsupported filesystem).
-\end{itemize}
-
-
+    \item \textbf{/boot Partition}
+    \begin{itemize}
+        \item Often first partition on the disk, historically to avoid BIOS cylinder limits.
+        \item Typically $\sim$300 MB in size, containing kernel images (\texttt{vmlinuz}), initrd, GRUB files, etc.
+        \item Helps ensure boot files remain accessible (especially if \texttt{/} uses encryption or an unsupported filesystem).
+    \end{itemize}
+\end{enumerate}
 
 \section*{3. Installing GRUB 2}
 
-\subsection*{3.1 grub-install}
-\begin{itemize}
-    \item Installs GRUB 2 boot code onto a disk (e.g., \texttt{/dev/sda}) or EFI partition.  
-    \item Syntax examples:  
-    \begin{lstlisting}[language=bash]
-    grub-install --boot-directory=/boot /dev/sda
-    # or for a dedicated /boot partition mounted at /mnt/tmp:
-    grub-install --boot-directory=/mnt/tmp /dev/sda
-    \end{lstlisting}
-    \item Must point to the \textbf{disk} (e.g., \texttt{/dev/sda}), not a specific partition (unless UEFI requires otherwise).
-\end{itemize}
-
-\subsection*{3.2 Configuration}
-\begin{itemize}
-    \item \texttt{/etc/default/grub} – main file for user edits. Common parameters:  
+\begin{enumerate}
+    \item \textbf{\texttt{grub-install}}
     \begin{itemize}
-        \item \texttt{GRUB\_DEFAULT}: default menu entry (0-based index, or \texttt{saved}).  
-        \item \texttt{GRUB\_SAVEDEFAULT}: if set to \texttt{true} with \texttt{GRUB\_DEFAULT=saved}, boots the last-chosen entry.  
-        \item \texttt{GRUB\_TIMEOUT}: seconds before auto-booting the default. \texttt{-1} waits indefinitely.  
-        \item \texttt{GRUB\_CMDLINE\_LINUX}: universal kernel parameters (e.g., \texttt{quiet}, \texttt{splash}).  
+        \item Installs GRUB 2 boot code onto a disk (e.g., \texttt{/dev/sda}) or EFI partition.
+        \item Syntax examples:
+        \begin{lstlisting}[language=bash]
+grub-install --boot-directory=/boot /dev/sda
+# or for a dedicated /boot partition mounted at /mnt/tmp:
+grub-install --boot-directory=/mnt/tmp /dev/sda
+        \end{lstlisting}
+        \item Must point to the \textbf{disk} (e.g., \texttt{/dev/sda}), not a specific partition (unless UEFI requires otherwise).
     \end{itemize}
-    \item \texttt{grub-mkconfig} (or \texttt{update-grub}) generates \texttt{/boot/grub/grub.cfg} from the above file and scripts in \texttt{/etc/grub.d/}.  
-    \begin{lstlisting}[language=bash]
-    grub-mkconfig -o /boot/grub/grub.cfg
-    # or:
-    update-grub
-    \end{lstlisting}
-\end{itemize}
 
-\subsection*{3.3 Menu Entries}
-\begin{itemize}
-    \item Auto-discovered for Linux, other OS, or kernels.  
-    \item Custom entries often added to \texttt{/etc/grub.d/40\_custom}, then re-run \texttt{update-grub}.
-\end{itemize}
+    \item \textbf{Configuration}
+    \begin{itemize}
+        \item \texttt{/etc/default/grub} – main file for user edits. Common parameters:
+        \begin{itemize}
+            \item \texttt{GRUB\_DEFAULT}: default menu entry (0-based index, or \texttt{saved}).
+            \item \texttt{GRUB\_SAVEDEFAULT}: if set to \texttt{true} with \texttt{GRUB\_DEFAULT=saved}, boots the last-chosen entry.
+            \item \texttt{GRUB\_TIMEOUT}: seconds before auto-booting the default. \texttt{-1} waits indefinitely.
+            \item \texttt{GRUB\_CMDLINE\_LINUX}: universal kernel parameters (e.g., \texttt{quiet}, \texttt{splash}).
+        \end{itemize}
+        \item \texttt{grub-mkconfig} (or \texttt{update-grub}) generates \texttt{/boot/grub/grub.cfg} from the above file and scripts in \texttt{/etc/grub.d/}:
+        \begin{lstlisting}[language=bash]
+grub-mkconfig -o /boot/grub/grub.cfg
+# or:
+update-grub
+        \end{lstlisting}
+    \end{itemize}
 
-\subsection*{3.4 Interacting with GRUB 2}
-\begin{itemize}
-    \item \textbf{Boot Menu}: highlight an entry with arrow keys, press \texttt{e} to edit before booting.  
-    \item \textbf{Shell Mode}: press \texttt{c} to access \texttt{grub>} shell.  
-    \item \textbf{Rescue Shell} (\texttt{grub rescue>}): minimal commands, must \texttt{insmod} needed modules (e.g., \texttt{normal}, \texttt{linux}) if GRUB config is broken.
-\end{itemize}
+    \item \textbf{Menu Entries}
+    \begin{itemize}
+        \item Auto-discovered for Linux, other OS, or kernels.
+        \item Custom entries often added to \texttt{/etc/grub.d/40\_custom}, then re-run \texttt{update-grub}.
+    \end{itemize}
 
-
+    \item \textbf{Interacting with GRUB 2}
+    \begin{itemize}
+        \item \textbf{Boot Menu:} highlight an entry with arrow keys, press \textbf{e} to edit before booting.
+        \item \textbf{Shell Mode:} press \textbf{c} to access \texttt{grub>} shell.
+        \item \textbf{Rescue Shell} (\texttt{grub rescue>}): minimal commands, must \texttt{insmod} needed modules (e.g., \texttt{normal}, \texttt{linux}) if GRUB config is broken.
+    \end{itemize}
+\end{enumerate}
 
 \section*{4. GRUB Legacy (for Reference)}
 
-\subsection*{4.1 Installing}
-\begin{itemize}
-    \item Via \texttt{grub-install /dev/sda} (must specify the disk, not a partition).  
-    \item From GRUB Legacy shell:  
-    \begin{lstlisting}[language=bash]
-    grub> root (hd0,0)
-    grub> setup (hd0)
-    \end{lstlisting}
-    
-    \item \texttt{root (hd0,0)} means the first disk (\texttt{hd0}), first partition (\texttt{0}), if \texttt{/boot} is there.
-\end{itemize}
+\begin{enumerate}
+    \item \textbf{Installing}
+    \begin{itemize}
+        \item Via \texttt{grub-install /dev/sda} (must specify the disk, not a partition).
+        \item From GRUB Legacy shell:
+        \begin{lstlisting}[language=bash]
+grub> root (hd0,0)
+grub> setup (hd0)
+        \end{lstlisting}
+        \item \texttt{root (hd0,0)} means the first disk (\texttt{hd0}), first partition (\texttt{0}), if \texttt{/boot} is there.
+    \end{itemize}
 
-\subsection*{4.2 Configuration: /boot/grub/menu.lst}
-\begin{itemize}
-    \item Example menu entry:
-    \begin{lstlisting}[language=bash]
-    title My Linux
-    root (hd0,0)
-    kernel /vmlinuz root=/dev/hda1
-    initrd /initrd.img
-    \end{lstlisting}
-    
-    \item \texttt{chainloader +1} used to boot Windows or other OS by loading their own bootloader code.
-\end{itemize}
-
+    \item \textbf{Configuration: \texttt{/boot/grub/menu.lst}}
+    \begin{itemize}
+        \item Example menu entry:
+        \begin{lstlisting}
+title My Linux
+root (hd0,0)
+kernel /vmlinuz root=/dev/hda1
+initrd /initrd.img
+        \end{lstlisting}
+        \item \texttt{chainloader +1} used to boot Windows or other OS by loading their own bootloader code.
+    \end{itemize}
+\end{enumerate}
 
 \section*{5. Booting from the GRUB Shell}
 
 \begin{enumerate}
-    \item \textbf{Identify Partitions}: 
+    \item \textbf{Identify Partitions}:
     \begin{lstlisting}[language=bash]
-    grub> ls
-    (hd0) (hd0,msdos1)
-    \end{lstlisting} 
-     \begin{lstlisting}[language=bash]
-    
+grub> ls
+(hd0) (hd0,msdos1)
     \end{lstlisting}
-    \item \textbf{Set root} (example):  
+
+    \item \textbf{Set root} (example):
     \begin{lstlisting}[language=bash]
-    grub> set root=(hd0,msdos1)
+grub> set root=(hd0,msdos1)
     \end{lstlisting}
-    \item \textbf{Load Kernel \& Initrd} (GRUB 2 example):  
+
+    \item \textbf{Load Kernel \& Initrd} (GRUB 2 example):
     \begin{lstlisting}[language=bash]
-    grub> linux /vmlinuz root=/dev/sda1
-    grub> initrd /initrd.img
-    grub> boot
+grub> linux /vmlinuz root=/dev/sda1
+grub> initrd /initrd.img
+grub> boot
     \end{lstlisting}
+
     \item \textbf{Rescue Mode}: need to \texttt{set prefix=(hd0,msdos1)/boot/grub} and \texttt{insmod normal}, \texttt{insmod linux} before proceeding.
 \end{enumerate}
-
-
 
 \section*{Workbook Exercises}
 
 \begin{enumerate}
-    \item \textbf{Identify Boot Device}  
+    \item \textbf{Identify Boot Device}
     \begin{itemize}
-        \item Run \texttt{fdisk -l /dev/sda} or \texttt{lsblk -f} and find your \textbf{boot partition}.  
+        \item Run \texttt{fdisk -l /dev/sda} or \texttt{lsblk -f} and find your \textbf{boot partition}.
         \item Note which partition is marked as bootable.
     \end{itemize}
 
-    \item \textbf{Install GRUB 2}  
+    \item \textbf{Install GRUB 2}
     \begin{itemize}
-        \item Mount your \texttt{/boot} (or boot partition) if needed at \texttt{/mnt/tmp}.  
+        \item Mount your \texttt{/boot} (or boot partition) if needed at \texttt{/mnt/tmp}.
         \item Run:
         \begin{lstlisting}[language=bash]
-        grub-install --boot-directory=/mnt/tmp /dev/sda
+grub-install --boot-directory=/mnt/tmp /dev/sda
         \end{lstlisting}
         \item Verify GRUB files are placed in \texttt{/mnt/tmp/boot/grub}.
     \end{itemize}
 
-    \item \textbf{Customize GRUB Timeout}  
+    \item \textbf{Customize GRUB Timeout}
     \begin{itemize}
-        \item Edit \texttt{/etc/default/grub} and set \texttt{GRUB\_TIMEOUT=5}.  
-        \item Run \texttt{update-grub} (or \texttt{grub-mkconfig -o /boot/grub/grub.cfg}).  
+        \item Edit \texttt{/etc/default/grub} and set \texttt{GRUB\_TIMEOUT=5}.
+        \item Run \texttt{update-grub} (or \texttt{grub-mkconfig -o /boot/grub/grub.cfg}).
         \item Reboot and confirm you see the menu for 5 seconds.
     \end{itemize}
 
-    \item \textbf{Add a Kernel Parameter}  
+    \item \textbf{Add a Kernel Parameter}
     \begin{itemize}
-        \item In \texttt{/etc/default/grub}, add an option to \texttt{GRUB\_CMDLINE\_LINUX="quiet splash"}.  
+        \item In \texttt{/etc/default/grub}, add an option to \texttt{GRUB\_CMDLINE\_LINUX="quiet splash"}.
         \item Update GRUB and reboot. Check \texttt{/proc/cmdline} to confirm the new parameter.
     \end{itemize}
 
-    \item \textbf{Practice Chainloading}  
+    \item \textbf{Practice Chainloading}
     \begin{itemize}
         \item If you have a Windows install at \texttt{(hd0,2)}, add a custom entry in \texttt{/etc/grub.d/40\_custom} (or in GRUB Legacy’s \texttt{menu.lst}):
-        \begin{lstlisting}[language=bash]
-        menuentry "Windows" {
-            set root=(hd0,2)
-            chainloader +1
-        }
+        \begin{lstlisting}
+menuentry "Windows" {
+    set root=(hd0,2)
+    chainloader +1
+}
         \end{lstlisting}
         \item Update GRUB and verify you can boot into Windows.
     \end{itemize}
 
-    \item \textbf{GRUB Rescue Simulation}  
+    \item \textbf{GRUB Rescue Simulation}
     \begin{itemize}
-        \item Temporarily rename \texttt{/boot/grub/grub.cfg} to break GRUB.  
-        \item Reboot to force the \texttt{grub rescue>} prompt.  
-        \item Use \texttt{ls}, \texttt{set prefix=}, \texttt{insmod normal}, etc., to recover manually.  
+        \item Temporarily rename \texttt{/boot/grub/grub.cfg} to break GRUB.
+        \item Reboot to force the \texttt{grub rescue>} prompt.
+        \item Use \texttt{ls}, \texttt{set prefix=}, \texttt{insmod normal}, etc., to recover manually.
         \item Restore \texttt{grub.cfg} after testing.
     \end{itemize}
 \end{enumerate}
 
-
-
 \section*{Summary}
 
 \begin{itemize}
-    \item \textbf{GRUB 2} is the modern bootloader on most Linux systems, replacing \textbf{GRUB Legacy}.  
-    \item \texttt{grub-install} places boot code on the MBR (BIOS) or ESP (UEFI).  
-    \item \texttt{/etc/default/grub} and scripts in \texttt{/etc/grub.d/} define the GRUB 2 menu.  
-    \item Use \texttt{update-grub} (or \texttt{grub-mkconfig}) to regenerate \texttt{/boot/grub/grub.cfg}.  
-    \item In emergencies, the \textbf{GRUB shell} (normal or rescue) can manually load kernel and initrd to boot.  
+    \item \textbf{GRUB 2} is the modern bootloader on most Linux systems, replacing \textbf{GRUB Legacy}.
+    \item \texttt{grub-install} places boot code on the MBR (BIOS) or ESP (UEFI).
+    \item \texttt{/etc/default/grub} and scripts in \texttt{/etc/grub.d/} define the GRUB 2 menu.
+    \item Use \texttt{update-grub} (or \texttt{grub-mkconfig}) to regenerate \texttt{/boot/grub/grub.cfg}.
+    \item In emergencies, the \textbf{GRUB shell} (normal or rescue) can manually load kernel and initrd to boot.
 \end{itemize}
 
 
@@ -1748,174 +1735,167 @@ A system’s boot loader is the first software executed when a machine powers on
 \section*{102.3 Manage Shared Libraries}
 \addcontentsline{toc}{section}{102.3 Manage Shared Libraries}
 
-\textbf{Reference to LPI Objectives:}  
+\subsection*{Reference to LPI Objectives:}
 \begin{itemize}
-    \item \textbf{LPIC-1 v5, Exam 101, Objective 102.3}  
-    \item \textbf{Weight:} 1  
+    \item \textbf{LPIC-1 v5, Exam 101, Objective 102.3}
+    \item \textbf{Weight:} 1
 \end{itemize}
 
 \subsection*{Key Knowledge Areas}
 \begin{itemize}
-    \item Identifying shared libraries.  
-    \item Understanding typical locations of system libraries.  
+    \item Identifying shared libraries.
+    \item Understanding typical locations of system libraries.
     \item Loading and configuring shared libraries at runtime.
 \end{itemize}
 
 \subsection*{Important Commands and Files}
 \begin{itemize}
-    \item \texttt{ldd} – shows shared library dependencies.  
-    \item \texttt{ldconfig} – updates library cache and symbolic links.  
-    \item \texttt{/etc/ld.so.conf} and \texttt{/etc/ld.so.conf.d/} – configuration for library paths.  
+    \item \texttt{ldd} – shows shared library dependencies.
+    \item \texttt{ldconfig} – updates library cache and symbolic links.
+    \item \texttt{/etc/ld.so.conf} and \texttt{/etc/ld.so.conf.d/} – configuration for library paths.
     \item \texttt{LD\_LIBRARY\_PATH} – environment variable to temporarily add library paths.
 \end{itemize}
 
- 
-
 \section*{Lesson Overview}
 
-Shared libraries (\textbf{.so} files) allow multiple executables to reuse common code, reducing memory usage and disk size. Administrators must know how to locate libraries, configure library paths, and troubleshoot missing dependencies.
-
- 
+Shared libraries (\texttt{.so} files) allow multiple executables to reuse common code, reducing memory usage and disk size. Administrators must know how to locate libraries, configure library paths, and troubleshoot missing dependencies.
 
 \section*{1. Concept of Shared Libraries}
 
+\begin{enumerate}
+    \item \textbf{Static Libraries (\texttt{.a})}
+    \begin{itemize}
+        \item Code is \textbf{copied} into an executable at compile/link time.
+        \item Larger file size; no external dependencies at runtime.
+    \end{itemize}
 
-\subsection*{1.1 Static Libraries (\texttt{.a})}
-\begin{itemize}
-    \item Code is \textbf{copied} into an executable at compile/link time.  
-    \item Larger file size; no external dependencies at runtime.
-\end{itemize}
-
-\subsection*{1.2 Dynamic (Shared) Libraries (\texttt{.so})}
-\begin{itemize}
-    \item Code is \textbf{not} copied into the executable.  
-    \item Must be present at runtime.  
-    \item More efficient memory usage (shared among processes).
-\end{itemize}
-
- 
+    \item \textbf{Dynamic (Shared) Libraries (\texttt{.so})}
+    \begin{itemize}
+        \item Code is \textbf{not} copied into the executable.
+        \item Must be present at runtime.
+        \item More efficient memory usage (shared among processes).
+    \end{itemize}
+\end{enumerate}
 
 \section*{2. Typical Library Naming and Locations}
 
-\subsection*{2.1 Shared Library Naming}
-\begin{itemize}
-    \item Usually \texttt{libXYZ.so.major.minor}.  
-    \item Example: \texttt{libc.so.6 → libc-2.24.so}.  
-    \item Symbolic links often point from a generic name to a versioned file.
-\end{itemize}
+\begin{enumerate}
+    \item \textbf{Shared Library Naming}
+    \begin{itemize}
+        \item Usually \texttt{libXYZ.so.major.minor}.
+        \item Example: \texttt{libc.so.6 → libc-2.24.so}.
+        \item Symbolic links often point from a generic name to a versioned file.
+    \end{itemize}
 
-\subsection*{2.2 Locations}
-\begin{itemize}
-    \item \texttt{/lib}, \texttt{/lib64}, \texttt{/usr/lib}, \texttt{/usr/local/lib}, and architecture-specific directories like \texttt{/lib/x86\_64-linux-gnu}.
-\end{itemize}
+    \item \textbf{Locations}
+    \begin{itemize}
+        \item \texttt{/lib}, \texttt{/lib64}, \texttt{/usr/lib}, \texttt{/usr/local/lib}, and architecture-specific directories like \texttt{/lib/x86\_64-linux-gnu}.
+    \end{itemize}
 
-\subsection*{2.3 Dynamic Linker}
-\begin{itemize}
-    \item \texttt{ld.so} or \texttt{ld-linux.so} handles runtime loading of \texttt{.so} files.
-\end{itemize}
-
- 
+    \item \textbf{Dynamic Linker}
+    \begin{itemize}
+        \item \texttt{ld.so} or \texttt{ld-linux.so} handles runtime loading of \texttt{.so} files.
+    \end{itemize}
+\end{enumerate}
 
 \section*{3. Configuring Library Paths}
 
-\subsection*{3.1 \texttt{/etc/ld.so.conf} and \texttt{/etc/ld.so.conf.d/*.conf}}
-\begin{itemize}
-    \item Lists directories to be searched by the dynamic linker.  
-    \item Usually references sub-files in \texttt{/etc/ld.so.conf.d/}.
-\end{itemize}
-
-\subsection*{3.2 \texttt{ldconfig}}
-\begin{itemize}
-    \item Reads config files, creates symbolic links, updates \texttt{/etc/ld.so.cache}.  
-    \item Run after installing new libraries or editing config.  
-    \item Common options:  
+\begin{enumerate}
+    \item \textbf{\texttt{/etc/ld.so.conf} and \texttt{/etc/ld.so.conf.d/*.conf}}
     \begin{itemize}
-        \item \texttt{-v}: verbose mode.  
-        \item \texttt{-p}: print current cache contents.
+        \item Lists directories to be searched by the dynamic linker.
+        \item Usually references sub-files in \texttt{/etc/ld.so.conf.d/}.
     \end{itemize}
-\end{itemize}
 
-\subsection*{3.3 \texttt{LD\_LIBRARY\_PATH}}
-\begin{itemize}
-    \item Environment variable to \textbf{temporarily} add library directories.  
-    \item Example:
-    \begin{lstlisting}[language=bash]
-    export LD_LIBRARY_PATH=/usr/local/mylib
-    \end{lstlisting}
-    \item Similar to \texttt{PATH}, but for shared libraries.
-\end{itemize}
+    \item \textbf{\texttt{ldconfig}}
+    \begin{itemize}
+        \item Reads config files, creates symbolic links, updates \texttt{/etc/ld.so.cache}.
+        \item Run after installing new libraries or editing config.
+        \item Common options:
+        \begin{itemize}
+            \item \textbf{-v}: verbose mode.
+            \item \textbf{-p}: print current cache contents.
+        \end{itemize}
+    \end{itemize}
 
- 
+    \item \textbf{\texttt{LD\_LIBRARY\_PATH}}
+    \begin{itemize}
+        \item Environment variable to \textbf{temporarily} add library directories.
+        \item Example:
+        \begin{lstlisting}[language=bash]
+export LD_LIBRARY_PATH=/usr/local/mylib
+        \end{lstlisting}
+        \item Similar to \texttt{PATH}, but for shared libraries.
+    \end{itemize}
+\end{enumerate}
 
 \section*{4. Checking Dependencies with \texttt{ldd}}
 
-\subsection*{4.1 \texttt{ldd /path/to/executable}}
-\begin{itemize}
-    \item Shows which \texttt{.so} files an executable needs and where they’re loaded from.  
-    \item Example:
-    \begin{lstlisting}[language=bash]
-    ldd /usr/bin/git
-    \end{lstlisting}
-\end{itemize}
+\begin{enumerate}
+    \item \textbf{\texttt{ldd /path/to/executable}}
+    \begin{itemize}
+        \item Shows which \texttt{.so} files an executable needs and where they’re loaded from.
+        \item Example:
+        \begin{lstlisting}[language=bash]
+ldd /usr/bin/git
+        \end{lstlisting}
+    \end{itemize}
 
-\subsection*{4.2 \texttt{ldd /path/to/library.so}}
-\begin{itemize}
-    \item Also works on \texttt{.so} files themselves.
-\end{itemize}
+    \item \textbf{\texttt{ldd /path/to/library.so}}
+    \begin{itemize}
+        \item Also works on \texttt{.so} files themselves.
+    \end{itemize}
 
-\subsection*{4.3 \texttt{-u} (unused)}
-\begin{itemize}
-    \item Shows libraries listed as dependencies but not actually used.
-\end{itemize}
-
- 
+    \item \textbf{-u (unused)}
+    \begin{itemize}
+        \item Shows libraries listed as dependencies but not actually used.
+    \end{itemize}
+\end{enumerate}
 
 \section*{Workbook Exercises}
 
 \begin{enumerate}
-    \item \textbf{List All Shared Libraries}  
+    \item \textbf{List All Shared Libraries}
     \begin{itemize}
-        \item Inspect \texttt{/lib}, \texttt{/usr/lib}, and \texttt{/usr/local/lib}.  
+        \item Inspect \texttt{/lib}, \texttt{/usr/lib}, and \texttt{/usr/local/lib}.
         \item Observe versioned vs. unversioned symbolic links (e.g., \texttt{libm.so.6 → libm-2.31.so}).
     \end{itemize}
 
-    \item \textbf{Update Library Cache}  
+    \item \textbf{Update Library Cache}
     \begin{itemize}
-        \item Create a directory \texttt{/opt/customlib} and put a dummy \texttt{.so} file (or symbolic link) there.  
-        \item Add \texttt{/opt/customlib} to \texttt{/etc/ld.so.conf.d/custom.conf}.  
+        \item Create a directory \texttt{/opt/customlib} and put a dummy \texttt{.so} file (or symbolic link) there.
+        \item Add \texttt{/opt/customlib} to \texttt{/etc/ld.so.conf.d/custom.conf}.
         \item Run \texttt{sudo ldconfig -v} and verify the new library is recognized (\texttt{ldconfig -p | grep customlib}).
     \end{itemize}
 
-    \item \textbf{Use \texttt{LD\_LIBRARY\_PATH}}  
+    \item \textbf{Use \texttt{LD\_LIBRARY\_PATH}}
     \begin{itemize}
-        \item Temporarily set \texttt{LD\_LIBRARY\_PATH=/opt/customlib}.  
-        \item Run an executable depending on the custom library.  
+        \item Temporarily set \texttt{LD\_LIBRARY\_PATH=/opt/customlib}.
+        \item Run an executable depending on the custom library.
         \item Confirm it finds the library without editing \texttt{/etc/ld.so.conf}.
     \end{itemize}
 
-    \item \textbf{Check Dependencies}  
+    \item \textbf{Check Dependencies}
     \begin{itemize}
-        \item Use \texttt{ldd /bin/ls} to see the libraries it requires.  
-        \item Use \texttt{ldd} on a custom binary if available.  
+        \item Use \texttt{ldd /bin/ls} to see the libraries it requires.
+        \item Use \texttt{ldd} on a custom binary if available.
         \item (Optional) Try the \texttt{-u} option to see if any direct dependencies are unused.
     \end{itemize}
 
-    \item \textbf{Investigate a Broken App}  
+    \item \textbf{Investigate a Broken App}
     \begin{itemize}
-        \item Intentionally remove or rename a \texttt{.so} file that an application needs (e.g., \texttt{mv libXYZ.so.1 libXYZ.so.1.bak}).  
-        \item Attempt to run the application and note the error.  
+        \item Intentionally remove or rename a \texttt{.so} file that an application needs (e.g., \texttt{mv libXYZ.so.1 libXYZ.so.1.bak}).
+        \item Attempt to run the application and note the error.
         \item Restore the file or fix the library path to resolve the error.
     \end{itemize}
 \end{enumerate}
 
- 
-
 \section*{Summary}
 
 \begin{itemize}
-    \item Linux uses \textbf{shared libraries} (\texttt{.so}) to avoid embedding common code in each executable, saving resources.  
-    \item The \textbf{dynamic linker} finds libraries via paths defined in \texttt{/etc/ld.so.conf} (and sub-files in \texttt{ld.so.conf.d/}) and updates a cache with \texttt{ldconfig}.  
-    \item \texttt{LD\_LIBRARY\_PATH} can override these directories temporarily for testing or specialized setups.  
+    \item Linux uses \textbf{shared libraries} (\texttt{.so}) to avoid embedding common code in each executable, saving resources.
+    \item The \textbf{dynamic linker} finds libraries via paths defined in \texttt{/etc/ld.so.conf} (and sub-files in \texttt{ld.so.conf.d}) and updates a cache with \texttt{ldconfig}.
+    \item \texttt{LD\_LIBRARY\_PATH} can override these directories temporarily for testing or specialized setups.
     \item Tools like \texttt{ldd} help identify which libraries an executable (or another library) needs, aiding in troubleshooting.
 \end{itemize}
 
@@ -1942,236 +1922,289 @@ Shared libraries (\textbf{.so} files) allow multiple executables to reuse common
 \section*{102.4 Use Debian Package Management}
 \addcontentsline{toc}{section}{102.4 Use Debian Package Management}
 
-\textbf{Reference to LPI Objectives:}  
+\subsection*{Reference to LPI Objectives:}
 \begin{itemize}
-    \item \textbf{LPIC-1 v5, Exam 101, Objective 102.4}  
-    \item \textbf{Weight:} 3  
+    \item \textbf{LPIC-1 v5, Exam 101, Objective 102.4}
+    \item \textbf{Weight:} 3
 \end{itemize}
 
 \subsection*{Key Knowledge Areas}
 \begin{itemize}
-    \item Installing, upgrading, and uninstalling Debian binary packages.  
-    \item Finding packages containing specific files or libraries (installed or not).  
-    \item Obtaining package information (version, contents, dependencies, integrity, status).  
+    \item Installing, upgrading, and uninstalling Debian binary packages.
+    \item Finding packages containing specific files or libraries (installed or not).
+    \item Obtaining package information (version, contents, dependencies, integrity, status).
     \item Awareness of \texttt{apt} and related commands.
 \end{itemize}
 
 \subsection*{Important Files, Terms, and Utilities}
 \begin{itemize}
-    \item \texttt{/etc/apt/sources.list} (and \texttt{/etc/apt/sources.list.d/}) – repository lists.  
-    \item \texttt{dpkg} – the low-level Debian package tool.  
-    \item \texttt{dpkg-reconfigure} – re-run configuration scripts for installed packages.  
-    \item \texttt{apt-get} (or \texttt{apt}) – higher-level tool for package handling.  
-    \item \texttt{apt-cache} (or \texttt{apt search/show}) – searching in and displaying details about packages.
+    \item \texttt{/etc/apt/sources.list} (and \texttt{/etc/apt/sources.list.d/}) – repository lists
+    \item \texttt{dpkg} – the low-level Debian package tool
+    \item \texttt{dpkg-reconfigure} – re-run configuration scripts for installed packages
+    \item \texttt{apt-get} (or \texttt{apt}) – higher-level tool for package handling
+    \item \texttt{apt-cache} (or \texttt{apt search/show}) – searching in and displaying details about packages
 \end{itemize}
-
- 
 
 \section*{Lesson Overview}
 
 In Debian-based Linux distributions (including Ubuntu and others), packages come in \texttt{.deb} format. The \texttt{dpkg} utility can install and remove \texttt{.deb} files, but does not automatically handle dependencies. For that, tools like \texttt{apt-get} (or the more modern \texttt{apt}) help resolve dependencies, perform upgrades, and search repositories.
 
- 
-
 \section*{1. Using \texttt{dpkg} (Debian Package Tool)}
 
-\subsection*{1.1 Install a \texttt{.deb} Package}
-\begin{lstlisting}[language=bash]
+\begin{enumerate}
+    \item \textbf{Install a \texttt{.deb} Package}
+    \begin{lstlisting}[language=bash]
 sudo dpkg -i PACKAGE_FILE.deb
-\end{lstlisting}
-\begin{itemize}
-    \item Installs or upgrades the package if an older version is detected.  
-    \item Fails if dependencies are missing.
-\end{itemize}
+    \end{lstlisting}
+    \begin{itemize}
+        \item Installs or upgrades the package if an older version is detected.
+        \item Fails if dependencies are missing.
+    \end{itemize}
 
-\subsection*{1.2 Remove a Package}
-\begin{lstlisting}[language=bash]
+    \item \textbf{Remove a Package}
+    \begin{lstlisting}[language=bash]
 sudo dpkg -r PACKAGE_NAME
-\end{lstlisting}
-\begin{itemize}
-    \item Leaves config files behind.  
-    \item Use \texttt{-P} (purge) to remove config files as well.
-\end{itemize}
+    \end{lstlisting}
+    \begin{itemize}
+        \item Leaves config files behind.
+        \item \texttt{-P} (purge) removes config files as well.
+    \end{itemize}
 
-\subsection*{1.3 Listing Installed Packages}
-\begin{lstlisting}[language=bash]
+    \item \textbf{Listing Installed Packages}
+    \begin{lstlisting}[language=bash]
 dpkg --get-selections
-\end{lstlisting}
-Outputs every installed package.
+    \end{lstlisting}
+    \begin{itemize}
+        \item Outputs every installed package.
+    \end{itemize}
 
-\subsection*{1.4 Package Contents}
-\begin{lstlisting}[language=bash]
+    \item \textbf{Package Contents}
+    \begin{lstlisting}[language=bash]
 dpkg -L PACKAGE_NAME
-\end{lstlisting}
-Lists all files installed by that package.
+    \end{lstlisting}
+    \begin{itemize}
+        \item Lists all files installed by that package.
+    \end{itemize}
 
-\subsection*{1.5 Which Package Owns a File?}
-\begin{lstlisting}[language=bash]
+    \item \textbf{Which Package Owns a File?}
+    \begin{lstlisting}[language=bash]
 dpkg-query -S /path/to/file
-\end{lstlisting}
-Shows the package name that installed the file.
+    \end{lstlisting}
+    \begin{itemize}
+        \item Shows the package name that installed the file.
+    \end{itemize}
 
-\subsection*{1.6 Inspect a \texttt{.deb} File}
-\begin{lstlisting}[language=bash]
+    \item \textbf{Inspect a \texttt{.deb} File}
+    \begin{lstlisting}[language=bash]
 dpkg -I PACKAGE_FILE.deb
-\end{lstlisting}
-Prints metadata (dependencies, maintainer, version, etc.).
+    \end{lstlisting}
+    \begin{itemize}
+        \item Prints metadata (dependencies, maintainer, version, etc.).
+    \end{itemize}
 
-\subsection*{1.7 Reconfigure Installed Packages}
-\begin{lstlisting}[language=bash]
+    \item \textbf{Reconfigure Installed Packages}
+    \begin{lstlisting}[language=bash]
 sudo dpkg-reconfigure PACKAGE_NAME
-\end{lstlisting}
-Reruns post-install scripts, can fix or reset configuration.
+    \end{lstlisting}
+    \begin{itemize}
+        \item Reruns post-install scripts, can fix or reset configuration.
+    \end{itemize}
 
-\begin{noteenv}
-    Using \texttt{--force} overrides safety checks but risks breaking the system.
-\end{noteenv}
- 
+    \begin{noteenv}
+        Using \texttt{--force} overrides safety checks but risks breaking the system.
+    \end{noteenv}
+
+\end{enumerate}
 
 \section*{2. \texttt{apt-get} or \texttt{apt} for Dependency Handling}
 
-\subsection*{2.1 Updating Package Index}
-\begin{lstlisting}[language=bash]
+\begin{enumerate}
+    \item \textbf{Updating Package Index}
+    \begin{lstlisting}[language=bash]
 sudo apt-get update
-\end{lstlisting}
-Fetches latest package info from repositories.
+    \end{lstlisting}
+    \begin{itemize}
+        \item Fetches latest package info from repositories.
+    \end{itemize}
 
-\subsection*{2.2 Installing Packages}
-\begin{lstlisting}[language=bash]
+    \item \textbf{Installing Packages}
+    \begin{lstlisting}[language=bash]
 sudo apt-get install PACKAGE_NAME
-\end{lstlisting}
-Resolves and installs dependencies automatically.
+    \end{lstlisting}
+    \begin{itemize}
+        \item Resolves and installs dependencies automatically.
+    \end{itemize}
 
-\subsection*{2.3 Removing Packages}
-\begin{lstlisting}[language=bash]
+    \item \textbf{Removing Packages}
+    \begin{lstlisting}[language=bash]
 sudo apt-get remove PACKAGE_NAME
-\end{lstlisting}
-\begin{itemize}
-    \item Leaves config files; use \texttt{--purge} to remove them.  
-\end{itemize}
+    \end{lstlisting}
+    \begin{itemize}
+        \item Leaves config files; use \texttt{--purge} to remove them.
+    \end{itemize}
 
-\subsection*{2.4 Fixing Broken Dependencies}
-\begin{lstlisting}[language=bash]
+    \item \textbf{Fixing Broken Dependencies}
+    \begin{lstlisting}[language=bash]
 sudo apt-get install -f
-\end{lstlisting}
-Attempts to fix unmet dependencies.
+    \end{lstlisting}
+    \begin{itemize}
+        \item Attempts to fix unmet dependencies.
+    \end{itemize}
 
-\subsection*{2.5 Upgrading Packages}
-\begin{lstlisting}[language=bash]
+    \item \textbf{Upgrading Packages}
+    \begin{lstlisting}[language=bash]
 sudo apt-get upgrade
-\end{lstlisting}
-\begin{itemize}
-    \item Upgrades all installed packages to latest versions in the repositories.  
-    \item Run \texttt{apt-get update} beforehand to refresh index.
-\end{itemize}
+    \end{lstlisting}
+    \begin{itemize}
+        \item Upgrades all installed packages to latest versions in the repositories.
+        \item Run \texttt{apt-get update} beforehand to refresh index.
+    \end{itemize}
 
-\subsection*{2.6 Cleaning Cache}
-\begin{lstlisting}[language=bash]
+    \item \textbf{Cleaning Cache}
+    \begin{lstlisting}[language=bash]
 sudo apt-get clean
-\end{lstlisting}
-Clears \texttt{.deb} files in \texttt{/var/cache/apt/archives} to free space.
-
- 
+    \end{lstlisting}
+    \begin{itemize}
+        \item Clears \texttt{.deb} files in \texttt{/var/cache/apt/archives} to free space.
+    \end{itemize}
+\end{enumerate}
 
 \section*{3. Searching for Packages}
 
-\subsection*{3.1 Search for Packages}
-\begin{lstlisting}[language=bash]
+\begin{enumerate}
+    \item \textbf{\texttt{apt-cache search} (or \texttt{apt search})}
+    \begin{lstlisting}[language=bash]
 apt-cache search KEYWORD
-\end{lstlisting}
-Lists packages whose name/description match \texttt{KEYWORD}.
+    \end{lstlisting}
+    \begin{itemize}
+        \item Lists packages whose name/description match \texttt{KEYWORD}.
+    \end{itemize}
 
-\subsection*{3.2 Show Package Details}
-\begin{lstlisting}[language=bash]
+    \item \textbf{\texttt{apt-cache show} (or \texttt{apt show})}
+    \begin{lstlisting}[language=bash]
 apt-cache show PACKAGE_NAME
-\end{lstlisting}
-Provides detailed info (dependencies, version, maintainers, etc.).
+    \end{lstlisting}
+    \begin{itemize}
+        \item Provides detailed info (dependencies, version, maintainers, etc.).
+    \end{itemize}
 
-\subsection*{3.3 Using \texttt{apt-file}}
-\begin{itemize}
-    \item May need \texttt{sudo apt-get install apt-file} first.  
-    \item Then \texttt{sudo apt-file update} to sync its own index.
-\end{itemize}
-
-\subsubsection*{Listing Contents of a Package}
-\begin{lstlisting}[language=bash]
+    \item \textbf{\texttt{apt-file}}
+    \begin{itemize}
+        \item May need \texttt{sudo apt-get install apt-file} first.
+        \item Then \texttt{sudo apt-file update} to sync its own index.
+    \end{itemize}
+    \begin{itemize}
+        \item \textbf{Listing contents of a package:}
+        \begin{lstlisting}[language=bash]
 apt-file list PACKAGE_NAME
-\end{lstlisting}
-
-\subsubsection*{Finding Which Package Provides a File}
-\begin{lstlisting}[language=bash]
+        \end{lstlisting}
+        \item \textbf{Finding which package provides a file:}
+        \begin{lstlisting}[language=bash]
 apt-file search FILENAME
-\end{lstlisting}
-Unlike \texttt{dpkg-query -S}, works for \textbf{uninstalled} packages as well.
-
- 
+        \end{lstlisting}
+        \item Unlike \texttt{dpkg-query -S}, works for \textbf{uninstalled} packages as well.
+    \end{itemize}
+\end{enumerate}
 
 \section*{4. Configuring Repositories (\texttt{sources.list})}
 
-\subsection*{4.1 Repository Configuration Files}
 \begin{itemize}
-    \item \texttt{/etc/apt/sources.list} or \texttt{/etc/apt/sources.list.d/*.list}.  
+    \item \texttt{/etc/apt/sources.list} or \texttt{/etc/apt/sources.list.d/*.list}
     \item Lines typically look like:
-\end{itemize}
- \begin{lstlisting}[language=bash]
+    \begin{lstlisting}
 deb http://deb.debian.org/debian buster main contrib non-free
 deb-src http://deb.debian.org/debian buster main contrib non-free
-\end{lstlisting}
+    \end{lstlisting}
+    \item \textbf{Archive types:} \texttt{deb} (binary packages) or \texttt{deb-src} (source).
+    \item \textbf{Distributions:} e.g., \texttt{buster}, \texttt{stable}, \texttt{testing}, or codenames for Ubuntu.
+    \item \textbf{Components:} \texttt{main}, \texttt{contrib}, \texttt{non-free}, \texttt{universe}, \texttt{multiverse}, etc.
+\end{itemize}
 
-\subsection*{4.2 After Editing Repositories}
- \begin{lstlisting}[language=bash]
+After editing sources, run:
+\begin{lstlisting}[language=bash]
 sudo apt-get update
 \end{lstlisting}
-
- 
 
 \section*{Workbook Exercises}
 
 \begin{enumerate}
-    \item \textbf{Install a \texttt{.deb} File with \texttt{dpkg}}  
+    \item \textbf{Install a \texttt{.deb} File with \texttt{dpkg}}
     \begin{itemize}
-        \item Download a \texttt{.deb} (e.g., from a website).  
-        \item Try to install:  
- \begin{lstlisting}[language=bash]
+        \item Download a \texttt{.deb} (e.g., from a website).
+        \item Try to install:
+        \begin{lstlisting}[language=bash]
 sudo dpkg -i package.deb
-\end{lstlisting}
-        \item If dependencies fail, fix them using either \texttt{dpkg} again or \texttt{apt-get install -f}.
+        \end{lstlisting}
+        \item If dependencies fail, note the error message. Then fix them using either \texttt{dpkg} again or \texttt{apt-get install -f}.
     \end{itemize}
 
-    \item \textbf{Purge an Installed Package}  
+    \item \textbf{Purge an Installed Package}
     \begin{itemize}
-        \item Select a small package to remove:  
- \begin{lstlisting}[language=bash]
+        \item Select a small package to remove:
+        \begin{lstlisting}[language=bash]
 sudo apt-get remove --purge PACKAGE_NAME
-\end{lstlisting}
-        \item Confirm config files are removed by checking \texttt{dpkg -L PACKAGE\_NAME}.
+        \end{lstlisting}
+        \item Confirm config files are removed by checking \texttt{dpkg -L PACKAGE\_NAME} (should say not installed).
     \end{itemize}
 
-    \item \textbf{Reconfigure a Package}  
- \begin{lstlisting}[language=bash]
-sudo dpkg-reconfigure tzdata
-\end{lstlisting}
-
-    \item \textbf{Search and Install with \texttt{apt}}  
+    \item \textbf{Reconfigure a Package}
     \begin{itemize}
-        \item Run:  
- \begin{lstlisting}[language=bash]
+        \item Example:
+        \begin{lstlisting}[language=bash]
+sudo dpkg-reconfigure tzdata
+        \end{lstlisting}
+        \item Verify you can reset or change the time zone.
+    \end{itemize}
+
+    \item \textbf{Search and Install with \texttt{apt}}
+    \begin{itemize}
+        \item Run:
+        \begin{lstlisting}[language=bash]
 apt-cache search KEYWORD
-\end{lstlisting}
-        \item Install it with \texttt{apt-get install}.
+        \end{lstlisting}
+        \item Pick a package from the results and install it with \texttt{apt-get install}.
+        \item Check the installed files with:
+        \begin{lstlisting}[language=bash]
+dpkg -L PACKAGE_NAME
+        \end{lstlisting}
+    \end{itemize}
+
+    \item \textbf{Repository Configuration}
+    \begin{itemize}
+        \item Inspect \texttt{/etc/apt/sources.list} and \texttt{/etc/apt/sources.list.d/}.
+        \item Optionally add a new repository line (e.g., a backports line).
+        \item Run \texttt{sudo apt-get update} and check if new packages are available.
+    \end{itemize}
+
+    \item \textbf{List a Package’s Contents}
+    \begin{itemize}
+        \item Install \texttt{apt-file} if needed:
+        \begin{lstlisting}[language=bash]
+sudo apt-get install apt-file
+sudo apt-file update
+        \end{lstlisting}
+        \item List contents for a known package:
+        \begin{lstlisting}[language=bash]
+apt-file list PACKAGE_NAME
+        \end{lstlisting}
+        \item Search for a file across all packages:
+        \begin{lstlisting}[language=bash]
+apt-file search /bin/somefile
+        \end{lstlisting}
     \end{itemize}
 \end{enumerate}
-
- 
 
 \section*{Summary}
 
 \begin{itemize}
-    \item \texttt{dpkg} handles \texttt{.deb} packages at a low level but does \textbf{not} resolve dependencies automatically.  
-    \item \texttt{apt-get}, \texttt{apt}, and \texttt{apt-cache} provide higher-level features like dependency resolution, searching repositories, and automated upgrades.  
-    \item \texttt{apt-file} allows searching within packages (even those not installed).  
-    \item Knowing these tools is critical for effectively managing software in Debian-based systems.
+    \item \texttt{dpkg} handles \texttt{.deb} packages at a low level but does \textbf{not} resolve dependencies automatically.
+    \item \texttt{apt-get}, \texttt{apt}, and \texttt{apt-cache} provide higher-level features like dependency resolution, searching repositories, and automated upgrades.
+    \item \texttt{apt-file} allows searching within packages (even those not installed).
+    \item The \texttt{sources.list} (and \texttt{.list} files in \texttt{/etc/apt/sources.list.d}) specify where apt should look for packages.
+    \item Knowing these tools is critical for effectively installing, upgrading, or removing software in Debian-based systems, aligning with the LPIC-1 \textbf{102.4} objective.
 \end{itemize}
+
+
 
 
 
