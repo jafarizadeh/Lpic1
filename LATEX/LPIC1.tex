@@ -9,6 +9,9 @@
 \usepackage{setspace}
 \usepackage{listings}
 \usepackage{xcolor}
+\usepackage{amsthm}
+\newtheorem*{noteenv}{Note}
+
 
 % Configuration pour les listings de code
 \definecolor{codebg}{RGB}{245,245,245}
@@ -1639,9 +1642,9 @@ A system’s boot loader is the first software executed when a machine powers on
     grub> ls
     (hd0) (hd0,msdos1)
     \end{lstlisting} 
-    \begin{verbatim}
+     \begin{lstlisting}[language=bash]
     
-    \end{verbatim}
+    \end{lstlisting}
     \item \textbf{Set root} (example):  
     \begin{lstlisting}[language=bash]
     grub> set root=(hd0,msdos1)
@@ -1934,8 +1937,243 @@ Shared libraries (\textbf{.so} files) allow multiple executables to reuse common
 % 102.4 Use Debian package management
 %-------------------------------------------------------
 
-\section*{102.4 Use Debian package management}
-\addcontentsline{toc}{section}{102.4 Use Debian package management}
+\newpage
+
+\section*{102.4 Use Debian Package Management}
+\addcontentsline{toc}{section}{102.4 Use Debian Package Management}
+
+\textbf{Reference to LPI Objectives:}  
+\begin{itemize}
+    \item \textbf{LPIC-1 v5, Exam 101, Objective 102.4}  
+    \item \textbf{Weight:} 3  
+\end{itemize}
+
+\subsection*{Key Knowledge Areas}
+\begin{itemize}
+    \item Installing, upgrading, and uninstalling Debian binary packages.  
+    \item Finding packages containing specific files or libraries (installed or not).  
+    \item Obtaining package information (version, contents, dependencies, integrity, status).  
+    \item Awareness of \texttt{apt} and related commands.
+\end{itemize}
+
+\subsection*{Important Files, Terms, and Utilities}
+\begin{itemize}
+    \item \texttt{/etc/apt/sources.list} (and \texttt{/etc/apt/sources.list.d/}) – repository lists.  
+    \item \texttt{dpkg} – the low-level Debian package tool.  
+    \item \texttt{dpkg-reconfigure} – re-run configuration scripts for installed packages.  
+    \item \texttt{apt-get} (or \texttt{apt}) – higher-level tool for package handling.  
+    \item \texttt{apt-cache} (or \texttt{apt search/show}) – searching in and displaying details about packages.
+\end{itemize}
+
+ 
+
+\section*{Lesson Overview}
+
+In Debian-based Linux distributions (including Ubuntu and others), packages come in \texttt{.deb} format. The \texttt{dpkg} utility can install and remove \texttt{.deb} files, but does not automatically handle dependencies. For that, tools like \texttt{apt-get} (or the more modern \texttt{apt}) help resolve dependencies, perform upgrades, and search repositories.
+
+ 
+
+\section*{1. Using \texttt{dpkg} (Debian Package Tool)}
+
+\subsection*{1.1 Install a \texttt{.deb} Package}
+\begin{lstlisting}[language=bash]
+sudo dpkg -i PACKAGE_FILE.deb
+\end{lstlisting}
+\begin{itemize}
+    \item Installs or upgrades the package if an older version is detected.  
+    \item Fails if dependencies are missing.
+\end{itemize}
+
+\subsection*{1.2 Remove a Package}
+\begin{lstlisting}[language=bash]
+sudo dpkg -r PACKAGE_NAME
+\end{lstlisting}
+\begin{itemize}
+    \item Leaves config files behind.  
+    \item Use \texttt{-P} (purge) to remove config files as well.
+\end{itemize}
+
+\subsection*{1.3 Listing Installed Packages}
+\begin{lstlisting}[language=bash]
+dpkg --get-selections
+\end{lstlisting}
+Outputs every installed package.
+
+\subsection*{1.4 Package Contents}
+\begin{lstlisting}[language=bash]
+dpkg -L PACKAGE_NAME
+\end{lstlisting}
+Lists all files installed by that package.
+
+\subsection*{1.5 Which Package Owns a File?}
+\begin{lstlisting}[language=bash]
+dpkg-query -S /path/to/file
+\end{lstlisting}
+Shows the package name that installed the file.
+
+\subsection*{1.6 Inspect a \texttt{.deb} File}
+\begin{lstlisting}[language=bash]
+dpkg -I PACKAGE_FILE.deb
+\end{lstlisting}
+Prints metadata (dependencies, maintainer, version, etc.).
+
+\subsection*{1.7 Reconfigure Installed Packages}
+\begin{lstlisting}[language=bash]
+sudo dpkg-reconfigure PACKAGE_NAME
+\end{lstlisting}
+Reruns post-install scripts, can fix or reset configuration.
+
+\begin{noteenv}
+    Using \texttt{--force} overrides safety checks but risks breaking the system.
+\end{noteenv}
+ 
+
+\section*{2. \texttt{apt-get} or \texttt{apt} for Dependency Handling}
+
+\subsection*{2.1 Updating Package Index}
+\begin{lstlisting}[language=bash]
+sudo apt-get update
+\end{lstlisting}
+Fetches latest package info from repositories.
+
+\subsection*{2.2 Installing Packages}
+\begin{lstlisting}[language=bash]
+sudo apt-get install PACKAGE_NAME
+\end{lstlisting}
+Resolves and installs dependencies automatically.
+
+\subsection*{2.3 Removing Packages}
+\begin{lstlisting}[language=bash]
+sudo apt-get remove PACKAGE_NAME
+\end{lstlisting}
+\begin{itemize}
+    \item Leaves config files; use \texttt{--purge} to remove them.  
+\end{itemize}
+
+\subsection*{2.4 Fixing Broken Dependencies}
+\begin{lstlisting}[language=bash]
+sudo apt-get install -f
+\end{lstlisting}
+Attempts to fix unmet dependencies.
+
+\subsection*{2.5 Upgrading Packages}
+\begin{lstlisting}[language=bash]
+sudo apt-get upgrade
+\end{lstlisting}
+\begin{itemize}
+    \item Upgrades all installed packages to latest versions in the repositories.  
+    \item Run \texttt{apt-get update} beforehand to refresh index.
+\end{itemize}
+
+\subsection*{2.6 Cleaning Cache}
+\begin{lstlisting}[language=bash]
+sudo apt-get clean
+\end{lstlisting}
+Clears \texttt{.deb} files in \texttt{/var/cache/apt/archives} to free space.
+
+ 
+
+\section*{3. Searching for Packages}
+
+\subsection*{3.1 Search for Packages}
+\begin{lstlisting}[language=bash]
+apt-cache search KEYWORD
+\end{lstlisting}
+Lists packages whose name/description match \texttt{KEYWORD}.
+
+\subsection*{3.2 Show Package Details}
+\begin{lstlisting}[language=bash]
+apt-cache show PACKAGE_NAME
+\end{lstlisting}
+Provides detailed info (dependencies, version, maintainers, etc.).
+
+\subsection*{3.3 Using \texttt{apt-file}}
+\begin{itemize}
+    \item May need \texttt{sudo apt-get install apt-file} first.  
+    \item Then \texttt{sudo apt-file update} to sync its own index.
+\end{itemize}
+
+\subsubsection*{Listing Contents of a Package}
+\begin{lstlisting}[language=bash]
+apt-file list PACKAGE_NAME
+\end{lstlisting}
+
+\subsubsection*{Finding Which Package Provides a File}
+\begin{lstlisting}[language=bash]
+apt-file search FILENAME
+\end{lstlisting}
+Unlike \texttt{dpkg-query -S}, works for \textbf{uninstalled} packages as well.
+
+ 
+
+\section*{4. Configuring Repositories (\texttt{sources.list})}
+
+\subsection*{4.1 Repository Configuration Files}
+\begin{itemize}
+    \item \texttt{/etc/apt/sources.list} or \texttt{/etc/apt/sources.list.d/*.list}.  
+    \item Lines typically look like:
+\end{itemize}
+ \begin{lstlisting}[language=bash]
+deb http://deb.debian.org/debian buster main contrib non-free
+deb-src http://deb.debian.org/debian buster main contrib non-free
+\end{lstlisting}
+
+\subsection*{4.2 After Editing Repositories}
+ \begin{lstlisting}[language=bash]
+sudo apt-get update
+\end{lstlisting}
+
+ 
+
+\section*{Workbook Exercises}
+
+\begin{enumerate}
+    \item \textbf{Install a \texttt{.deb} File with \texttt{dpkg}}  
+    \begin{itemize}
+        \item Download a \texttt{.deb} (e.g., from a website).  
+        \item Try to install:  
+ \begin{lstlisting}[language=bash]
+sudo dpkg -i package.deb
+\end{lstlisting}
+        \item If dependencies fail, fix them using either \texttt{dpkg} again or \texttt{apt-get install -f}.
+    \end{itemize}
+
+    \item \textbf{Purge an Installed Package}  
+    \begin{itemize}
+        \item Select a small package to remove:  
+ \begin{lstlisting}[language=bash]
+sudo apt-get remove --purge PACKAGE_NAME
+\end{lstlisting}
+        \item Confirm config files are removed by checking \texttt{dpkg -L PACKAGE\_NAME}.
+    \end{itemize}
+
+    \item \textbf{Reconfigure a Package}  
+ \begin{lstlisting}[language=bash]
+sudo dpkg-reconfigure tzdata
+\end{lstlisting}
+
+    \item \textbf{Search and Install with \texttt{apt}}  
+    \begin{itemize}
+        \item Run:  
+ \begin{lstlisting}[language=bash]
+apt-cache search KEYWORD
+\end{lstlisting}
+        \item Install it with \texttt{apt-get install}.
+    \end{itemize}
+\end{enumerate}
+
+ 
+
+\section*{Summary}
+
+\begin{itemize}
+    \item \texttt{dpkg} handles \texttt{.deb} packages at a low level but does \textbf{not} resolve dependencies automatically.  
+    \item \texttt{apt-get}, \texttt{apt}, and \texttt{apt-cache} provide higher-level features like dependency resolution, searching repositories, and automated upgrades.  
+    \item \texttt{apt-file} allows searching within packages (even those not installed).  
+    \item Knowing these tools is critical for effectively managing software in Debian-based systems.
+\end{itemize}
+
+
 
 %-------------------------------------------------------
 % Multiple-Choice Questions for (102.4)

@@ -118,6 +118,8 @@ INPUT C:\Users\Lord\AppData\Local\Programs\MiKTeX\tex\latex\graphics-def\pdftex.
 INPUT C:\Users\Lord\AppData\Local\Programs\MiKTeX\tex\latex\graphics\mathcolor.ltx
 INPUT C:\Users\Lord\AppData\Local\Programs\MiKTeX\tex\latex\graphics\mathcolor.ltx
 INPUT C:\Users\Lord\AppData\Local\Programs\MiKTeX\tex\latex\graphics\mathcolor.ltx
+INPUT C:\Users\Lord\AppData\Local\Programs\MiKTeX\tex\latex\amscls\amsthm.sty
+INPUT C:\Users\Lord\AppData\Local\Programs\MiKTeX\tex\latex\amscls\amsthm.sty
 INPUT C:\Users\Lord\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstlang1.sty
 INPUT C:\Users\Lord\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstlang1.sty
 INPUT C:\Users\Lord\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstlang1.sty
@@ -191,9 +193,12 @@ INPUT C:\Users\Lord\AppData\Local\Programs\MiKTeX\tex\latex\base\ts1cmtt.fd
 INPUT C:\Users\Lord\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\tctt1200.tfm
 INPUT C:\Users\Lord\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ectt1728.tfm
 INPUT C:\Users\Lord\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecti1200.tfm
+INPUT C:\Users\Lord\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecit1200.tfm
 INPUT LPIC1.aux
 INPUT .\LPIC1.out
 INPUT .\LPIC1.out
+INPUT C:\Users\Lord\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecit1200.pk
+INPUT C:\Users\Lord\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecit1200.pk
 INPUT C:\Users\Lord\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1200.pk
 INPUT C:\Users\Lord\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1200.pk
 INPUT C:\Users\Lord\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1728.pk

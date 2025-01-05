@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.8.31)  5 JAN 2025 11:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.8.31)  5 JAN 2025 11:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -277,6 +277,17 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1370.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1371.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1372.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
+) (C:\Users\Lord\AppData\Local\Programs\MiKTeX\tex/latex/amscls\amsthm.sty
+Package: amsthm 2020/05/29 v2.20.6
+\thm@style=\toks28
+\thm@bodyfont=\toks29
+\thm@headfont=\toks30
+\thm@notefont=\toks31
+\thm@headpunct=\toks32
+\thm@preskip=\skip54
+\thm@postskip=\skip55
+\thm@headsep=\skip56
+\dth@everypar=\toks33
 ) (C:\Users\Lord\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2023/02/27 1.9 listings language file
 ) (C:\Users\Lord\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
@@ -288,24 +299,24 @@ File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 ) (LPIC1.aux)
 \openout1 = `LPIC1.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -341,7 +352,7 @@ LaTeX Font Info:    ... okay on input line 29.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 29.
+Package hyperref Info: Link coloring OFF on input line 32.
 (LPIC1.out) (LPIC1.out)
 \@outlinefile=\write3
 \openout3 = `LPIC1.out'.
@@ -354,12 +365,12 @@ Package hyperref Info: Link coloring OFF on input line 29.
 \scratchbox=\box56
 \nofMPsegments=\count300
 \nofMParguments=\count301
-\everyMPshowfont=\toks28
+\everyMPshowfont=\toks34
 \MPscratchCnt=\count302
 \MPscratchDim=\dimen167
 \MPnumerator=\count303
 \makeMPintoPDFobject=\count304
-\everyMPtoPDFconversion=\toks29
+\everyMPtoPDFconversion=\toks35
 ) [1
 
 {C:/Users/Lord/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] (LPIC1.toc
@@ -374,7 +385,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.31 ...er Interfaces and Desktops}{53}{chapter.6}
+l.31 ...er Interfaces and Desktops}{57}{chapter.6}
                                                   % [1
 
 ])
@@ -383,26 +394,26 @@ l.31 ...er Interfaces and Desktops}{53}{chapter.6}
 
  [2]
 Chapter 1.
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 75.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 78.
 (C:\Users\Lord\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 ) [3
 
 ]
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 123.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 126.
  [4]
-Overfull \hbox (7.73854pt too wide) in paragraph at lines 183--184
+Overfull \hbox (7.73854pt too wide) in paragraph at lines 186--187
 []\T1/cmr/m/n/12 Newer ker-nels use \T1/cmtt/m/n/12 sd \T1/cmr/m/n/12 pre-fix for most disks; par-ti-tions are num-bered (\T1/cmtt/m/n/12 /dev/sda1\T1/cmr/m/n/12 ). 
  []
 
 [5] [6] [7] [8] [9] [10] [11] [12] [13] [14]
-Overfull \hbox (44.23141pt too wide) in paragraph at lines 560--561
+Overfull \hbox (44.23141pt too wide) in paragraph at lines 563--564
 []\T1/cmr/m/n/12 Traditional log files also found in \T1/cmtt/m/n/12 /var/log/\T1/cmr/m/n/12 , e.g., \T1/cmtt/m/n/12 /var/log/messages \T1/cmr/m/n/12 or \T1/cmtt/m/n/12 /var/log/syslog\T1/cmr/m/n/12 . 
  []
 
 [15]
-Overfull \hbox (13.74203pt too wide) in paragraph at lines 601--602
+Overfull \hbox (13.74203pt too wide) in paragraph at lines 604--605
 []\T1/cmr/m/n/12 Locate your initramfs file (com-monly in \T1/cmtt/m/n/12 /boot\T1/cmr/m/n/12 , e.g., \T1/cmtt/m/n/12 initramfs-<version>.img\T1/cmr/m/n/12 ). 
  []
 
@@ -411,100 +422,100 @@ Chapter 2.
 [33
 
 ] [34]
-Overfull \hbox (12.71408pt too wide) in paragraph at lines 1366--1367
+Overfull \hbox (12.71408pt too wide) in paragraph at lines 1369--1370
 []\T1/cmr/m/n/12 Contains vari-able data: logs (\T1/cmtt/m/n/12 /var/log\T1/cmr/m/n/12 ), caches (\T1/cmtt/m/n/12 /var/cache\T1/cmr/m/n/12 ), temp data (\T1/cmtt/m/n/12 /var/tmp\T1/cmr/m/n/12 ),
  []
 
 [35] [36] [37]
-Overfull \hbox (5.41997pt too wide) in paragraph at lines 1461--1462
+Overfull \hbox (5.41997pt too wide) in paragraph at lines 1464--1465
 []\T1/cmr/m/n/12 Strategic par-ti-tion-ing im-proves \T1/cmr/bx/n/12 sta-bil-ity, se-cu-rity, and main-te-nance \T1/cmr/m/n/12 (e.g., \T1/cmtt/m/n/12 /boot\T1/cmr/m/n/12 ,
  []
 
 [38] [39] [40] [41]
-Overfull \hbox (12.57112pt too wide) in paragraph at lines 1655--1656
+Overfull \hbox (12.57112pt too wide) in paragraph at lines 1658--1659
 []\T1/cmr/bx/n/12 Rescue Mode\T1/cmr/m/n/12 : need to \T1/cmtt/m/n/12 set prefix=(hd0,msdos1)/boot/grub \T1/cmr/m/n/12 and \T1/cmtt/m/n/12 insmod normal\T1/cmr/m/n/12 ,
  []
 
 [42]
-Overfull \hbox (18.54375pt too wide) in paragraph at lines 1688--1689
+Overfull \hbox (18.54375pt too wide) in paragraph at lines 1691--1692
 []\T1/cmr/m/n/12 In \T1/cmtt/m/n/12 /etc/default/grub\T1/cmr/m/n/12 , add an op-tion to \T1/cmtt/m/n/12 GRUB_CMDLINE_LINUX="quiet splash"\T1/cmr/m/n/12 . 
  []
 
 
-Overfull \hbox (54.55714pt too wide) in paragraph at lines 1694--1695
+Overfull \hbox (54.55714pt too wide) in paragraph at lines 1697--1698
 []\T1/cmr/m/n/12 If you have a Win-dows in-stall at \T1/cmtt/m/n/12 (hd0,2)\T1/cmr/m/n/12 , add a cus-tom en-try in \T1/cmtt/m/n/12 /etc/grub.d/40_custom
  []
 
 [43] [44]
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 1780.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 1783.
  [45]
-LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 1800.
+LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 1803.
  (C:\Users\Lord\AppData\Local\Programs\MiKTeX\tex/latex/base\ts1cmtt.fd
 File: ts1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 1847.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 1850.
  [46]
-Overfull \hbox (36.4845pt too wide) in paragraph at lines 1876--1877
+Overfull \hbox (36.4845pt too wide) in paragraph at lines 1879--1880
 []\T1/cmr/m/n/12 Observe ver-sioned vs. un-ver-sioned sym-bolic links (e.g., \T1/cmtt/m/n/12 libm.so.6 \TS1/cmtt/m/n/12 ^^Y \T1/cmtt/m/n/12 libm-2.31.so\T1/cmr/m/n/12 ). 
  []
 
-[47] [48]
+[47] [48] [49] [50] [51] [52] [53]
 Chapter 3.
-[49
-
-]
-Chapter 4.
-[50
-
-] [51]
-Chapter 5.
-[52
-
-]
-Chapter 6.
-[53
-
-]
-Chapter 7.
 [54
 
 ]
-Chapter 8.
+Chapter 4.
 [55
+
+] [56]
+Chapter 5.
+[57
+
+]
+Chapter 6.
+[58
+
+]
+Chapter 7.
+[59
+
+]
+Chapter 8.
+[60
 
 ]
 Chapter 9.
-[56
+[61
 
 ]
 Chapter 10.
-[57
+[62
 
-] [58
+] [63
 
 
-] [59] [60] [61] [62] (LPIC1.aux)
+] [64] [65] [66] [67] (LPIC1.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
 Package rerunfilecheck Info: File `LPIC1.out' has not changed.
-(rerunfilecheck)             Checksum: 3808F67497245643DB8C2877786A8F86;13690.
+(rerunfilecheck)             Checksum: B3881ACD35FA6021EA785A6B48E6BF0F;13690.
  ) 
 Here is how much of TeX's memory you used:
- 13191 strings out of 474486
- 192622 string characters out of 5744227
- 1999542 words of memory out of 5000000
- 34539 multiletter control sequences out of 15000+600000
- 572915 words of font info for 71 fonts, out of 8000000 for 9000
+ 13397 strings out of 474486
+ 195365 string characters out of 5744227
+ 2001542 words of memory out of 5000000
+ 34654 multiletter control sequences out of 15000+600000
+ 573230 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,6n,79p,500b,1370s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1728.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1440.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1440.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk><C:/Users/Lord/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on LPIC1.pdf (63 pages, 438633 bytes).
+ 75i,6n,79p,581b,1370s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecit1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1728.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1440.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1440.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk><C:/Users/Lord/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on LPIC1.pdf (68 pages, 476459 bytes).
 PDF statistics:
- 1970 PDF objects out of 2073 (max. 8388607)
- 782 named destinations out of 1000 (max. 500000)
+ 2135 PDF objects out of 2487 (max. 8388607)
+ 868 named destinations out of 1000 (max. 500000)
  433 words of extra memory for PDF output out of 10000 (max. 10000000)
 
