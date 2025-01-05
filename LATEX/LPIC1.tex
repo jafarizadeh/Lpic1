@@ -1273,9 +1273,196 @@ wall "Warning! System moving to single-user mode in 1 minute."
 %-------------------------------------------------------
 % 102.1 Design hard disk layout
 %-------------------------------------------------------
+\newpage
 
-\section*{102.1 Design hard disk layout}
-\addcontentsline{toc}{section}{102.1 Design hard disk layout}
+\section*{102.1 Design Hard Disk Layout}
+\addcontentsline{toc}{section}{102.1 Design Hard Disk Layout}
+
+\textbf{Reference to LPI Objectives:}  
+\begin{itemize}
+    \item \textbf{LPIC-1 v5, Exam 102, Objective 102.1}  
+    \item \textbf{Weight:} 2  
+\end{itemize}
+
+\subsection*{Key Knowledge Areas}
+\begin{itemize}
+    \item Allocating filesystems and swap space to separate partitions or disks.  
+    \item Tailoring the partitioning scheme to system usage.  
+    \item Understanding /boot or EFI System Partition requirements for booting.  
+    \item Basic familiarity with LVM (Logical Volume Manager).
+\end{itemize}
+
+\subsection*{Important Terms and Utilities}
+\begin{itemize}
+    \item \textbf{/ (root)}, \textbf{/boot}, \textbf{/home}, \textbf{/var}  
+    \item \textbf{EFI System Partition (ESP)}  
+    \item \textbf{swap}  
+    \item \textbf{mount points} (e.g., \texttt{/mnt}, \texttt{/media/USER/LABEL})  
+    \item \textbf{partitions} and \textbf{logical volumes}  
+    \item \textbf{LVM} (Physical Volumes, Volume Groups, Logical Volumes)
+\end{itemize}
+
+
+
+\section*{Lesson Overview}
+
+Designing an effective disk layout is critical for system stability, performance, and ease of administration. You must understand partitions, filesystems, mount points, swap, and how LVM can simplify storage allocation.
+
+
+
+\section*{1. Partitions, Filesystems, and Mount Points}
+
+\subsection*{1.1 Partitions}
+\begin{itemize}
+    \item Logical “fences” on a disk; each partition has its own filesystem.  
+    \item Partition information is stored in the \textbf{partition table}.  
+    \item Partitions \textbf{cannot} span multiple disks (unless using LVM or RAID).  
+\end{itemize}
+
+\subsection*{1.2 Filesystems}
+\begin{itemize}
+    \item Define how data is organized in directories, files, and metadata.  
+    \item Must be \textbf{mounted} on a mount point (e.g., \texttt{/mnt/mydata}).  
+\end{itemize}
+
+\subsection*{1.3 Mount Points}
+\begin{itemize}
+    \item Directory where a filesystem is attached.  
+    \item Common directories:  
+    \begin{itemize}
+        \item \textbf{/mnt/} – traditional manual mount point.  
+        \item \textbf{/media/} – automatic mounting of removable media.  
+    \end{itemize}
+    \item Existing contents of a mount point become hidden while another filesystem is mounted.
+\end{itemize}
+
+
+
+\section*{2. Recommended Partitions and Their Uses}
+
+\subsection*{2.1 Root Partition (/)}
+\begin{itemize}
+    \item Base of the Linux directory structure.  
+    \item Typically holds OS binaries and system config if not separated elsewhere.
+\end{itemize}
+
+\subsection*{2.2 /boot or EFI System Partition (ESP)}
+\begin{itemize}
+    \item \textbf{/boot} stores bootloader files (kernel images, initramfs, GRUB).  
+    \item ESP is used on UEFI systems (formatted as FAT).  
+    \item Usually 200–300 MB in size is sufficient for either.  
+    \item Keeping boot files separate can help ensure the system can still boot if root is damaged.
+\end{itemize}
+
+\subsection*{2.3 /home}
+\begin{itemize}
+    \item Houses users’ personal files and preferences.  
+    \item Separating \textbf{/home} allows OS reinstallation without erasing user data.  
+    \item Size depends on user data and expected usage.
+\end{itemize}
+
+\subsection*{2.4 /var}
+\begin{itemize}
+    \item Contains variable data: logs (\texttt{/var/log}), caches (\texttt{/var/cache}), temp data (\texttt{/var/tmp}), etc.  
+    \item On servers, \textbf{/var} can grow significantly (e.g., web or database data).  
+    \item Putting \textbf{/var} on a separate partition (or disk) improves stability and prevents root from filling up.
+\end{itemize}
+
+\subsection*{2.5 Swap}
+\begin{itemize}
+    \item Extension of RAM to disk; cannot be mounted as a normal directory.  
+    \item Often sized according to usage (e.g., old rule was 2×RAM; modern guidelines vary).  
+    \item Consider \textbf{hibernation} requirements (swap $\geq$ RAM if hibernation is used).
+\end{itemize}
+
+
+
+\section*{3. LVM (Logical Volume Manager)}
+
+\subsection*{3.1 Overview}
+\begin{itemize}
+    \item Provides flexible “virtual” partitions called \textbf{Logical Volumes (LVs)}.  
+    \item \textbf{Physical Volumes (PVs)} $\rightarrow$ grouped into \textbf{Volume Groups (VGs)} $\rightarrow$ split into \textbf{Logical Volumes (LVs)}.  
+    \item LVM allows resizing or adding storage more easily than traditional partitions.
+\end{itemize}
+
+\subsection*{3.2 Advantages}
+\begin{itemize}
+    \item \textbf{Ease of extension}: add space without reformatting or migrating data.  
+    \item \textbf{Abstracts} underlying physical disks.  
+    \item Logical volumes appear in \texttt{/dev/VG\_NAME/LV\_NAME}.
+\end{itemize}
+
+\subsection*{3.3 Basic Workflow (High-level)}
+\begin{enumerate}
+    \item Create or identify a \textbf{partition} (or entire disk) as a PV (\texttt{pvcreate /dev/sdaX}).  
+    \item Combine PVs into a \textbf{Volume Group} (\texttt{vgcreate MYVG /dev/sdaX}).  
+    \item Create a \textbf{Logical Volume} (\texttt{lvcreate -L 20G -n MYSERVICELV MYVG}).  
+    \item Format LV with a filesystem (\texttt{mkfs.ext4 /dev/MYVG/MYSERVICELV}).  
+    \item Mount where desired (\texttt{/etc/fstab} entry or \texttt{mount} command).
+\end{enumerate}
+
+
+
+\section*{Workbook Exercises}
+
+\begin{enumerate}
+    \item \textbf{Plan a Basic Partition Scheme}  
+    \begin{itemize}
+        \item Imagine you have a 500 GB disk for a personal workstation.  
+        \item Sketch out your proposed partition table: \texttt{/boot} (300 MB), root (\texttt{/}), \texttt{/home}, \texttt{/var}, and swap.  
+        \item Consider sizes for each partition and justify your choices.
+    \end{itemize}
+
+    \item \textbf{Identify ESP/BIOS Partitions}  
+    \begin{itemize}
+        \item On a UEFI-based system, locate and identify the \textbf{EFI System Partition} (\texttt{/boot/efi}).  
+        \item Check partition type using \texttt{gdisk -l /dev/sda} or \texttt{fdisk -l /dev/sda}.  
+        \item Verify its filesystem (FAT-based) with \texttt{lsblk -f} or \texttt{blkid}.
+    \end{itemize}
+
+    \item \textbf{Decide on Swap Size}  
+    \begin{itemize}
+        \item If your system has 8 GB of RAM, use Red Hat’s guidelines to propose a recommended swap size.  
+        \item If planning hibernation, recalculate.
+    \end{itemize}
+
+    \item \textbf{Mount Points}  
+    \begin{itemize}
+        \item Create a directory \texttt{/mnt/testmount}.  
+        \item Using an existing spare partition (or loopback device), manually mount it on \texttt{/mnt/testmount}.  
+        \item Verify it is mounted with \texttt{mount | grep /mnt/testmount}.
+    \end{itemize}
+
+    \item \textbf{LVM Planning}  
+    \begin{itemize}
+        \item Using a virtual environment with two disks, plan an LVM layout:  
+        \begin{enumerate}
+            \item Convert one partition from each disk into PVs.  
+            \item Create a Volume Group that spans both.  
+            \item Create one or more Logical Volumes for \texttt{/data}.  
+        \end{enumerate}
+        \item Write down how you will format and mount \texttt{/data}.
+    \end{itemize}
+
+    \item \textbf{Storage Scenarios}  
+    \begin{itemize}
+        \item You run out of disk space on \texttt{/home}. What steps can you take with LVM to add more space?  
+        \item If \texttt{/var} was not separated and you frequently run out of space due to logs, how might you redesign?
+    \end{itemize}
+\end{enumerate}
+
+
+
+\section*{Summary}
+
+\begin{itemize}
+    \item \textbf{Partitions} define logical divisions of a disk, while \textbf{filesystems} define how data is stored.  
+    \item Strategic partitioning improves \textbf{stability, security, and maintenance} (e.g., \texttt{/boot}, \texttt{/home}, \texttt{/var} separate).  
+    \item \textbf{UEFI} systems require an \textbf{EFI System Partition (ESP)}; BIOS systems may benefit from a separate \texttt{/boot}.  
+    \item Adequate \textbf{swap} is essential; guidelines depend on RAM, system usage, and whether hibernation is used.  
+    \item \textbf{LVM} adds flexibility for resizing and pooling storage among multiple physical disks.  
+\end{itemize}
 
 %-------------------------------------------------------
 % Multiple-Choice Questions for (102.1)

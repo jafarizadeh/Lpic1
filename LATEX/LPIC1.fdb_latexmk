@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1735863899.66385 "c:/Users/Lord/Desktop/lpic/Lpic1/LATEX/LPIC1.tex" "LPIC1.pdf" "LPIC1" 1735863900.362 0
+["pdflatex"] 1736070929.5774 "c:/Users/Lord/Desktop/lpic/Lpic1/LATEX/LPIC1.tex" "LPIC1.pdf" "LPIC1" 1736070930.21261 0
   "C:/Users/Lord/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1735773936 96953 8cded1dc387636eb586a8a7962886859 ""
   "C:/Users/Lord/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx1200.pk" 1733177668 31952 33b3c17f7ac021453dc9297111e9747d ""
   "C:/Users/Lord/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx1440.pk" 1733177669 40136 6973c9482823a4af768a1fac97e4b498 ""
@@ -41,6 +41,7 @@
   "C:/Users/Lord/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmsy10.tfm" 1136765053 1124 6c73e740cf17375f03eec0ee63599741 ""
   "C:/Users/Lord/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmsy6.tfm" 1136765053 1116 933a60c408fc0a863a92debe84b2d294 ""
   "C:/Users/Lord/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmsy8.tfm" 1136765053 1120 8b7d695260f3cff42e636090a8002094 ""
+  "C:/Users/Lord/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1247596667 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "C:/Users/Lord/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mkii" 1580390158 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "C:/Users/Lord/AppData/Local/Programs/MiKTeX/tex/generic/atbegshi/atbegshi.sty" 1575571100 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
   "C:/Users/Lord/AppData/Local/Programs/MiKTeX/tex/generic/bigintcalc/bigintcalc.sty" 1576433602 40635 c40361e206be584d448876bba8a64a3b ""
@@ -100,11 +101,11 @@
   "C:/Users/Lord/AppData/Local/Programs/MiKTeX/tex/latex/tools/enumerate.sty" 1700599895 3468 0ef513f22d965f96b06adb5cff671cd7 ""
   "C:/Users/Lord/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/Lord/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
-  "LPIC1.aux" 1735863900 8093 72667c200a27bcbe2f768a23e526cf9e "pdflatex"
-  "LPIC1.out" 1735863900 13676 5ab7a5e9555c0f6957c60cef766ed10c "pdflatex"
-  "LPIC1.tex" 1735863899 70063 f7a7a89e6462a9982eb983f4be2566c1 ""
-  "LPIC1.toc" 1735863900 4956 09f81f59bd6e59edb900fd3fd4782a7c "pdflatex"
-  "c:/Users/Lord/Desktop/lpic/Lpic1/LATEX/LPIC1.tex" 1735863899 70063 f7a7a89e6462a9982eb983f4be2566c1 ""
+  "LPIC1.aux" 1736070930 8093 a88729b215c1420796b3d5c29b51790a "pdflatex"
+  "LPIC1.out" 1736070930 13676 212fe2b18c38dc6a7dfd4a3c5aa4cd15 "pdflatex"
+  "LPIC1.tex" 1736070929 78280 d1e56983454d638887c1979537bfd32d ""
+  "LPIC1.toc" 1736070930 4956 bf354ab29cec0908139cc7777ae95098 "pdflatex"
+  "c:/Users/Lord/Desktop/lpic/Lpic1/LATEX/LPIC1.tex" 1736070929 78280 d1e56983454d638887c1979537bfd32d ""
   (generated)
   "LPIC1.aux"
   "LPIC1.log"
