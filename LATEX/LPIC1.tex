@@ -2596,10 +2596,6 @@ dnf remove gimp
 
 
 
-\end{document}
-
-
-
 %-------------------------------------------------------
 % Multiple-Choice Questions for (102.5)
 %-------------------------------------------------------
@@ -2613,9 +2609,280 @@ dnf remove gimp
 %-------------------------------------------------------
 % 102.6 Linux as a virtualization guest
 %-------------------------------------------------------
+\newpage
 
 \section*{102.6 Linux as a virtualization guest}
 \addcontentsline{toc}{section}{102.6 Linux as a virtualization guest}
+
+
+
+\subsection*{Reference to LPI Objectives:}
+\begin{itemize}
+    \item \textbf{LPIC-1 v5, Exam 101, Objective 102.6}
+    \item \textbf{Weight:} 1
+\end{itemize}
+
+\subsection*{Key Knowledge Areas}
+\begin{itemize}
+    \item General concept of virtual machines (VMs) and containers
+    \item Key elements of Infrastructure as a Service (IaaS), such as compute instances, block storage, networking
+    \item Changing Linux-specific system properties when cloning or templating a VM (e.g., host keys, D-Bus machine ID)
+    \item Using system images to deploy VMs, cloud instances, and containers
+    \item Guest drivers and integration features for Linux VMs
+    \item Awareness of \textbf{cloud-init} for automated provisioning
+\end{itemize}
+
+\subsection*{Important Files, Terms, and Utilities}
+\begin{itemize}
+    \item \textbf{Virtual machine}, \textbf{Linux container}, \textbf{application container}
+    \item \textbf{Guest drivers} (e.g., Virtio, VirtualBox Guest Additions)
+    \item \textbf{SSH host keys}, \textbf{D-Bus machine ID}
+    \item \textbf{cloud-init}
+\end{itemize}
+
+\section*{1. Virtualization Overview}
+
+\begin{enumerate}
+    \item \textbf{Hypervisor}
+    \begin{itemize}
+        \item Software layer allowing multiple \textbf{guest} operating systems to run on a single host.
+        \item Manages physical resources (CPU, memory, storage).
+    \end{itemize}
+
+    \item \textbf{Types of Hypervisors}
+    \begin{itemize}
+        \item \textbf{Type-1 (Bare-metal):} Runs directly on hardware (e.g., \textbf{Xen}, some KVM implementations).
+        \item \textbf{Type-2 (Hosted):} Runs on top of a host OS (e.g., \textbf{VirtualBox}).
+    \end{itemize}
+
+    \item \textbf{Common Hypervisors}
+    \begin{itemize}
+        \item \textbf{Xen} (Type-1, open source).
+        \item \textbf{KVM} (kernel module in Linux; used with \textbf{libvirt}, \textbf{QEMU}).
+        \item \textbf{VirtualBox} (cross-platform, Type-2).
+    \end{itemize}
+
+    \item \textbf{Migration}
+    \begin{itemize}
+        \item \textbf{Cold migration:} Move VM when powered off.
+        \item \textbf{Live migration:} Move a running VM to another hypervisor. Useful for maintenance/resiliency.
+    \end{itemize}
+\end{enumerate}
+
+\section*{2. Types of Virtual Machines}
+
+\begin{enumerate}
+    \item \textbf{Fully Virtualized (Hardware VM)}
+    \begin{itemize}
+        \item Guest OS is unmodified and unaware it’s virtualized.
+        \item CPU extensions (Intel VT-x, AMD-V) often required.
+    \end{itemize}
+
+    \item \textbf{Paravirtualized (PVM)}
+    \begin{itemize}
+        \item Guest OS is aware it’s running in a VM.
+        \item Uses special drivers for improved performance (e.g., \textbf{Virtio} in KVM, Xen drivers).
+    \end{itemize}
+
+    \item \textbf{Hybrid}
+    \begin{itemize}
+        \item Fully virtualized OS that uses paravirtualized drivers for I/O performance boosts (disk, network).
+    \end{itemize}
+\end{enumerate}
+
+\section*{3. Guest Drivers and Tools}
+
+\begin{itemize}
+    \item \textbf{KVM} → \textbf{Virtio} drivers for network/storage.
+    \item \textbf{VirtualBox} → \textbf{Guest Additions} (mounted via ISO).
+    \item Provide near-native performance for I/O operations.
+\end{itemize}
+
+\section*{4. Virtual Machine Definition Example (libvirt + KVM)}
+
+\begin{itemize}
+    \item \texttt{/etc/libvirt/qemu/} contains XML config files describing VMs:
+    \begin{itemize}
+        \item Memory, CPUs, disk images, network interfaces, etc.
+    \end{itemize}
+    \item Example snippet:
+    \begin{lstlisting}[language=xml]
+<domain type='kvm'>
+  <name>rhel8.0</name>
+  <memory unit='KiB'>4194304</memory>
+  <vcpu>2</vcpu>
+  <devices>
+    <disk type='file' device='disk'>
+      <source file='/var/lib/libvirt/images/rhel8'/>
+      <target dev='vda' bus='virtio'/>
+    </disk>
+    <interface type='network'>
+      <source network='default'/>
+      <model type='virtio'/>
+    </interface>
+    ...
+  </devices>
+</domain>
+    \end{lstlisting}
+    \item \textbf{Networking} can be NAT-based via \texttt{virbr0} or bridged to the host network.
+\end{itemize}
+
+\section*{5. VM Disk Storage Formats}
+
+\begin{enumerate}
+    \item \textbf{QCOW2 (Copy-on-write)}
+    \begin{itemize}
+        \item Thin-provisioned (sparse), only consumes physical space for actual data.
+        \item Can expand up to a max size.
+    \end{itemize}
+
+    \item \textbf{RAW}
+    \begin{itemize}
+        \item Pre-allocated, full-size image.
+        \item Slight performance advantage.
+    \end{itemize}
+
+    \item \textbf{Other Storage Setups}
+    \begin{itemize}
+        \item Physical LVM volumes, SAN, NAS, or advanced solutions (oVirt, Red Hat Virtualization).
+    \end{itemize}
+\end{enumerate}
+
+\section*{6. Cloning and Templates}
+
+\begin{enumerate}
+    \item \textbf{Templates}
+    \begin{itemize}
+        \item Pre-built VM images with baseline OS/configuration.
+        \item Speeds deployment, reduces repetitive setup steps.
+    \end{itemize}
+
+    \item \textbf{Unique System IDs}
+    \begin{itemize}
+        \item Must regenerate \textbf{SSH host keys}, \textbf{D-Bus machine ID} to avoid duplicates.
+        \item Example to regenerate machine ID:
+        \begin{lstlisting}[language=bash]
+sudo rm -f /etc/machine-id
+sudo dbus-uuidgen --ensure=/etc/machine-id
+        \end{lstlisting}
+    \end{itemize}
+\end{enumerate}
+
+\section*{7. Cloud Infrastructure (IaaS)}
+
+\begin{enumerate}
+    \item \textbf{Compute Instances}
+    \begin{itemize}
+        \item Providers bill by CPU/memory usage or by instance count/time.
+    \end{itemize}
+
+    \item \textbf{Block Storage}
+    \begin{itemize}
+        \item Persistent storage volumes attached to VMs; performance tiers vary by cost.
+    \end{itemize}
+
+    \item \textbf{Networking}
+    \begin{itemize}
+        \item Cloud providers offer subnets, routing, firewalls, DNS, or hybrid on-prem/cloud networking (VPN).
+    \end{itemize}
+
+    \item \textbf{Access via SSH}
+    \begin{itemize}
+        \item Typically uses key-based authentication.
+        \item Some providers auto-generate keys or let you upload your own.
+    \end{itemize}
+\end{enumerate}
+
+\section*{8. \texttt{cloud-init} for Automated Provisioning}
+
+\begin{enumerate}
+    \item \textbf{\texttt{cloud-init}}
+    \begin{itemize}
+        \item Tool that runs at boot to configure system settings (network, packages, SSH keys, etc.).
+        \item Uses YAML-based \textbf{cloud-config} files.
+        \item Example:
+        \begin{lstlisting}[language=bash]
+#cloud-config
+timezone: Africa/Dar_es_Salaam
+hostname: test-system
+apt_update: true
+apt_upgrade: true
+packages:
+  - nginx
+        \end{lstlisting}
+        \item Reduces manual setup for new VMs or containers.
+    \end{itemize}
+\end{enumerate}
+
+\section*{9. Containers}
+
+\begin{enumerate}
+    \item \textbf{Container Concepts}
+    \begin{itemize}
+        \item Isolated environment for an application.
+        \item Shares host OS kernel, thus lighter than full VMs.
+        \item Faster deployment and scaling, easy migration.
+    \end{itemize}
+
+    \item \textbf{\texttt{cgroups} (Control Groups)}
+    \begin{itemize}
+        \item Linux kernel feature limiting resource usage (CPU, memory, IO).
+        \item Container engines (Docker, LXC, Kubernetes) use cgroups under the hood.
+    \end{itemize}
+
+    \item \textbf{Use Cases}
+    \begin{itemize}
+        \item Microservices, ephemeral workloads, dev/test environments.
+    \end{itemize}
+\end{enumerate}
+
+\section*{Workbook Exercises}
+
+\begin{enumerate}
+    \item \textbf{Compare VM Types}
+    \begin{itemize}
+        \item Write down 3 differences between \textbf{fully virtualized} and \textbf{paravirtualized} VMs.
+        \item List examples of \textbf{Type-1} vs. \textbf{Type-2} hypervisors.
+    \end{itemize}
+
+    \item \textbf{Inspect a VM Definition (libvirt)}
+    \begin{itemize}
+        \item On a KVM host, look at \texttt{/etc/libvirt/qemu/VM\_NAME.xml}.
+        \item Identify the disk image file, CPU count, and memory assignment.
+    \end{itemize}
+
+    \item \textbf{Check Machine ID}
+    \begin{itemize}
+        \item On a Linux VM, run:
+        \begin{lstlisting}[language=bash]
+dbus-uuidgen --get
+        \end{lstlisting}
+        \item If cloned, try regenerating the machine ID.
+        \item Discuss why identical IDs can cause conflicts.
+    \end{itemize}
+
+    \item \textbf{\texttt{cloud-init} Basics}
+    \begin{itemize}
+        \item Create a small \texttt{cloud-config} file to set a hostname and install a package.
+        \item Discuss how it might be used in a real deployment scenario.
+    \end{itemize}
+
+    \item \textbf{Container vs. VM}
+    \begin{itemize}
+        \item Compare resource usage for a container vs. a full VM (e.g., Docker container vs. KVM instance).
+        \item List potential advantages of containers in your environment.
+    \end{itemize}
+\end{enumerate}
+
+\section*{Summary}
+
+\begin{itemize}
+    \item \textbf{Linux} supports various virtualization technologies (KVM, Xen, VirtualBox), each with different performance and integration trade-offs.
+    \item Paravirtualization leverages special drivers for higher performance than fully virtualized guests.
+    \item \textbf{D-Bus machine ID} and \textbf{SSH keys} must be unique for each cloned VM or template-based deployment.
+    \item \textbf{\texttt{cloud-init}} automates initial OS configuration in cloud or container environments.
+    \item \textbf{Containers} share the host kernel, providing lighter, faster deployment compared to full VMs, and rely on \textbf{\texttt{cgroups}} for resource isolation.
+\end{itemize}
 
 %-------------------------------------------------------
 % Multiple-Choice Questions for (102.6)
