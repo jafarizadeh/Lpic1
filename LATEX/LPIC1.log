@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.8.31)  5 JAN 2025 10:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.8.31)  5 JAN 2025 11:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -374,7 +374,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.31 ...er Interfaces and Desktops}{43}{chapter.6}
+l.31 ...er Interfaces and Desktops}{49}{chapter.6}
                                                   % [1
 
 ])
@@ -420,61 +420,76 @@ Overfull \hbox (5.41997pt too wide) in paragraph at lines 1461--1462
 []\T1/cmr/m/n/12 Strategic par-ti-tion-ing im-proves \T1/cmr/bx/n/12 sta-bil-ity, se-cu-rity, and main-te-nance \T1/cmr/m/n/12 (e.g., \T1/cmtt/m/n/12 /boot\T1/cmr/m/n/12 ,
  []
 
-[38]
+[38] [39] [40] [41]
+Overfull \hbox (12.57112pt too wide) in paragraph at lines 1655--1656
+[]\T1/cmr/bx/n/12 Rescue Mode\T1/cmr/m/n/12 : need to \T1/cmtt/m/n/12 set prefix=(hd0,msdos1)/boot/grub \T1/cmr/m/n/12 and \T1/cmtt/m/n/12 insmod normal\T1/cmr/m/n/12 ,
+ []
+
+[42]
+Overfull \hbox (18.54375pt too wide) in paragraph at lines 1688--1689
+[]\T1/cmr/m/n/12 In \T1/cmtt/m/n/12 /etc/default/grub\T1/cmr/m/n/12 , add an op-tion to \T1/cmtt/m/n/12 GRUB_CMDLINE_LINUX="quiet splash"\T1/cmr/m/n/12 . 
+ []
+
+
+Overfull \hbox (54.55714pt too wide) in paragraph at lines 1694--1695
+[]\T1/cmr/m/n/12 If you have a Win-dows in-stall at \T1/cmtt/m/n/12 (hd0,2)\T1/cmr/m/n/12 , add a cus-tom en-try in \T1/cmtt/m/n/12 /etc/grub.d/40_custom
+ []
+
+[43] [44]
 Chapter 3.
-[39
-
-]
-Chapter 4.
-[40
-
-] [41]
-Chapter 5.
-[42
-
-]
-Chapter 6.
-[43
-
-]
-Chapter 7.
-[44
-
-]
-Chapter 8.
 [45
 
 ]
-Chapter 9.
+Chapter 4.
 [46
+
+] [47]
+Chapter 5.
+[48
+
+]
+Chapter 6.
+[49
+
+]
+Chapter 7.
+[50
+
+]
+Chapter 8.
+[51
+
+]
+Chapter 9.
+[52
 
 ]
 Chapter 10.
-[47
+[53
 
-] [48
+] [54
 
 
-] [49] [50] [51] [52] (LPIC1.aux)
+] [55] [56] [57] [58] (LPIC1.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
 Package rerunfilecheck Info: File `LPIC1.out' has not changed.
-(rerunfilecheck)             Checksum: 212FE2B18C38DC6A7DFD4A3C5AA4CD15;13676.
+(rerunfilecheck)             Checksum: 567C161137B44E8AABF67C299FEF44FB;13684.
  ) 
 Here is how much of TeX's memory you used:
- 13032 strings out of 474486
- 190345 string characters out of 5744227
- 1976542 words of memory out of 5000000
- 34489 multiletter control sequences out of 15000+600000
- 571223 words of font info for 67 fonts, out of 8000000 for 9000
+ 13129 strings out of 474486
+ 191536 string characters out of 5744227
+ 1999542 words of memory out of 5000000
+ 34516 multiletter control sequences out of 15000+600000
+ 571992 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,5n,79p,500b,1370s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,6n,79p,500b,1370s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1440.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk><C:/Users/Lord/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on LPIC1.pdf (53 pages, 382927 bytes).
+Output written on LPIC1.pdf (59 pages, 408845 bytes).
 PDF statistics:
- 1738 PDF objects out of 2073 (max. 8388607)
- 680 named destinations out of 1000 (max. 500000)
+ 1854 PDF objects out of 2073 (max. 8388607)
+ 749 named destinations out of 1000 (max. 500000)
  433 words of extra memory for PDF output out of 10000 (max. 10000000)
 

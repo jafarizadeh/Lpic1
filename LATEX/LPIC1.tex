@@ -1476,8 +1476,254 @@ Designing an effective disk layout is critical for system stability, performance
 % 102.2 Install a boot manager
 %-------------------------------------------------------
 
-\section*{102.2 Install a boot manager}
-\addcontentsline{toc}{section}{102.2 Install a boot manager}
+\newpage
+
+\section*{102.2 Install a Boot Manager}
+\addcontentsline{toc}{section}{102.2 Install a Boot Manager}
+
+\textbf{Reference to LPI Objectives:}  
+\begin{itemize}
+    \item \textbf{LPIC-1 v5, Exam 102, Objective 102.2}  
+    \item \textbf{Weight:} 2  
+\end{itemize}
+
+\subsection*{Key Knowledge Areas}
+\begin{itemize}
+    \item Providing alternate or backup boot options.  
+    \item Installing and configuring boot loaders (GRUB Legacy, GRUB 2).  
+    \item Performing basic GRUB 2 configuration changes.  
+    \item Interacting with the boot loader at startup.
+\end{itemize}
+
+\subsection*{Important Files, Terms, and Utilities}
+\begin{itemize}
+    \item \textbf{MBR} (Master Boot Record)  
+    \item \texttt{/boot} directory or partition (often containing GRUB files, kernels, initrd)  
+    \item \texttt{menu.lst}, \texttt{grub.cfg}, and \texttt{grub.conf}  
+    \item \texttt{grub-install}, \texttt{grub-mkconfig} (or \texttt{update-grub})  
+    \item \textbf{chainloading} (for non-Linux OS, e.g., Windows)
+\end{itemize}
+
+
+
+\section*{Lesson Overview}
+
+A system’s boot loader is the first software executed when a machine powers on. On Linux, this is typically \textbf{GRUB} (either Legacy or GRUB 2). GRUB loads the kernel and passes control to it. Having a working knowledge of installing and configuring GRUB is essential for system recovery and customizing boot behavior.
+
+
+
+\section*{1. GRUB Legacy vs. GRUB 2}
+
+\subsection*{1.1 GRUB Legacy}
+\begin{itemize}
+    \item Older, no longer actively developed (last release 0.97 from 2005).  
+    \item Configuration file: \texttt{/boot/grub/menu.lst} (sometimes \texttt{grub.conf}).  
+    \item Simpler configuration, fewer features.
+\end{itemize}
+
+\subsection*{1.2 GRUB 2}
+\begin{itemize}
+    \item Complete rewrite, default on most modern distributions.  
+    \item Configuration files:  
+    \begin{itemize}
+        \item \texttt{/etc/default/grub} (main user-editable file)  
+        \item \texttt{/boot/grub/grub.cfg} (auto-generated, do not edit manually)  
+    \end{itemize}
+    \item More modular, supports more filesystems, better scripting, theming, etc.
+\end{itemize}
+
+
+
+\section*{2. Bootloader Locations and Partitions}
+
+\subsection*{2.1 MBR Partition Scheme}
+\begin{itemize}
+    \item Legacy layout where the first 512 bytes of the disk contain the MBR (boot code + partition table).  
+    \item Boot loader code often placed in MBR + post-MBR gap (32 KB) before the first partition.
+\end{itemize}
+
+\subsection*{2.2 GPT (GUID Partition Table)}
+\begin{itemize}
+    \item Modern layout for large disks (>2 TB).  
+    \item Requires a \textbf{BIOS boot partition} (for BIOS systems) or uses \textbf{EFI System Partition (ESP)} on UEFI systems.
+\end{itemize}
+
+\subsection*{2.3 /boot Partition}
+\begin{itemize}
+    \item Often first partition on the disk, historically to avoid BIOS cylinder limits.  
+    \item Typically $\sim$300 MB in size, containing kernel images (\texttt{vmlinuz}), initrd, GRUB files, etc.  
+    \item Helps ensure boot files remain accessible (especially if \texttt{/} uses encryption or an unsupported filesystem).
+\end{itemize}
+
+
+
+\section*{3. Installing GRUB 2}
+
+\subsection*{3.1 grub-install}
+\begin{itemize}
+    \item Installs GRUB 2 boot code onto a disk (e.g., \texttt{/dev/sda}) or EFI partition.  
+    \item Syntax examples:  
+    \begin{lstlisting}[language=bash]
+    grub-install --boot-directory=/boot /dev/sda
+    # or for a dedicated /boot partition mounted at /mnt/tmp:
+    grub-install --boot-directory=/mnt/tmp /dev/sda
+    \end{lstlisting}
+    \item Must point to the \textbf{disk} (e.g., \texttt{/dev/sda}), not a specific partition (unless UEFI requires otherwise).
+\end{itemize}
+
+\subsection*{3.2 Configuration}
+\begin{itemize}
+    \item \texttt{/etc/default/grub} – main file for user edits. Common parameters:  
+    \begin{itemize}
+        \item \texttt{GRUB\_DEFAULT}: default menu entry (0-based index, or \texttt{saved}).  
+        \item \texttt{GRUB\_SAVEDEFAULT}: if set to \texttt{true} with \texttt{GRUB\_DEFAULT=saved}, boots the last-chosen entry.  
+        \item \texttt{GRUB\_TIMEOUT}: seconds before auto-booting the default. \texttt{-1} waits indefinitely.  
+        \item \texttt{GRUB\_CMDLINE\_LINUX}: universal kernel parameters (e.g., \texttt{quiet}, \texttt{splash}).  
+    \end{itemize}
+    \item \texttt{grub-mkconfig} (or \texttt{update-grub}) generates \texttt{/boot/grub/grub.cfg} from the above file and scripts in \texttt{/etc/grub.d/}.  
+    \begin{lstlisting}[language=bash]
+    grub-mkconfig -o /boot/grub/grub.cfg
+    # or:
+    update-grub
+    \end{lstlisting}
+\end{itemize}
+
+\subsection*{3.3 Menu Entries}
+\begin{itemize}
+    \item Auto-discovered for Linux, other OS, or kernels.  
+    \item Custom entries often added to \texttt{/etc/grub.d/40\_custom}, then re-run \texttt{update-grub}.
+\end{itemize}
+
+\subsection*{3.4 Interacting with GRUB 2}
+\begin{itemize}
+    \item \textbf{Boot Menu}: highlight an entry with arrow keys, press \texttt{e} to edit before booting.  
+    \item \textbf{Shell Mode}: press \texttt{c} to access \texttt{grub>} shell.  
+    \item \textbf{Rescue Shell} (\texttt{grub rescue>}): minimal commands, must \texttt{insmod} needed modules (e.g., \texttt{normal}, \texttt{linux}) if GRUB config is broken.
+\end{itemize}
+
+
+
+\section*{4. GRUB Legacy (for Reference)}
+
+\subsection*{4.1 Installing}
+\begin{itemize}
+    \item Via \texttt{grub-install /dev/sda} (must specify the disk, not a partition).  
+    \item From GRUB Legacy shell:  
+    \begin{lstlisting}[language=bash]
+    grub> root (hd0,0)
+    grub> setup (hd0)
+    \end{lstlisting}
+    
+    \item \texttt{root (hd0,0)} means the first disk (\texttt{hd0}), first partition (\texttt{0}), if \texttt{/boot} is there.
+\end{itemize}
+
+\subsection*{4.2 Configuration: /boot/grub/menu.lst}
+\begin{itemize}
+    \item Example menu entry:
+    \begin{lstlisting}[language=bash]
+    title My Linux
+    root (hd0,0)
+    kernel /vmlinuz root=/dev/hda1
+    initrd /initrd.img
+    \end{lstlisting}
+    
+    \item \texttt{chainloader +1} used to boot Windows or other OS by loading their own bootloader code.
+\end{itemize}
+
+
+\section*{5. Booting from the GRUB Shell}
+
+\begin{enumerate}
+    \item \textbf{Identify Partitions}: 
+    \begin{lstlisting}[language=bash]
+    grub> ls
+    (hd0) (hd0,msdos1)
+    \end{lstlisting} 
+    \begin{verbatim}
+    
+    \end{verbatim}
+    \item \textbf{Set root} (example):  
+    \begin{lstlisting}[language=bash]
+    grub> set root=(hd0,msdos1)
+    \end{lstlisting}
+    \item \textbf{Load Kernel \& Initrd} (GRUB 2 example):  
+    \begin{lstlisting}[language=bash]
+    grub> linux /vmlinuz root=/dev/sda1
+    grub> initrd /initrd.img
+    grub> boot
+    \end{lstlisting}
+    \item \textbf{Rescue Mode}: need to \texttt{set prefix=(hd0,msdos1)/boot/grub} and \texttt{insmod normal}, \texttt{insmod linux} before proceeding.
+\end{enumerate}
+
+
+
+\section*{Workbook Exercises}
+
+\begin{enumerate}
+    \item \textbf{Identify Boot Device}  
+    \begin{itemize}
+        \item Run \texttt{fdisk -l /dev/sda} or \texttt{lsblk -f} and find your \textbf{boot partition}.  
+        \item Note which partition is marked as bootable.
+    \end{itemize}
+
+    \item \textbf{Install GRUB 2}  
+    \begin{itemize}
+        \item Mount your \texttt{/boot} (or boot partition) if needed at \texttt{/mnt/tmp}.  
+        \item Run:
+        \begin{lstlisting}[language=bash]
+        grub-install --boot-directory=/mnt/tmp /dev/sda
+        \end{lstlisting}
+        \item Verify GRUB files are placed in \texttt{/mnt/tmp/boot/grub}.
+    \end{itemize}
+
+    \item \textbf{Customize GRUB Timeout}  
+    \begin{itemize}
+        \item Edit \texttt{/etc/default/grub} and set \texttt{GRUB\_TIMEOUT=5}.  
+        \item Run \texttt{update-grub} (or \texttt{grub-mkconfig -o /boot/grub/grub.cfg}).  
+        \item Reboot and confirm you see the menu for 5 seconds.
+    \end{itemize}
+
+    \item \textbf{Add a Kernel Parameter}  
+    \begin{itemize}
+        \item In \texttt{/etc/default/grub}, add an option to \texttt{GRUB\_CMDLINE\_LINUX="quiet splash"}.  
+        \item Update GRUB and reboot. Check \texttt{/proc/cmdline} to confirm the new parameter.
+    \end{itemize}
+
+    \item \textbf{Practice Chainloading}  
+    \begin{itemize}
+        \item If you have a Windows install at \texttt{(hd0,2)}, add a custom entry in \texttt{/etc/grub.d/40\_custom} (or in GRUB Legacy’s \texttt{menu.lst}):
+        \begin{lstlisting}[language=bash]
+        menuentry "Windows" {
+            set root=(hd0,2)
+            chainloader +1
+        }
+        \end{lstlisting}
+        \item Update GRUB and verify you can boot into Windows.
+    \end{itemize}
+
+    \item \textbf{GRUB Rescue Simulation}  
+    \begin{itemize}
+        \item Temporarily rename \texttt{/boot/grub/grub.cfg} to break GRUB.  
+        \item Reboot to force the \texttt{grub rescue>} prompt.  
+        \item Use \texttt{ls}, \texttt{set prefix=}, \texttt{insmod normal}, etc., to recover manually.  
+        \item Restore \texttt{grub.cfg} after testing.
+    \end{itemize}
+\end{enumerate}
+
+
+
+\section*{Summary}
+
+\begin{itemize}
+    \item \textbf{GRUB 2} is the modern bootloader on most Linux systems, replacing \textbf{GRUB Legacy}.  
+    \item \texttt{grub-install} places boot code on the MBR (BIOS) or ESP (UEFI).  
+    \item \texttt{/etc/default/grub} and scripts in \texttt{/etc/grub.d/} define the GRUB 2 menu.  
+    \item Use \texttt{update-grub} (or \texttt{grub-mkconfig}) to regenerate \texttt{/boot/grub/grub.cfg}.  
+    \item In emergencies, the \textbf{GRUB shell} (normal or rescue) can manually load kernel and initrd to boot.  
+\end{itemize}
+
+
+
 
 %-------------------------------------------------------
 % Multiple-Choice Questions for (102.2)
