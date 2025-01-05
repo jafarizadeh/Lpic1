@@ -1,0 +1,678 @@
+103.3
+
+1- Which command is used to list files in the current directory in a human-readable format (showing size like 4.0K)
+
+A) ls -lh
+B) ls -lr
+C) ls -a
+D) ls -sd
+
+-> A) ls -lh
+
+==============================================
+
+2- Which option with the rm command prompts the user befor removing the file?
+
+A) -r
+B) -f
+C) -i
+D) -d
+
+-> C) -i
+
+==============================================
+
+3- In the context of wildcard usage, what does the * (asterisk) match?
+
+A) Zero or more occurrences of any character
+B) Exactly one character
+C) Only hidden files
+D) Only directories
+
+-> A) Zero or more occurences of any character
+
+==============================================
+
+4- Which option for the cp command is used to copy directories recursively
+
+A) -v
+B) -l
+C) -u
+D) -r
+
+-> D) -r
+
+==============================================
+
+5- Which command removes an empty directory?
+
+A) rm -r
+B) rmdir
+C) rm -rf
+D) cpio
+
+-> B) rmdir
+
+==============================================
+
+6- In the output of ls -l, which character (in the first column) indicates a directory?
+
+A) -
+B) s
+C) c
+D) d
+
+-> D) d
+
+==============================================
+
+7- Which command can be used to create an empty file?
+
+A) touch
+B) newfile
+C) cp -0
+D) mv -n
+
+-> A) touch
+
+==============================================
+
+8- What is the effect of tunning mv oldname newname?
+
+A) Copies oldname to newname
+B) Rename oldname to newname
+C) asks for confirmation vefore removing oldname
+D) None of the above
+
+-> B) Rename oldname to newname
+
+==============================================
+
+9- Which command displays the type of a file (e.g., text, directory, etc)?
+
+A) file
+B) type
+C) grep
+D) dd
+
+-> A) file
+
+==============================================
+
+10- Which command is used to remove a file permannently without prompts, ignoring nonexistent files?
+
+A) rm -f
+B) rm -i
+C) rm -r
+D) rm -rf
+
+-> A) rm -f
+
+==============================================
+
+11- Which command will list hidden files in the current directory?
+
+A) ls -l
+B) ls -h
+C) ls -a
+D) ls -R
+
+-> C) ls -a
+
+==============================================
+
+12- Which of the following wildcards matches exactly one character?
+
+A) *
+B) [ ]
+C) !
+D) ?
+
+-> D) ?
+
+==============================================
+
+13- Which command can create a directory named parents/children along with the necessary parent directory if it doesn't exist?
+
+A) mkdir -r parents/children
+B) mkdir --creat parents/children
+C) mkdir -p parents/children
+D) mkdir -m parents/children
+
+-> C) mkdir -p parents/children
+
+==============================================
+
+14- What does following command do?
+cp -r myfile/ /backups
+
+A) Copies the entire myfile directory, including its contents, to backups
+B) Moves all content ftom backups to myfiles
+C) Copies only hidden files from myfiles to backups
+D) Backs up the entire filesystem
+
+-> A) Copies the entire myfile directory, including its conents, to backups
+
+==============================================
+
+15- Which command is used to move ot rename files in Linux?
+
+A) cp
+B) rename
+C) mv
+D) rm
+
+-> C) mv
+
+==============================================
+
+16- When using the mv command, which option prompts you before overwriting an existing file?
+
+A) -f
+B) -n
+C) -r
+D) -i
+
+-> -i
+
+==============================================
+
+17- In the context of the find command, what does -type f represent?
+
+A) Search for directories
+B) Search for regular file
+C) Search for symbolic links
+D) Search for special files
+
+-> B) Search for directories
+
+==============================================
+
+18- Which command recursicely removes a directory and all its contects?
+
+A) rmdir -r
+B) rm -r
+C) rm
+D) rmdir
+
+-> B) rm -r
+
+==============================================
+
+19- Which command can be used to list the content of a direcroty together with its subdirectories?
+
+A) ls -R
+B) ls -a
+C) ls -l
+D) ls -m
+
+-> ls -R
+
+==============================================
+
+20- Which wildcard expression would match filenames that start with l, followed by any single character, and end with st.txt?
+
+A) l*[st].txt
+B) l?st.txt
+C) l??st?.txt
+D) l?st.[txt]
+
+-> B) l?st.txt
+
+==============================================
+
+21- Which wildcard symbol matches zero or more characters?
+
+A) *
+B) ?
+C) [0-9]
+D) [a-z]
+
+-> A) *
+
+==============================================
+
+22- Which of the following commands is best to search for files with names ending in .png in /home?
+
+A) grep "*.png" /home
+B) locate /home/*.png
+C) which /home/*.png
+D) find /home -name "*.png"
+
+-> D) find /home -name "*.png" 
+
+==============================================
+
+23- Which option for the find command modifies the default vehavior to ignore case in pattern matching?
+
+A) -not
+B) -iname
+C) -type
+D) -size
+
+-> B) -iname
+
+==============================================
+
+24- Which find command argument is used to execute a command on all matching files?
+
+A) -maxdepth
+B) -name
+C) -type
+D) -exec
+
+-> D) -exec
+
+==============================================
+
+25- What is the role of the placeholder {} when using find with the -exec action?
+
+A) Ignores symbolic links
+B) Prevents expansions
+C) Lists file permissions
+D) Substitutes the currently found file
+
+-> D) Substitutes the currently found file
+
+==============================================
+
+26- Which of the following commands can help you find empty files in the current directory?
+
+A) find . -empty
+B) grep -E "empty"
+C) find . -iname "empty"
+D) locate . -size 0d
+
+-> A) find . -empty
+
+==============================================
+
+27- When searching for files that have been modified in the last 5 days, you use:
+
+A) find / -type f -name "*.txt" -exec data 5
+B) find / -name "*.txt" -cdays 5
+C) find / -name "*.txt" -mtime -5
+D) find / -name "*.txt" -cmin -5
+
+-> C) find / -name "*.txt" -mtime -5
+
+==============================================
+
+28- Which find option would you use to limit the directory search to two levels down from the specified directory?
+
+A) -mindepth 2
+B) -maxdepth 2
+C) -depth
+D) -stop 2
+
+-> B) -maxdept 2
+
+==============================================
+
+29- Which command would you use to apply the permission 664 to every .conf file found by find in the cerrent derectoury tree?
+
+A) find . -name "*.conf" -print | chmod 664
+B) find . -iname "*.conf" --permision 664
+C) find . -name "*.conf" -exec chmod 644 {} \;
+D) find . -name "*.conf" -chmod 664
+
+-> C) find . -name "*.conf" -exec chmod 644 {} \;
+
+==============================================
+
+30- To remoce all .bak files in the current directory and subdirectories, you could use:
+
+A) rm -rf *.bak
+B) rmdir -r *.bak
+C) find . -name "*.bak" -delet
+D) rm -i *.bak
+
+-> C) find . -name "*.bak" -delet
+
+==============================================
+
+31- Which command is used to creat an archive with the name archive.tar out of a directory named data?
+
+A) ter -zvf archive.tar data
+B) tar -xvf archive.tar data
+C) tar -cv data archive.tar
+D) tar -cvf archive.tar data
+
+-> D) tar -cvf archive.tar data
+
+==============================================
+
+32- Which tar potion is used to display the files being processed (i.e., for verbose output)?
+
+A) -z
+B) -f
+C) -v
+D) -c
+
+-> C) -v
+
+==============================================
+
+33- Which compressin method is used when the -z option is specified with the tar command?
+
+A) bzip2
+B) gzip
+C) xz
+D) lzma
+
+-> C) xz
+
+==============================================
+
+34- Which operation with rar is used to extract an archive?
+
+A) -l
+B) -c
+C) -x
+D) -v
+
+-> C) -x
+
+==============================================
+
+35- What is the effect of adding -C /tmp to a tar extract command (e.g., tar -xvf archive.tar -C /tmp)?
+
+A) Creat an archive in the /tmp directory
+B) Change the extraction destination to /tmp
+C) Copies the archive to /tmp first
+D) Convert the archive to bzip2
+
+-> B) Change the extraction destivation to /tmp
+
+==============================================
+
+36- Which option with tar can be used to create a bzip2-compressed tar file?
+
+A) -v
+B) -f
+C) -z
+D) -j
+
+-> D) -j
+
+==============================================
+
+37- Which command will uncompress a .gz file, removing the original compressed file by default?
+
+A) gunzip
+B) tar -xvf
+C) cp
+D) gzip -d
+
+-> A) gunzip
+
+==============================================
+
+38- Which option do you replace -c with when extracting a .tar.gz file using tar?
+
+A) -z
+B) -v
+C) -j
+D) -x
+
+-> D) -x
+
+==============================================
+
+39- Which command is used to create an archive in cpio format?
+
+A) cpio -i
+B) cpio -t
+C) cpio -d
+D) cpio -o
+
+-> cpio -o
+
+==============================================
+
+40- Which symbol is used to specify that the follwing file is the input for the cpio command when extracting?
+
+A) >
+B) <
+C) |
+D) *
+
+-> B) <
+
+==============================================
+
+41- Which of the following commands in Linux creates a compressed file with the extension .gz and removes the original by default?
+
+A) gunzip
+B) gzip
+C) bzip
+D) bunzip
+
+-> B) gzip
+
+==============================================
+
+42- Which command reads the input file with if= and writes the result to a file specified by of=?
+
+A) file
+B) tar
+C) cp
+D) dd
+
+-> D) dd
+
+==============================================
+
+43- Which command do you use to extract the contents of a .cpio archive?
+
+A) cpio -o
+B) cpio -p
+C) cpio -i
+D) cpio -z
+
+-> C) cpio -i
+
+==============================================
+
+44- Which dd option displays the progress of data copy operation?
+
+A) status=progress
+B) conv=progress
+C) if=progress
+D) of=progress
+
+-> A) status=progress
+
+==============================================
+
+45- If you want to convert all text in a file to uppercase while copying it with dd, you use:
+
+A) dd if=input of=output conv=upper
+B) dd if=input of=output conv=u
+C) dd if=input of=output conv=ucase
+D) dd if=input of=output conv=big
+
+-> C) dd if=input of=output conv=ucase
+
+==============================================
+
+46- Which device file would you use with dd to create a disk image backup of the entire first SATA driver in the system?
+
+A) /dev/sda
+B) /dev/sdb
+C) /dev/mapper/sda
+D) /dev/hda
+
+-> A) /dev/sda
+
+==============================================
+
+47- Which command can find file in thecurrent directory that contain a specific string "lpi" in their content?
+
+A) locate "lpi"
+B) grep "lpi"*
+C) which "lpi"*
+D) dd if="lpi"
+
+-> B) grep "lpi"*
+
+==============================================
+
+48- Which command can be used to create multiple files at once?
+
+A) touch file1 file2 file3
+B) cp file1 file2 file3
+C) dd if=file1 of=file2 file3
+D) cat file1 >> file2 >> file3
+
+-> A) touch file1 file2 file3
+
+==============================================
+
+49- In the command find . -type f -exec grep "lpi" '{}'; -print
+what does -print do?
+
+A) Print the content of each file found
+B) Print the line numbers of the match
+C) Print the file name after the grep command is executed
+D) Print no output
+
+-> C) Print the file name after the grep command is executed
+
+==============================================
+
+50- Which find command syntax is correct if you want to look for myfile under /home?
+
+A) find -name "myfile" /home
+B) find /home -name "myfile"
+C) find /home -print "myfile"
+D) find -exec /home "myfile"
+
+-> B) find /home -name "myfile"
+
+==============================================
+==============================================
+
+FILL-IN-THE-BLACK QUESTIONS
+
+==============================================
+
+1- The _____ command can be used to rename a file or move it to a new location.
+
+-> rm
+
+==============================================
+
+2- The command _____ -r mydir newdir copies a directory recursively.
+
+-> cp
+
+==============================================
+
+3- The wildcard vharacter _____ mathes exactly one character.
+
+-> ?
+
+==============================================
+
+4- To find files  larger than 2G, you canuse _____/var -size +2G.
+
+-> find
+
+==============================================
+
+5- The command tar _____ archive.tar data is used to create an archive.
+
+-> -cvf
+
+==============================================
+
+6- To extract a .tar.gz file with tar, you replace the -c option with _____.
+
+-> -x
+
+==============================================
+
+7- The _____ command is used to remove empty directories.
+
+-> rmdir
+
+==============================================
+
+8- A _____ is basically a container of multiple files bundled together by the tar command.
+
+-> tar archive
+
+==============================================
+
+9- In the contect of the find command with -exec, the placeholder _____ refers to the currently found file.
+
+-> {}
+
+==============================================
+
+10- The _____ command is used to uncompress .gz files (and removes the original .gz file by default).
+
+-> gunzip
+
+==============================================
+
+11- The dd option _____=progress is used to display progress updates.
+
+-> status
+
+==============================================
+
+12- The command mkdir -p parents/children creates a directory named children plus the _____ directory if it doesn't exist.
+
+-> parents
+
+==============================================
+
+13- Using find . -_____ "*.bak" -delet remoces all .bak files in the current directory (and subdirectories)
+
+-> -name
+
+==============================================
+
+14- The Linux command _____ is used to display file type information (e.g., ASCII text, directory, etc.).
+
+-> file
+
+==============================================
+
+15- _____ is an archiving tool that can create or extract *.cpio archives.
+
+-> cpio
+
+==============================================
+
+16- The _____ wildcard matches zero ot more characters.
+
+-> *
+
+==============================================
+
+17- The commands gzip and _____ are commonly used to compress ot decompress files in .gz format.
+
+-> gunzip
+
+==============================================
+
+18- The _____ option of the find command is used to restrict the search to a certin depth of directories.
+
+-> maxdepth
+
+==============================================
+
+19- The command _____ fiel1 fiel2 file3 creates three empty files at once.
+
+-> touch
+
+==============================================
+
+20- The _____ command is used to remove files, and it does so irreversibly by default (no trash/recycle bin)
+
+-> rm
+
+==============================================
