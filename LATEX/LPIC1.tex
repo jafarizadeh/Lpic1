@@ -2187,9 +2187,385 @@ apt-cache search KEYWORD
 %-------------------------------------------------------
 % 102.5 Use RPM and YUM package management
 %-------------------------------------------------------
+\newpage
 
-\section*{102.5 Use RPM and YUM package management}
-\addcontentsline{toc}{section}{102.5 Use RPM and YUM package management}
+\section*{102.5 Use RPM and YUM Package Management}
+\addcontentsline{toc}{section}{102.5 Use RPM and YUM Package Management}
+
+\subsection*{Reference to LPI Objectives:}
+\begin{itemize}
+    \item \textbf{LPIC-1 v5, Exam 101, Objective 102.5}
+    \item \textbf{Weight:} 3
+\end{itemize}
+
+\subsection*{Key Knowledge Areas}
+\begin{itemize}
+    \item Installing, re-installing, upgrading, and removing packages with \textbf{rpm}, \textbf{YUM}, and \textbf{Zypper}
+    \item Obtaining information on RPM packages (version, dependencies, signatures, etc.)
+    \item Determining the files a package provides, and finding which package a specific file comes from
+    \item Awareness of \textbf{dnf} (successor to YUM in Fedora-based systems)
+\end{itemize}
+
+\subsection*{Important Files, Terms, and Utilities}
+\begin{itemize}
+    \item \textbf{rpm}, \textbf{rpm2cpio}
+    \item \texttt{/etc/yum.conf}, \texttt{/etc/yum.repos.d/}
+    \item \textbf{yum}, \textbf{zypper}, \textbf{dnf}
+    \item Various \texttt{.repo} configuration files
+\end{itemize}
+
+\section*{Lesson Overview}
+
+Linux distributions derived from Red Hat (RHEL, Fedora, CentOS, openSUSE) typically use RPM (\texttt{.rpm} files) for package distribution. The \textbf{rpm} utility handles low-level package operations but does \textbf{not} resolve dependencies automatically. Higher-level tools like \textbf{yum}, \textbf{dnf}, and \textbf{zypper} manage dependencies, perform system upgrades, and handle repository configurations.
+
+\section*{1. Managing Packages with \texttt{rpm}}
+\begin{enumerate}
+    \item \textbf{Installing a Package}
+\begin{lstlisting}[language=bash]
+rpm -ivh PACKAGE_FILE.rpm
+\end{lstlisting}
+\begin{itemize}
+    \item \textbf{-i:} install
+    \item \textbf{-v:} verbose
+    \item \textbf{-h:} show progress with hash marks
+\end{itemize}
+
+\item \textbf{Upgrading a Package}
+\begin{lstlisting}[language=bash]
+rpm -Uvh PACKAGE_FILE.rpm
+\end{lstlisting}
+\begin{itemize}
+    \item Installs if not already present; upgrades if older version is detected.
+    \item \textbf{-F:} freshen (upgrade only if installed; skip if not).
+\end{itemize}
+
+\item \textbf{Removing (Erasing) a Package}
+\begin{lstlisting}[language=bash]
+rpm -e PACKAGE_NAME
+\end{lstlisting}
+\begin{itemize}
+    \item Fails if other packages depend on it.
+    \item Remove those dependents first or specify them all at once.
+\end{itemize}
+
+\item \textbf{Querying Installed Packages}
+\begin{itemize}
+    \item \textbf{List all packages:}
+    \begin{lstlisting}[language=bash]
+rpm -qa
+    \end{lstlisting}
+    \item \textbf{Query a package’s info:}
+    \begin{lstlisting}[language=bash]
+rpm -qi PACKAGE_NAME
+    \end{lstlisting}
+    \item \textbf{List files in a package:}
+    \begin{lstlisting}[language=bash]
+rpm -ql PACKAGE_NAME
+    \end{lstlisting}
+    \item \textbf{Find which package owns a file:}
+    \begin{lstlisting}[language=bash]
+rpm -qf /path/to/file
+    \end{lstlisting}
+\end{itemize}
+
+\item \textbf{Inspecting an Uninstalled Package}
+\begin{itemize}
+    \item \textbf{Metadata (info):}
+    \begin{lstlisting}[language=bash]
+rpm -qip PACKAGE_FILE.rpm
+    \end{lstlisting}
+    \item \textbf{Contents (file list):}
+    \begin{lstlisting}[language=bash]
+rpm -qlp PACKAGE_FILE.rpm
+    \end{lstlisting}
+\end{itemize}
+
+\item \textbf{Dependencies}
+\begin{itemize}
+    \item \textbf{rpm} will list missing dependencies but cannot automatically resolve them.
+    \item Use \textbf{yum}, \textbf{dnf}, or \textbf{zypper} to handle dependencies more effectively.
+\end{itemize}
+\end{enumerate}
+
+\section*{2. YUM (YellowDog Updater Modified)}
+
+\begin{enumerate}
+    \item \textbf{Searching for Packages}
+    \begin{lstlisting}[language=bash]
+yum search KEYWORD
+    \end{lstlisting}
+    \begin{itemize}
+        \item Searches names and summaries for \texttt{KEYWORD}.
+    \end{itemize}
+
+    \item \textbf{Installing a Package}
+    \begin{lstlisting}[language=bash]
+yum install PACKAGE_NAME
+    \end{lstlisting}
+    \begin{itemize}
+        \item Resolves and installs dependencies automatically.
+    \end{itemize}
+
+    \item \textbf{Removing a Package}
+    \begin{lstlisting}[language=bash]
+yum remove PACKAGE_NAME
+    \end{lstlisting}
+    \begin{itemize}
+        \item Also removes packages that depend on it.
+    \end{itemize}
+
+    \item \textbf{Upgrading Packages}
+    \begin{lstlisting}[language=bash]
+yum update PACKAGE_NAME
+    \end{lstlisting}
+    \begin{itemize}
+        \item Without a package name, updates the entire system.
+    \end{itemize}
+
+    \item \textbf{Checking for Updates}
+    \begin{lstlisting}[language=bash]
+yum check-update [PACKAGE_NAME]
+    \end{lstlisting}
+    \begin{itemize}
+        \item Lists available updates; omit package name to check all installed packages.
+    \end{itemize}
+
+    \item \textbf{Which Package Provides a File}
+    \begin{lstlisting}[language=bash]
+yum whatprovides FILENAME
+    \end{lstlisting}
+    \begin{itemize}
+        \item Helps identify the package that contains a needed file or library.
+    \end{itemize}
+
+    \item \textbf{Getting Package Info}
+    \begin{lstlisting}[language=bash]
+yum info PACKAGE_NAME
+    \end{lstlisting}
+    \begin{itemize}
+        \item Shows version, architecture, summary, repo source, etc.
+    \end{itemize}
+
+    \item \textbf{Repositories (\texttt{/etc/yum.repos.d/*.repo})}
+    \begin{itemize}
+        \item \textbf{Add/Remove Repos:} \texttt{yum-config-manager --add-repo URL} / \texttt{yum-config-manager --remove-repo REPO\_ID}
+        \item \textbf{Enable/Disable Repos:} \texttt{yum-config-manager --enable REPO\_ID} / \texttt{yum-config-manager --disable REPO\_ID}
+        \item \textbf{List Repos:} \texttt{yum repolist all}
+    \end{itemize}
+
+    \item \textbf{Cleaning Cache}
+    \begin{lstlisting}[language=bash]
+yum clean [packages|metadata|all]
+    \end{lstlisting}
+    \begin{itemize}
+        \item Frees disk space by removing cached \texttt{.rpm} files or metadata.
+    \end{itemize}
+\end{enumerate}
+
+\section*{3. DNF (Dandified YUM)}
+
+\begin{enumerate}
+    \item \textbf{Overview}
+    \begin{itemize}
+        \item Used by Fedora and newer Red Hat-based systems.
+        \item Similar commands to \textbf{yum}.
+    \end{itemize}
+
+    \item \textbf{Basic Commands}
+    \begin{itemize}
+        \item \textbf{Search:} \texttt{dnf search KEYWORD}
+        \item \textbf{Install:} \texttt{dnf install PACKAGE\_NAME}
+        \item \textbf{Remove:} \texttt{dnf remove PACKAGE\_NAME}
+        \item \textbf{Upgrade:} \texttt{dnf upgrade [PACKAGE\_NAME]} (upgrade entire system if no package specified)
+        \item \textbf{Which Package Provides a File:} \texttt{dnf provides /path/to/file}
+        \item \textbf{List Installed Packages:} \texttt{dnf list --installed}
+    \end{itemize}
+
+    \item \textbf{Repositories}
+    \begin{itemize}
+        \item \textbf{List all:} \texttt{dnf repolist [--enabled|--disabled]}
+        \item \textbf{Add:} \texttt{dnf config-manager --add-repo URL}
+        \item \textbf{Enable/Disable:} \texttt{dnf config-manager --set-enabled REPO\_ID} / \texttt{dnf config-manager --set-disabled REPO\_ID}
+    \end{itemize}
+
+    \item \textbf{Cleaning Cache}
+    \begin{lstlisting}[language=bash]
+dnf clean all
+    \end{lstlisting}
+    \begin{itemize}
+        \item Removes cache data (packages, metadata).
+    \end{itemize}
+\end{enumerate}
+
+\section*{4. Zypper (openSUSE / SUSE)}
+
+\begin{enumerate}
+    \item \textbf{Refreshing Repositories}
+    \begin{lstlisting}[language=bash]
+zypper refresh
+    \end{lstlisting}
+    \begin{itemize}
+        \item Updates repository metadata.
+    \end{itemize}
+
+    \item \textbf{Searching for Packages}
+    \begin{lstlisting}[language=bash]
+zypper search [--installed-only|--not-installed|--provides /file]
+    \end{lstlisting}
+    \begin{itemize}
+        \item \texttt{zypper se KEYWORD}
+        \item \texttt{zypper se -i KEYWORD} (installed only)
+        \item \texttt{zypper se --provides /path/to/file} (find package providing a file)
+    \end{itemize}
+
+    \item \textbf{Installing Packages}
+    \begin{lstlisting}[language=bash]
+zypper install PACKAGE_NAME
+    \end{lstlisting}
+    \begin{itemize}
+        \item Or \texttt{zypper in PACKAGE\_NAME}.
+    \end{itemize}
+
+    \item \textbf{Upgrading Packages}
+    \begin{lstlisting}[language=bash]
+zypper update [PACKAGE_NAME]
+    \end{lstlisting}
+    \begin{itemize}
+        \item Without specifying a package, updates all.
+    \end{itemize}
+
+    \item \textbf{Removing Packages}
+    \begin{lstlisting}[language=bash]
+zypper remove PACKAGE_NAME
+    \end{lstlisting}
+    \begin{itemize}
+        \item Or \texttt{zypper rm PACKAGE\_NAME}.
+    \end{itemize}
+
+    \item \textbf{Package Info}
+    \begin{lstlisting}[language=bash]
+zypper info PACKAGE_NAME
+    \end{lstlisting}
+    \begin{itemize}
+        \item Shows version, repository, summary, etc.
+    \end{itemize}
+
+    \item \textbf{Listing Package Contents}
+    \begin{lstlisting}[language=bash]
+zypper search --provides /path/to/file
+    \end{lstlisting}
+    \begin{itemize}
+        \item Or \texttt{zypper info --requires PACKAGE\_NAME} for dependencies.
+    \end{itemize}
+
+    \item \textbf{Repositories}
+    \begin{itemize}
+        \item \textbf{List:} \texttt{zypper repos}
+        \item \textbf{Add:} \texttt{zypper addrepo URL ALIAS}
+        \item \textbf{Remove:} \texttt{zypper removerepo ALIAS}
+        \item \textbf{Enable/Disable:}
+        \begin{lstlisting}[language=bash]
+zypper modifyrepo -e ALIAS   # enable
+zypper modifyrepo -d ALIAS   # disable
+        \end{lstlisting}
+        \item \textbf{Auto-Refresh:}
+        \begin{lstlisting}[language=bash]
+zypper modifyrepo -f ALIAS   # enable auto-refresh
+zypper modifyrepo -F ALIAS   # disable auto-refresh
+        \end{lstlisting}
+    \end{itemize}
+\end{enumerate}
+
+\section*{Workbook Exercises}
+
+\begin{enumerate}
+    \item \textbf{Basic \texttt{rpm} Operations}
+    \begin{itemize}
+        \item Download an \texttt{.rpm} package (e.g., \texttt{wget http://example.com/somepackage.rpm}).
+        \item Install it via:
+        \begin{lstlisting}[language=bash]
+sudo rpm -ivh somepackage.rpm
+        \end{lstlisting}
+        \item Query what files it installed (\texttt{rpm -ql PACKAGE\_NAME}).
+        \item Remove it (\texttt{rpm -e PACKAGE\_NAME}).
+    \end{itemize}
+
+    \item \textbf{Resolve Dependencies with YUM}
+    \begin{itemize}
+        \item Try installing a package that requires another package.
+        \item Notice that \texttt{yum} automatically pulls needed dependencies.
+        \item Remove the newly installed package and dependencies if desired:
+        \begin{lstlisting}[language=bash]
+sudo yum remove PACKAGE_NAME
+        \end{lstlisting}
+    \end{itemize}
+
+    \item \textbf{Which Package Owns a File?}
+    \begin{itemize}
+        \item Use \texttt{yum whatprovides /usr/bin/zipinfo} (or a similar file) to see who owns it.
+        \item Confirm with \texttt{rpm -qf /usr/bin/zipinfo}.
+    \end{itemize}
+
+    \item \textbf{Update the Entire System}
+    \begin{itemize}
+        \item On a CentOS or RHEL system, run:
+        \begin{lstlisting}[language=bash]
+sudo yum update
+        \end{lstlisting}
+        \item Reboot if a new kernel is installed.
+    \end{itemize}
+
+    \item \textbf{Add/Enable a New Repository}
+    \begin{itemize}
+        \item For CentOS, add a repo:
+        \begin{lstlisting}[language=bash]
+yum-config-manager --add-repo https://example.com/custom.repo
+        \end{lstlisting}
+        \item Use \texttt{yum repolist all} to confirm it appears, then enable if needed.
+    \end{itemize}
+
+    \item \textbf{Zypper Install}
+    \begin{itemize}
+        \item On an openSUSE system, run:
+        \begin{lstlisting}[language=bash]
+sudo zypper refresh
+sudo zypper search unzip
+sudo zypper install unzip
+        \end{lstlisting}
+        \item Check the installed files via \texttt{rpm -ql unzip} or \texttt{zypper info unzip}.
+    \end{itemize}
+
+    \item \textbf{dnf Operations}
+    \begin{itemize}
+        \item On a Fedora system, search for \texttt{gimp}:
+        \begin{lstlisting}[language=bash]
+dnf search gimp
+        \end{lstlisting}
+        \item Install it:
+        \begin{lstlisting}[language=bash]
+dnf install gimp
+        \end{lstlisting}
+        \item Remove it:
+        \begin{lstlisting}[language=bash]
+dnf remove gimp
+        \end{lstlisting}
+    \end{itemize}
+\end{enumerate}
+
+\section*{Summary}
+
+\begin{itemize}
+    \item \textbf{rpm} is the low-level tool for installing \texttt{.rpm} packages, but it does \textbf{not} handle dependencies automatically.
+    \item \textbf{yum}, \textbf{dnf}, and \textbf{zypper} provide higher-level package management with automatic dependency resolution, repository management, and system-wide updates.
+    \item Each tool has commands for searching packages, installing, upgrading, removing, and listing package contents.
+    \item Understanding these utilities is critical for effectively managing software on RPM-based Linux distributions—an important skill for LPIC-1 certification and real-world administration.
+\end{itemize}
+
+
+
+\end{document}
+
+
 
 %-------------------------------------------------------
 % Multiple-Choice Questions for (102.5)
