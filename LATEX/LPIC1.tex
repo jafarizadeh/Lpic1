@@ -1739,8 +1739,184 @@ A system’s boot loader is the first software executed when a machine powers on
 % 102.3 Manage shared libraries
 %-------------------------------------------------------
 
-\section*{102.3 Manage shared libraries}
-\addcontentsline{toc}{section}{102.3 Manage shared libraries}
+
+\newpage
+
+\section*{102.3 Manage Shared Libraries}
+\addcontentsline{toc}{section}{102.3 Manage Shared Libraries}
+
+\textbf{Reference to LPI Objectives:}  
+\begin{itemize}
+    \item \textbf{LPIC-1 v5, Exam 101, Objective 102.3}  
+    \item \textbf{Weight:} 1  
+\end{itemize}
+
+\subsection*{Key Knowledge Areas}
+\begin{itemize}
+    \item Identifying shared libraries.  
+    \item Understanding typical locations of system libraries.  
+    \item Loading and configuring shared libraries at runtime.
+\end{itemize}
+
+\subsection*{Important Commands and Files}
+\begin{itemize}
+    \item \texttt{ldd} – shows shared library dependencies.  
+    \item \texttt{ldconfig} – updates library cache and symbolic links.  
+    \item \texttt{/etc/ld.so.conf} and \texttt{/etc/ld.so.conf.d/} – configuration for library paths.  
+    \item \texttt{LD\_LIBRARY\_PATH} – environment variable to temporarily add library paths.
+\end{itemize}
+
+ 
+
+\section*{Lesson Overview}
+
+Shared libraries (\textbf{.so} files) allow multiple executables to reuse common code, reducing memory usage and disk size. Administrators must know how to locate libraries, configure library paths, and troubleshoot missing dependencies.
+
+ 
+
+\section*{1. Concept of Shared Libraries}
+
+
+\subsection*{1.1 Static Libraries (\texttt{.a})}
+\begin{itemize}
+    \item Code is \textbf{copied} into an executable at compile/link time.  
+    \item Larger file size; no external dependencies at runtime.
+\end{itemize}
+
+\subsection*{1.2 Dynamic (Shared) Libraries (\texttt{.so})}
+\begin{itemize}
+    \item Code is \textbf{not} copied into the executable.  
+    \item Must be present at runtime.  
+    \item More efficient memory usage (shared among processes).
+\end{itemize}
+
+ 
+
+\section*{2. Typical Library Naming and Locations}
+
+\subsection*{2.1 Shared Library Naming}
+\begin{itemize}
+    \item Usually \texttt{libXYZ.so.major.minor}.  
+    \item Example: \texttt{libc.so.6 → libc-2.24.so}.  
+    \item Symbolic links often point from a generic name to a versioned file.
+\end{itemize}
+
+\subsection*{2.2 Locations}
+\begin{itemize}
+    \item \texttt{/lib}, \texttt{/lib64}, \texttt{/usr/lib}, \texttt{/usr/local/lib}, and architecture-specific directories like \texttt{/lib/x86\_64-linux-gnu}.
+\end{itemize}
+
+\subsection*{2.3 Dynamic Linker}
+\begin{itemize}
+    \item \texttt{ld.so} or \texttt{ld-linux.so} handles runtime loading of \texttt{.so} files.
+\end{itemize}
+
+ 
+
+\section*{3. Configuring Library Paths}
+
+\subsection*{3.1 \texttt{/etc/ld.so.conf} and \texttt{/etc/ld.so.conf.d/*.conf}}
+\begin{itemize}
+    \item Lists directories to be searched by the dynamic linker.  
+    \item Usually references sub-files in \texttt{/etc/ld.so.conf.d/}.
+\end{itemize}
+
+\subsection*{3.2 \texttt{ldconfig}}
+\begin{itemize}
+    \item Reads config files, creates symbolic links, updates \texttt{/etc/ld.so.cache}.  
+    \item Run after installing new libraries or editing config.  
+    \item Common options:  
+    \begin{itemize}
+        \item \texttt{-v}: verbose mode.  
+        \item \texttt{-p}: print current cache contents.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{3.3 \texttt{LD\_LIBRARY\_PATH}}
+\begin{itemize}
+    \item Environment variable to \textbf{temporarily} add library directories.  
+    \item Example:
+    \begin{lstlisting}[language=bash]
+    export LD_LIBRARY_PATH=/usr/local/mylib
+    \end{lstlisting}
+    \item Similar to \texttt{PATH}, but for shared libraries.
+\end{itemize}
+
+ 
+
+\section*{4. Checking Dependencies with \texttt{ldd}}
+
+\subsection*{4.1 \texttt{ldd /path/to/executable}}
+\begin{itemize}
+    \item Shows which \texttt{.so} files an executable needs and where they’re loaded from.  
+    \item Example:
+    \begin{lstlisting}[language=bash]
+    ldd /usr/bin/git
+    \end{lstlisting}
+\end{itemize}
+
+\subsection*{4.2 \texttt{ldd /path/to/library.so}}
+\begin{itemize}
+    \item Also works on \texttt{.so} files themselves.
+\end{itemize}
+
+\subsection*{4.3 \texttt{-u} (unused)}
+\begin{itemize}
+    \item Shows libraries listed as dependencies but not actually used.
+\end{itemize}
+
+ 
+
+\section*{Workbook Exercises}
+
+\begin{enumerate}
+    \item \textbf{List All Shared Libraries}  
+    \begin{itemize}
+        \item Inspect \texttt{/lib}, \texttt{/usr/lib}, and \texttt{/usr/local/lib}.  
+        \item Observe versioned vs. unversioned symbolic links (e.g., \texttt{libm.so.6 → libm-2.31.so}).
+    \end{itemize}
+
+    \item \textbf{Update Library Cache}  
+    \begin{itemize}
+        \item Create a directory \texttt{/opt/customlib} and put a dummy \texttt{.so} file (or symbolic link) there.  
+        \item Add \texttt{/opt/customlib} to \texttt{/etc/ld.so.conf.d/custom.conf}.  
+        \item Run \texttt{sudo ldconfig -v} and verify the new library is recognized (\texttt{ldconfig -p | grep customlib}).
+    \end{itemize}
+
+    \item \textbf{Use \texttt{LD\_LIBRARY\_PATH}}  
+    \begin{itemize}
+        \item Temporarily set \texttt{LD\_LIBRARY\_PATH=/opt/customlib}.  
+        \item Run an executable depending on the custom library.  
+        \item Confirm it finds the library without editing \texttt{/etc/ld.so.conf}.
+    \end{itemize}
+
+    \item \textbf{Check Dependencies}  
+    \begin{itemize}
+        \item Use \texttt{ldd /bin/ls} to see the libraries it requires.  
+        \item Use \texttt{ldd} on a custom binary if available.  
+        \item (Optional) Try the \texttt{-u} option to see if any direct dependencies are unused.
+    \end{itemize}
+
+    \item \textbf{Investigate a Broken App}  
+    \begin{itemize}
+        \item Intentionally remove or rename a \texttt{.so} file that an application needs (e.g., \texttt{mv libXYZ.so.1 libXYZ.so.1.bak}).  
+        \item Attempt to run the application and note the error.  
+        \item Restore the file or fix the library path to resolve the error.
+    \end{itemize}
+\end{enumerate}
+
+ 
+
+\section*{Summary}
+
+\begin{itemize}
+    \item Linux uses \textbf{shared libraries} (\texttt{.so}) to avoid embedding common code in each executable, saving resources.  
+    \item The \textbf{dynamic linker} finds libraries via paths defined in \texttt{/etc/ld.so.conf} (and sub-files in \texttt{ld.so.conf.d/}) and updates a cache with \texttt{ldconfig}.  
+    \item \texttt{LD\_LIBRARY\_PATH} can override these directories temporarily for testing or specialized setups.  
+    \item Tools like \texttt{ldd} help identify which libraries an executable (or another library) needs, aiding in troubleshooting.
+\end{itemize}
+
+
 
 %-------------------------------------------------------
 % Multiple-Choice Questions for (102.3)
