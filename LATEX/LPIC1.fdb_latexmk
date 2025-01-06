@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1736123957.56203 "c:/Users/Lord/Desktop/lpic/Lpic1/LATEX/LPIC1.tex" "LPIC1.pdf" "LPIC1" 1736123958.49631 0
+["pdflatex"] 1736124065.63135 "c:/Users/Lord/Desktop/lpic/Lpic1/LATEX/LPIC1.tex" "LPIC1.pdf" "LPIC1" 1736124066.5509 0
   "C:/Users/Lord/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1736117449 173485 f1241580a49f8a22ea90f661f283298a ""
   "C:/Users/Lord/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx1000.pk" 1733177669 25420 ff6ae1e956391ddbb006a9af6a7fecd0 ""
   "C:/Users/Lord/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx1200.pk" 1733177668 31952 33b3c17f7ac021453dc9297111e9747d ""
@@ -105,11 +105,11 @@
   "C:/Users/Lord/AppData/Local/Programs/MiKTeX/tex/latex/tools/enumerate.sty" 1700599895 3468 0ef513f22d965f96b06adb5cff671cd7 ""
   "C:/Users/Lord/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/Lord/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
-  "LPIC1.aux" 1736123958 9227 a37b2544fa02f1fff8abdfdb6be4bc47 "pdflatex"
-  "LPIC1.out" 1736123958 16080 9b385dc95c63d1c59bed470b54bea84a "pdflatex"
-  "LPIC1.tex" 1736123956 197087 7408e95bb565a6479be048d4b5a77431 ""
-  "LPIC1.toc" 1736123958 5721 7410686eac6aa908834c52e6af5b1da8 "pdflatex"
-  "c:/Users/Lord/Desktop/lpic/Lpic1/LATEX/LPIC1.tex" 1736123956 197087 7408e95bb565a6479be048d4b5a77431 ""
+  "LPIC1.aux" 1736124066 9227 a37b2544fa02f1fff8abdfdb6be4bc47 "pdflatex"
+  "LPIC1.out" 1736124066 16080 9b385dc95c63d1c59bed470b54bea84a "pdflatex"
+  "LPIC1.tex" 1736124065 197089 b7dea7b58972d447b652b7724722de51 ""
+  "LPIC1.toc" 1736124066 5721 7410686eac6aa908834c52e6af5b1da8 "pdflatex"
+  "c:/Users/Lord/Desktop/lpic/Lpic1/LATEX/LPIC1.tex" 1736124065 197089 b7dea7b58972d447b652b7724722de51 ""
   (generated)
   "LPIC1.aux"
   "LPIC1.log"
