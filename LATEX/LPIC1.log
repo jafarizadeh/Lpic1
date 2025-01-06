@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.8.31)  5 JAN 2025 12:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.8.31)  6 JAN 2025 01:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -9,8 +9,8 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
 (C:\Users\Lord\AppData\Local\Programs\MiKTeX\tex/latex/base\report.cls
 Document Class: report 2023/05/17 v1.4n Standard LaTeX document class
-(C:\Users\Lord\AppData\Local\Programs\MiKTeX\tex/latex/base\size12.clo
-File: size12.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
+(C:\Users\Lord\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo
+File: size10.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
 )
 \c@part=\count187
 \c@chapter=\count188
@@ -337,12 +337,12 @@ LaTeX Font Info:    ... okay on input line 32.
 * \topmargin=-37.0pt
 * \headheight=12.0pt
 * \headsep=25.0pt
-* \topskip=12.0pt
+* \topskip=10.0pt
 * \footskip=30.0pt
-* \marginparwidth=35.0pt
-* \marginparsep=10.0pt
+* \marginparwidth=57.0pt
+* \marginparsep=11.0pt
 * \columnsep=10.0pt
-* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -385,7 +385,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.31 ...er Interfaces and Desktops}{70}{chapter.6}
+l.37 ...tasks by scheduling jobs}{82}{section.7.2}
                                                   % [1
 
 ])
@@ -394,154 +394,149 @@ l.31 ...er Interfaces and Desktops}{70}{chapter.6}
 
  [2]
 Chapter 1.
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 78.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 80.
 (C:\Users\Lord\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 ) [3
 
 ]
-LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 126.
- [4]
-Overfull \hbox (7.73854pt too wide) in paragraph at lines 186--187
-[]\T1/cmr/m/n/12 Newer ker-nels use \T1/cmtt/m/n/12 sd \T1/cmr/m/n/12 pre-fix for most disks; par-ti-tions are num-bered (\T1/cmtt/m/n/12 /dev/sda1\T1/cmr/m/n/12 ). 
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 128.
+ [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16]
+Overfull \hbox (13.72491pt too wide) in paragraph at lines 805--806
+[]\T1/cmr/m/n/10 The com-mand \T1/cmtt/m/n/10 grub-mkconfig -o /boot/grub/grub.cfg \T1/cmr/m/n/10 is needed af-ter mod-i-fy-ing \T1/cmtt/m/n/10 /etc/default/grub
  []
 
-[5] [6] [7] [8] [9] [10] [11] [12] [13] [14]
-Overfull \hbox (44.23141pt too wide) in paragraph at lines 563--564
-[]\T1/cmr/m/n/12 Traditional log files also found in \T1/cmtt/m/n/12 /var/log/\T1/cmr/m/n/12 , e.g., \T1/cmtt/m/n/12 /var/log/messages \T1/cmr/m/n/12 or \T1/cmtt/m/n/12 /var/log/syslog\T1/cmr/m/n/12 . 
+[17] [18] [19] [20] [21] [22] [23] [24] [25]
+Overfull \hbox (7.11398pt too wide) in paragraph at lines 1256--1257
+[]\T1/cmr/m/n/10 To switch the sys-tem to \T1/cmr/bx/n/10 single-user mode \T1/cmr/m/n/10 (run-level 1) on a SysVinit sys-tem, you can type $[]$
  []
 
-[15]
-Overfull \hbox (13.74203pt too wide) in paragraph at lines 604--605
-[]\T1/cmr/m/n/12 Locate your initramfs file (com-monly in \T1/cmtt/m/n/12 /boot\T1/cmr/m/n/12 , e.g., \T1/cmtt/m/n/12 initramfs-<version>.img\T1/cmr/m/n/12 ). 
+
+Overfull \hbox (30.93594pt too wide) in paragraph at lines 1262--1263
+[]\T1/cmr/m/n/10 Under \T1/cmr/bx/n/10 sys-temd\T1/cmr/m/n/10 , each back-ground pro-cess or sub-sys-tem is re-ferred to as a $[]$ (e.g., \T1/cmr/bx/n/10 httpd.service\T1/cmr/m/n/10 ). 
  []
 
-[16] [17] [18] [19] [20] [21] [22] [23] [24] [25] [26] [27] [28] [29] [30] [31] [32]
+[26]
 Chapter 2.
-[33
+[27
 
-] [34] [35] [36]
-Overfull \hbox (5.41997pt too wide) in paragraph at lines 1459--1460
-[]\T1/cmr/m/n/12 Strategic par-ti-tion-ing im-proves \T1/cmr/bx/n/12 sta-bil-ity, se-cu-rity, and main-te-nance \T1/cmr/m/n/12 (e.g., \T1/cmtt/m/n/12 /boot\T1/cmr/m/n/12 ,
- []
-
-[37] [38] [39]
-Overfull \hbox (22.09021pt too wide) in paragraph at lines 1590--1591
-[]\T1/cmr/m/n/12 Custom en-tries of-ten added to \T1/cmtt/m/n/12 /etc/grub.d/40_custom\T1/cmr/m/n/12 , then re-run \T1/cmtt/m/n/12 update-grub\T1/cmr/m/n/12 . 
- []
-
-[40]
-Overfull \hbox (12.57112pt too wide) in paragraph at lines 1649--1650
-[]\T1/cmr/bx/n/12 Rescue Mode\T1/cmr/m/n/12 : need to \T1/cmtt/m/n/12 set prefix=(hd0,msdos1)/boot/grub \T1/cmr/m/n/12 and \T1/cmtt/m/n/12 insmod normal\T1/cmr/m/n/12 ,
- []
-
-[41]
-Overfull \hbox (18.54375pt too wide) in paragraph at lines 1680--1681
-[]\T1/cmr/m/n/12 In \T1/cmtt/m/n/12 /etc/default/grub\T1/cmr/m/n/12 , add an op-tion to \T1/cmtt/m/n/12 GRUB_CMDLINE_LINUX="quiet splash"\T1/cmr/m/n/12 . 
- []
-
-
-Overfull \hbox (54.55714pt too wide) in paragraph at lines 1686--1687
-[]\T1/cmr/m/n/12 If you have a Win-dows in-stall at \T1/cmtt/m/n/12 (hd0,2)\T1/cmr/m/n/12 , add a cus-tom en-try in \T1/cmtt/m/n/12 /etc/grub.d/40_custom
- []
-
-[42] [43]
-LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 1786.
+] [28] [29] [30] [31] [32] [33] [34] [35] [36] [37] [38] [39] [40] [41] [42]
+LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 2174.
  (C:\Users\Lord\AppData\Local\Programs\MiKTeX\tex/latex/base\ts1cmtt.fd
 File: ts1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
-LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 1832.
- [44]
-Overfull \hbox (36.4845pt too wide) in paragraph at lines 1861--1862
-[]\T1/cmr/m/n/12 Observe ver-sioned vs. un-ver-sioned sym-bolic links (e.g., \T1/cmtt/m/n/12 libm.so.6 \TS1/cmtt/m/n/12 ^^Y \T1/cmtt/m/n/12 libm-2.31.so\T1/cmr/m/n/12 ). 
+Overfull \hbox (67.72202pt too wide) in paragraph at lines 2180--2181
+[]\T1/cmtt/m/n/10 /lib\T1/cmr/m/n/10 , \T1/cmtt/m/n/10 /lib64\T1/cmr/m/n/10 , \T1/cmtt/m/n/10 /usr/lib\T1/cmr/m/n/10 , \T1/cmtt/m/n/10 /usr/local/lib\T1/cmr/m/n/10 , and architecture-specific di-rec-to-ries like \T1/cmtt/m/n/10 /lib/x86_64-linux-gnu\T1/cmr/m/n/10 . 
  []
 
-[45] [46] [47] [48] [49] [50] [51] [52] [53] [54]
-Overfull \hbox (47.82553pt too wide) in paragraph at lines 2384--2385
-[]\T1/cmr/bx/n/12 Add/Remove Re-pos: \T1/cmtt/m/n/12 yum-config-manager --add-repo URL \T1/cmr/m/n/12 / \T1/cmtt/m/n/12 yum-config-manager
+[43]
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 2220.
+
+Overfull \hbox (27.17636pt too wide) in paragraph at lines 2256--2257
+[]\T1/cmr/m/n/10 Run \T1/cmtt/m/n/10 sudo ldconfig -v \T1/cmr/m/n/10 and ver-ify the new li-brary is rec-og-nized (\T1/cmtt/m/n/10 ldconfig -p | grep customlib\T1/cmr/m/n/10 ). 
  []
 
+[44] [45] [46] [47]
+Overfull \hbox (54.49551pt too wide) in paragraph at lines 2451--2452
+[]\T1/cmr/m/n/10 Which state-ment ac-cu-rately \T1/cmr/bx/n/10 de-scribes \T1/cmr/m/n/10 the role of sym-bolic links like \T1/cmtt/m/n/10 libpthread.so.0 -> libpthread-2.31.so\T1/cmr/m/n/10 ? 
+ []
 
-Overfull \hbox (72.31398pt too wide) in paragraph at lines 2385--2386
-[]\T1/cmr/bx/n/12 Enable/Disable Re-pos: \T1/cmtt/m/n/12 yum-config-manager --enable REPO_ID \T1/cmr/m/n/12 / \T1/cmtt/m/n/12 yum-config-manager
+[48]
+Overfull \hbox (2.3346pt too wide) in paragraph at lines 2473--2474
+[]\T1/cmr/m/n/10 The \T1/cmr/bx/n/10 en-vi-ron-ment vari-able \T1/cmr/m/n/10 that can be set to add or over-ride li-brary paths at run-time is $[]$. 
+ []
+
+[49] [50] [51] [52] [53] [54]
+Overfull \hbox (35.74731pt too wide) in paragraph at lines 2848--2849
+[]\T1/cmr/m/n/10 Which \T1/cmtt/m/n/10 dpkg \T1/cmr/m/n/10 op-tion can show you which pack-age owns a spe-cific file on the filesys-tem (e.g., \T1/cmtt/m/n/10 /usr/bin/example\T1/cmr/m/n/10 )? 
  []
 
 [55]
-Overfull \hbox (64.01186pt too wide) in paragraph at lines 2421--2422
-[]\T1/cmr/bx/n/12 Enable/Disable: \T1/cmtt/m/n/12 dnf config-manager --set-enabled REPO_ID \T1/cmr/m/n/12 / \T1/cmtt/m/n/12 dnf config-manager
+Overfull \hbox (33.7478pt too wide) in paragraph at lines 2888--2889
+[]\T1/cmr/m/n/10 Which com-mand is used to re-move un-nec-es-sary \T1/cmtt/m/n/10 .deb \T1/cmr/m/n/10 files in the lo-cal cache un-der \T1/cmtt/m/n/10 /var/cache/apt/archives\T1/cmr/m/n/10 ? 
  []
 
-[56] [57]
-Overfull \hbox (17.58838pt too wide) in paragraph at lines 2517--2518
-[]\T1/cmr/m/n/12 Download an \T1/cmtt/m/n/12 .rpm \T1/cmr/m/n/12 pack-age (e.g., \T1/cmtt/m/n/12 wget http://example.com/somepackage.rpm\T1/cmr/m/n/12 ). 
+[56] [57] [58] [59] [60]
+Overfull \hbox (41.47871pt too wide) in paragraph at lines 3157--3158
+[]\T1/cmr/bx/n/10 Add/Remove Re-pos: \T1/cmtt/m/n/10 yum-config-manager --add-repo URL \T1/cmr/m/n/10 / \T1/cmtt/m/n/10 yum-config-manager --remove-repo
  []
 
-[58] [59] [60] (C:\Users\Lord\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
+
+Overfull \hbox (60.32828pt too wide) in paragraph at lines 3194--3195
+[]\T1/cmr/bx/n/10 Enable/Disable: \T1/cmtt/m/n/10 dnf config-manager --set-enabled REPO_ID \T1/cmr/m/n/10 / \T1/cmtt/m/n/10 dnf config-manager --set-disabled
+ []
+
+[61] [62] [63] [64] [65]
+Overfull \hbox (94.23303pt too wide) in paragraph at lines 3476--3477
+[]\T1/cmr/m/n/10 Which \T1/cmtt/m/n/10 zypper \T1/cmr/m/n/10 com-mand syn-tax is used to see which pack-ages pro-vide a spe-cific file, e.g., \T1/cmtt/m/n/10 /usr/lib64/libgimpui-2.0.so.0\T1/cmr/m/n/10 ? 
+ []
+
+[66] [67] [68] [69] (C:\Users\Lord\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2023/02/27 1.9 listings language file
 ) (C:\Users\Lord\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
 File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
-) [61] [62]
-Overfull \hbox (0.90213pt too wide) in paragraph at lines 2786--2787
-[]\T1/cmr/m/n/12 Cloud providers of-fer sub-nets, rout-ing, fire-walls, DNS, or hy-brid on-prem/cloud
+) [70] [71] [72] [73] [74] [75] [76]
+Overfull \hbox (1.17296pt too wide) in paragraph at lines 4044--4045
+[]\T1/cmr/m/n/10 In a KVM setup, the XML con-fig-u-ra-tion files for vir-tual ma-chines are of-ten lo-cated un-der $[]$. 
  []
 
-[63] [64] [65]
+[77]
 Chapter 3.
-[66
+[78
 
 ]
 Chapter 4.
-[67
+[79
 
-] [68]
+]
 Chapter 5.
-[69
+[80
 
 ]
 Chapter 6.
-[70
+[81
 
 ]
 Chapter 7.
-[71
+[82
 
 ]
 Chapter 8.
-[72
+[83
 
 ]
 Chapter 9.
-[73
+[84
 
 ]
 Chapter 10.
-[74
+[85
 
-] [75
+] [86
 
 
-] [76] [77] [78] [79] (LPIC1.aux)
+] [87] [88] [89] [90] [91] [92] [93] [94] [95] (LPIC1.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
 Package rerunfilecheck Info: File `LPIC1.out' has not changed.
-(rerunfilecheck)             Checksum: A3D650FBA5C84D5FD50C3E02D1D7D45A;13688.
+(rerunfilecheck)             Checksum: 9B385DC95C63D1C59BED470B54BEA84A;16080.
  ) 
 Here is how much of TeX's memory you used:
- 13723 strings out of 474486
- 199308 string characters out of 5744227
- 2025542 words of memory out of 5000000
- 34768 multiletter control sequences out of 15000+600000
- 572917 words of font info for 71 fonts, out of 8000000 for 9000
+ 14615 strings out of 474486
+ 207032 string characters out of 5744227
+ 2027542 words of memory out of 5000000
+ 34770 multiletter control sequences out of 15000+600000
+ 571507 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,6n,79p,581b,2142s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecit1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1728.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1440.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk><C:/Users/Lord/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Lord/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on LPIC1.pdf (80 pages, 530969 bytes).
+ 75i,6n,79p,581b,2160s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecit1000.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1000.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1440.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt1000.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt0900.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1000.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2074.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk><C:/Users/Lord/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Lord/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on LPIC1.pdf (96 pages, 684861 bytes).
 PDF statistics:
- 2399 PDF objects out of 2487 (max. 8388607)
- 1077 named destinations out of 1200 (max. 500000)
- 433 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 3591 PDF objects out of 4296 (max. 8388607)
+ 1972 named destinations out of 2073 (max. 500000)
+ 505 words of extra memory for PDF output out of 10000 (max. 10000000)
 

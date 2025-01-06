@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{report}
+\documentclass[a4paper]{report}
 \usepackage[margin=1in]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -56,6 +56,8 @@
 % TOPIC 101: SYSTEM ARCHITECTURE
 %=======================================================
 \chapter{Topic 101: System Architecture}
+
+
 
 
 %-------------------------------------------------------
@@ -427,6 +429,7 @@ lsmod | grep snd_hda_intel
 %-------------------------------------------------------
 % Fill-in-the-Blank Questions (101.1)
 %-------------------------------------------------------
+\newpage
 \section*{Fill-in-the-Blank Questions for 101.1}
 
 \begin{enumerate}[1.]
@@ -790,6 +793,7 @@ journalctl -b
   %-------------------------------------------------------
   % Fill-in-the-Blank Questions (101.2)
   %-------------------------------------------------------
+  \newpage
   \section*{Fill-in-the-Blank Questions for 101.2}
   
   \begin{enumerate}[1.]
@@ -1242,6 +1246,7 @@ wall "Warning! System moving to single-user mode in 1 minute."
 %-------------------------------------------------------
 % Fill-in-the-Blank Questions (101.3)
 %-------------------------------------------------------
+\newpage
 \section*{Fill-in-the-Blank Questions for 101.3}
 
 \begin{enumerate}[1.]
@@ -1467,9 +1472,201 @@ Designing an effective disk layout is critical for system stability, performance
 % Multiple-Choice Questions for (102.1)
 %-------------------------------------------------------
 
+\newpage
+\section*{Multiple-Choice Questions for 102.1}
+
+\begin{enumerate}[1.]
+
+    \item Which statement best describes the purpose of a \textbf{partition table} on a disk?  
+    \begin{enumerate}[A)]
+        \item It is the directory on the filesystem that contains user data  
+        \item It is the bootloader used to start the operating system  
+        \item It contains information about the sectors and types of partitions on the disk  
+        \item It is the tool used to create logical volumes  
+    \end{enumerate}
+
+    \item On most Linux distributions, \textbf{removable media} (e.g., USB drives, memory cards) are:  
+    \begin{enumerate}[A)]
+        \item Automatically mounted under \texttt{/media/USER/LABEL}  
+        \item Expected to be manually mounted under \texttt{/opt}  
+        \item Required to be unmounted only after a reboot  
+        \item Limited to read-only access by default  
+    \end{enumerate}
+
+    \item What is one \textbf{benefit} of creating a dedicated \texttt{/boot} partition?  
+    \begin{enumerate}[A)]
+        \item It automatically encrypts the disk to improve security  
+        \item It merges multiple storage devices into a single volume  
+        \item It allows \texttt{/home} to remain untouched during upgrades  
+        \item It ensures the system can still boot if the root filesystem is corrupted  
+    \end{enumerate}
+
+    \item Which of the following is a \textbf{directory} that frequently benefits from being put on a separate partition, due to potential growth of log files and database data?  
+    \begin{enumerate}[A)]
+        \item \texttt{/bin}  
+        \item \texttt{/var}  
+        \item \texttt{/root}  
+        \item \texttt{/tmp}  
+    \end{enumerate}
+
+    \item The \textbf{EFI System Partition (ESP)} on a UEFI-based system is typically:  
+    \begin{enumerate}[A)]
+        \item Formatted with an ext4 filesystem  
+        \item Formatted with a FAT-based filesystem  
+        \item Placed at the end of the disk to maximize disk space  
+        \item Labeled as \texttt{/swap} in the \texttt{/etc/fstab} file  
+    \end{enumerate}
+
+    \item What is the primary \textbf{purpose} of the \textbf{swap partition}?  
+    \begin{enumerate}[A)]
+        \item To store user home directories  
+        \item To store kernel bootloader files for GRUB  
+        \item To hold system logs and database files  
+        \item To provide virtual memory (swap out pages from RAM)  
+    \end{enumerate}
+
+    \item Which of the following is \textbf{NOT} a reason to create a separate \texttt{/home} partition?  
+    \begin{enumerate}[A)]
+        \item To prevent boot issues on legacy BIOS systems  
+        \item To simplify system reinstallation while keeping user data  
+        \item To allow for different filesystem choices for user data  
+        \item To avoid overwriting user data during an OS upgrade  
+    \end{enumerate}
+
+    \item A \textbf{mount point} is best described as:  
+    \begin{enumerate}[A)]
+        \item A command used to set the filesystem read-only  
+        \item A method to copy data from one partition to another  
+        \item A directory where a filesystem is attached to the directory tree  
+        \item A device driver for SATA disks  
+    \end{enumerate}
+
+    \item Which directory commonly holds the \textbf{Apache Web Server} data by default?  
+    \begin{enumerate}[A)]
+        \item \texttt{/home/apache}  
+        \item \texttt{/var/www/html}  
+        \item \texttt{/srv/httpd}  
+        \item \texttt{/apache/www}  
+    \end{enumerate}
+
+    \item Under \textbf{Logical Volume Management (LVM)}, which statement is correct about \textbf{Volume Groups (VGs)}?  
+    \begin{enumerate}[A)]
+        \item VGs cannot be reduced in size after creation  
+        \item VGs are used only for encrypting partitions  
+        \item VGs aggregate multiple physical volumes into one large pool of storage  
+        \item VGs must reside on a separate \texttt{/vg} partition  
+    \end{enumerate}
+
+    \item Which of the following directories is typically \textbf{not} located under \texttt{/home} on a Linux system?  
+    \begin{enumerate}[A)]
+        \item \texttt{/root} (the home directory for the root user)  
+        \item \texttt{/john} (a normal user’s home directory)  
+        \item \texttt{/jack} (a normal user’s home directory)  
+        \item \texttt{/carol} (a normal user’s home directory)  
+    \end{enumerate}
+
+    \item Which \textbf{bootloader} is most commonly used on modern Linux systems for loading the operating system?  
+    \begin{enumerate}[A)]
+        \item syslinux  
+        \item LILO  
+        \item rEFIt  
+        \item GRUB2  
+    \end{enumerate}
+
+    \item The EFI System Partition (ESP) is generally \textbf{mounted} under which directory on a Linux system?  
+    \begin{enumerate}[A)]
+        \item \texttt{/boot}  
+        \item \texttt{/ESP}  
+        \item \texttt{/boot/efi}  
+        \item \texttt{/usr/local/esp}  
+    \end{enumerate}
+
+    \item Which directory contains “variable data” and is known to grow due to logs and other services?  
+    \begin{enumerate}[A)]
+        \item \texttt{/etc}  
+        \item \texttt{/var}  
+        \item \texttt{/mnt}  
+        \item \texttt{/bin}  
+    \end{enumerate}
+
+    \item Which of the following statements correctly describes \textbf{Physical Volumes (PVs)} in LVM?  
+    \begin{enumerate}[A)]
+        \item They are the mount points for the swap partition  
+        \item They are user directories that can be encrypted  
+        \item They are used only for backing up the master boot record  
+        \item They are block devices (partitions, disks) that become part of a volume group  
+    \end{enumerate}
+
+    \item Why might a system administrator place \texttt{/home} and \texttt{/var} on \textbf{separate physical disks}?  
+    \begin{enumerate}[A)]
+        \item To reduce the impact of one disk’s failure on another  
+        \item To comply with GPT partition ID requirements  
+        \item To ensure that \texttt{/boot} remains fully accessible  
+        \item To use a unique journaling filesystem only on \texttt{/home}  
+    \end{enumerate}
+
+    \item \textbf{Logical Volumes (LVs)} in an LVM setup appear to the operating system as:  
+    \begin{enumerate}[A)]
+        \item Symbolic links pointing to \texttt{/boot}  
+        \item BIOS-level CHS addresses  
+        \item A directory tree with unlimited capacity  
+        \item Normal block devices (e.g., \texttt{/dev/VGNAME/LVNAME})  
+    \end{enumerate}
+
+    \item If you need to \textbf{manually} mount an additional filesystem that is \textbf{not} removable media, the best practice is typically to mount it under which directory?  
+    \begin{enumerate}[A)]
+        \item \texttt{/var}  
+        \item \texttt{/home}  
+        \item \texttt{/mnt}  
+        \item \texttt{/opt/extra}  
+    \end{enumerate}
+
+    \item According to common recommendations, placing system logs and database files under a dedicated \texttt{/var} partition helps:  
+    \begin{enumerate}[A)]
+        \item Prevent swap space from being used  
+        \item Protect the root filesystem if \texttt{/var} fills up  
+        \item Force all logs to be read-only  
+        \item Make the system boot faster  
+    \end{enumerate}
+
+    \item Which of the following describes a \textbf{swap file}?  
+    \begin{enumerate}[A)]
+        \item A regular file residing on an existing filesystem, configured to provide additional swap space  
+        \item A partition created at the beginning of the disk and labeled as \texttt{0xEF}  
+        \item A mount point used only for kernel boot files  
+        \item A special utility run by the BIOS to load the operating system  
+    \end{enumerate}
+
+\end{enumerate}
 %-------------------------------------------------------
 % Fill-in-the-Blank Questions (102.1)
 %-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 102.1}
+
+\begin{enumerate}[1.]
+
+\item The folder where user data files and preferences are typically stored is \underline{\hspace{2cm}}.
+
+\item The BIOS limitation of 1024 cylinders initially required a dedicated \underline{\hspace{2cm}} partition to be placed at the beginning of the disk for bootloader files.
+
+\item A \underline{\hspace{2cm}} is the logical subdivision of a physical disk, storing data separately from other subdivisions on the same disk.
+
+\item On systems with UEFI firmware, the \underline{\hspace{2cm}} partition stores boot loader and kernel files in a FAT-based filesystem.
+
+\item The command that prepares a partition for use as swap space is \underline{\hspace{2cm}}.
+
+\item The directory \underline{\hspace{2cm}} is used for “variable data” such as logs, database files, caches, and spool directories.
+
+\item A filesystem must be “attached” to the system via a process called \underline{\hspace{2cm}} before you can access its contents.
+
+\item In LVM, multiple Physical Volumes can be combined to form a larger \underline{\hspace{2cm}}.
+
+\item A \underline{\hspace{2cm}} is a file that can serve as additional swap space without requiring a dedicated swap partition.
+
+\item Traditional partitioning can be inflexible when allocating disk space. One way to overcome this limitation is by using \underline{\hspace{2cm}}.
+
+\end{enumerate}
 
 %-------------------------------------------------------
 % 102.2 Install a boot manager
@@ -1718,12 +1915,203 @@ menuentry "Windows" {
 %-------------------------------------------------------
 % Multiple-Choice Questions for (102.2)
 %-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 102.2}
+
+\begin{enumerate}[1.]
+
+    \item Which of the following statements correctly describes the purpose of the Master Boot Record (MBR)?  
+    \begin{enumerate}[A)]
+        \item It is a legacy BIOS setting used to store GPU firmware information.  
+        \item It is a reserved partition for the \texttt{/boot} directory on GPT disks.  
+        \item It contains a high-level overview of the Linux file system hierarchy.  
+        \item It contains a partition table and minimal bootstrap code used to start the boot process.  
+    \end{enumerate}
+
+    \item Which command is commonly used to generate a new GRUB 2 configuration file?  
+    \begin{enumerate}[A)]
+        \item \texttt{grub-init /dev/sda}  
+        \item \texttt{update-grub} (or \texttt{grub-mkconfig -o /boot/grub/grub.cfg})  
+        \item \texttt{mkconfig -g}  
+        \item \texttt{grub-legacy -o /boot/grub/menu.lst}  
+    \end{enumerate}
+
+    \item In GRUB 2, which file is recommended for manual editing to permanently change bootloader settings?  
+    \begin{enumerate}[A)]
+        \item \texttt{/boot/grub/menu.lst}  
+        \item \texttt{/etc/grub.d/custom.cfg}  
+        \item \texttt{/etc/default/grub}  
+        \item \texttt{/boot/grub/grub.cfg}  
+    \end{enumerate}
+
+    \item Which directive in \texttt{/etc/default/grub} allows the last chosen boot option to become the default on the next reboot?  
+    \begin{enumerate}[A)]
+        \item \texttt{GRUB\_SAVEDEFAULT=}  
+        \item \texttt{GRUB\_ENABLE\_CRYPTODISK=}  
+        \item \texttt{GRUB\_TIMEOUT=}  
+        \item \texttt{GRUB\_CMDLINE\_LINUX=}  
+    \end{enumerate}
+
+    \item What is the main purpose of an initial RAM disk (initrd)?  
+    \begin{enumerate}[A)]
+        \item It is another name for the GRUB 2 configuration file.  
+        \item It is a dedicated swap partition to store kernel crash dumps.  
+        \item It compresses the kernel to reduce its size in \texttt{/boot}.  
+        \item It provides a minimal root filesystem so the kernel can mount the real root filesystem.  
+    \end{enumerate}
+
+    \item Which GRUB 2 command is used in a manual (interactive) session to load the Linux kernel?  
+    \begin{enumerate}[A)]
+        \item \texttt{linux}  
+        \item \texttt{initrd}  
+        \item \texttt{chainloader}  
+        \item \texttt{set root=}  
+    \end{enumerate}
+
+    \item Which of the following is \textbf{not} true regarding GPT?  
+    \begin{enumerate}[A)]
+        \item It is part of the UEFI specification.  
+        \item It is incompatible with BIOS-based systems.  
+        \item It supports disks larger than 2 TB.  
+        \item It uses GUIDs to identify partitions.  
+    \end{enumerate}
+
+    \item When chainloading Windows from GRUB Legacy or GRUB 2, which command loads the Windows bootloader from the first sector of its partition?  
+    \begin{enumerate}[A)]
+        \item \texttt{initrd /windows.img}  
+        \item \texttt{search --set=root --fs-uuid <uuid>}  
+        \item \texttt{chainloader +1}  
+        \item \texttt{module /boot/grub/i386-pc/chain.mod}  
+    \end{enumerate}
+
+    \item In GRUB Legacy, which file typically stores the boot menu configuration?  
+    \begin{enumerate}[A)]
+        \item \texttt{/boot/grub/menu.lst}  
+        \item \texttt{/boot/grub/grub.cfg}  
+        \item \texttt{/etc/default/grub}  
+        \item \texttt{/etc/grub.d/menu.cfg}  
+    \end{enumerate}
+
+    \item You are using a Live CD to rescue a system. You have mounted the dedicated boot partition at \texttt{/mnt/bootpartition}. Which command correctly installs GRUB 2 to the MBR on \texttt{/dev/sda}?  
+    \begin{enumerate}[A)]
+        \item \texttt{grub-install --root-directory=/mnt/bootpartition /dev/sda}  
+        \item \texttt{update-grub -d /dev/sda /mnt/bootpartition}  
+        \item \texttt{grub-mkconfig -o /dev/sda}  
+        \item \texttt{grub-install --boot-directory=/mnt/bootpartition /dev/sda}  
+    \end{enumerate}
+
+    \item In the context of GRUB 2, which file is \textbf{not} recommended for direct editing?  
+    \begin{enumerate}[A)]
+        \item \texttt{/etc/grub.d/40\_custom}  
+        \item \texttt{/boot/grub/grub.cfg}  
+        \item \texttt{/boot/grub/fonts/unicode.pf2}  
+        \item \texttt{/etc/default/grub}  
+    \end{enumerate}
+
+    \item Which of the following describes a scenario where a separate \texttt{/boot} partition is particularly useful?  
+    \begin{enumerate}[A)]
+        \item When you want to mount \texttt{/boot} as a swap partition.  
+        \item When you plan to store the entire root filesystem on MBR with no separate partitions.  
+        \item When you want all boot files in \texttt{/bin/boot} for convenience.  
+        \item When you use encryption or compression methods not supported by the bootloader.  
+    \end{enumerate}
+
+    \item Which GRUB 2 command can help you identify partitions and disks from the GRUB shell?  
+    \begin{enumerate}[A)]
+        \item \texttt{ls}  
+        \item \texttt{disklist}  
+        \item \texttt{list-devices}  
+        \item \texttt{find /boot/grub/stage1}  
+    \end{enumerate}
+
+    \item What is the typical name of the Linux kernel file found in \texttt{/boot}?  
+    \begin{enumerate}[A)]
+        \item \texttt{System.map-VERSION}  
+        \item \texttt{initrd.img-VERSION}  
+        \item \texttt{vmlinuz-VERSION}  
+        \item \texttt{config-VERSION}  
+    \end{enumerate}
+
+    \item Which of the following lines in a GRUB 2 \texttt{menuentry} block is responsible for loading the initial RAM disk?  
+    \begin{enumerate}[A)]
+        \item \texttt{chainloader +1}  
+        \item \texttt{initrd /initrd.img}  
+        \item \texttt{set root=(hd0,1)}  
+        \item \texttt{linux /vmlinuz root=/dev/sda1 ro}  
+    \end{enumerate}
+
+    \item When using GRUB Legacy from a bootable rescue image, which command installs GRUB to the MBR \textbf{after} setting the correct root device?  
+    \begin{enumerate}[A)]
+        \item \texttt{update-grub (hd0)}  
+        \item \texttt{mkconfig -o (hd0)}  
+        \item \texttt{install (hd0,msdos1)}  
+        \item \texttt{setup (hd0)}  
+    \end{enumerate}
+
+    \item Which line in \texttt{/etc/default/grub} disables the boot menu countdown and waits indefinitely for user input?  
+    \begin{enumerate}[A)]
+        \item \texttt{GRUB\_DEFAULT=saved}  
+        \item \texttt{GRUB\_ENABLE\_CRYPTODISK=y}  
+        \item \texttt{GRUB\_TIMEOUT=-1}  
+        \item \texttt{GRUB\_CMDLINE\_LINUX\_DEFAULT=""}  
+    \end{enumerate}
+
+    \item Which component of the Linux filesystem organizes kernel symbols (variables, functions) with their memory addresses for debugging?  
+    \begin{enumerate}[A)]
+        \item \texttt{vmlinuz-VERSION}  
+        \item \texttt{config-VERSION}  
+        \item \texttt{initrd-VERSION}  
+        \item \texttt{System.map-VERSION}  
+    \end{enumerate}
+
+    \item Which GRUB 2 command would you use within the shell to specify the disk or partition containing the root filesystem?  
+    \begin{enumerate}[A)]
+        \item \texttt{chainloader +1}  
+        \item \texttt{set root=(hd0,1)}  
+        \item \texttt{root (hd0,0)}  
+        \item \texttt{initrd /initrd.img}  
+    \end{enumerate}
+
+    \item If a misconfiguration causes GRUB 2 to drop into a rescue shell (\texttt{grub rescue>}), which modules often need to be loaded manually to regain the normal GRUB shell functionality?  
+    \begin{enumerate}[A)]
+        \item \texttt{normal} and \texttt{linux}  
+        \item \texttt{fs\_uuid} and \texttt{configfile}  
+        \item \texttt{chainloader} and \texttt{search}  
+        \item \texttt{ls} and \texttt{initrd}  
+    \end{enumerate}
+
+\end{enumerate}
 
 
 %-------------------------------------------------------
 % Fill-in-the-Blank Questions (102.2)
 %-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 102.2}
 
+\begin{enumerate}[1.]
+
+\item When a computer is powered on, the first software component to run is the \underline{\hspace{2cm}}.
+
+\item On a BIOS system using MBR partitioning, the very first 512-byte sector of the disk is called the \underline{\hspace{2cm}}.
+
+\item The Linux kernel is typically stored in a compressed file named \underline{\hspace{2cm}}-VERSION in the `/boot` directory.
+
+\item The minimal root filesystem required to load the real root filesystem is contained in the \underline{\hspace{2cm}} file.
+
+\item The file \underline{\hspace{2cm}}-VERSION contains a look-up table used for debugging kernel panics.
+
+\item In GRUB 2, manual edits to the bootloader settings should be done in \underline{\hspace{2cm}}, rather than directly editing `/boot/grub/grub.cfg`.
+
+\item The \underline{\hspace{2cm}} command scans available disks and partitions to build a list of operating systems for GRUB 2.
+
+\item A dedicated \underline{\hspace{2cm}} partition is often used to store all files needed for the boot process separately from the root filesystem.
+
+\item GRUB Legacy stores its main configuration in the file \underline{\hspace{2cm}}.
+
+\item A technique known as \underline{\hspace{2cm}} is used by GRUB to load other operating systems’ bootloaders (e.g., Windows) from their first sector.
+
+\end{enumerate}
 
 %-------------------------------------------------------
 % 102.3 Manage shared libraries
@@ -1904,15 +2292,203 @@ ldd /usr/bin/git
 %-------------------------------------------------------
 % Multiple-Choice Questions for (102.3)
 %-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 102.3}
+\begin{enumerate}[1.]
+
+    \item What is the purpose of having a \textbf{dynamic} library as opposed to a \textbf{static} one?  
+    \begin{enumerate}[A)]
+        \item It embeds all external library code into the final executable.  
+        \item It decreases the chance of version conflicts between libraries.  
+        \item It simplifies the debugging process by combining all symbols in one file.  
+        \item It allows multiple programs to share the same library file in memory at runtime.  
+    \end{enumerate}
+
+    \item Which directory is \textbf{commonly} used by Linux systems to store 64-bit libraries?  
+    \begin{enumerate}[A)]
+        \item \texttt{/etc/x86\_64-linux-gnu}  
+        \item \texttt{/lib64}  
+        \item \texttt{/bin64}  
+        \item \texttt{/usr/local/opt/lib64}  
+    \end{enumerate}
+
+    \item When you install a new library in a custom location, which \textbf{environment variable} can you set to let the system know about the additional library path?  
+    \begin{enumerate}[A)]
+        \item \texttt{LIB\_EXTRA\_PATH}  
+        \item \texttt{LD\_DEBUG\_PATH}  
+        \item \texttt{LD\_LIBRARY\_PATH}  
+        \item \texttt{PATHLIB}  
+    \end{enumerate}
+
+    \item After adding a new \texttt{.conf} file under \texttt{/etc/ld.so.conf.d/}, which \textbf{command} should you usually run to ensure the changes take effect?  
+    \begin{enumerate}[A)]
+        \item \texttt{sudo ldconfig}  
+        \item \texttt{echo \$LD\_LIBRARY\_PATH}  
+        \item \texttt{ldd -u /etc/ld.so.conf}  
+        \item \texttt{touch /etc/ld.so.cache}  
+    \end{enumerate}
+
+    \item A \textbf{static library} is characterized by:  
+    \begin{enumerate}[A)]
+        \item Having no effect on program size.  
+        \item Being dynamically loaded at runtime.  
+        \item Residing exclusively under \texttt{/usr/local/lib}.  
+        \item Being fully integrated into the binary during link time.  
+    \end{enumerate}
+
+    \item Which file typically holds \textbf{symbolic links} to the actual versioned shared library files and speeds up library lookups?  
+    \begin{enumerate}[A)]
+        \item \texttt{/etc/bash.bashrc}  
+        \item \texttt{/etc/ld.so.conf.d/}  
+        \item \texttt{/etc/ld.so.cache}  
+        \item \texttt{/etc/profile}  
+    \end{enumerate}
+
+    \item What is the \textbf{main} function of the command \texttt{ldd /usr/bin/git}?  
+    \begin{enumerate}[A)]
+        \item It loads any missing libraries into memory for the executable.  
+        \item It displays which shared libraries and memory addresses the program will use.  
+        \item It modifies \texttt{/etc/ld.so.conf} to remove outdated references.  
+        \item It compiles the binary from source code.  
+    \end{enumerate}
+
+    \item Which statement is \textbf{true} regarding the file \texttt{/etc/ld.so.conf} on many modern Linux distributions?  
+    \begin{enumerate}[A)]
+        \item It directly lists all directories containing library files without any inclusion mechanisms.  
+        \item It typically has an \texttt{include} line that references additional \texttt{.conf} files in \texttt{/etc/ld.so.conf.d/}.  
+        \item It is unrelated to dynamic library configuration.  
+        \item It must only contain symbolic links, not absolute paths.  
+    \end{enumerate}
+
+    \item Which command option would show \textbf{unused} direct library dependencies for an executable?  
+    \begin{enumerate}[A)]
+        \item \texttt{ldconfig -v}  
+        \item \texttt{ldconfig -p}  
+        \item \texttt{ldd --verbose}  
+        \item \texttt{ldd -u}  
+    \end{enumerate}
+
+    \item The \textbf{logical name} given to a shared library (like \texttt{libm.so.6}) is called the:  
+    \begin{enumerate}[A)]
+        \item Full path reference.  
+        \item Statically linked file name.  
+        \item Base library handle.  
+        \item Soname.  
+    \end{enumerate}
+
+    \item Which directory is \textbf{not} typically part of the default library search path?  
+    \begin{enumerate}[A)]
+        \item \texttt{/opt/libraries/}  
+        \item \texttt{/lib/}  
+        \item \texttt{/usr/lib/}  
+        \item \texttt{/usr/local/lib/}  
+    \end{enumerate}
+
+    \item In a typical modern Linux system, if you run \texttt{ldconfig -p}, what does the \texttt{-p} option do?  
+    \begin{enumerate}[A)]
+        \item It permanently deletes old cache entries from \texttt{/etc/ld.so.cache}.  
+        \item It lists the directories and candidate libraries in the \textbf{current} cache.  
+        \item It prints out any undefined symbols in the loaded libraries.  
+        \item It prompts the user for additional library paths.  
+    \end{enumerate}
+
+    \item During the build process, an executable may mark certain libraries as \textbf{NEEDED} even if they aren’t used at runtime. This often happens because of:  
+    \begin{enumerate}[A)]
+        \item Accidental corruption in the library file.  
+        \item Missing environment variables in the developer’s system.  
+        \item Linker flags that reference multiple libraries.  
+        \item Repeated calls to \texttt{ldconfig}.  
+    \end{enumerate}
+
+    \item Which of the following \textbf{best} describes what \texttt{ld-linux.so} (or \texttt{ld.so}) does?  
+    \begin{enumerate}[A)]
+        \item It locates, loads, and links the needed shared libraries at runtime.  
+        \item It compiles source code into object files for linking.  
+        \item It performs static linking of libraries during application build time.  
+        \item It generates symbolic links in \texttt{/etc/ld.so.conf.d/} automatically.  
+    \end{enumerate}
+
+    \item What is a \textbf{key advantage} of using shared libraries on a system with many processes?  
+    \begin{enumerate}[A)]
+        \item Each application runs in its own memory space without any shared code.  
+        \item You never need to update libraries since they are compiled into each executable.  
+        \item They can be loaded in user space without root privileges.  
+        \item Only one copy of the library is loaded into memory and used by multiple processes.  
+    \end{enumerate}
+
+    \item If a program is \textbf{statically} linked against a library, then:  
+    \begin{enumerate}[A)]
+        \item You do \textbf{not} need the library on the system at runtime for the program to function.  
+        \item You must always place a copy of the library in \texttt{/lib/x86\_64-linux-gnu}.  
+        \item The linker will load the library into memory each time it’s called.  
+        \item There must be an exact match between library version and kernel version.  
+    \end{enumerate}
+
+    \item What does the command \texttt{ldconfig -v} do \textbf{in addition} to updating the library cache?  
+    \begin{enumerate}[A)]
+        \item It permanently locks the library version in place.  
+        \item It displays verbose details about the libraries found, links created, and directories scanned.  
+        \item It only updates symbolic links, but not the cache.  
+        \item It filters out symbolic links that are unused or broken.  
+    \end{enumerate}
+
+    \item Which of these files would you \textbf{most likely} edit or create to specify a custom library directory (e.g., \texttt{/opt/mylib})?  
+    \begin{enumerate}[A)]
+        \item \texttt{/etc/ld.so.conf.d/custom.conf}  
+        \item \texttt{/usr/local/lib/custom.ld.so.conf}  
+        \item \texttt{/var/run/ldconfig/ld.so.conf}  
+        \item \texttt{/etc/bash.bashrc}  
+    \end{enumerate}
+
+    \item \texttt{LD\_LIBRARY\_PATH} is similar to \texttt{PATH} in the sense that:  
+    \begin{enumerate}[A)]
+        \item Both are used solely for system administrators to track dependencies.  
+        \item Both contain hashed references to libraries that get pre-loaded.  
+        \item Both are environment variables that list directories to search, but for different purposes (executables vs. libraries).  
+        \item Neither can be exported in a user shell.  
+    \end{enumerate}
+
+    \item Which statement accurately \textbf{describes} the role of symbolic links like \texttt{libpthread.so.0 -> libpthread-2.31.so}?  
+    \begin{enumerate}[A)]
+        \item They are stored in \texttt{/etc/ld.so.cache} for quick loading of kernel modules.  
+        \item They connect older kernel releases to new libraries.  
+        \item They enable the system to reference a library by its \textbf{soname} while pointing to the actual versioned file.  
+        \item They are used exclusively for statically linking code.  
+    \end{enumerate}
+
+\end{enumerate}
 
 
 
 %-------------------------------------------------------
 % Fill-in-the-Blank Questions (102.3)
 %-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 102.3}
 
+\begin{enumerate}[1.]
 
+\item The utility used to check the \textbf{shared libraries} required by a specific program is \underline{\hspace{2cm}}.
 
+\item The \textbf{environment variable} that can be set to add or override library paths at runtime is \underline{\hspace{2cm}}.
+
+\item On many Linux systems, the file `/etc/ld.so.conf` includes a line pointing to configuration files in the \underline{\hspace{2cm}} directory.
+
+\item When building an application, if the library code is \textbf{copied} into the executable at link time, we say the program is using \underline{\hspace{2cm}} linking.
+
+\item If we install a new library in `/usr/local/mylib` and do \textbf{not} want to modify system-wide configurations, we can temporarily set \underline{\hspace{2cm}}=/usr/local/mylib.
+
+\item A library name like `libfuse.so.2` is often a symbolic link pointing to a \textbf{versioned} file such as `libfuse.so.2.9.7`; this more general filename is often called the \underline{\hspace{2cm}}.
+
+\item The command \underline{\hspace{2cm}} -p lists the directories and candidate libraries stored in the current library cache.
+
+\item We typically run \underline{\hspace{2cm}} after modifying or adding a new `.conf` file under `/etc/ld.so.conf.d/` to update the library cache.
+
+\item The file `/etc/ld.so.cache` is used to \textbf{speed up} the lookup of \underline{\hspace{2cm}}.
+
+\item A static library file typically ends in the extension \underline{\hspace{2cm}}.
+
+\end{enumerate}
 %-------------------------------------------------------
 % 102.4 Use Debian package management
 %-------------------------------------------------------
@@ -2205,17 +2781,214 @@ apt-file search /bin/somefile
 \end{itemize}
 
 
-
-
-
 %-------------------------------------------------------
 % Multiple-Choice Questions for (102.4)
 %-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 102.4}
+
+\begin{enumerate}[1.]
+
+    \item Which parameter in \texttt{dpkg} is used to remove both a package and its configuration files?  
+    \begin{enumerate}[A)]
+        \item \texttt{-r}  
+        \item \texttt{-I}  
+        \item \texttt{-S}  
+        \item \texttt{-P}  
+    \end{enumerate}
+
+    \item Which of the following commands updates the local package index using APT?  
+    \begin{enumerate}[A)]
+        \item \texttt{apt-get remove}  
+        \item \texttt{apt-get install -f}  
+        \item \texttt{apt-get update}  
+        \item \texttt{apt-get purge}  
+    \end{enumerate}
+
+    \item Which \texttt{dpkg} command option allows you to list all files that a package has installed on the system?  
+    \begin{enumerate}[A)]
+        \item \texttt{dpkg --get-selections}  
+        \item \texttt{dpkg -I}  
+        \item \texttt{dpkg-reconfigure}  
+        \item \texttt{dpkg -L}  
+    \end{enumerate}
+
+    \item Which command is used to remove a package but keep its configuration files?  
+    \begin{enumerate}[A)]
+        \item \texttt{dpkg -P}  
+        \item \texttt{apt-get remove}  
+        \item \texttt{apt-get install -f}  
+        \item \texttt{apt-get purge}  
+    \end{enumerate}
+
+    \item What is the correct \texttt{Archive type} that indicates a repository contains ready-to-run packages?  
+    \begin{enumerate}[A)]
+        \item \texttt{deb-src}  
+        \item \texttt{main}  
+        \item \texttt{deb}  
+        \item \texttt{contrib}  
+    \end{enumerate}
+
+    \item What is the default location of the local cache where \texttt{.deb} files are downloaded before installation?  
+    \begin{enumerate}[A)]
+        \item \texttt{/etc/apt/sources.list}  
+        \item \texttt{/var/cache/apt/archives}  
+        \item \texttt{/usr/local/cache/dpkg}  
+        \item \texttt{/var/dpkg/archives/partial}  
+    \end{enumerate}
+
+    \item Which command helps you restore or re-run the initial configuration process of a package?  
+    \begin{enumerate}[A)]
+        \item \texttt{dpkg --get-selections}  
+        \item \texttt{dpkg -L}  
+        \item \texttt{dpkg-reconfigure}  
+        \item \texttt{dpkg -S}  
+    \end{enumerate}
+
+    \item Which \texttt{dpkg} option can show you which package owns a specific file on the filesystem (e.g., \texttt{/usr/bin/example})?  
+    \begin{enumerate}[A)]
+        \item \texttt{dpkg -I}  
+        \item \texttt{dpkg -L}  
+        \item \texttt{dpkg -P}  
+        \item \texttt{dpkg -S}  
+    \end{enumerate}
+
+    \item Which of the following statements is true about \texttt{apt-get install -f}?  
+    \begin{enumerate}[A)]
+        \item It attempts to fix broken dependencies by installing missing packages.  
+        \item It removes all configuration files of broken packages.  
+        \item It removes all broken packages from the system.  
+        \item It upgrades all packages to the latest version.  
+    \end{enumerate}
+
+    \item Which command can be used to search for a package by a keyword in the APT package index?  
+    \begin{enumerate}[A)]
+        \item \texttt{apt-get show}  
+        \item \texttt{apt-cache search}  
+        \item \texttt{dpkg -L}  
+        \item \texttt{dpkg-query -S}  
+    \end{enumerate}
+
+    \item Which parameter of \texttt{dpkg} lists the basic metadata (like version, architecture, dependencies) of a \texttt{.deb} package file?  
+    \begin{enumerate}[A)]
+        \item \texttt{-I}  
+        \item \texttt{-r}  
+        \item \texttt{-P}  
+        \item \texttt{-L}  
+    \end{enumerate}
+
+    \item Which of these lines in \texttt{/etc/apt/sources.list} indicates a repository of source packages rather than binary packages?  
+    \begin{enumerate}[A)]
+        \item \texttt{deb-src}  
+        \item \texttt{deb http://repo.example.com stable main}  
+        \item \texttt{deb /var/cache/apt/archives stable main}  
+        \item \texttt{deb http://repo.example.com sources main}  
+    \end{enumerate}
+
+    \item Which command is used to remove unnecessary \texttt{.deb} files in the local cache under \texttt{/var/cache/apt/archives}?  
+    \begin{enumerate}[A)]
+        \item \texttt{apt-get remove}  
+        \item \texttt{apt-get purge}  
+        \item \texttt{apt-get update}  
+        \item \texttt{apt-get clean}  
+    \end{enumerate}
+
+    \item Which \texttt{dpkg} parameter performs the same function as \texttt{dpkg -r} but leaves configuration files behind?  
+    \begin{enumerate}[A)]
+        \item \texttt{-r}  
+        \item \texttt{-P}  
+        \item \texttt{-S}  
+        \item \texttt{-I}  
+    \end{enumerate}
+
+    \item Which APT command will remove a package along with its configuration files?  
+    \begin{enumerate}[A)]
+        \item \texttt{apt-get remove}  
+        \item \texttt{apt-get update}  
+        \item \texttt{apt-get install -f}  
+        \item \texttt{apt-get purge}  
+    \end{enumerate}
+
+    \item When a Debian-based system warns that certain packages are “kept back,” which command would you generally use to upgrade them?  
+    \begin{enumerate}[A)]
+        \item \texttt{apt-get dist-upgrade}  
+        \item \texttt{apt-file search}  
+        \item \texttt{dpkg -P}  
+        \item \texttt{dpkg -i}  
+    \end{enumerate}
+
+    \item Which Debian repository component includes software that is DFSG-compliant but depends on non-free components?  
+    \begin{enumerate}[A)]
+        \item \texttt{main}  
+        \item \texttt{contrib}  
+        \item \texttt{multiverse}  
+        \item \texttt{restricted}  
+    \end{enumerate}
+
+    \item Which APT utility focuses on searching for package information and displaying metadata about packages?  
+    \begin{enumerate}[A)]
+        \item \texttt{dpkg}  
+        \item \texttt{apt-file}  
+        \item \texttt{apt-cache}  
+        \item \texttt{dpkg-query}  
+    \end{enumerate}
+
+    \item Which of the following \texttt{apt-get} commands will remove a package but leave the configuration files on the system?  
+    \begin{enumerate}[A)]
+        \item \texttt{apt-get purge}  
+        \item \texttt{apt-get remove}  
+        \item \texttt{apt-get install -f}  
+        \item \texttt{apt-get upgrade}  
+    \end{enumerate}
+
+    \item Which main Debian repository contains packages that are compliant with the Debian Free Software Guidelines (DFSG)?  
+    \begin{enumerate}[A)]
+        \item \texttt{restricted}  
+        \item \texttt{non-free}  
+        \item \texttt{main}  
+        \item \texttt{multiverse}  
+    \end{enumerate}
+
+\end{enumerate}
+
+
 
 %-------------------------------------------------------
 % Fill-in-the-Blank Questions (102.4)
 %-------------------------------------------------------
 
+\newpage
+\section*{Fill-in-the-Blank Questions for 102.4}
+
+\begin{enumerate}[1.]
+\item To list all \textbf{installed packages} on a Debian-based system using dpkg, you can run:\newline
+\texttt{dpkg --get-\underline{\hspace{2cm}}}.
+
+\item The \textbf{Advanced Package Tool}, also known as APT, uses repository information from the file:\newline
+\texttt{/etc/apt/\underline{\hspace{2cm}}.list}.
+
+\item If you have missing dependencies after a failed install, you can attempt to fix them with:\newline
+\texttt{apt-get install \underline{\hspace{2cm}}}.
+
+\item You can use `dpkg` with the \textbf{-I} parameter to get \underline{\hspace{2cm}} about a .deb package file.
+
+\item The package list that APT uses is also known as the APT \underline{\hspace{2cm}}.
+
+\item The parameter `dpkg -L` lets you list the \underline{\hspace{2cm}} installed by a particular package.
+
+\item Lines beginning with a \underline{\hspace{2cm}} character in `/etc/apt/sources.list` are ignored because they are comments.
+
+\item The command:\newline
+\texttt{apt-\underline{\hspace{2cm}} search p7zip}\newline
+is used to search for a package containing the term “p7zip.”
+
+\item To remove all downloaded package files and reclaim disk space, you run:\newline
+\texttt{apt-get \underline{\hspace{2cm}}}.
+
+\item The configuration files are only completely removed when you use the dpkg parameter `-P`, which stands for:\newline
+\texttt{dpkg -P \underline{\hspace{2cm}}}.
+
+\end{enumerate}
 
 %-------------------------------------------------------
 % 102.5 Use RPM and YUM package management
@@ -2599,13 +3372,213 @@ dnf remove gimp
 %-------------------------------------------------------
 % Multiple-Choice Questions for (102.5)
 %-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 102.5}
+
+\begin{enumerate}[1.]
+
+    \item Which \texttt{rpm} parameter is used to remove (erase) an installed package?  
+    \begin{enumerate}[A)]
+        \item \texttt{-U}  
+        \item \texttt{-e}  
+        \item \texttt{-F}  
+        \item \texttt{-qa}  
+    \end{enumerate}
+
+    \item Which \texttt{rpm} command allows you to query an \emph{uninstalled} package file for information (name, version, etc.)?  
+    \begin{enumerate}[A)]
+        \item \texttt{rpm -qi}  
+        \item \texttt{rpm -ql}  
+        \item \texttt{rpm -qa}  
+        \item \texttt{rpm -qip}  
+    \end{enumerate}
+
+    \item Which \texttt{yum} command installs a package named \texttt{vim} from the configured repositories?  
+    \begin{enumerate}[A)]
+        \item \texttt{yum install vim}  
+        \item \texttt{yum remove vim}  
+        \item \texttt{yum info vim}  
+        \item \texttt{yum repolist vim}  
+    \end{enumerate}
+
+    \item Which \texttt{yum} subcommand removes an installed package from your system?  
+    \begin{enumerate}[A)]
+        \item \texttt{yum whatprovides}  
+        \item \texttt{yum info}  
+        \item \texttt{yum remove}  
+        \item \texttt{yum repolist}  
+    \end{enumerate}
+
+    \item Using \texttt{yum}, which command do you run to find the package that provides \texttt{/usr/bin/unzip}?  
+    \begin{enumerate}[A)]
+        \item \texttt{yum search /usr/bin/unzip}  
+        \item \texttt{yum repolist /usr/bin/unzip}  
+        \item \texttt{yum list installed /usr/bin/unzip}  
+        \item \texttt{yum whatprovides /usr/bin/unzip}  
+    \end{enumerate}
+
+    \item Which of the following \texttt{rpm} parameters lists \emph{all} installed packages on the system?  
+    \begin{enumerate}[A)]
+        \item \texttt{-e}  
+        \item \texttt{-qa}  
+        \item \texttt{-U}  
+        \item \texttt{-ql}  
+    \end{enumerate}
+
+    \item What is the main purpose of the \texttt{rpm2cpio} utility?  
+    \begin{enumerate}[A)]
+        \item It converts an RPM file into a \texttt{.cpio} archive  
+        \item It lists installed \texttt{.cpio} packages  
+        \item It creates a \texttt{.tar.gz} archive from an RPM  
+        \item It checks package signatures in cpio format  
+    \end{enumerate}
+
+    \item Which \texttt{rpm} command could forcibly install (ignoring dependencies) a package named \texttt{mypkg.rpm}?  
+    \begin{enumerate}[A)]
+        \item \texttt{rpm -Uvh --nodeps mypkg.rpm}  
+        \item \texttt{rpm -e mypkg.rpm}  
+        \item \texttt{rpm -ql mypkg.rpm}  
+        \item \texttt{rpm -qa --nodeps mypkg.rpm}  
+    \end{enumerate}
+
+    \item Which \texttt{dnf} command updates \emph{all} installed packages on the system to their latest versions?  
+    \begin{enumerate}[A)]
+        \item \texttt{dnf info}  
+        \item \texttt{dnf remove}  
+        \item \texttt{dnf upgrade}  
+        \item \texttt{dnf list --installed}  
+    \end{enumerate}
+
+    \item When using \texttt{dnf}, how do you find which package provides \texttt{/usr/bin/unzip}?  
+    \begin{enumerate}[A)]
+        \item \texttt{dnf list /usr/bin/unzip}  
+        \item \texttt{dnf provides /usr/bin/unzip}  
+        \item \texttt{dnf repoquery --installed /usr/bin/unzip}  
+        \item \texttt{dnf info /usr/bin/unzip}  
+    \end{enumerate}
+
+    \item Which \texttt{zypper} command lets you install an RPM file on disk (e.g., \texttt{/home/user/newpkg.rpm}) while also resolving dependencies from repositories?  
+    \begin{enumerate}[A)]
+        \item \texttt{zypper update /home/user/newpkg.rpm}  
+        \item \texttt{zypper refresh /home/user/newpkg.rpm}  
+        \item \texttt{zypper query /home/user/newpkg.rpm}  
+        \item \texttt{zypper in /home/user/newpkg.rpm}  
+    \end{enumerate}
+
+    \item Which \texttt{zypper} operator should you use to remove a package named \texttt{unzip} from your system?  
+    \begin{enumerate}[A)]
+        \item \texttt{zypper refresh unzip}  
+        \item \texttt{zypper rm unzip}  
+        \item \texttt{zypper se -i unzip}  
+        \item \texttt{zypper up unzip}  
+    \end{enumerate}
+
+    \item Which \texttt{zypper} command syntax is used to see which packages provide a specific file, e.g., \texttt{/usr/lib64/libgimpui-2.0.so.0}?  
+    \begin{enumerate}[A)]
+        \item \texttt{zypper se --provides /usr/lib64/libgimpui-2.0.so.0}  
+        \item \texttt{zypper addrepo --provides /usr/lib64/libgimpui-2.0.so.0}  
+        \item \texttt{zypper info --provides /usr/lib64/libgimpui-2.0.so.0}  
+        \item \texttt{zypper up --provides /usr/lib64/libgimpui-2.0.so.0}  
+    \end{enumerate}
+
+    \item Which \texttt{zypper} operator refreshes all enabled repositories to get the latest metadata?  
+    \begin{enumerate}[A)]
+        \item \texttt{zypper se}  
+        \item \texttt{zypper info}  
+        \item \texttt{zypper rm}  
+        \item \texttt{zypper refresh}  
+    \end{enumerate}
+
+    \item If you only want to \emph{list} available updates (without installing them) using \texttt{zypper}, which command would you use?  
+    \begin{enumerate}[A)]
+        \item \texttt{zypper up --list}  
+        \item \texttt{zypper se updates}  
+        \item \texttt{zypper list-updates}  
+        \item \texttt{zypper in --updates-only}  
+    \end{enumerate}
+
+    \item How do you disable an existing repository named \texttt{repo-non-oss} using \texttt{zypper}?  
+    \begin{enumerate}[A)]
+        \item \texttt{zypper addrepo -d repo-non-oss}  
+        \item \texttt{zypper rm repo-non-oss}  
+        \item \texttt{zypper se -d repo-non-oss}  
+        \item \texttt{zypper modifyrepo -d repo-non-oss}  
+    \end{enumerate}
+
+    \item What does the \texttt{yum-config-manager --add-repo <URL>} command do?  
+    \begin{enumerate}[A)]
+        \item It removes a repository from \texttt{/etc/yum.conf}  
+        \item It adds a new \texttt{.repo} file in \texttt{/etc/yum.repos.d/} based on the specified URL  
+        \item It automatically upgrades \texttt{yum} to the latest version  
+        \item It disables all repositories except the one specified  
+    \end{enumerate}
+
+    \item Which \texttt{dnf} command removes an installed package from your system?  
+    \begin{enumerate}[A)]
+        \item \texttt{dnf remove PACKAGENAME}  
+        \item \texttt{dnf fetch PACKAGENAME}  
+        \item \texttt{dnf localinstall PACKAGENAME}  
+        \item \texttt{dnf whatprovides PACKAGENAME}  
+    \end{enumerate}
+
+    \item Which \texttt{yum} command checks if a new version of a package (e.g., \texttt{wget}) is available, \emph{without} installing it?  
+    \begin{enumerate}[A)]
+        \item \texttt{yum whatprovides wget}  
+        \item \texttt{yum info wget}  
+        \item \texttt{yum check-update wget}  
+        \item \texttt{yum clean metadata wget}  
+    \end{enumerate}
+
+    \item Which file stores the primary configuration for \texttt{yum} by default?  
+    \begin{enumerate}[A)]
+        \item \texttt{/etc/rpm.conf}  
+        \item \texttt{/var/log/yum.conf}  
+        \item \texttt{/etc/yum.conf}  
+        \item \texttt{/etc/dnf.conf}  
+    \end{enumerate}
+
+\end{enumerate}
+
 
 %-------------------------------------------------------
 % Fill-in-the-Blank Questions (102.5)
 %-------------------------------------------------------
 
+\newpage
+\section*{Fill-in-the-Blank Questions for 102.5}
 
+\begin{enumerate}[1.]
 
+\item To remove a package using `rpm`, we use:\newline
+\texttt{rpm \underline{\hspace{2cm}} PACKAGENAME}.
+
+\item On Debian-based systems, the tool analogous to `yum` (mentioned in the lesson) is:\newline
+\underline{\hspace{2cm}}.
+
+\item To search for a package with `zypper`, you can use either:\newline
+\texttt{zypper \underline{\hspace{2cm}} or zypper \underline{\hspace{2cm}}}.
+
+\item When using `dnf`, the command to uninstall a package named `curl` is:\newline
+\texttt{dnf \underline{\hspace{2cm}} curl}.
+
+\item The main configuration file for yum is located at:
+\underline{\hspace{2cm}}.
+
+\item On RPM-based systems, the command `rpm -qa` means “query \underline{\hspace{2cm}}.”
+
+\item If you want to list all available updates using `yum` without installing them, you can run:\newline
+\texttt{yum \underline{\hspace{2cm}}}.
+
+\item To view the metadata of the `gimp` package using `zypper`, type:\newline
+\texttt{zypper \underline{\hspace{2cm}} gimp}.
+
+\item The tool that is considered a “fork” or newer version of YUM (primarily used in Fedora) is called:
+\underline{\hspace{2cm}}.
+
+\item To list the files installed by a package named `wget` using `rpm`, you would use:\newline
+\texttt{rpm -\underline{\hspace{2cm}} wget}.
+
+\end{enumerate}
 %-------------------------------------------------------
 % 102.6 Linux as a virtualization guest
 %-------------------------------------------------------
@@ -2887,11 +3860,201 @@ dbus-uuidgen --get
 %-------------------------------------------------------
 % Multiple-Choice Questions for (102.6)
 %-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 102.6}
 
+\begin{enumerate}[1.]
+
+    \item Which hypervisor is described as a Type-1 (bare-metal) hypervisor that does \textbf{not} rely on an underlying operating system?  
+    \begin{enumerate}[A)]
+        \item VirtualBox  
+        \item VMware Workstation  
+        \item KVM  
+        \item Xen  
+    \end{enumerate}
+
+    \item What is the main purpose of a \textbf{guest driver} in a paravirtualized environment?  
+    \begin{enumerate}[A)]
+        \item They hamper performance by adding extra overhead  
+        \item They replace the hypervisor entirely  
+        \item They help the guest OS interact with the hypervisor hardware more efficiently  
+        \item They prevent kernel modules from loading  
+    \end{enumerate}
+
+    \item Which of the following statements about disk images is \textbf{correct}?  
+    \begin{enumerate}[A)]
+        \item The raw image format is always smaller in physical size  
+        \item A 10 GB raw image file only uses 5 GB by default  
+        \item Copy-on-write images cannot support snapshots  
+        \item \texttt{qcow2} is a copy-on-write disk image format used by QEMU  
+    \end{enumerate}
+
+    \item Which statement accurately describes \textbf{containers}?  
+    \begin{enumerate}[A)]
+        \item Containers require a fully emulated BIOS and disk controllers  
+        \item Containers cannot be migrated from one host to another  
+        \item Containers are identical to fully virtualized machines  
+        \item Containers isolate applications while sharing the host’s operating system kernel  
+    \end{enumerate}
+
+    \item Which of the following is an example of a \textbf{Type-2} hypervisor mentioned in the text?  
+    \begin{enumerate}[A)]
+        \item VirtualBox  
+        \item Xen  
+        \item KVM  
+        \item Docker  
+    \end{enumerate}
+
+    \item Which command can be used to ensure a system has a D-Bus machine ID or to generate one if missing?  
+    \begin{enumerate}[A)]
+        \item \texttt{systemctl machine-id}  
+        \item \texttt{uuidgen}  
+        \item \texttt{cloud-init --machine-id}  
+        \item \texttt{dbus-uuidgen --ensure}  
+    \end{enumerate}
+
+    \item Which best describes \textbf{cloud-init} as mentioned in the text?  
+    \begin{enumerate}[A)]
+        \item A virtualization environment used to create containers  
+        \item A network configuration tool for bridging  
+        \item A proprietary cloud computing platform  
+        \item A vendor-neutral utility for automatically configuring new cloud-based systems at first boot  
+    \end{enumerate}
+
+    \item What is the recommended procedure when cloning a Linux VM that needs a \textbf{unique} D-Bus machine ID?  
+    \begin{enumerate}[A)]
+        \item Reboot the system, and it will generate a new ID automatically  
+        \item No action is needed; the hypervisor handles ID generation  
+        \item Remove \texttt{/etc/machine-id} and generate a new one with \texttt{dbus-uuidgen}  
+        \item Request a new license from LPI  
+    \end{enumerate}
+
+    \item Which is \textbf{true} regarding copying SSH public keys with the \texttt{ssh-copy-id} command?  
+    \begin{enumerate}[A)]
+        \item \texttt{ssh-copy-id} can only be used on local machines, not remote servers  
+        \item \texttt{ssh-copy-id} places the public key into the \texttt{authorized\_keys} file on the remote server  
+        \item The private key is automatically transferred to the remote server  
+        \item \texttt{ssh-copy-id} sets the public key file permission to 700  
+    \end{enumerate}
+
+    \item In a libvirt network configuration, which statement is correct regarding \textbf{bridging}?  
+    \begin{enumerate}[A)]
+        \item Bridging is never used by VMs  
+        \item The \texttt{default.xml} might define a bridge interface named \texttt{virbr0}  
+        \item NAT is never used with bridging  
+        \item The bridging device must have the same name as the hypervisor  
+    \end{enumerate}
+
+    \item Which of the following statements is \textbf{true} about NAT in the libvirt \texttt{default} network definition?  
+    \begin{enumerate}[A)]
+        \item NAT is never used in libvirt  
+        \item The default network uses NAT to forward packets to other networks  
+        \item NAT requires advanced bridging configuration  
+        \item NAT can only be used with a single VM  
+    \end{enumerate}
+
+    \item Which file typically stores a \textbf{symbolic link} to \texttt{/etc/machine-id}?  
+    \begin{enumerate}[A)]
+        \item \texttt{/usr/lib/dbus/machine-id}  
+        \item \texttt{/run/machine-id}  
+        \item \texttt{/var/lib/dbus/machine-id}  
+        \item \texttt{/etc/dbus/machine-id}  
+    \end{enumerate}
+
+    \item Which virtualization disk provisioning approach \textbf{only} grows in size as new data is written to the disk image?  
+    \begin{enumerate}[A)]
+        \item RAW  
+        \item Copy-on-write (COW)  
+        \item Partition-based allocation  
+        \item LVM-based thick provisioning  
+    \end{enumerate}
+
+    \item Which hypervisor is described in the text as both Type-1 \textbf{and} Type-2 because it integrates with the Linux kernel but also runs on a host OS?  
+    \begin{enumerate}[A)]
+        \item KVM  
+        \item VirtualBox  
+        \item Xen  
+        \item VMware ESXi  
+    \end{enumerate}
+
+    \item Which of the following are considered \textbf{IaaS computing elements} for cloud-based virtualization?  
+    \begin{enumerate}[A)]
+        \item Computing instances, block storage, and virtual networking  
+        \item Word processors, spreadsheets, and messaging apps  
+        \item Email, databases, and printers  
+        \item Standard Operating Procedures (SOPs)  
+    \end{enumerate}
+
+    \item When using \texttt{ssh-keygen} to generate an SSH key pair, which file extension typically indicates the \textbf{public} key file?  
+    \begin{enumerate}[A)]
+        \item \texttt{.priv}  
+        \item \texttt{.pub}  
+        \item \texttt{.asc}  
+        \item \texttt{.id}  
+    \end{enumerate}
+
+    \item What is the main advantage of paravirtualized drivers (guest drivers) over fully virtualized drivers?  
+    \begin{enumerate}[A)]
+        \item They are less secure  
+        \item They require specialized hardware that is not widely supported  
+        \item They typically offer better performance by allowing the guest OS to interact directly with the hypervisor  
+        \item They reduce memory usage by 70\%  
+    \end{enumerate}
+
+    \item Which of the following statements about \textbf{container technology} is correct?  
+    \begin{enumerate}[A)]
+        \item It always requires a separate OS kernel per container  
+        \item It is always slower than a fully virtualized solution  
+        \item It allows applications to run in isolated environments while sharing the host kernel  
+        \item Containers cannot be migrated between hosts  
+    \end{enumerate}
+
+    \item Which command is used to \textbf{add} a public SSH key to the remote server’s \texttt{authorized\_keys} file automatically?  
+    \begin{enumerate}[A)]
+        \item \texttt{ssh-copy-id}  
+        \item \texttt{scp}  
+        \item \texttt{scp-pub}  
+        \item \texttt{sftp}  
+    \end{enumerate}
+
+    \item Which statement accurately describes \textbf{live migration} in virtualization?  
+    \begin{enumerate}[A)]
+        \item Live migration is the process of moving a running VM from one hypervisor to another without downtime  
+        \item Live migration means the guest OS must be halted first  
+        \item Live migration is only possible with container technology  
+        \item Live migration requires external storage with no snapshots  
+    \end{enumerate}
+
+\end{enumerate}
 
 %-------------------------------------------------------
 % Fill-in-the-Blank Questions (102.6)
 %-------------------------------------------------------
+
+\newpage
+\section*{Fill-in-the-Blank Questions for 102.6}
+
+\begin{enumerate}[1.]
+\item The software platform responsible for managing hardware resources for virtual machines is called the \underline{\hspace{2cm}}.
+
+\item When a virtual machine is aware that it is a VM and uses specialized drivers, it is referred to as a \underline{\hspace{2cm}} guest.
+
+\item The \underline{\hspace{2cm}} file format (used by QEMU) supports copy-on-write functionality.
+
+\item In a KVM setup, the XML configuration files for virtual machines are often located under \underline{\hspace{2cm}}.
+
+\item The \underline{\hspace{2cm}} command can generate a new D-Bus machine ID if one does not already exist.
+
+\item A symbolic link for the machine ID is typically found at `/var/lib/dbus/machine-id`, pointing back to \underline{\hspace{2cm}}.
+
+\item When a virtual machine is copied to act as a \underline{\hspace{2cm}}, certain unique properties (like SSH keys or machine IDs) must be changed.
+
+\item \underline{\hspace{2cm}} is a vendor-neutral utility used to automatically configure new cloud-based virtual machines at first boot.
+
+\item An example of a \textbf{Type-2} hypervisor, mentioned in the text, that runs on top of an existing OS is \underline{\hspace{2cm}}.
+
+\item \underline{\hspace{2cm}} is a method that allows a virtual machine to be moved from one hypervisor to another with minimal or no downtime.
+\end{enumerate}
 
 %=======================================================
 % TOPIC 103: GNU AND UNIX COMMANDS
@@ -3140,6 +4303,11 @@ dbus-uuidgen --get
 \section*{Topic 101: System Architecture}
 \addcontentsline{toc}{section}{Topic 101: System Architecture}
 
+%-------------------------------------------------------
+% Answer-Sheet (101.1)
+%-------------------------------------------------------
+
+
 \subsection*{101.1 Determine and Configure Hardware Settings}
 \subsubsection*{Multiple-Choice Questions (101.1)}
 \begin{enumerate}[1.]
@@ -3165,6 +4333,9 @@ dbus-uuidgen --get
     \item C
     \end{enumerate}
 
+
+
+
 \subsubsection*{Fill-in-the-Blank Questions (101.1)}
 \begin{enumerate}[1.]
     \item BIOS
@@ -3178,6 +4349,12 @@ dbus-uuidgen --get
     \item /etc/modprobe.d
     \item lsusb
     \end{enumerate}
+
+
+
+%-------------------------------------------------------
+% Answer-Sheet (101.2)
+%-------------------------------------------------------
 
 
     \subsection*{101.2 Boot the System}
@@ -3205,6 +4382,7 @@ dbus-uuidgen --get
     \item B
     \end{enumerate}
 
+
 \subsubsection*{Fill-in-the-Blank Questions (101.2)}
 \begin{enumerate}[1.]
     \item BIOS, UEFI
@@ -3218,6 +4396,10 @@ dbus-uuidgen --get
     \item inittab
     \item daemon
     \end{enumerate}
+
+%-------------------------------------------------------
+% Answer-Sheet (101.3)
+%-------------------------------------------------------
 
 
     \subsection*{101.3 Change Runlevels / Boot Targets and Shutdown or Reboot System}
@@ -3245,6 +4427,8 @@ dbus-uuidgen --get
     \item D
     \end{enumerate}
 
+
+
 \subsubsection*{Fill-in-the-Blank Questions (101.3)}
     \begin{enumerate}[1.]
     \item /etc/inittab
@@ -3263,5 +4447,467 @@ dbus-uuidgen --get
     \item wall
     \item shutdown
     \end{enumerate}
+
+%=======================================================
+% ANSWERS FOR TOPIC 102
+%=======================================================
+
+\section*{Topic 102: Linux Installation and Package Management}
+\addcontentsline{toc}{section}{Topic 102: Linux Installation and Package Management}
+\begin{enumerate}[1.]
+    \item D
+    \item B
+    \item C
+    \item A
+    \item D
+    \item A
+    \item B
+    \item C
+    \item A
+    \item D
+    \item B
+    \item D
+    \item A
+    \item C
+    \item B
+    \item D
+    \item C
+    \item D
+    \item B
+    \item A
+\end{enumerate}
+
+\
+%-------------------------------------------------------
+% Answer-Sheet (102.1)
+%-------------------------------------------------------
+    
+\subsection*{102.1  Design Hard Disk Layout}
+\subsubsection*{Multiple-Choice Questions (102.1)}
+\begin{enumerate}[1.]
+    \item C
+    \item A
+    \item D
+    \item B
+    \item B
+    \item D
+    \item A
+    \item C
+    \item B
+    \item C
+    \item A
+    \item D
+    \item C
+    \item B
+    \item D
+    \item A
+    \item D
+    \item C
+    \item B
+    \item A
+\end{enumerate}
+
+
+\subsubsection*{Fill-in-the-Blank Questions (102.1)}
+\begin{enumerate}[1.]
+    \item /home
+    \item /boot
+    \item partition
+    \item EFI System (or EFI System Partition / ESP)
+    \item mkswap
+    \item /var
+    \item mounting
+    \item Volume Group (VG)
+    \item swap file
+    \item LVM (Logical Volume Management)
+\end{enumerate}
+
+%-------------------------------------------------------
+% Answer-Sheet (102.2)
+%-------------------------------------------------------
+\subsection*{102.2 Install a Boot Manager}
+\subsubsection*{Multiple-Choice Questions (102.2)}
+\begin{enumerate}[1.]
+    \item D
+    \item B
+    \item C
+    \item A
+    \item D
+    \item C
+    \item B
+    \item B
+    \item D
+    \item D
+    \item A
+    \item B
+    \item C
+    \item A
+    \item D
+    \item A
+    \item B
+    \item A
+    \item C
+    \item C
+\end{enumerate}
+
+
+\subsubsection*{Fill-in-the-Blank Questions (102.2)}
+\begin{enumerate}[1.]
+    \item boot loader
+    \item Master Boot Record (MBR)
+    \item vmlinuz
+    \item initrd.img (or initial RAM disk)
+    \item System.map
+    \item /etc/default/grub
+    \item update-grub (or grub-mkconfig)
+    \item /boot
+    \item /boot/grub/menu.lst
+    \item chainloading
+\end{enumerate}
+%-------------------------------------------------------
+% Answer-Sheet (102.3)
+%-------------------------------------------------------
+
+\subsection*{102.3 Manage Shared Libraries}
+\subsubsection*{Multiple-Choice Questions (102.3)}
+
+\subsubsection*{Fill-in-the-Blank Questions (102.3)}
+\begin{enumerate}[1.]
+
+    \item ldd
+    \item LD\_LIBRARY\_PATH
+    \item /etc/ld.so.conf.d
+    \item static
+    \item LD\_LIBRARY\_PATH
+    \item soname
+    \item ldconfig
+    \item sudo ldconfig
+    \item shared libraries
+    \item .a
+\end{enumerate}
+
+
+%-------------------------------------------------------
+% Answer-Sheet (102.4)
+%-------------------------------------------------------
+
+\subsection*{102.4 Use Debian Package Management}
+\subsubsection*{Multiple-Choice Questions (102.4)}
+\begin{enumerate}[1.]
+    \item D
+    \item C
+    \item D
+    \item B
+    \item C
+    \item B
+    \item C
+    \item D
+    \item A
+    \item B
+    \item A
+    \item A
+    \item D
+    \item A
+    \item D
+    \item A
+    \item B
+    \item C
+    \item B
+    \item C
+\end{enumerate}
+
+
+\subsubsection*{Fill-in-the-Blank Questions (102.4)}
+\begin{enumerate}[1.]
+\item selections
+\item sources
+\item -f
+\item information
+\item cache
+\item files
+\item \#
+\item cache
+\item clean
+\item purge
+\end{enumerate}
+%-------------------------------------------------------
+% Answer-Sheet (102.5)
+%-------------------------------------------------------
+\subsection*{102.5 Use RPM and YUM Package Management}
+\subsubsection*{Multiple-Choice Questions (102.5)}
+\begin{enumerate}[1.]
+    \item B
+    \item D
+    \item A
+    \item C
+    \item D
+    \item B
+    \item A
+    \item A
+    \item C
+    \item B
+    \item D
+    \item B
+    \item A
+    \item D
+    \item C
+    \item D
+    \item B
+    \item A
+    \item C
+    \item C
+\end{enumerate}
+
+
+\subsubsection*{Fill-in-the-Blank Questions (102.5)}
+\begin{enumerate}[1.]
+    \item -e
+    \item apt
+    \item search, se
+    \item remove
+    \item /etc/yum.conf
+    \item all
+    \item check-update
+    \item info
+    \item dnf
+    \item -ql
+\end{enumerate}
+%-------------------------------------------------------
+% Answer-Sheet (102.6)
+%-------------------------------------------------------
+
+\subsection*{102.6 Linux as a virtualization guest}
+\subsubsection*{Multiple-Choice Questions (102.6)}
+\begin{enumerate}[1.]
+    \item D
+    \item C
+    \item D
+    \item D
+    \item A
+    \item D
+    \item D
+    \item C
+    \item B
+    \item B
+    \item B
+    \item C
+    \item B
+    \item A
+    \item A
+    \item B
+    \item C
+    \item C
+    \item A
+    \item A
+\end{enumerate}
+
+
+\subsubsection*{Fill-in-the-Blank Questions (102.6)}
+\begin{enumerate}[1.]
+    \item hypervisor
+    \item paravirtualized
+    \item qcow2
+    \item /etc/libvirt/qemu
+    \item dbus-uuidgen --ensure
+    \item /etc/machine-id
+    \item template
+    \item cloud-init
+    \item VirtualBox
+    \item Live migration
+\end{enumerate}
+
+
+%=======================================================
+% ANSWERS FOR TOPIC 103
+%=======================================================
+
+\section*{Topic 103: GNU and Unix Commands}
+\addcontentsline{toc}{section}{Topic 103: GNU and Unix Commands}
+
+%-------------------------------------------------------
+% Answer-Sheet (103.1)
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+% Answer-Sheet (103.2)
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+% Answer-Sheet (103.3)
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+% Answer-Sheet (103.4)
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+% Answer-Sheet (103.5)
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+% Answer-Sheet (103.6)
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+% Answer-Sheet (103.7)
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+% Answer-Sheet (103.8)
+%-------------------------------------------------------
+
+%=======================================================
+% ANSWERS FOR TOPIC 104
+%=======================================================
+
+\section*{Topic 104: Devices, Linux Filesystems, Filesystem Hierarchy Standard}
+\addcontentsline{toc}{section}{Topic 104: Devices, Linux Filesystems, Filesystem Hierarchy Standard}
+
+%-------------------------------------------------------
+% Answer-Sheet (104.1)
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+% Answer-Sheet (104.2)
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+% Answer-Sheet (104.3)
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+% Answer-Sheet (104.4)
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+% Answer-Sheet (104.5)
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+% Answer-Sheet (104.6)
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+% Answer-Sheet (104.7)
+%-------------------------------------------------------
+
+%=======================================================
+% ANSWERS FOR TOPIC 105
+%=======================================================
+
+\section*{Topic 105: Shells and Shell Scripting}
+\addcontentsline{toc}{section}{Topic 105: Shells and Shell Scripting}
+
+%-------------------------------------------------------
+% Answer-Sheet (105.1)
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+% Answer-Sheet (105.2)
+%-------------------------------------------------------
+
+%=======================================================
+% ANSWERS FOR TOPIC 106
+%=======================================================
+
+\section*{Topic 106: User Interfaces and Desktops}
+\addcontentsline{toc}{section}{Topic 106: User Interfaces and Desktops}
+
+%-------------------------------------------------------
+% Answer-Sheet (106.1)
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+% Answer-Sheet (106.2)
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+% Answer-Sheet (106.3)
+%-------------------------------------------------------
+
+%=======================================================
+% ANSWERS FOR TOPIC 107
+%=======================================================
+
+\section*{Topic 107: Administrative Tasks}
+\addcontentsline{toc}{section}{Topic 107: Administrative Tasks}
+
+%-------------------------------------------------------
+% Answer-Sheet (107.1)
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+% Answer-Sheet (107.2)
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+% Answer-Sheet (107.3)
+%-------------------------------------------------------
+
+%=======================================================
+% ANSWERS FOR TOPIC 108
+%=======================================================
+
+\section*{Topic 108: Essential System Services}
+\addcontentsline{toc}{section}{Topic 108: Essential System Services}
+
+%-------------------------------------------------------
+% Answer-Sheet (108.1)
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+% Answer-Sheet (108.2)
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+% Answer-Sheet (108.3)
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+% Answer-Sheet (108.4)
+%-------------------------------------------------------
+
+%=======================================================
+% ANSWERS FOR TOPIC 109
+%=======================================================
+
+\section*{Topic 109: Networking Fundamentals}
+\addcontentsline{toc}{section}{Topic 109: Networking Fundamentals}
+
+%-------------------------------------------------------
+% Answer-Sheet (109.1)
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+% Answer-Sheet (109.2)
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+% Answer-Sheet (109.3)
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+% Answer-Sheet (109.4)
+%-------------------------------------------------------
+
+%=======================================================
+% ANSWERS FOR TOPIC 110
+%=======================================================
+
+\section*{Topic 110: Security}
+\addcontentsline{toc}{section}{Topic 110: Security}
+
+%-------------------------------------------------------
+% Answer-Sheet (110.1)
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+% Answer-Sheet (110.2)
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+% Answer-Sheet (110.3)
+%-------------------------------------------------------
+
 
 \end{document}
