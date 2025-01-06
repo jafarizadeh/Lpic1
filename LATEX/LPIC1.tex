@@ -4059,14 +4059,232 @@ dbus-uuidgen --get
 %=======================================================
 % TOPIC 103: GNU AND UNIX COMMANDS
 %=======================================================
+\newpage
 \chapter{Topic 103: GNU and Unix Commands}
 
 %-------------------------------------------------------
 % 103.1 Work on the command line
 %-------------------------------------------------------
-
+\newpage
 \section*{103.1 Work on the command line}
 \addcontentsline{toc}{section}{103.1 Work on the command line}
+
+
+\section*{Reference to LPI Objectives}
+\begin{itemize}
+    \item \textbf{LPIC-1 version 5.0, Exam 101, Objective 103.1}
+    \item \textbf{Weight:} 4
+\end{itemize}
+
+\section*{Key Knowledge Areas}
+\begin{itemize}
+    \item Using single shell commands and one-line command sequences.
+    \item Managing the shell environment: defining, referencing, and exporting variables.
+    \item Using and editing command history.
+    \item Invoking commands inside and outside of the PATH.
+\end{itemize}
+
+\section*{Important Commands, Files, and Concepts}
+\begin{itemize}
+    \item \textbf{bash} (shell)
+    \item \textbf{echo}, \textbf{env}, \textbf{export}
+    \item \textbf{pwd}, \textbf{set}, \textbf{unset}
+    \item \textbf{type}, \textbf{which}
+    \item \textbf{man}, \textbf{uname}
+    \item \textbf{history}, \textbf{.bash\_history}
+    \item \textbf{Quoting} (single quotes, double quotes, backslash)
+\end{itemize}
+
+\section*{Lesson Overview}
+Mastering the command line is foundational for Linux administration. You’ll frequently need to view or modify your environment, recall and repeat past commands, and handle special characters. Below are the essentials of working efficiently from the shell.
+
+\section*{1. Basic System and Command Information}
+\begin{enumerate}
+    \item \textbf{Where Am I?}: \texttt{pwd}
+    \begin{itemize}
+        \item Prints your current directory, e.g., \texttt{/home/user}.
+        \item Example:
+        \begin{lstlisting}[language=bash]
+pwd
+# /home/frank
+        \end{lstlisting}
+    \end{itemize}
+
+    \item \textbf{System Information}: \texttt{uname -a}
+    \begin{itemize}
+        \item Displays kernel name, version, architecture, and more.
+        \item Example:
+        \begin{lstlisting}[language=bash]
+uname -a
+# Linux base 4.18.0-18-generic ...
+        \end{lstlisting}
+    \end{itemize}
+
+    \item \textbf{Manual Pages}: \texttt{man COMMAND}
+    \begin{itemize}
+        \item Displays documentation for a specified command.
+        \item If unsure of the exact command name, use \texttt{apropos KEYWORD}.
+    \end{itemize}
+
+    \item \textbf{Command Identification}:
+    \begin{itemize}
+        \item \texttt{type COMMAND}
+        \begin{itemize}
+            \item Tells whether it’s a shell builtin, a hashed command, or an external binary.
+        \end{itemize}
+        \item \texttt{which COMMAND}
+        \begin{itemize}
+            \item Shows the absolute path (e.g., \texttt{/usr/bin/ls}).
+        \end{itemize}
+    \end{itemize}
+\end{enumerate}
+
+\section*{2. Using Command History}
+\begin{enumerate}
+    \item \textbf{Listing Past Commands}
+    \begin{itemize}
+        \item \texttt{history}
+        \begin{itemize}
+            \item Shows a list of your previously executed commands.
+        \end{itemize}
+        \item Piping to \texttt{grep KEYWORD} can search through it:
+        \begin{lstlisting}[language=bash]
+history | grep apt
+        \end{lstlisting}
+    \end{itemize}
+
+    \item \textbf{.bash\_history}
+    \begin{itemize}
+        \item Hidden file in your home directory storing commands.
+        \item Only updates when you exit a session, so the most recent commands may not appear until logout.
+    \end{itemize}
+
+    \item \textbf{Re-executing Commands}
+    \begin{itemize}
+        \item \textbf{Up/Down Arrow} keys cycle through your history.
+        \item Press \textbf{Enter} to execute.
+        \item Saves time re-typing complex commands.
+    \end{itemize}
+\end{enumerate}
+
+\section*{3. Environment Variables}
+\begin{enumerate}
+    \item \textbf{Listing Environment Variables}
+    \begin{itemize}
+        \item \texttt{env} shows exported variables (visible to child processes).
+        \item \texttt{set} shows all variables and shell functions.
+    \end{itemize}
+
+    \item \textbf{Viewing Variable Values}
+    \begin{itemize}
+        \item \texttt{echo \$VARIABLE\_NAME}
+        \item Example:
+        \begin{lstlisting}[language=bash]
+echo $PATH
+        \end{lstlisting}
+    \end{itemize}
+
+    \item \textbf{Creating and Exporting Variables}
+    \begin{itemize}
+        \item \texttt{VARIABLE=value} (local to the current shell).
+        \item \texttt{export VARIABLE} makes it inherited by child shells.
+        \item Example:
+        \begin{lstlisting}[language=bash]
+myvar=hello
+export myvar
+        \end{lstlisting}
+    \end{itemize}
+
+    \item \textbf{Removing Variables}
+    \begin{itemize}
+        \item \texttt{unset VARIABLE} deletes it from the current environment.
+    \end{itemize}
+\end{enumerate}
+
+\section*{4. Quoting and Special Characters}
+\begin{enumerate}
+    \item \textbf{Why Quote?}
+    \begin{itemize}
+        \item Spaces and certain symbols are interpreted by the shell.
+        \item Quoting ensures the literal interpretation of special characters/spaces.
+    \end{itemize}
+
+    \item \textbf{Methods}
+    \begin{itemize}
+        \item \textbf{Double quotes} (\texttt{" "}): preserves most characters except \$, \texttt{\`}, \texttt{\textbackslash}, and \texttt{!} in some cases.
+        \item \textbf{Single quotes} (\texttt{' '}): preserves all characters literally.
+        \item \textbf{Backslash} (\texttt{\textbackslash}): escapes just the next character.
+    \end{itemize}
+
+    \item \textbf{Examples}
+    \begin{itemize}
+        \item Creating a file with spaces:
+        \begin{lstlisting}[language=bash]
+touch "my big file"
+        \end{lstlisting}
+        \item Removing it:
+        \begin{lstlisting}[language=bash]
+rm 'my big file'
+        \end{lstlisting}
+        \item Escaping spaces:
+        \begin{lstlisting}[language=bash]
+touch my\ big\ file
+        \end{lstlisting}
+    \end{itemize}
+\end{enumerate}
+
+\section*{Workbook Exercises}
+\begin{enumerate}
+    \item \textbf{Check Your Current Directory}
+    \begin{itemize}
+        \item Run \texttt{pwd} and verify the exact path to your home directory.
+        \item Create a file there using \texttt{touch <filename>}.
+    \end{itemize}
+
+    \item \textbf{Find Your Kernel Version}
+    \begin{itemize}
+        \item Use \texttt{uname -a} and note the kernel version.
+        \item Check \texttt{man uname} to see other possible options.
+    \end{itemize}
+
+    \item \textbf{Explore Man Pages}
+    \begin{itemize}
+        \item Run \texttt{man ls} and look for the \texttt{-l} option description.
+        \item Use \texttt{apropos kernel} to see commands/man pages referencing “kernel.”
+    \end{itemize}
+
+    \item \textbf{Practice Command History}
+    \begin{itemize}
+        \item Execute 5–10 random commands (like \texttt{pwd}, \texttt{ls}, \texttt{echo test}).
+        \item Run \texttt{history} and filter with \texttt{grep ls}.
+        \item Press the \textbf{Up} arrow key to retrieve a previous command and re-run it.
+    \end{itemize}
+
+    \item \textbf{Experiment with Environment Variables}
+    \begin{itemize}
+        \item Create a variable: \texttt{myvar="test123"}.
+        \item Echo it: \texttt{echo \$myvar}.
+        \item Start a new shell with \texttt{bash}, check if \texttt{myvar} is available.
+        \item Go back, export \texttt{myvar}, start another shell, and see if it’s now available.
+        \item Remove it with \texttt{unset myvar}.
+    \end{itemize}
+
+    \item \textbf{Creating Files with Special Characters}
+    \begin{itemize}
+        \item Try \texttt{touch my big file} (observe the result).
+        \item Now properly create the file: \texttt{touch "my big file"}.
+        \item Remove it in three different ways (double quotes, single quotes, backslash-escaped).
+    \end{itemize}
+\end{enumerate}
+
+\section*{Summary}
+\begin{itemize}
+    \item The \texttt{pwd} and \texttt{uname} commands help locate you and your system’s details.
+    \item \texttt{man}, \texttt{apropos}, \texttt{type}, and \texttt{which} help you find and understand commands.
+    \item \texttt{history} and the \texttt{.bash\_history} file let you recall and reuse previous commands.
+    \item Environment variables (\texttt{PATH}, etc.) are easy to manage with \texttt{export}, \texttt{unset}, and \texttt{echo}.
+    \item Quoting (single quotes, double quotes, or backslashes) is crucial when dealing with spaces or special characters.
+\end{itemize}
 
 %-------------------------------------------------------
 % Multiple-Choice Questions for (103.1)
@@ -4079,9 +4297,230 @@ dbus-uuidgen --get
 %-------------------------------------------------------
 % 103.2 Process text streams using filters
 %-------------------------------------------------------
-
+\newpage
 \section*{103.2 Process text streams using filters}
 \addcontentsline{toc}{section}{103.2 Process text streams using filters}
+
+\section*{Reference to LPI Objectives}
+\begin{itemize}
+    \item \textbf{LPIC-1 v5, Exam 101, Objective 103.2}
+    \item \textbf{Weight:} 2
+\end{itemize}
+
+\section*{Key Knowledge Areas}
+\begin{itemize}
+    \item Sending text files and output streams through standard text utility filters.
+    \item Familiarity with GNU textutils (now part of GNU coreutils) and related commands (\texttt{sed}, \texttt{grep}, \texttt{head}, \texttt{tail}, etc.).
+\end{itemize}
+
+\section*{Important Commands and Utilities}
+\begin{itemize}
+    \item \texttt{bzcat}, \texttt{cat}, \texttt{cut}, \texttt{head}, \texttt{less}, \texttt{md5sum}
+    \item \texttt{nl}, \texttt{od}, \texttt{paste}, \texttt{sed}, \texttt{sha256sum}, \texttt{sha512sum}
+    \item \texttt{sort}, \texttt{split}, \texttt{tail}, \texttt{tr}, \texttt{uniq}, \texttt{wc}
+    \item \texttt{xzcat}, \texttt{zcat}
+    \item Redirection operators (\texttt{>}, \texttt{>>}) and \textbf{pipes} (\texttt{|}).
+\end{itemize}
+
+\section*{1. Quick Review: Redirections and Pipes}
+\begin{enumerate}
+    \item \textbf{Standard Streams}
+    \begin{itemize}
+        \item \textbf{stdin} (standard input): file descriptor 0 (keyboard by default).
+        \item \textbf{stdout} (standard output): file descriptor 1 (screen by default).
+        \item \textbf{stderr} (standard error): file descriptor 2 (screen by default).
+    \end{itemize}
+    \item \textbf{Redirections}
+    \begin{itemize}
+        \item \texttt{>} → redirect stdout to a file (overwrite).
+        \item \texttt{>>} → redirect stdout to a file (append).
+        \item \texttt{<} → redirect a file into stdin.
+    \end{itemize}
+    \item \textbf{Pipes (\texttt{|})}
+    \begin{itemize}
+        \item Direct output of one command as input to another.
+        \item Example:
+        \begin{lstlisting}[language=bash]
+cat file.txt | grep "pattern"
+        \end{lstlisting}
+    \end{itemize}
+\end{enumerate}
+
+\section*{2. Basic Usage of \texttt{cat}}
+\begin{enumerate}
+    \item Concatenate Files: \texttt{cat file1 file2} → writes both files to stdout in sequence.
+    \item Standard Input: Just \texttt{cat} (with no arguments) reads from stdin (keyboard).
+    \item Copying Files: \texttt{cat source > destination}.
+    \item Appending: \texttt{echo "new line" >> file.txt}.
+\end{enumerate}
+
+\section*{3. Viewing Compressed Files}
+\begin{itemize}
+    \item \texttt{bzcat} → for \texttt{.bz2} compressed files.
+    \item \texttt{xzcat} → for \texttt{.xz} compressed files.
+    \item \texttt{zcat} → for \texttt{.gz} compressed files.
+    \item Example:
+    \begin{lstlisting}[language=bash]
+gzip file.txt  # produces file.txt.gz
+zcat file.txt.gz
+    \end{lstlisting}
+\end{itemize}
+
+\section*{4. Searching Text}
+\begin{itemize}
+    \item \textbf{\texttt{grep}}:
+    \begin{itemize}
+        \item Search for lines matching a pattern: \texttt{grep pattern file}.
+        \item Common options:
+        \begin{itemize}
+            \item \texttt{-i} → ignore case.
+            \item \texttt{-v} → invert match (show lines \textit{not} matching).
+            \item \texttt{-n} → show line numbers.
+        \end{itemize}
+    \end{itemize}
+    \item Example:
+    \begin{lstlisting}[language=bash]
+grep -i "this" mytextfile
+# matches "This" or "this"
+    \end{lstlisting}
+\end{itemize}
+
+\section*{5. Paging Through Large Output}
+\begin{enumerate}
+    \item \textbf{\texttt{less}}:
+    \begin{itemize}
+        \item Interactive pager: scroll with arrow keys, search with \texttt{/pattern}.
+        \item Example:
+        \begin{lstlisting}[language=bash]
+less /var/log/syslog
+        \end{lstlisting}
+    \end{itemize}
+    \item \textbf{\texttt{head}} and \textbf{\texttt{tail}}:
+    \begin{itemize}
+        \item \texttt{head file} → first 10 lines.
+        \item \texttt{tail file} → last 10 lines.
+        \item \texttt{-n <count>} → changes how many lines are shown (e.g., \texttt{head -n 5}).
+    \end{itemize}
+    \item \textbf{\texttt{nl}} and \textbf{\texttt{wc}}:
+    \begin{itemize}
+        \item \texttt{nl} → numbers each line of input.
+        \item \texttt{wc} → word count, line count, etc.
+        \item \texttt{wc -l} → line count only.
+    \end{itemize}
+\end{enumerate}
+
+\section*{6. Editing Text Streams with \texttt{sed}}
+\begin{enumerate}
+    \item \textbf{Pattern Matching}
+    \begin{itemize}
+        \item Print only lines matching a regex: \texttt{sed -n '/regex/p' file}.
+        \item Delete lines matching: \texttt{sed '/regex/d' file}.
+    \end{itemize}
+    \item \textbf{Find and Replace}
+    \begin{itemize}
+        \item \texttt{sed 's/old/new/' file}.
+        \item In-place edit: \texttt{sed -i.backup 's/old/new/' file}.
+    \end{itemize}
+    \item Example:
+    \begin{lstlisting}[language=bash]
+sed -n /cat/p < ftu.txt  # prints lines containing "cat"
+sed /cat/d < ftu.txt     # prints everything except lines containing "cat"
+    \end{lstlisting}
+\end{enumerate}
+
+\section*{7. Ensuring Data Integrity with Checksums}
+\begin{enumerate}
+    \item \textbf{Checksum Tools}: \texttt{md5sum}, \texttt{sha256sum}, \texttt{sha512sum}.
+    \item \textbf{Generating a Hash}:
+    \begin{lstlisting}[language=bash]
+sha256sum ftu.txt > sha256.txt
+    \end{lstlisting}
+    \item \textbf{Verifying a Hash}:
+    \begin{lstlisting}[language=bash]
+sha256sum -c sha256.txt
+# ftu.txt: OK
+    \end{lstlisting}
+\end{enumerate}
+
+\section*{8. Looking Deeper with \texttt{od} (Octal Dump)}
+
+\begin{enumerate}
+    \item \textbf{Default}
+    \begin{itemize}
+        \item \texttt{od file} → displays file contents in octal.
+        \item Often for debugging binary or unusual text files.
+    \end{itemize}
+    \item \textbf{Common Options}
+    \begin{itemize}
+        \item \texttt{-x} → display as hexadecimal.
+        \item \texttt{-c} → display as characters (escaped for non-printable).
+        \item \texttt{-An} → suppress addresses/offset.
+    \end{itemize}
+    \item \textbf{Example}
+    \begin{lstlisting}[language=bash]
+    od -c file
+    # shows hidden characters like \n
+    \end{lstlisting}
+\end{enumerate}
+
+
+
+\section*{Workbook Exercises}
+
+
+\begin{enumerate}
+    \item \textbf{Basic Redirection}
+    \begin{itemize}
+        \item Create \texttt{test.txt}, then run \texttt{cat > test.txt} and type some lines, press \texttt{Ctrl+C} to end.
+        \item Use \texttt{diff} or \texttt{cat} to confirm contents.
+    \end{itemize}
+
+    \item \textbf{Pipes}
+    \begin{itemize}
+        \item \texttt{ls -l /etc | grep conf}
+        \item \texttt{cat /etc/passwd | wc -l} (count lines in \texttt{/etc/passwd}).
+    \end{itemize}
+
+    \item \textbf{Compressed File Viewing}
+    \begin{itemize}
+        \item Create a large text file (\texttt{ls -R /usr > big.txt}).
+        \item Compress it with \texttt{gzip big.txt}.
+        \item Use \texttt{zcat big.txt.gz | head}.
+    \end{itemize}
+
+    \item \textbf{Searching \& Paginating}
+    \begin{itemize}
+        \item \texttt{grep "root" /etc/passwd}
+        \item \texttt{less /var/log/syslog} (scroll, search for "error" with \texttt{/error}).
+    \end{itemize}
+
+    \item \textbf{sed Basics}
+    \begin{itemize}
+        \item \texttt{sed -n '/root/p' /etc/passwd} → lines containing "root."
+        \item \texttt{sed 's/bash/sh/' /etc/passwd | head} → replace "bash" with "sh," show first 10 lines.
+    \end{itemize}
+
+    \item \textbf{Checksum}
+    \begin{itemize}
+        \item Run \texttt{sha256sum ftu.txt > check.txt}.
+        \item Modify \texttt{ftu.txt} and verify using \texttt{sha256sum -c check.txt} to observe the mismatch.
+    \end{itemize}
+
+    \item \textbf{Examining File Contents}
+    \begin{itemize}
+        \item \texttt{od -c ftu.txt} → see hidden newline chars.
+        \item \texttt{od -x ftu.txt} → observe hex representation.
+    \end{itemize}
+\end{enumerate}
+
+\section*{Summary}
+\begin{itemize}
+    \item Redirection and pipes let you chain commands and outputs.
+    \item Powerful text filters include \texttt{grep}, \texttt{head}, \texttt{tail}, \texttt{less}, \texttt{nl}, \texttt{wc}, and \texttt{sed}.
+    \item Checksum commands (\texttt{md5sum}, \texttt{sha256sum}, \texttt{sha512sum}) ensure data integrity.
+    \item Use \texttt{od} to reveal hidden or binary data in files.
+    \item Mastering these techniques streamlines text processing, a crucial skill for Linux administration.
+\end{itemize}
 
 %-------------------------------------------------------
 % Multiple-Choice Questions for (103.2)
@@ -4094,9 +4533,308 @@ dbus-uuidgen --get
 %-------------------------------------------------------
 % 103.3 Perform basic file management
 %-------------------------------------------------------
-
+\newpage
 \section*{103.3 Perform basic file management}
 \addcontentsline{toc}{section}{103.3 Perform basic file management}
+
+\section*{Reference to LPI Objectives}
+\begin{itemize}
+    \item \textbf{LPIC-1 v5, Exam 101, Objective 103.3}
+    \item \textbf{Weight:} 4
+\end{itemize}
+
+\section*{Key Knowledge Areas}
+\begin{itemize}
+    \item Copying, moving, and removing files/directories (individually and recursively).
+    \item Using wildcards (file globbing) for matching patterns.
+    \item Locating files using \texttt{find} (by type, size, time).
+    \item Using \texttt{tar}, \texttt{cpio}, \texttt{dd} for archiving, copying, and backup tasks.
+\end{itemize}
+
+\section*{Important Commands and Utilities}
+\begin{itemize}
+    \item \texttt{cp}, \texttt{mv}, \texttt{ls}, \texttt{rm}, \texttt{rmdir}, \texttt{mkdir}, \texttt{touch}
+    \item \texttt{find}
+    \item \texttt{tar}, \texttt{cpio}, \texttt{dd}
+    \item \texttt{gzip}, \texttt{gunzip}, \texttt{bzip2}, \texttt{bunzip2}
+    \item \texttt{file} (to identify file type)
+    \item Wildcards: \texttt{*}, \texttt{?}, \texttt{[ ]}
+\end{itemize}
+
+\section*{1. File Listing and Basic Navigation}
+\subsection*{1. \texttt{ls}}
+\begin{itemize}
+    \item \texttt{ls} lists contents of a directory.
+    \item Common options:
+    \begin{itemize}
+        \item \texttt{-l} -- long listing (permissions, owner, size, date/time).
+        \item \texttt{-a} -- include hidden files (dotfiles).
+        \item \texttt{-h} -- human-readable sizes.
+        \item \texttt{-R} -- list contents recursively.
+    \end{itemize}
+    \item Example:
+\begin{lstlisting}[language=bash]
+ls -lh /var/log
+\end{lstlisting}
+\end{itemize}
+
+\subsection*{2. \texttt{touch}}
+\begin{itemize}
+    \item Creates empty files or updates file timestamps.
+    \item Example:
+\begin{lstlisting}[language=bash]
+touch myfile.txt
+# creates an empty file if it doesn't exist
+\end{lstlisting}
+\end{itemize}
+
+\section*{2. Creating and Removing Directories}
+\subsection*{1. \texttt{mkdir}}
+\begin{itemize}
+    \item Make new directories.
+    \item \texttt{mkdir dir1} -- creates \texttt{dir1}.
+    \item \texttt{mkdir -p parents/children} -- creates a nested directory path if it doesn’t already exist.
+\end{itemize}
+
+\subsection*{2. \texttt{rmdir}}
+\begin{itemize}
+    \item Remove empty directories.
+    \item Fails if directory is not empty.
+    \item \texttt{rmdir -p parents/children} -- removes nested directories if all are empty.
+\end{itemize}
+
+\section*{3. Copying, Moving, and Deleting Files}
+\subsection*{1. \texttt{cp} (Copy)}
+\begin{itemize}
+    \item \texttt{cp file1 dir2} -- copy \texttt{file1} into \texttt{dir2}.
+    \item \texttt{cp -r dir1 dir2} -- copy directory \texttt{dir1} recursively into \texttt{dir2}.
+    \item Useful options:
+    \begin{itemize}
+        \item \texttt{-i} -- prompt before overwrite.
+        \item \texttt{-f} -- force overwrite.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{2. \texttt{mv} (Move / Rename)}
+\begin{itemize}
+    \item \texttt{mv file1 dir2} -- move \texttt{file1} into \texttt{dir2}.
+    \item \texttt{mv oldname newname} -- rename a file.
+    \item Options:
+    \begin{itemize}
+        \item \texttt{-i} -- prompt before overwrite.
+        \item \texttt{-f} -- force.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{3. \texttt{rm} (Remove)}
+\begin{itemize}
+    \item \texttt{rm file1 file2} -- remove multiple files.
+    \item \texttt{rm -r dir1} -- remove \texttt{dir1} and its contents recursively.
+    \item \texttt{rm -i file1} -- prompt before removal.
+    \item \texttt{rm -f file1} -- force removal (no prompt).
+    \item \textbf{WARNING}: \texttt{rm -rf /} is very dangerous.
+\end{itemize}
+
+\section*{4. Wildcards (File Globbing)}
+\begin{itemize}
+    \item \textbf{\texttt{*}} (asterisk): matches zero or more characters.
+    \begin{itemize}
+        \item Example: \texttt{ls *.txt} -- lists all \texttt{.txt} files.
+    \end{itemize}
+    \item \textbf{\texttt{?}} (question mark): matches exactly one character.
+    \begin{itemize}
+        \item Example: \texttt{ls l?st.txt} -- matches \texttt{last.txt}, \texttt{lest.txt}, \texttt{list.txt}.
+    \end{itemize}
+    \item \textbf{\texttt{[ ]}} (brackets): matches any one character from the group/range inside.
+    \begin{itemize}
+        \item Example: \texttt{ls file[1-3].txt} -- matches \texttt{file1.txt}, \texttt{file2.txt}, \texttt{file3.txt}.
+    \end{itemize}
+\end{itemize}
+Wildcards can be combined:
+
+\begin{lstlisting}[language=bash]
+ls [plf]?st*
+# e.g., matches last.txt, lest.txt, list.txt, past.txt
+\end{lstlisting}
+
+\section*{5. Finding Files: \texttt{find}}
+\begin{lstlisting}[language=bash]
+find STARTING_PATH [OPTIONS] [EXPRESSION]
+\end{lstlisting}
+
+\subsection*{1. Search by Name}
+\begin{itemize}
+    \item \texttt{find . -name "myfile.txt"} -- find \texttt{myfile.txt} in current directory.
+    \item \texttt{find /home -iname "*.png"} -- case-insensitive, all \texttt{.png} under \texttt{/home}.
+\end{itemize}
+
+\subsection*{2. Search by Type}
+\begin{itemize}
+    \item \texttt{-type f} (regular file), \texttt{-type d} (directory), \texttt{-type l} (symlink).
+    \item Example: \texttt{find /var -type d -name "log"}.
+\end{itemize}
+
+\subsection*{3. Search by Size}
+\begin{itemize}
+    \item \texttt{-size +2G} (bigger than 2GB).
+    \item \texttt{-size -20M} (smaller than 20MB).
+    \item Suffixes: \texttt{b} (bytes), \texttt{k} (KB), \texttt{M} (MB), \texttt{G} (GB).
+\end{itemize}
+
+\subsection*{4. Search by Modification Time}
+\begin{itemize}
+    \item \texttt{-mtime N} \textrightarrow changed exactly \texttt{N} days ago.
+    \item \texttt{-mtime +N} \textrightarrow changed more than \texttt{N} days ago.
+    \item \texttt{-mtime -N} \textrightarrow changed less than \texttt{N} days ago.
+    \item Example:
+        \begin{lstlisting}[language=bash]
+find /etc -name "*.conf" -mtime -3
+# conf files changed less than 3 days ago
+        \end{lstlisting}
+\end{itemize}
+
+
+\subsection*{5. Act on Results (\texttt{-exec})}
+\begin{itemize}
+    \item \texttt{-exec COMMAND \{\} \;} -- run a command on each match.
+    \item Example:
+\begin{lstlisting}[language=bash]
+find . -name "*.bak" -exec rm {} \;
+\end{lstlisting}
+    \item Or use \texttt{-delete} to remove matches automatically:
+\begin{lstlisting}[language=bash]
+find . -name "*.bak" -delete
+\end{lstlisting}
+\end{itemize}
+
+\section*{6. Archiving and Compression}
+\subsection*{6.1 \texttt{tar}}
+\begin{enumerate}
+    \item {\textbf{Creating an Archive}}
+    \begin{lstlisting}[language=bash]
+tar -cvf archive.tar dir1 dir2
+# -c: create, -v: verbose, -f: specify file
+    \end{lstlisting}
+    \item {\textbf{Extracting}}
+    \begin{lstlisting}[language=bash]
+tar -xvf archive.tar
+# -x: extract
+    \end{lstlisting}
+
+    \item{\textbf{Compression}}
+    \begin{itemize}
+        \item \texttt{-z} for gzip \textrightarrow \texttt{.tar.gz} or \texttt{.tgz}:
+    \begin{lstlisting}[language=bash]
+tar -czvf archive.tar.gz dir1
+tar -xzvf archive.tar.gz
+    \end{lstlisting}
+        \item \texttt{-j} for bzip2 \textrightarrow \texttt{.tar.bz2}:
+    \begin{lstlisting}[language=bash]
+tar -cjvf archive.tar.bz2 dir1
+tar -xjvf archive.tar.bz2
+    \end{lstlisting}
+    \end{itemize}
+
+\end{enumerate}
+
+
+
+\subsection*{6.2 \texttt{gzip} / \texttt{bzip2}}
+\begin{itemize}
+    \item \texttt{gzip file} \textrightarrow creates \texttt{file.gz}.
+    \item \texttt{gunzip file.gz} \textrightarrow uncompress.
+    \item \texttt{bzip2 file} \textrightarrow creates \texttt{file.bz2}.
+    \item \texttt{bunzip2 file.bz2} \textrightarrow uncompress.
+\end{itemize}
+
+\subsection*{6.3 \texttt{cpio}}
+\begin{itemize}
+    \item Create:
+\begin{lstlisting}[language=bash]
+ls | cpio -o > archive.cpio
+\end{lstlisting}
+    \item Extract:
+\begin{lstlisting}[language=bash]
+cpio -id < archive.cpio
+\end{lstlisting}
+\end{itemize}
+
+\subsection*{6.4 \texttt{dd}}
+\begin{itemize}
+    \item General form: \texttt{dd if=INFILE of=OUTFILE [options]}.
+    \item Example: copy a file:
+\begin{lstlisting}[language=bash]
+dd if=oldfile of=newfile status=progress
+\end{lstlisting}
+    \item Convert text to uppercase:
+\begin{lstlisting}[language=bash]
+dd if=oldfile of=newfile conv=ucase
+\end{lstlisting}
+    \item Disk backup (be cautious):
+\begin{lstlisting}[language=bash]
+dd if=/dev/sda of=backup.dd bs=4096
+\end{lstlisting}
+\end{itemize}
+
+\section*{Workbook Exercises}
+\begin{enumerate}
+    \item \textbf{Basic Operations}
+    \begin{itemize}
+        \item Create a directory \texttt{testdir} with \texttt{mkdir testdir}.
+        \item Inside \texttt{testdir}, create files (\texttt{touch file1 file2}).
+        \item List them (\texttt{ls -l}), then copy them into a new directory \texttt{copydir}.
+        \item Rename one file in \texttt{copydir} to \texttt{file3}.
+        \item Remove \texttt{copydir} recursively.
+    \end{itemize}
+    \item \textbf{Globbing}
+    \begin{itemize}
+        \item Create files: \texttt{fileA}, \texttt{fileB}, \texttt{fileX}, \texttt{file12}, \texttt{f\_test}, etc.
+        \item Use wildcards to list or remove subsets (\texttt{ls f*}, \texttt{rm file?}, etc.).
+    \end{itemize}
+    \item \textbf{Finding Files}
+    \begin{itemize}
+        \item Run:
+\begin{lstlisting}[language=bash]
+find . -name "*.sh"
+\end{lstlisting}
+        \item Search by size (\texttt{+1M}, etc.).
+        \item Use \texttt{-exec echo \{\} \;} to print each match.
+    \end{itemize}
+    \item \textbf{Archiving \& Compressing}
+    \begin{itemize}
+        \item Create a tar archive of a test directory:
+\begin{lstlisting}[language=bash]
+tar -cvf myarchive.tar testdir
+\end{lstlisting}
+        \item Compress it (\texttt{gzip myarchive.tar}) or do it in one step (\texttt{-z}):
+\begin{lstlisting}[language=bash]
+tar -czvf myarchive.tgz testdir
+\end{lstlisting}
+        \item Extract into a new location:
+\begin{lstlisting}[language=bash]
+tar -xzvf myarchive.tgz -C /tmp
+\end{lstlisting}
+    \end{itemize}
+    \item \textbf{Using \texttt{dd}}
+    \begin{itemize}
+        \item Copy a file using \texttt{dd}, e.g.:
+\begin{lstlisting}[language=bash]
+dd if=testfile of=testfile_copy bs=1K status=progress
+\end{lstlisting}
+        \item Verify both files with \texttt{diff} or \texttt{cmp}.
+    \end{itemize}
+\end{enumerate}
+
+\section*{Summary}
+\begin{itemize}
+    \item \texttt{ls} shows file details; \texttt{mkdir}, \texttt{rmdir} create/remove directories.
+    \item \texttt{cp}, \texttt{mv}, \texttt{rm} handle copying, moving, renaming, and deleting files/directories.
+    \item Use \texttt{-r} for recursive operations on directories.
+    \item File globbing (\texttt{*}, \texttt{?}, \texttt{[ ]}) simplifies specifying multiple files in commands.
+    \item \texttt{find} locates files by name, type, time, or size, and can act on them using \texttt{-exec} or \texttt{-delete}.
+    \item \texttt{tar}, \texttt{cpio}, \texttt{dd} provide archiving, backup, and data copying capabilities, optionally with compression (gzip, bzip2).
+\end{itemize}
+
 
 %-------------------------------------------------------
 % Multiple-Choice Questions for (103.3)
@@ -4109,7 +4847,7 @@ dbus-uuidgen --get
 %-------------------------------------------------------
 % 103.4 Use streams, pipes and redirects
 %-------------------------------------------------------
-
+\newpage
 \section*{103.4 Use streams, pipes and redirects}
 \addcontentsline{toc}{section}{103.4 Use streams, pipes and redirects}
 
@@ -4124,7 +4862,7 @@ dbus-uuidgen --get
 %-------------------------------------------------------
 % 103.5 Create, monitor and kill processes
 %-------------------------------------------------------
-
+\newpage
 \section*{103.5 Create, monitor and kill processes}
 \addcontentsline{toc}{section}{103.5 Create, monitor and kill processes}
 
@@ -4139,7 +4877,7 @@ dbus-uuidgen --get
 %-------------------------------------------------------
 % 103.6 Modify process execution priorities
 %-------------------------------------------------------
-
+\newpage
 \section*{103.6 Modify process execution priorities}
 \addcontentsline{toc}{section}{103.6 Modify process execution priorities}
 
@@ -4154,7 +4892,7 @@ dbus-uuidgen --get
 %-------------------------------------------------------
 % 103.7 Search text files using regular expressions
 %-------------------------------------------------------
-
+\newpage
 \section*{103.7 Search text files using regular expressions}
 \addcontentsline{toc}{section}{103.7 Search text files using regular expressions}
 
@@ -4169,7 +4907,7 @@ dbus-uuidgen --get
 %-------------------------------------------------------
 % 103.8 Basic file editing
 %-------------------------------------------------------
-
+\newpage
 \section*{103.8 Basic file editing}
 \addcontentsline{toc}{section}{103.8 Basic file editing}
 
@@ -4185,6 +4923,7 @@ dbus-uuidgen --get
 %=======================================================
 % TOPIC 104: DEVICES, LINUX FILESYSTEMS, FHS
 %=======================================================
+\newpage
 \chapter{Topic 104: Devices, Linux Filesystems, Filesystem Hierarchy Standard}
 
 \section{104.1 Create partitions and filesystems}
