@@ -1287,7 +1287,7 @@ wall "Warning! System moving to single-user mode in 1 minute."
 \addcontentsline{toc}{section}{102.1 Design Hard Disk Layout}
 
 
-\subsection*{Reference to LPI Objectives:}
+\textbf{Reference to LPI Objectives:}
 \begin{itemize}
     \item \textbf{LPIC-1 v5, Exam 102, Objective 102.1}
     \item \textbf{Weight:} 2
@@ -1677,7 +1677,7 @@ Designing an effective disk layout is critical for system stability, performance
 \section*{102.2 Install a Boot Manager}
 \addcontentsline{toc}{section}{102.2 Install a Boot Manager}
 
-\subsection*{Reference to LPI Objectives:}
+\textbf{Reference to LPI Objectives:}
 \begin{itemize}
     \item \textbf{LPIC-1 v5, Exam 102, Objective 102.2}
     \item \textbf{Weight:} 2
@@ -2123,7 +2123,7 @@ menuentry "Windows" {
 \section*{102.3 Manage Shared Libraries}
 \addcontentsline{toc}{section}{102.3 Manage Shared Libraries}
 
-\subsection*{Reference to LPI Objectives:}
+\textbf{Reference to LPI Objectives:}
 \begin{itemize}
     \item \textbf{LPIC-1 v5, Exam 101, Objective 102.3}
     \item \textbf{Weight:} 1
@@ -2498,7 +2498,7 @@ ldd /usr/bin/git
 \section*{102.4 Use Debian Package Management}
 \addcontentsline{toc}{section}{102.4 Use Debian Package Management}
 
-\subsection*{Reference to LPI Objectives:}
+\textbf{Reference to LPI Objectives:}
 \begin{itemize}
     \item \textbf{LPIC-1 v5, Exam 101, Objective 102.4}
     \item \textbf{Weight:} 3
@@ -2998,7 +2998,7 @@ is used to search for a package containing the term “p7zip.”
 \section*{102.5 Use RPM and YUM Package Management}
 \addcontentsline{toc}{section}{102.5 Use RPM and YUM Package Management}
 
-\subsection*{Reference to LPI Objectives:}
+\textbf{Reference to LPI Objectives:}
 \begin{itemize}
     \item \textbf{LPIC-1 v5, Exam 101, Objective 102.5}
     \item \textbf{Weight:} 3
@@ -3589,7 +3589,7 @@ dnf remove gimp
 
 
 
-\subsection*{Reference to LPI Objectives:}
+\textbf{Reference to LPI Objectives:}
 \begin{itemize}
     \item \textbf{LPIC-1 v5, Exam 101, Objective 102.6}
     \item \textbf{Weight:} 1
@@ -4070,7 +4070,7 @@ dbus-uuidgen --get
 \addcontentsline{toc}{section}{103.1 Work on the command line}
 
 
-\section*{Reference to LPI Objectives}
+\textbf{Reference to LPI Objectives}
 \begin{itemize}
     \item \textbf{LPIC-1 version 5.0, Exam 101, Objective 103.1}
     \item \textbf{Weight:} 4
@@ -4467,7 +4467,7 @@ touch my\ big\ file
 \section*{103.2 Process text streams using filters}
 \addcontentsline{toc}{section}{103.2 Process text streams using filters}
 
-\section*{Reference to LPI Objectives}
+\textbf{Reference to LPI Objectives}
 \begin{itemize}
     \item \textbf{LPIC-1 v5, Exam 101, Objective 103.2}
     \item \textbf{Weight:} 2
@@ -4868,7 +4868,7 @@ sha256sum -c sha256.txt
 \section*{103.3 Perform basic file management}
 \addcontentsline{toc}{section}{103.3 Perform basic file management}
 
-\section*{Reference to LPI Objectives}
+\textbf{Reference to LPI Objectives}
 \begin{itemize}
     \item \textbf{LPIC-1 v5, Exam 101, Objective 103.3}
     \item \textbf{Weight:} 4
@@ -5349,6 +5349,272 @@ dd if=testfile of=testfile_copy bs=1K status=progress
 \section*{103.4 Use streams, pipes and redirects}
 \addcontentsline{toc}{section}{103.4 Use streams, pipes and redirects}
 
+\textbf{Reference to LPI Objectives:}  
+\begin{itemize}
+    \item \textbf{LPIC-1 v5, Exam 101, Objective 103.4}  
+    \item \textbf{Weight:} 4  
+\end{itemize}
+
+\subsection*{Key Knowledge Areas}
+\begin{itemize}
+    \item Redirecting standard input (stdin), standard output (stdout), and standard error (stderr).  
+    \item Piping output of one command into another command’s input.  
+    \item Using output of one command as arguments to another command.  
+    \item Sending output to both stdout and a file.
+\end{itemize}
+
+\subsection*{Important Commands, Files, and Utilities}
+\begin{itemize}
+    \item \texttt{tee}, \texttt{xargs}  
+    \item Redirection operators (\texttt{>}, \texttt{>>}, \texttt{<}, \texttt{<<}, \texttt{<<<}, \texttt{2>}, \texttt{\&>}, etc.)  
+    \item Pipes (\texttt{|})  
+    \item Command substitution (\texttt{`command`} or \texttt{\$(command)})
+\end{itemize}
+
+\section*{1. Standard File Descriptors}
+\begin{enumerate}
+    \item \textbf{stdin}: file descriptor \textbf{0} (normally keyboard input).  
+    \item \textbf{stdout}: file descriptor \textbf{1} (normally terminal display).  
+    \item \textbf{stderr}: file descriptor \textbf{2} (normally terminal display for errors).
+\end{enumerate}
+
+\section*{2. Redirection}
+\subsection*{1. Output Redirection}
+\begin{itemize}
+    \item \texttt{>} : redirect stdout (file descriptor 1) to a file (overwrite).  
+    \item \texttt{>>}: append stdout to a file.  
+    \item \texttt{2>}: redirect stderr (file descriptor 2).  
+    \item \texttt{\&>} or \texttt{>\&}: redirect \textbf{both} stdout and stderr to a file.  
+    \item Example:
+    \begin{lstlisting}[language=bash]
+command > file.txt        # overwrites file.txt
+command >> file.txt       # appends to file.txt
+command 2> errors.txt     # only stderr to errors.txt
+command &> all_output.txt # stdout and stderr
+    \end{lstlisting}
+\end{itemize}
+
+
+
+\subsection*{2. Input Redirection}
+\begin{itemize}
+    \item \texttt{<} : read file content into stdin.  
+    \item Example:
+    \begin{lstlisting}[language=bash]
+command < file.txt
+    \end{lstlisting}
+    \item Usually, commands can also specify a file directly (e.g., \texttt{cat file.txt}), but \texttt{<} can be used if needed.
+\end{itemize}
+
+
+\section*{3. Here Documents and Here Strings}
+
+\subsection*{1. Here Document (\texttt{<<})}
+\begin{itemize}
+    \item Multi-line string as stdin to a command.  
+    \item Terminates on a line containing a marker (like \texttt{EOF}).
+
+
+\begin{lstlisting}[language=bash]
+cat << EOF
+line 1
+line 2
+EOF
+\end{lstlisting}
+
+
+    \item Everything up to the terminating word is fed to the command’s stdin.
+\end{itemize}
+
+\subsection*{2. Here String (\texttt{< < <})}
+\begin{itemize}
+    \item Single-line string to a command’s stdin.
+
+
+    \item Example:
+\begin{lstlisting}[language=bash]
+wc -c <<< "hello world"
+\end{lstlisting}
+
+
+    \item If the string contains spaces, put it in quotes.
+\end{itemize}
+
+ 
+
+\section*{4. Pipes}
+
+\subsection*{1. Definition}
+\begin{itemize}
+    \item \texttt{|} connects stdout of one command to stdin of another.  
+    \item Multiple pipes can chain many commands.
+\end{itemize}
+
+\subsection*{2. Basic Example}
+\begin{itemize}
+    \item \texttt{cat file.txt | grep "pattern"}
+    \item The \texttt{cat} output goes to grep’s input.
+\end{itemize}
+
+\subsection*{3. Combining with Redirection}
+\begin{itemize}
+    \item \texttt{command1 2>\&1 | command2} merges stderr into stdout first, so second command can read both.
+\end{itemize}
+
+\subsection*{4. tee}
+\begin{itemize}
+    \item Splits output so you can see on screen \textbf{and} write to a file.  
+    \item \texttt{command | tee file.txt}
+    \begin{itemize}
+        \item Output goes to screen and also saved into \texttt{file.txt}.
+    \end{itemize}
+    \item \texttt{-a} appends instead of overwriting.
+\end{itemize}
+
+\section*{5. Command Substitution}
+
+\subsection*{1. Syntax}
+\begin{itemize}
+    \item \texttt{\`command\`} (backticks) or \texttt{\$(command)}
+    \item Example (using \texttt{\$()} recommended):
+
+\begin{lstlisting}[language=bash]
+TODAY=$(date +%Y-%m-%d)
+echo "Today's date is $TODAY"
+\end{lstlisting}
+
+    \item Used to store command output in variables or pass as arguments to other commands:
+
+\begin{lstlisting}[language=bash]
+mkdir dir-$(date +%Y%m%d)
+\end{lstlisting}
+\end{itemize}
+
+\section*{6. Using xargs}
+
+\subsection*{1. Purpose}
+\begin{itemize}
+    \item Takes a list (from stdin) and builds arguments for another command.  
+    \item Commonly used with \texttt{find} output or other multi-line data.
+\end{itemize}
+
+\subsection*{2. Basic Example}
+\begin{lstlisting}[language=bash]
+find . -name "*.txt" | xargs rm
+\end{lstlisting}
+
+\begin{itemize}
+    \item This removes all \texttt{.txt} files found.  
+    \item If filenames have spaces, use \texttt{-print0} in \texttt{find} and \texttt{-0} in \texttt{xargs}:
+\begin{lstlisting}[language=bash]
+find . -name "*.txt" -print0 | xargs -0 rm
+\end{lstlisting}
+
+\end{itemize}
+
+\subsection*{3. Options}
+\begin{itemize}
+    \item \texttt{-n 1}: run the specified command once per line.  
+    \item \texttt{-I \{\}}: placeholder to control where the arguments go in the command line.
+    \item Example:
+
+
+\begin{lstlisting}[language=bash]
+find . -name "*.jpg" | xargs -I {} mv {} /tmp
+\end{lstlisting}
+
+
+\begin{itemize}
+    \item Moves each \texttt{.jpg} to \texttt{/tmp}.
+\end{itemize}
+\end{itemize}
+\section*{Workbook Exercises}
+
+\subsection*{1. Redirecting Output}
+\begin{itemize}
+    \item Run \texttt{ls -l /nonexistentdir 2> error.txt}.  
+    \item Inspect \texttt{error.txt} to see stderr captured.
+\end{itemize}
+
+\subsection*{2. Piping}
+\begin{itemize}
+    \item Display line count of \texttt{/etc/passwd}:
+
+
+\begin{lstlisting}[language=bash]
+cat /etc/passwd | wc -l
+\end{lstlisting}
+
+
+    \item Or shorter: \texttt{wc -l < /etc/passwd}.
+\end{itemize}
+
+\subsection*{3. Here Document}
+\begin{itemize}
+    \item Create a test file with multiple lines:
+
+
+\begin{lstlisting}[language=bash]
+cat << EOF > mytest.txt
+line1
+line2
+line3
+EOF
+\end{lstlisting}
+
+
+    \item Check contents with \texttt{cat mytest.txt}.
+\end{itemize}
+
+\subsection*{4. tee}
+\begin{itemize}
+    \item Pipe a command’s output to a file and terminal:
+
+
+\begin{lstlisting}[language=bash]
+ls -l | tee listing.txt
+\end{lstlisting}
+
+\end{itemize}
+
+
+\subsection*{5. Command Substitution}
+\begin{itemize}
+    \item Store today’s date in a variable:
+
+
+\begin{lstlisting}[language=bash]
+TODAY=$(date +%Y-%m-%d)
+echo $TODAY
+\end{lstlisting}
+
+
+    \item Use it to create a directory, e.g. \texttt{mkdir backup-\$TODAY}.
+\end{itemize}
+
+\subsection*{6. xargs}
+\begin{itemize}
+    \item Create some test files, e.g. \texttt{touch file1 file 2 "file space.txt"}.  
+    \item Use \texttt{find} and \texttt{xargs} with \texttt{-print0}/\texttt{-0} to remove them:
+
+
+\begin{lstlisting}[language=bash]
+find . -name "file*" -print0 | xargs -0 rm
+\end{lstlisting}
+\end{itemize}
+
+\section*{Summary}
+
+\begin{itemize}
+    \item \textbf{stdin} (0), \textbf{stdout} (1), and \textbf{stderr} (2) are standard I/O channels.
+    \item \textbf{Redirects} (\texttt{>}, \texttt{>>}, \texttt{2>}, \texttt{<}, \texttt{<<}, etc.) move data between commands and files.
+    \item \textbf{Pipes} (\texttt{|}) send one command’s output to another command’s input.
+    \item \textbf{tee} duplicates data to both stdout and a file.
+    \item \textbf{Command substitution} (\texttt{\`cmd\`} / \texttt{\$(cmd)}) captures a command’s output for variables or arguments.
+    \item \textbf{xargs} transforms stdin lines into command arguments, often used with \texttt{find}.
+\end{itemize}
+
+
 %-------------------------------------------------------
 % Multiple-Choice Questions for (103.4)
 %-------------------------------------------------------
@@ -5529,6 +5795,316 @@ dd if=testfile of=testfile_copy bs=1K status=progress
 \section*{103.5 Create, monitor and kill processes}
 \addcontentsline{toc}{section}{103.5 Create, monitor and kill processes}
 
+\textbf{Reference to LPI Objectives:}
+\begin{itemize}
+    \item \textbf{LPIC-1 v5, Exam 101, Objective 103.5}
+    \item \textbf{Weight:} 4
+\end{itemize}
+
+\subsection*{Key Knowledge Areas}
+\begin{itemize}
+    \item Running jobs in foreground and background
+    \item Keeping processes running after logout (e.g., \texttt{nohup})
+    \item Monitoring active processes (e.g., \texttt{ps}, \texttt{top}, \texttt{free}, \texttt{uptime}, \texttt{watch})
+    \item Selecting/sorting processes (e.g., \texttt{ps} options, \texttt{top} interactions)
+    \item Sending signals to processes (e.g., \texttt{kill}, \texttt{pkill}, \texttt{killall})
+    \item Using terminal multiplexers (\texttt{screen}, \texttt{tmux})
+\end{itemize}
+
+\subsection*{Important Commands, Files, and Utilities}
+\begin{itemize}
+    \item \textbf{bg}, \textbf{fg}, \textbf{jobs}
+    \item \textbf{kill}, \textbf{nohup}
+    \item \textbf{ps}, \textbf{top}
+    \item \textbf{free}, \textbf{uptime}, \textbf{watch}
+    \item \textbf{pgrep}, \textbf{pkill}, \textbf{killall}
+    \item \textbf{screen}, \textbf{tmux}
+\end{itemize}
+
+\section*{1. Foreground and Background Jobs}
+
+\subsection*{1. Foreground Execution}
+\begin{itemize}
+    \item By default, commands run in foreground and occupy the terminal until complete.
+    \item Example: \texttt{sleep 60} (blocks the terminal for 60 seconds).
+\end{itemize}
+
+\subsection*{2. Suspending a Foreground Job}
+\begin{itemize}
+    \item Press \textbf{Ctrl + Z} to suspend (stop) a running job.
+\end{itemize}
+
+\subsection*{3. Background Execution}
+\begin{itemize}
+    \item Append \textbf{\&} to run a process in the background immediately:
+\begin{lstlisting}[language=bash]
+sleep 60 &
+\end{lstlisting}
+    \item Or after suspending, use \texttt{bg} to continue a stopped job in the background.
+\end{itemize}
+
+\subsection*{4. jobs}
+\begin{itemize}
+    \item Lists active jobs associated with the current shell.
+    \item Each job has a \textbf{job ID} (e.g., \texttt{[1]}).
+\end{itemize}
+
+\subsection*{5. fg}
+\begin{itemize}
+    \item Brings a background (or stopped) job to the foreground.
+    \item Example: \texttt{fg \%1} → bring job \#1 forward.
+\end{itemize}
+
+\subsection*{6. Terminating a Job}
+\begin{itemize}
+    \item Use \texttt{kill \%1} to send a signal (default SIGTERM) to job \#1.
+    \item If a job does not respond, try \texttt{kill -9 \%job\_number} (SIGKILL).
+\end{itemize}
+
+\section*{2. Detaching Jobs: \texttt{nohup}}
+
+\subsection*{1. \texttt{nohup}}
+\begin{itemize}
+    \item Runs a command immune to \textbf{SIGHUP} (hangup signal).
+    \item The process continues after you log out.
+    \item Example:
+\begin{lstlisting}[language=bash]
+nohup ping localhost > ping.log 2>&1 &
+\end{lstlisting}
+    \item Output by default goes to \texttt{nohup.out} if not redirected.
+\end{itemize}
+
+\subsection*{2. Killing a nohup Process}
+\begin{itemize}
+    \item Identify the PID (e.g., \texttt{ps aux | grep ping} or \texttt{pgrep ping}) and then \texttt{kill <PID>}.
+\end{itemize}
+
+\section*{3. Monitoring Processes}
+
+\subsection*{1. watch}
+\begin{itemize}
+    \item Periodically runs a command (default every 2 seconds).
+    \item Example:
+\begin{lstlisting}[language=bash]
+watch uptime
+watch -n 5 free
+\end{lstlisting}
+    \item Press \textbf{Ctrl + C} to exit.
+\end{itemize}
+
+\subsection*{2. free}
+\begin{itemize}
+    \item Displays memory usage (RAM, swap).
+    \item Use \texttt{-m} or \texttt{-h} for human-readable format.
+\end{itemize}
+
+\subsection*{3. uptime}
+\begin{itemize}
+    \item Shows system up time, number of users, load averages.
+\end{itemize}
+
+\subsection*{4. ps}
+\begin{itemize}
+    \item Snapshots current processes.
+    \item Common options:
+    \begin{itemize}
+        \item \texttt{ps aux} (show all processes in BSD style)
+        \item \texttt{ps -ef} (show all processes in UNIX style)
+        \item \texttt{ps -U <user>} or \texttt{ps --user <user>} (filter by user)
+    \end{itemize}
+    \item Fields: \textbf{PID}, \textbf{USER}, \textbf{\%CPU}, \textbf{\%MEM}, \textbf{VSZ} (virtual size), \textbf{RSS} (resident set size), \textbf{TTY}, \textbf{STAT}, \textbf{TIME}, \textbf{COMMAND}.
+\end{itemize}
+
+\subsection*{5. top}
+\begin{itemize}
+    \item Dynamic, real-time view of processes.
+    \item Interactive keys (some important ones):
+    \begin{itemize}
+        \item \textbf{M} (sort by memory usage)
+        \item \textbf{P} (sort by CPU usage)
+        \item \textbf{k} (kill a process by PID)
+        \item \textbf{r} (renice a process by PID)
+        \item \textbf{q} (quit)
+    \end{itemize}
+\end{itemize}
+
+\section*{4. Sending Signals to Processes}
+
+\subsection*{1. kill}
+\begin{itemize}
+    \item Sends a signal to a process by PID or job spec.
+    \item Default is \texttt{-TERM (SIGTERM, signal \#15)}.
+    \item \texttt{-9} (SIGKILL) forcibly kills.
+    \item Example:
+\begin{lstlisting}[language=bash]
+kill -TERM 1234
+kill -9 1234
+kill %1  # kills job #1
+\end{lstlisting}
+\end{itemize}
+
+\subsection*{2. killall}
+\begin{itemize}
+    \item Kills all processes by command name.
+    \item Example: \texttt{killall firefox}.
+\end{itemize}
+
+\subsection*{3. pkill}
+\begin{itemize}
+    \item Kills processes by name or matching pattern (use \texttt{pgrep} first to see matches).
+    \item Example: \texttt{pkill -9 sleep}.
+\end{itemize}
+    
+    \subsection*{4. Signal Reference}
+    \begin{itemize}
+        \item \texttt{kill -l} → list all signals.
+        \item Common signals:
+        \begin{itemize}
+            \item SIGHUP (1), SIGINT (2), SIGQUIT (3), SIGTERM (15), SIGKILL (9), SIGSTOP (19), SIGCONT (18).
+        \end{itemize}
+
+    \end{itemize}
+    
+    \section*{5. Terminal Multiplexers: \texttt{screen} and \texttt{tmux}}
+
+    \subsection*{5.1 \texttt{screen}}
+    
+    \subsubsection*{1. Basic Usage}
+    \begin{itemize}
+        \item Start: \texttt{screen} (creates a new session).
+        \item Detach a session: \textbf{Ctrl + A} then \textbf{D}.
+        \item Reattach: \texttt{screen -r [session\_id]} (or \texttt{screen -ls} to list sessions).
+        \item Kill a session: \texttt{screen -S <session\_id> -X quit}.
+    \end{itemize}
+    
+    \subsubsection*{2. Windows}
+    \begin{itemize}
+        \item Each window is like a separate terminal.
+        \item Create new window: \textbf{Ctrl + A} then \textbf{C}.
+        \item Move between windows: \textbf{Ctrl + A} then \textbf{N} (next) or \textbf{P} (previous).
+        \item Rename a window: \textbf{Ctrl + A} then \textbf{Shift + A} (enter new name).
+    \end{itemize}
+    
+    \subsubsection*{3. Regions (Split Screen)}
+    \begin{itemize}
+        \item Horizontal split: \textbf{Ctrl + A} then \textbf{S}.
+        \item Vertical split: \textbf{Ctrl + A} then \texttt{|}.
+        \item Move between splits: \textbf{Ctrl + A} then \textbf{Tab}.
+    \end{itemize}
+    
+    \subsubsection*{4. Copy Mode}
+    \begin{itemize}
+        \item Enter copy mode: \textbf{Ctrl + A} then \texttt{[}.
+        \item Use arrow keys to navigate, press \textbf{Space} to start selection, move, and \textbf{Space} again to end selection.
+        \item Paste in a window: \textbf{Ctrl + A} then \texttt{]}.
+    \end{itemize}
+    
+    \subsection*{5.2 \texttt{tmux}}
+    
+    \subsubsection*{1. Basic Usage}
+    \begin{itemize}
+        \item Start: \texttt{tmux} (creates a new session).
+        \item Detach: \textbf{Ctrl + B} then \textbf{D}.
+        \item List sessions: \texttt{tmux ls}.
+        \item Attach: \texttt{tmux attach -t <session\_name>}.
+        \item Kill session: \texttt{tmux kill-session -t <name>}.
+    \end{itemize}
+    
+    \subsubsection*{2. Windows}
+    \begin{itemize}
+        \item New window: \textbf{Ctrl + B}, \textbf{C}.
+        \item Switch windows: \textbf{Ctrl + B}, \textbf{N} (next) or \textbf{P} (previous).
+        \item Rename: \textbf{Ctrl + B}, \texttt{,}.
+    \end{itemize}
+    
+    \subsubsection*{3. Panes (Splits)}
+    \begin{itemize}
+        \item Horizontal split: \textbf{Ctrl + B}, \texttt{"}.
+        \item Vertical split: \textbf{Ctrl + B}, \texttt{\%}.
+        \item Switch panes: \textbf{Ctrl + B}, \textbf{Arrow keys}.
+        \item Kill pane: \textbf{Ctrl + B}, \texttt{x}.
+    \end{itemize}
+    
+    \subsubsection*{4. Copy Mode}
+    \begin{itemize}
+        \item Enter: \textbf{Ctrl + B}, \texttt{[}.
+        \item Move around, press \textbf{Space} to start selection, arrow, press \textbf{Space} again to finish.
+        \item Paste: \textbf{Ctrl + B}, \texttt{]}.
+    \end{itemize}
+    
+
+    \section*{Workbook Exercises}
+
+    \begin{enumerate}
+        \item \textbf{Foreground/Background Jobs}
+        \begin{itemize}
+            \item Run \texttt{sleep 60} in the foreground, suspend with \textbf{Ctrl + Z}.
+            \item Check \texttt{jobs}.
+            \item Send it to background with \texttt{bg}.
+            \item Bring it back to foreground with \texttt{fg}.
+            \item Kill it with \texttt{kill \%1}.
+        \end{itemize}
+    
+        \item \textbf{nohup}
+        \begin{itemize}
+            \item Run \texttt{nohup ping localhost > ping.log 2>\&1 \&}.
+            \item Log out and back in.
+            \item Check the process with \texttt{ps} or \texttt{pgrep}.
+            \item Kill it with \texttt{kill <PID>}.
+        \end{itemize}
+    
+        \item \textbf{Monitoring System Load}
+        \begin{itemize}
+            \item Run \texttt{watch uptime} or \texttt{watch -n 5 free}.
+            \item Exit with \textbf{Ctrl + C}.
+            \item Compare to \texttt{top} output.
+        \end{itemize}
+    
+        \item \textbf{Killing Processes}
+        \begin{itemize}
+            \item Start a dummy process like \texttt{sleep 9999 \&}.
+            \item Find the PID via \texttt{ps}, \texttt{pgrep sleep}.
+            \item Kill it with \texttt{kill <PID>}.
+            \item Confirm it’s gone (\texttt{ps} or \texttt{jobs}).
+        \end{itemize}
+    
+        \item \textbf{Using \texttt{top}}
+        \begin{itemize}
+            \item Invoke \texttt{top}.
+            \item Press \textbf{k} to kill a process (e.g., search a small CPU process).
+            \item Sort by memory usage with \textbf{M}, or CPU usage with \textbf{P}.
+            \item Quit with \textbf{q}.
+        \end{itemize}
+    
+        \item \textbf{\texttt{screen}}
+        \begin{itemize}
+            \item Start a session (\texttt{screen}).
+            \item Create multiple windows (\textbf{Ctrl + A}, \textbf{C}).
+            \item Detach (\textbf{Ctrl + A}, \textbf{D}) and reattach (\texttt{screen -r}).
+            \item Kill a session (\texttt{screen -S <session\_id> -X quit}).
+        \end{itemize}
+    
+        \item \textbf{\texttt{tmux}}
+        \begin{itemize}
+            \item Start a session (\texttt{tmux}).
+            \item Create new windows (\textbf{Ctrl + B}, \textbf{C}).
+            \item Split horizontally (\textbf{Ctrl + B}, \texttt{"}) or vertically (\textbf{Ctrl + B}, \texttt{\%}).
+            \item Detach (\textbf{Ctrl + B}, \textbf{D}) and reattach (\texttt{tmux a}).
+            \item Kill with \texttt{tmux kill-session -t <name>}.
+        \end{itemize}
+    \end{enumerate}
+    
+    \section*{Summary}
+    \begin{itemize}
+        \item Background jobs (\texttt{bg}) and foreground (\texttt{fg}) are managed via \textbf{jobs}.
+        \item \texttt{nohup} allows processes to keep running after logout.
+        \item Process monitoring uses commands like \texttt{ps}, \texttt{top}, \texttt{free}, \texttt{uptime}, \texttt{watch}.
+        \item Signals are sent with \texttt{kill} (by PID/job), \texttt{killall}, \texttt{pkill}, each defaulting to \textbf{SIGTERM} if unspecified.
+        \item Terminal multiplexers \texttt{screen} and \texttt{tmux} provide multi-window, multi-pane sessions that can detach and persist in the background, invaluable for system administration over remote connections.
+    \end{itemize}
+
+
+
 %-------------------------------------------------------
 % Multiple-Choice Questions for (103.5)
 %-------------------------------------------------------
@@ -5708,6 +6284,163 @@ dd if=testfile of=testfile_copy bs=1K status=progress
 \newpage
 \section*{103.6 Modify process execution priorities}
 \addcontentsline{toc}{section}{103.6 Modify process execution priorities}
+
+
+\textbf{Reference to LPI Objectives:}
+\begin{itemize}
+    \item \textbf{LPIC-1 v5, Exam 101, Objective 103.6}
+    \item \textbf{Weight:} 2
+\end{itemize}
+
+\subsection*{Key Knowledge Areas}
+\begin{itemize}
+    \item Knowing the default priority (niceness) of newly created processes.
+    \item Running a program with a higher or lower priority than default.
+    \item Changing the priority of running processes.
+\end{itemize}
+
+\subsection*{Important Terms and Utilities}
+\begin{itemize}
+    \item \textbf{nice}
+    \item \textbf{ps}
+    \item \textbf{renice}
+    \item \textbf{top}
+\end{itemize}
+
+\section*{1. Understanding Linux Process Scheduling}
+
+\begin{itemize}
+    \item \textbf{Multi-tasking (multi-processing) Systems:} Multiple processes “share” CPU time.
+    \item \textbf{Preemptive Scheduling:} The kernel can forcibly switch the CPU from one process to another (even if the current process never calls an I/O or system call).
+    \item \textbf{Normal vs. Real-Time Scheduling:} Real-time processes have higher priority than normal processes. We generally only adjust normal processes using “nice” values.
+\end{itemize}
+
+\subsection*{Static Priorities \& Niceness}
+\begin{itemize}
+    \item \textbf{Static Priorities:}
+    \begin{itemize}
+        \item Range \texttt{0–99} for real-time processes.
+        \item Range \texttt{100–139} for normal processes (kernel internal representation).
+    \end{itemize}
+    \item \textbf{Nice Values:}
+    \begin{itemize}
+        \item Range \texttt{-20} (highest priority, "least nice") to \texttt{19} (lowest priority, "most nice").
+        \item Default nice value is \texttt{0} for normal processes.
+        \item Only \texttt{root} can set negative niceness.
+    \end{itemize}
+\end{itemize}
+
+\section*{2. Viewing Process Priorities}
+
+\subsection*{1. ps}
+\begin{itemize}
+    \item Example: \texttt{ps -el} or \texttt{ps -Al}
+    \begin{itemize}
+        \item \textbf{PRI:} process priority (internal to kernel, typically 80 = normal + offset).
+        \item \textbf{NI:} nice value (\texttt{-20} to \texttt{19}).
+    \end{itemize}
+\end{itemize}
+
+\subsection*{2. top}
+\begin{itemize}
+    \item Interactive system monitor, displays \textbf{PR} (priority) and \textbf{NI} (nice).
+    \item Priority shown in \texttt{top} for normal processes is \texttt{PR - 100}, typically ranging \texttt{0–39}.
+    \item Press \textbf{r} in \texttt{top} to renice a process.
+\end{itemize}
+
+\section*{3. Running a Program with Custom Priority}
+
+\subsection*{nice}
+\begin{itemize}
+    \item \textbf{Syntax:}
+\begin{lstlisting}[language=bash]
+nice -n <nice_value> command
+\end{lstlisting}
+    \item Example:
+\begin{lstlisting}[language=bash]
+nice -n 10 tar czf backup.tar.gz /home
+\end{lstlisting}
+\begin{itemize}
+    \item If \texttt{-n} is omitted, default niceness becomes \texttt{10}.
+\end{itemize}
+    
+    \item A negative nice value (e.g., \texttt{-5}) raises priority (requires root privileges).
+\end{itemize}
+
+\section*{4. Changing Priority of Running Processes}
+
+\subsection*{renice}
+\begin{itemize}
+    \item \textbf{Syntax:}
+\begin{lstlisting}[language=bash]
+renice <new_nice_value> [options] <target>
+\end{lstlisting}
+    \item Common options:
+    \begin{itemize}
+        \item \texttt{-p <PID>}: target by process ID.
+        \item \texttt{-u <username>}: target all processes by user.
+        \item \texttt{-g <groupname>}: target all processes by group.
+    \end{itemize}
+    \item Example (by PID):
+\begin{lstlisting}[language=bash]
+renice +5 -p 1234
+\end{lstlisting}
+    \item Example (by user):
+\begin{lstlisting}[language=bash]
+renice +10 -u alice
+\end{lstlisting}
+    \item Alternatively in \texttt{top}, press \textbf{r} to renice a running process.
+\end{itemize}
+
+\section*{Exercises}
+
+\begin{enumerate}
+    \item \textbf{Check Default Niceness}
+    \begin{itemize}
+        \item Open a terminal and run:
+\begin{lstlisting}[language=bash]
+sleep 300 &
+ps -el | grep sleep
+\end{lstlisting}
+        \item Note \textbf{NI} value (should be \texttt{0}).
+    \end{itemize}
+
+    \item \textbf{Start a Process with Custom Niceness}
+    \begin{itemize}
+        \item Example:
+\begin{lstlisting}[language=bash]
+nice -n 5 gzip largefile
+ps -el | grep gzip
+\end{lstlisting}
+        \item Observe \textbf{NI} column in \texttt{ps}.
+    \end{itemize}
+
+    \item \textbf{Renice a Running Process}
+    \begin{itemize}
+        \item Find a CPU-bound process (e.g., \texttt{md5sum /dev/zero}), get PID via \texttt{pgrep md5sum}.
+        \item Increase niceness:
+\begin{lstlisting}[language=bash]
+renice +10 -p <PID>
+\end{lstlisting}
+        \item Check new niceness in \texttt{top} or \texttt{ps}.
+    \end{itemize}
+
+    \item \textbf{Interactive with top}
+    \begin{itemize}
+        \item Run \texttt{top}.
+        \item Press \textbf{r}, enter the PID, then a new nice value.
+        \item Verify changes in the NI column.
+    \end{itemize}
+\end{enumerate}
+
+\section*{Summary}
+\begin{itemize}
+    \item \texttt{nice} sets a process’s niceness at launch, default is \texttt{0}, range \texttt{-20} to \texttt{19}.
+    \item \texttt{renice} changes niceness of an already running process.
+    \item \texttt{top} and \texttt{ps} display priorities; niceness is shown in \textbf{NI} columns.
+    \item Higher priority → lower niceness (negative). Lower priority → higher niceness (positive).
+    \item Mastering process priorities optimizes CPU usage for critical or resource-intensive tasks.
+\end{itemize}
 
 
 
@@ -5915,6 +6648,284 @@ dd if=testfile of=testfile_copy bs=1K status=progress
 \section*{103.7 Search text files using regular expressions}
 \addcontentsline{toc}{section}{103.7 Search text files using regular expressions}
 
+
+\textbf{Reference to LPI Objectives:}
+\begin{itemize}
+    \item \textbf{LPIC-1 v5, Exam 101, Objective 103.7}
+    \item \textbf{Weight:} 3
+\end{itemize}
+
+\subsection*{Key Knowledge Areas}
+\begin{itemize}
+    \item Creating simple regular expressions with various notational elements.
+    \item Understanding differences between basic (BRE) and extended (ERE) regular expressions.
+    \item Recognizing special characters, character classes, quantifiers, and anchors.
+    \item Using regular expressions to search file systems or file content.
+    \item Deleting, changing, and substituting text with regex tools.
+\end{itemize}
+
+\subsection*{Important Commands and Utilities}
+\begin{itemize}
+    \item \textbf{grep}, \textbf{egrep} (or \texttt{grep -E}), \textbf{fgrep} (or \texttt{grep -F})
+    \item \textbf{sed}
+    \item \texttt{regex(7)} (man page)
+    \item \texttt{find} with \texttt{-regex}, \texttt{-iregex}
+\end{itemize}
+
+\section*{1. Regular Expression Basics}
+
+\subsection*{1. Atoms}
+\begin{itemize}
+    \item \textbf{Ordinary characters} match themselves (e.g., \texttt{b} matches “b” literally).
+    \item \textbf{. (dot)} matches any single character.
+    \item \textbf{\texttt{\^}} anchors to the start of a line.
+    \item \textbf{\$} anchors to the end of a line.
+    \item \textbf{Brackets [ ]} define a \textit{bracket expression} (single atom that matches any character inside).
+        \begin{itemize}
+            \item Example: \texttt{[0-9]} matches any digit from 0 to 9.
+            \item A caret \texttt{\^} inside the bracket means negation: \texttt{[\^ \ a-z]} matches non-lowercase letters.
+        \end{itemize}
+\end{itemize}
+
+\subsection*{2. Character Classes (in bracket expressions)}
+\begin{itemize}
+    \item \texttt{[[:digit:]]} for digits, \texttt{[[:alpha:]]} for letters, \texttt{[[:alnum:]]} for alphanumeric, etc.
+    \item Only valid \textbf{inside} bracket expressions like \texttt{[[:digit:]]}.
+\end{itemize}
+
+\subsection*{3. Anchors}
+\begin{itemize}
+    \item \texttt{\^} (start of line), \texttt{\$} (end of line).
+    \item Example: \texttt{\^\ abc\$} matches lines that are \textit{exactly} \texttt{abc}.
+\end{itemize}
+
+\subsection*{4. Basic (BRE) vs. Extended (ERE)}
+\begin{itemize}
+    \item \textbf{BRE:} \texttt{+}, \texttt{?}, and \texttt{\{\}} usually need backslashes (\texttt{\textbackslash +}, \texttt{\textbackslash ?}, \texttt{\textbackslash \{i,j\}}) for special meaning.
+    \item \textbf{ERE:} \texttt{+}, \texttt{?}, \texttt{\{\}} directly recognized as quantifiers without backslashes.
+    \item Tools:
+        \begin{itemize}
+            \item \texttt{grep} uses BRE by default.
+            \item \texttt{egrep} (or \texttt{grep -E}) uses ERE.
+        \end{itemize}
+\end{itemize}
+
+\subsection*{5. Quantifiers}
+\begin{itemize}
+    \item \texttt{*}: zero or more occurrences of preceding atom.
+    \item \texttt{+}: one or more occurrences (ERE or \texttt{\textbackslash +} in BRE).
+    \item \texttt{?}: zero or one occurrence (ERE or \texttt{\textbackslash ?} in BRE).
+    \item \texttt{\{i\}}, \texttt{\{i,\}}, \texttt{\{i,j\}}: exact or range bounds (with backslash in BRE).
+\end{itemize}
+
+\subsection*{6. Branches and Backreferences}
+\begin{itemize}
+    \item \textbf{Branching:} \texttt{|} (ERE) or \texttt{\textbackslash |} (BRE) for “OR” logic.
+    \item \textbf{Backreferences:} \texttt{( )} group subexpressions (ERE) or \texttt{\textbackslash( \textbackslash)} (BRE), use \texttt{\textbackslash 1}, \texttt{\textbackslash 2} to refer to matched groups.
+\end{itemize}
+
+\section*{2. Searching with \texttt{grep} / \texttt{egrep} / \texttt{fgrep}}
+
+\subsection*{1. \texttt{grep}}
+\begin{itemize}
+    \item Default uses basic RE.
+    \item Common options:
+        \begin{itemize}
+            \item \texttt{-i} ignore case
+            \item \texttt{-v} invert match
+            \item \texttt{-n} show line numbers
+            \item \texttt{-r} recursive
+            \item \texttt{-w} match whole words
+            \item \texttt{-c} count matches
+            \item \texttt{-H} show filename
+        \end{itemize}
+    \item Example:
+\begin{lstlisting}[language=bash]
+grep "^error" /var/log/syslog
+\end{lstlisting}
+\end{itemize}
+
+\subsection*{2. \texttt{egrep} (or \texttt{grep -E})}
+\begin{itemize}
+    \item Uses extended RE.
+    \item Example:
+\begin{lstlisting}[language=bash]
+egrep "colou?r|color" file.txt
+\end{lstlisting}
+    \begin{itemize}
+        \item Matches \texttt{colour} or \texttt{color}.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{3. \texttt{fgrep} (or \texttt{grep -F})}
+\begin{itemize}
+    \item Interprets pattern literally (no special chars).
+    \item Example:
+\begin{lstlisting}[language=bash]
+fgrep "[a-z]*" file.txt
+\end{lstlisting}
+    \begin{itemize}
+        \item Finds lines containing \texttt{[a-z]*} literally.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{4. Examples}
+\begin{itemize}
+    \item \texttt{grep -i "warning" /var/log/messages} → case-insensitive match “warning.”
+    \item \texttt{grep -c "\^root" /etc/passwd} → count lines starting with “root.”
+    \item \texttt{grep -H -r "error" /var/log/} → recursively find “error” in \texttt{/var/log/}, show filenames.
+\end{itemize}
+
+
+\section*{3. Substitutions and Text Editing with \texttt{sed}}
+
+\subsection*{1. Basics}
+\begin{itemize}
+    \item Non-interactive stream editor, applies commands to each line.
+    \item Syntax:
+\begin{lstlisting}[language=bash]
+sed [options] -e COMMAND file
+# or sed [options] -f SCRIPT file
+\end{lstlisting}
+\end{itemize}
+
+
+\subsection*{2. Common Sed Commands}
+\begin{itemize}
+    \item \texttt{d}: delete the matching line(s).
+    \item \texttt{c <text>}: replace the line with \texttt{<text>}.
+    \item \texttt{s/FIND/REPLACE/[flags]}: substitute \texttt{FIND} with \texttt{REPLACE}.
+        \begin{itemize}
+            \item \texttt{g} flag: replace all occurrences in that line (global).
+            \item Example:
+\begin{lstlisting}[language=bash]
+sed 's/foo/bar/g' file.txt
+\end{lstlisting}
+        \end{itemize}
+    \item \texttt{p}: print the matching line.
+    \item \texttt{a <text>}: append text after the matching line.
+    \item \texttt{r <file>}: read content of \texttt{<file>} after matching line.
+    \item Lines or ranges can be specified by line number or regex.
+        \begin{itemize}
+            \item Example: \texttt{1d} deletes line 1, \texttt{2,5d} deletes lines 2 to 5, \texttt{/regex/d} deletes lines matching \texttt{regex}.
+        \end{itemize}
+\end{itemize}
+
+\subsection*{3. Combining}
+\begin{itemize}
+    \item Multiple commands can be separated by \texttt{;}:
+\begin{lstlisting}[language=bash]
+sed -e '1d; /test/d' file.txt
+\end{lstlisting}
+\begin{itemize}
+    \item Deletes line 1, then any line containing “test.”
+\end{itemize}
+\end{itemize}
+
+
+\subsection*{4. Examples Using find + regex}
+\begin{enumerate}
+    \item \textbf{find -regex}
+    \begin{itemize}
+        \item Basic RE by default.
+        \item \texttt{-regextype posix-extended} or \texttt{-regextype egrep} for extended RE.
+        \item Example:
+\begin{lstlisting}[language=bash]
+find /usr/share/fonts -regextype egrep -regex ".*\.(ttf|otf|woff)$"
+\end{lstlisting}
+    \end{itemize}
+
+    \item \textbf{find -iregex (case-insensitive)}
+    \begin{itemize}
+        \item Example:
+\begin{lstlisting}[language=bash]
+find /home/user -iregex ".*\.pdf"
+\end{lstlisting}
+    \end{itemize}
+\end{enumerate}
+
+\subsection*{5. Combining Tools for Advanced Searches}
+\begin{itemize}
+    \item \textbf{Chaining:}
+    \begin{itemize}
+        \item Pipe outputs through \texttt{grep}, \texttt{sed}, \texttt{uniq}, etc.
+    \end{itemize}
+
+    \item \textbf{Example: Searching logs, removing duplicates}
+\begin{lstlisting}[language=bash]
+lastb -n 10 -d -a --time-format notime \
+    | grep -v '[0-9]$' \
+    | sed 's/.* //' \
+    | sort | uniq
+\end{lstlisting}
+    \item Explanation:
+    \begin{itemize}
+        \item \texttt{lastb} shows bad login attempts, \texttt{-a} puts host at the end of the line, \texttt{-n 10} shows last 10.
+        \item \texttt{grep -v '[0-9]\$'} filters out lines ending in digits (assuming those are raw IPs).
+        \item \texttt{sed 's/.* //'} keeps only the substring after the last space (the hostname).
+        \item Then \texttt{sort | uniq} eliminates duplicates.
+    \end{itemize}
+\end{itemize}
+
+
+\subsection*{Exercises}
+\begin{enumerate}
+    \item \textbf{Basic vs. Extended}
+    \begin{itemize}
+        \item Create a text file with lines containing special chars (\texttt{+}, \texttt{?}, \texttt{()}, etc.).
+        \item Try matching them with \texttt{grep "..."} (basic RE) and \texttt{egrep "..."} (extended).
+    \end{itemize}
+
+    \item \textbf{Anchors and Dot}
+    \begin{itemize}
+        \item Use \texttt{grep "\^Hello" file.txt} to find lines starting with “Hello.”
+        \item \texttt{grep "world\$" file.txt} to find lines ending with “world.”
+        \item \texttt{grep "w.rld" file.txt} (dot matches any char).
+    \end{itemize}
+
+    \item \textbf{Bracket Expressions}
+    \begin{itemize}
+        \item \texttt{grep "[[:digit:]]" file.txt} → lines with digits.
+        \item \texttt{grep "[A-Z]" file.txt} → uppercase letters.
+    \end{itemize}
+
+    \item \textbf{sed Substitution}
+    \begin{itemize}
+        \item \texttt{sed 's/foo/bar/g' file.txt} → replace “foo” with “bar.”
+        \item \texttt{sed '2,4d' file.txt} → delete lines 2 to 4.
+        \item \texttt{/old/d} → delete lines containing “old.”
+    \end{itemize}
+
+    \item \textbf{Combining}
+    \begin{itemize}
+        \item \texttt{grep -i "error" /var/log/syslog | sed -n '/warning/p'}  
+        \begin{itemize}
+        \item Finds lines matching “error” and then prints only lines also having “warning.”
+    \end{itemize}
+\end{itemize}
+
+    \item \textbf{find with -regex}
+    \begin{itemize}
+        \item \texttt{find / -regextype posix-extended -regex "\texttt{.*\textbackslash
+        .conf}"} → all \texttt{.conf} files.
+    \end{itemize}
+\end{enumerate}
+
+\section*{Summary}
+\begin{itemize}
+    \item \textbf{Regular expressions} define a flexible method for searching (and sometimes replacing) text patterns.
+    \item Basic RE often requires backslashes for special operators like \texttt{+}, \texttt{?}, \texttt{\{\}}, while extended RE does not.
+    \item Core features include \textbf{atoms}, \textbf{character classes}, \textbf{anchors}, \textbf{quantifiers}.
+    \item \textbf{Tools:}
+    \begin{itemize}
+        \item \texttt{grep/egrep/fgrep} → quick searches in lines.
+        \item \texttt{sed} → stream editing and substitution.
+        \item \texttt{find} with \texttt{-regex} → RE-based filtering of file paths.
+    \end{itemize}
+    \item Combining these tools (piping, advanced regex) enables powerful text processing and filtering workflows.
+\end{itemize}
+
+
 %-------------------------------------------------------
 % Multiple-Choice Questions for (103.7)
 %-------------------------------------------------------
@@ -5929,6 +6940,245 @@ dd if=testfile of=testfile_copy bs=1K status=progress
 \newpage
 \section*{103.8 Basic file editing}
 \addcontentsline{toc}{section}{103.8 Basic file editing}
+
+\textbf{Reference to LPI Objectives:}
+\begin{itemize}
+    \item \textbf{LPIC-1 v5, Exam 101, Objective 103.8}
+    \item \textbf{Weight:} 3
+\end{itemize}
+
+\subsection*{Key Knowledge Areas}
+\begin{itemize}
+    \item Navigating a document using \textbf{vi} (or \textbf{vim})
+    \item Understanding vi \textbf{modes} and using them effectively
+    \item Inserting, editing, deleting, copying, and finding text in vi
+    \item Awareness of alternative editors (Emacs, nano, etc.)
+    \item Setting or changing the \textbf{standard editor} (EDITOR or VISUAL environment variable)
+\end{itemize}
+
+\subsection*{Important Terms and Utilities}
+\begin{itemize}
+    \item \textbf{vi} (or \textbf{vim})
+    \item Search commands (\texttt{/}, \texttt{?})
+    \item Navigation keys (\texttt{h}, \texttt{j}, \texttt{k}, \texttt{l})
+    \item Insert modes (\texttt{i}, \texttt{o}, \texttt{a})
+    \item Deletion/copying (\texttt{d}, \texttt{p}, \texttt{y}, \texttt{dd}, \texttt{yy})
+    \item Exiting and saving (\texttt{ZZ}, \texttt{:w!}, \texttt{:q!})
+    \item \textbf{EDITOR} environment variable
+\end{itemize}
+
+\section*{1. Introducing vi}
+
+\textbf{vi} is a modal text editor commonly pre-installed on Unix-like systems. Two key modes to remember:
+
+\begin{enumerate}
+    \item \textbf{Normal (Command) Mode}
+    \begin{itemize}
+        \item vi \textbf{starts} in this mode.
+        \item Keystrokes perform navigation or editing commands.
+        \item Press \texttt{i} (insert) or \texttt{a} (append) to switch to Insert mode.
+    \end{itemize}
+
+    \item \textbf{Insert Mode}
+    \begin{itemize}
+        \item Text typed appears in the document.
+        \item Press \texttt{Esc} to return to Normal mode.
+    \end{itemize}
+\end{enumerate}
+
+\subsection*{Starting vi}
+\begin{lstlisting}[language=bash]
+vi <filename>
+\end{lstlisting}
+\begin{itemize}
+    \item \texttt{vi +<line> <file>} → jump to a line on opening.
+    \item \texttt{vim} is a more feature-rich version, fully backward-compatible with vi.
+\end{itemize}
+
+\section*{2. Basic vi Navigation and Commands}
+
+In \textbf{Normal mode}:
+
+\begin{table}[h!]
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Key} & \textbf{Action} \\
+\hline
+\texttt{h, j, k, l} & Left, down, up, right (move cursor) \\
+\texttt{0, \$} & Move to start/end of current line \\
+\texttt{G} & Go to end of file (use \texttt{\#G} to go to line \#) \\
+\texttt{/pattern} & Forward search for \texttt{pattern} (press \texttt{n} to find next) \\
+\texttt{?pattern} & Backward search (press \texttt{N} for next backward match) \\
+\texttt{u} & Undo last action \\
+\texttt{Ctrl+R} & Redo \\
+\texttt{:} & Enter \textbf{Colon Command mode} (e.g., \texttt{:w}, \texttt{:q!}) \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection*{Basic Insert Commands}
+\begin{table}[h!]
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Key} & \textbf{Action} \\
+\hline
+\texttt{i} & Insert at cursor \\
+\texttt{a} & Append after cursor \\
+\texttt{o} & Open new line below cursor and enter insert mode \\
+\texttt{O} & Open new line above cursor \\
+\texttt{Esc} & Leave insert mode, back to normal mode \\
+\hline
+\end{tabular}
+\end{table}
+
+\section*{3. Editing Text in vi}
+
+\subsection*{Deleting and Changing}
+\begin{table}[h!]
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Key} & \textbf{Action} \\
+\hline
+\texttt{x} & Delete character under cursor \\
+\texttt{dw} & Delete word (from cursor to next word boundary) \\
+\texttt{dd} & Delete (cut) entire current line \\
+\texttt{d\$} & Delete from cursor to end of line \\
+\texttt{cc} & Change entire line (delete and start insert mode) \\
+\texttt{c3w} & Change next 3 words (example of “count + command”) \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection*{Copying and Pasting}
+\begin{table}[h!]
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Key} & \textbf{Action} \\
+\hline
+\texttt{yy} & Yank (copy) current line \\
+\texttt{y\$} & Yank from cursor to end of line \\
+\texttt{p} & Paste after cursor or below line \\
+\texttt{P} & Paste before cursor or above line \\
+\hline
+\end{tabular}
+\end{table}
+
+\newpage
+\subsection*{Saving and Exiting}
+\begin{table}[h!]
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Key(s)} & \textbf{Action} \\
+\hline
+\texttt{:w} & Write (save) changes \\
+\texttt{:q} & Quit if no unsaved changes \\
+\texttt{:wq} or \texttt{:x} & Save and quit \\
+\texttt{:q!} & Quit \textbf{without} saving \\
+\texttt{ZZ} & Save changes (if any) and quit (another shortcut) \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection*{4. Searching and Substituting in vi}
+\begin{itemize}
+    \item \textbf{Search:} Press \texttt{/} in normal mode, type a pattern, press \textbf{Enter}.
+    \item \textbf{Backward search:} Press \texttt{?}, type a pattern, press \textbf{Enter}.
+    \item \textbf{Substitute} (similar to \texttt{sed}):
+\begin{lstlisting}[language=bash]
+:s/old/new/g
+\end{lstlisting}
+    \begin{itemize}
+        \item Replaces all occurrences of "old" with "new" in current line.
+        \item \texttt{:\%s/old/new/g} → entire file.
+    \end{itemize}
+\end{itemize}
+
+
+\subsection*{5. Alternative Editors}
+\begin{enumerate}
+    \item \textbf{vim}
+    \begin{itemize}
+        \item “vi improved,” features syntax highlighting, multiple undo levels, plugins, etc.
+    \end{itemize}
+
+    \item \textbf{nano}
+    \begin{itemize}
+        \item Simple, user-friendly. Insert mode by default, commands are \textbf{Ctrl} + key combos.
+        \item Common shortcuts:
+        \begin{itemize}
+            \item \textbf{Ctrl + O} to save, \textbf{Ctrl + X} to exit, \textbf{Ctrl + K} to cut line, \textbf{Ctrl + U} to paste.
+        \end{itemize}
+    \end{itemize}
+
+    \item \textbf{Emacs}
+    \begin{itemize}
+        \item Very powerful, integrates IDE features.
+        \item Commands use \textbf{Ctrl} + key or \textbf{Alt} + key combos.
+    \end{itemize}
+\end{enumerate}
+
+
+
+\subsection*{6. Setting the Default Editor}
+\begin{itemize}
+    \item The shell checks \texttt{EDITOR} or \texttt{VISUAL} environment variables to decide which editor to use for tasks like \texttt{crontab -e} or \texttt{git commit}.
+    \item Example:
+\begin{lstlisting}[language=bash]
+export EDITOR=nano
+\end{lstlisting}
+    \item Add to \texttt{\~\ /.bash\_profile} or similar to make persistent.
+\end{itemize}
+
+\section*{Exercises}
+\begin{enumerate}
+    \item \textbf{Basic vi}
+    \begin{itemize}
+        \item Create a test file: \texttt{vi test.txt}.
+        \item Press \texttt{i}, enter some text. Press \texttt{Esc}.
+        \item Move around with \texttt{h}, \texttt{j}, \texttt{k}, \texttt{l}.
+        \item Delete a line with \texttt{dd}.
+        \item Save and exit: \texttt{:wq}.
+    \end{itemize}
+    
+    \item \textbf{Navigation and Searching}
+    \begin{itemize}
+        \item Use \texttt{:set number} inside vi to see line numbers.
+        \item Jump to line 5 with \texttt{5G}.
+        \item Search for "test" using \texttt{/test}.
+        \item Press \texttt{n} to find the next match.
+    \end{itemize}
+    
+    \item \textbf{Substitutions}
+    \begin{itemize}
+        \item In normal mode, type \texttt{:s/abc/xyz/g} to replace "abc" with "xyz" on the current line.
+        \item Apply to the entire file: \texttt{:\%s/abc/xyz/g}.
+    \end{itemize}
+    
+    \item \textbf{nano}
+    \begin{itemize}
+        \item Run \texttt{nano test.txt}.
+        \item Type some lines, press \texttt{Ctrl + K} to cut a line, \texttt{Ctrl + U} to paste.
+        \item Save with \texttt{Ctrl + O}, exit with \texttt{Ctrl + X}.
+    \end{itemize}
+    
+    \item \textbf{Default Editor}
+    \begin{itemize}
+        \item \texttt{export EDITOR=vim}
+        \item Then \texttt{crontab -e} should open in vim.
+        \item Make it permanent in \texttt{\~/.bashrc} or \texttt{\~/.bash\_profile}.
+    \end{itemize}
+\end{enumerate}
+
+\section*{Summary}
+\begin{itemize}
+    \item \textbf{vi} (or vim) is a modal text editor: Normal mode (commands) and Insert mode.
+    \item Basic movement: \texttt{h}, \texttt{j}, \texttt{k}, \texttt{l}; insertion: \texttt{i}, \texttt{a}, \texttt{o}; deleting: \texttt{d}, \texttt{x}; copying: \texttt{y}; pasting: \texttt{p}.
+    \item Searching with \texttt{/pattern}; substituting with \texttt{:s/old/new/g}.
+    \item Alternative editors: \textbf{nano}, \textbf{Emacs}, \textbf{vim} with advanced features.
+    \item Shell environment variable \texttt{EDITOR} (or \texttt{VISUAL}) sets the default text editor for tasks like \texttt{crontab -e}.
+\end{itemize}
+
+
 
 %-------------------------------------------------------
 % Multiple-Choice Questions for (103.8)
