@@ -4289,6 +4289,172 @@ touch my\ big\ file
 %-------------------------------------------------------
 % Multiple-Choice Questions for (103.1)
 %-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 103.1}
+\begin{enumerate}[1.]
+
+    \item Which of the following commands quickly displays only the absolute pathname of an executable (without additional information)?  
+    \begin{enumerate}[A)]
+        \item type  
+        \item file  
+        \item whereis  
+        \item which  
+    \end{enumerate}
+
+    \item When using \texttt{bash}, which key sequence allows you to recall and edit previously typed commands?  
+    \begin{enumerate}[A)]
+        \item Ctrl+H and Ctrl+G  
+        \item The Up/Down arrow keys  
+        \item Left-clicking on the command line  
+        \item The Tab key  
+    \end{enumerate}
+
+    \item Which of the following commands can be used to remove an environment variable from the current shell session?  
+    \begin{enumerate}[A)]
+        \item unsetenv  
+        \item erase  
+        \item export --remove  
+        \item unset  
+    \end{enumerate}
+
+    \item Which \texttt{uname} option prints all available system information?  
+    \begin{enumerate}[A)]
+        \item \texttt{-r}  
+        \item \texttt{-o}  
+        \item \texttt{-a}  
+        \item \texttt{-v}  
+    \end{enumerate}
+
+    \item Which command will remove the file \texttt{my big file} if the file name has embedded spaces and you do NOT use quotes or backslashes correctly?  
+    \begin{enumerate}[A)]
+        \item \texttt{rm my\_big\_file}  
+        \item \texttt{rm my big file} (interpreted as removing three separate files)  
+        \item \texttt{rm 'my big file'}  
+        \item \texttt{rm "my big file"}  
+    \end{enumerate}
+
+    \item Which command outputs the environment variables that are exported and accessible to child processes?  
+    \begin{enumerate}[A)]
+        \item env  
+        \item set  
+        \item grep  
+        \item apropos  
+    \end{enumerate}
+
+    \item Which of the following statements is \textbf{true} regarding \texttt{type uname} showing “uname is hashed (/bin/uname)”?  
+    \begin{enumerate}[A)]
+        \item It means \texttt{uname} was used previously and is cached for faster lookups  
+        \item It means the command is a shell builtin  
+        \item It means the command no longer exists on disk  
+        \item It means there is a conflict with the \texttt{uname} command location  
+    \end{enumerate}
+
+    \item By default, new local variables set in the Bash shell are only available:  
+    \begin{enumerate}[A)]
+        \item In the current shell session  
+        \item To all newly created shells and user sessions  
+        \item After a reboot only  
+        \item To all users on the system  
+    \end{enumerate}
+
+    \item When you type \texttt{set | grep myvar} and see a result, but \texttt{env | grep myvar} returns nothing, what does that tell you about \texttt{myvar}?  
+    \begin{enumerate}[A)]
+        \item \texttt{myvar} is stored in \texttt{.bashrc}  
+        \item \texttt{myvar} is a local shell variable (not exported)  
+        \item \texttt{myvar} is inherited from a parent environment  
+        \item \texttt{myvar} is actually a path variable  
+    \end{enumerate}
+
+    \item Which command is used to list all recent commands executed in the current user’s shell session?  
+    \begin{enumerate}[A)]
+        \item man  
+        \item history  
+        \item ls -a  
+        \item more  
+    \end{enumerate}
+
+    \item The file \texttt{\textasciitilde/.bash\_history} typically contains:  
+    \begin{enumerate}[A)]
+        \item A script that runs every time you open your shell  
+        \item A record of previously executed commands in Bash  
+        \item User-defined functions  
+        \item Environment variables that persist after logout  
+    \end{enumerate}
+
+    \item Which command is the quickest way to verify whether the directory \texttt{/usr/local/bin} is in your \texttt{\$PATH}?  
+    \begin{enumerate}[A)]
+        \item \texttt{echo \$PATH}  
+        \item \texttt{man path}  
+        \item \texttt{apropos local}  
+        \item \texttt{ls /usr/local/bin}  
+    \end{enumerate}
+
+    \item Which command is most suitable for searching through the names and descriptions of all installed man pages when you do \textbf{not} remember the exact command name you need?  
+    \begin{enumerate}[A)]
+        \item more  
+        \item info  
+        \item apropos  
+        \item tail  
+    \end{enumerate}
+
+    \item Which of these statements regarding \texttt{man} is \textbf{true}?  
+    \begin{enumerate}[A)]
+        \item \texttt{man} files are stored in \texttt{/etc/bash\_completion.d/}  
+        \item \texttt{man} pages are often organized into separate sections  
+        \item \texttt{man} only lists synonyms for commands; it does not provide usage  
+        \item \texttt{man} must be run as \texttt{root} to view system documentation  
+    \end{enumerate}
+
+    \item If you type \texttt{myvar=hello} (with no spaces), what happens?  
+    \begin{enumerate}[A)]
+        \item This sets an environment variable globally for all shells  
+        \item A local shell variable \texttt{myvar} is created with value \texttt{hello}  
+        \item The variable is appended to the path  
+        \item You must run \texttt{env} to permanently store that variable  
+    \end{enumerate}
+
+    \item Which of the following methods will \textbf{not} preserve special characters in a filename?  
+    \begin{enumerate}[A)]
+        \item Using double quotes  
+        \item Using single quotes  
+        \item Escaping them with a backslash (\texttt{\textbackslash})  
+        \item Typing them as is, without quotes or escapes  
+    \end{enumerate}
+
+    \item If you run \texttt{exit} within a child shell, what happens?  
+    \begin{enumerate}[A)]
+        \item You return to the parent shell  
+        \item The system reboots  
+        \item It logs you out completely  
+        \item The variable \texttt{\$PATH} is cleared  
+    \end{enumerate}
+
+    \item Which command’s output is typically the largest and includes all variables and functions (both local and exported)?  
+    \begin{enumerate}[A)]
+        \item env  
+        \item type  
+        \item apropos  
+        \item set  
+    \end{enumerate}
+
+    \item Which of these commands is a \textbf{shell builtin} by default on most Linux systems using Bash?  
+    \begin{enumerate}[A)]
+        \item uname  
+        \item cp  
+        \item which  
+        \item kill  
+    \end{enumerate}
+
+    \item What does pressing the \textbf{Up Arrow} key multiple times in Bash do?  
+    \begin{enumerate}[A)]
+        \item Automatically corrects the last typed command  
+        \item Displays man pages for previously run commands  
+        \item Logs the user out if pressed 3 times in succession  
+        \item Cycles through the recent command history  
+    \end{enumerate}
+
+\end{enumerate}
+
 
 %-------------------------------------------------------
 % Fill-in-the-Blank Questions (103.1)
@@ -4525,6 +4691,171 @@ sha256sum -c sha256.txt
 %-------------------------------------------------------
 % Multiple-Choice Questions for (103.2)
 %-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 103.2}
+\begin{enumerate}[1.]
+
+    \item Which command reads from standard input if no file is specified and echoes the input to standard output?  
+    \begin{enumerate}[A)]
+        \item grep  
+        \item tail  
+        \item sed  
+        \item cat  
+    \end{enumerate}
+
+    \item Which redirection operator \textbf{creates} or \textbf{overwrites} a file with the output of a command?  
+    \begin{enumerate}[A)]
+        \item >  
+        \item >>  
+        \item |  
+        \item \&>  
+    \end{enumerate}
+
+    \item Which command can be used to display specific lines that match a pattern in a text file, \textbf{ignoring} case differences when the \texttt{-i} option is used?  
+    \begin{enumerate}[A)]
+        \item sort  
+        \item head  
+        \item grep  
+        \item md5sum  
+    \end{enumerate}
+
+    \item Which command is commonly used to paginate output, allowing you to scroll through text using the arrow keys?  
+    \begin{enumerate}[A)]
+        \item less  
+        \item cat  
+        \item nl  
+        \item tail  
+    \end{enumerate}
+
+    \item Which command shows only the last ten lines of a file by default?  
+    \begin{enumerate}[A)]
+        \item head  
+        \item tail  
+        \item cut  
+        \item split  
+    \end{enumerate}
+
+    \item Which command can be used to generate or check the cryptographic integrity of a file using \textbf{MD5} hashing?  
+    \begin{enumerate}[A)]
+        \item md5sum  
+        \item sha256sum  
+        \item sha512sum  
+        \item od  
+    \end{enumerate}
+
+    \item Which command is considered a \textbf{stream editor} that can filter and transform text, including find-and-replace operations?  
+    \begin{enumerate}[A)]
+        \item nl  
+        \item wc  
+        \item uniq  
+        \item sed  
+    \end{enumerate}
+
+    \item Which command can be used to \textbf{display} a file in \textbf{octal} or \textbf{hexadecimal} representation (helpful for debugging)?  
+    \begin{enumerate}[A)]
+        \item less  
+        \item paste  
+        \item od  
+        \item zcat  
+    \end{enumerate}
+
+    \item If you want to \textbf{append} the output of a command to an existing file (without overwriting), which redirection operator should you use?  
+    \begin{enumerate}[A)]
+        \item >  
+        \item \&>  
+        \item 2>  
+        \item >>  
+    \end{enumerate}
+
+    \item Which command, by default, displays the \textbf{first 10 lines} of a file?  
+    \begin{enumerate}[A)]
+        \item tail  
+        \item wc  
+        \item head  
+        \item cut  
+    \end{enumerate}
+
+    \item Which command is used to \textbf{decompress and display} the content of a \texttt{.gz} file without explicitly creating an uncompressed file?  
+    \begin{enumerate}[A)]
+        \item gzip  
+        \item bzcat  
+        \item xzcat  
+        \item zcat  
+    \end{enumerate}
+
+    \item Which option with \texttt{gzip} activates \textbf{verbose} mode to show what is happening during compression?  
+    \begin{enumerate}[A)]
+        \item -v  
+        \item -n  
+        \item -c  
+        \item -q  
+    \end{enumerate}
+
+    \item Which command can \textbf{enumerate} lines of output (by placing a line number at the beginning of each line)?  
+    \begin{enumerate}[A)]
+        \item wc  
+        \item nl  
+        \item sed  
+        \item sha512sum  
+    \end{enumerate}
+
+    \item Which command can \textbf{merge lines} from multiple files side-by-side into columns?  
+    \begin{enumerate}[A)]
+        \item sort  
+        \item uniq  
+        \item paste  
+        \item split  
+    \end{enumerate}
+
+    \item Which command is commonly used to \textbf{sort} lines of text in \textbf{alphabetical} or \textbf{numerical} order?  
+    \begin{enumerate}[A)]
+        \item split  
+        \item sort  
+        \item tr  
+        \item nl  
+    \end{enumerate}
+
+    \item Which command is used to \textbf{transform} or \textbf{translate} characters from standard input (for example, converting uppercase to lowercase)?  
+    \begin{enumerate}[A)]
+        \item od  
+        \item cat  
+        \item tr  
+        \item head  
+    \end{enumerate}
+
+    \item Which tool can be used to verify file integrity using an \textbf{SHA-256} hash?  
+    \begin{enumerate}[A)]
+        \item sha256sum  
+        \item zcat  
+        \item md5sum  
+        \item tail  
+    \end{enumerate}
+
+    \item Which of these commands \textbf{decompresses} a file using the \textbf{bzip2} algorithm and sends its content to standard output?  
+    \begin{enumerate}[A)]
+        \item zcat  
+        \item bzcat  
+        \item sha512sum  
+        \item nl  
+    \end{enumerate}
+
+    \item Which of the following commands will \textbf{remove duplicate lines} from a sorted list?  
+    \begin{enumerate}[A)]
+        \item paste  
+        \item uniq  
+        \item od  
+        \item grep  
+    \end{enumerate}
+
+    \item Which command is used to \textbf{split} large files into smaller parts?  
+    \begin{enumerate}[A)]
+        \item tr  
+        \item md5sum  
+        \item nl  
+        \item split  
+    \end{enumerate}
+
+\end{enumerate}
 
 %-------------------------------------------------------
 % Fill-in-the-Blank Questions (103.2)
@@ -4839,7 +5170,174 @@ dd if=testfile of=testfile_copy bs=1K status=progress
 %-------------------------------------------------------
 % Multiple-Choice Questions for (103.3)
 %-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 103.3}
+\begin{enumerate}[1.]
 
+    \item Which command is used to list files in the current directory in a \textbf{human-readable} format (showing sizes like 4.0K, 2.1M, etc.)?  
+    \begin{enumerate}[A)]
+        \item ls -lh  
+        \item ls -lr  
+        \item ls -a  
+        \item ls -sd  
+    \end{enumerate}
+
+    \item Which option with the \texttt{rm} command \textbf{prompts} the user before removing the file?  
+    \begin{enumerate}[A)]
+        \item -r  
+        \item -f  
+        \item -i  
+        \item -d  
+    \end{enumerate}
+
+    \item In the context of wildcard usage, what does the \texttt{*} (asterisk) match?  
+    \begin{enumerate}[A)]
+        \item Zero or more occurrences of \textbf{any} character  
+        \item Exactly one character  
+        \item Only hidden files  
+        \item Only directories  
+    \end{enumerate}
+
+    \item Which command \textbf{removes} an \textbf{empty directory}?  
+    \begin{enumerate}[A)]
+        \item rm -r  
+        \item rmdir  
+        \item rm -rf  
+        \item cpio  
+    \end{enumerate}
+
+    \item Which option for the \texttt{cp} command is used to copy directories \textbf{recursively}?  
+    \begin{enumerate}[A)]
+        \item -v  
+        \item -l  
+        \item -u  
+        \item -r  
+    \end{enumerate}
+
+    \item In the output of \texttt{ls -l}, which character (in the first column) indicates a \textbf{directory}?  
+    \begin{enumerate}[A)]
+        \item -  
+        \item s  
+        \item c  
+        \item d  
+    \end{enumerate}
+
+    \item Which command can be used to \textbf{create an empty file}?  
+    \begin{enumerate}[A)]
+        \item touch  
+        \item newfile  
+        \item cp -0  
+        \item mv -n  
+    \end{enumerate}
+
+    \item What is the effect of running \texttt{mv oldname newname}?  
+    \begin{enumerate}[A)]
+        \item Copies \texttt{oldname} to \texttt{newname}  
+        \item Renames \texttt{oldname} to \texttt{newname}  
+        \item Asks for confirmation before removing \texttt{oldname}  
+        \item None of the above  
+    \end{enumerate}
+
+    \item Which command displays the \textbf{type} of a file (e.g., text, directory, etc.)?  
+    \begin{enumerate}[A)]
+        \item file  
+        \item type  
+        \item grep  
+        \item dd  
+    \end{enumerate}
+
+    \item Which command is used to \textbf{remove} a file \textbf{permanently} without prompts, ignoring nonexistent files?  
+    \begin{enumerate}[A)]
+        \item rm -f  
+        \item rm -i  
+        \item rm -r  
+        \item rm -rf  
+    \end{enumerate}
+
+    \item Which command will \textbf{list hidden files} in the current directory?  
+    \begin{enumerate}[A)]
+        \item ls -l  
+        \item ls -h  
+        \item ls -a  
+        \item ls -R  
+    \end{enumerate}
+
+    \item Which of the following wildcards matches \textbf{exactly one character}?  
+    \begin{enumerate}[A)]
+        \item *  
+        \item [ ]  
+        \item !  
+        \item ?  
+    \end{enumerate}
+
+    \item Which command can \textbf{create} a directory named \texttt{parents/children} along with the necessary \textbf{parent} directory if it doesn’t exist?  
+    \begin{enumerate}[A)]
+        \item mkdir -r parents/children  
+        \item mkdir --create parents/children  
+        \item mkdir -p parents/children  
+        \item mkdir -m parents/children  
+    \end{enumerate}
+
+    \item What does the following command do?  
+    \begin{verbatim}
+    cp -r myfiles/ backups/
+    \end{verbatim}
+    \begin{enumerate}[A)]
+        \item Copies the entire \texttt{myfiles} directory, including its contents, to \texttt{backups}  
+        \item Moves all content from \texttt{backups} to \texttt{myfiles}  
+        \item Copies only hidden files from \texttt{myfiles} to \texttt{backups}  
+        \item Backs up the entire filesystem  
+    \end{enumerate}
+
+    \item Which command is used to \textbf{move or rename} files in Linux?  
+    \begin{enumerate}[A)]
+        \item cp  
+        \item rename  
+        \item mv  
+        \item rm  
+    \end{enumerate}
+
+    \item When using the \textbf{mv} command, which option \textbf{prompts} you before overwriting an existing file?  
+    \begin{enumerate}[A)]
+        \item -f  
+        \item -n  
+        \item -r  
+        \item -i  
+    \end{enumerate}
+
+    \item In the context of the \texttt{find} command, what does \texttt{-type f} represent?  
+    \begin{enumerate}[A)]
+        \item Search for directories  
+        \item Search for regular files  
+        \item Search for symbolic links  
+        \item Search for special files  
+    \end{enumerate}
+
+    \item Which command \textbf{recursively removes} a directory and all its contents?  
+    \begin{enumerate}[A)]
+        \item rmdir -r  
+        \item rm -r  
+        \item rm  
+        \item rmdir  
+    \end{enumerate}
+
+    \item Which command can be used to \textbf{list} the content of a directory \textbf{together with its subdirectories}?  
+    \begin{enumerate}[A)]
+        \item ls -R  
+        \item ls -a  
+        \item ls -l  
+        \item ls -m  
+    \end{enumerate}
+
+    \item Which wildcard expression would match filenames that start with \texttt{l}, followed by any \textbf{single} character, and end with \texttt{st.txt}?  
+    \begin{enumerate}[A)]
+        \item l*[st].txt  
+        \item l?st.txt  
+        \item l??st?.txt  
+        \item l?st.[txt]  
+    \end{enumerate}
+
+\end{enumerate}
 %-------------------------------------------------------
 % Fill-in-the-Blank Questions (103.3)
 %-------------------------------------------------------
@@ -4854,6 +5352,171 @@ dd if=testfile of=testfile_copy bs=1K status=progress
 %-------------------------------------------------------
 % Multiple-Choice Questions for (103.4)
 %-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 103.4}
+\begin{enumerate}[1.]
+
+    \item What character is used to create a pipeline in Linux?  
+    \begin{enumerate}[A)]
+        \item <  
+        \item >>  
+        \item |  
+        \item \&  
+    \end{enumerate}
+
+    \item In a pipeline, data flows from \_\_\_ to \_\_\_.  
+    \begin{enumerate}[A)]
+        \item Filesystem to memory  
+        \item Left to right  
+        \item Right to left  
+        \item Memory to filesystem  
+    \end{enumerate}
+
+    \item What command allows the output of a pipeline to be displayed on the screen and written to a file simultaneously?  
+    \begin{enumerate}[A)]
+        \item tee  
+        \item uniq  
+        \item grep  
+        \item wc  
+    \end{enumerate}
+
+    \item Which of the following is a valid method to redirect standard error to standard output in Bash?  
+    \begin{enumerate}[A)]
+        \item |  
+        \item 2>\&1  
+        \item <\&  
+        \item >>  
+    \end{enumerate}
+
+    \item In Bash, the \texttt{\$(...)} syntax is used for \_\_\_.  
+    \begin{enumerate}[A)]
+        \item Redirection  
+        \item Command substitution  
+        \item Background execution  
+        \item Piping  
+    \end{enumerate}
+
+    \item Which command is used to pass the output of one program as arguments to another program?  
+    \begin{enumerate}[A)]
+        \item uniq  
+        \item xargs  
+        \item grep  
+        \item wc  
+    \end{enumerate}
+
+    \item When using \texttt{find} with \texttt{xargs}, which option ensures correct handling of paths with spaces?  
+    \begin{enumerate}[A)]
+        \item -L  
+        \item -n 1  
+        \item -print0 and -0  
+        \item -exec  
+    \end{enumerate}
+
+    \item Which command is used to sort output numerically?  
+    \begin{enumerate}[A)]
+        \item tee  
+        \item uniq  
+        \item sort -n  
+        \item wc  
+    \end{enumerate}
+
+    \item The \texttt{xargs} option \_\_\_ specifies how many arguments to use per command execution.  
+    \begin{enumerate}[A)]
+        \item -L  
+        \item -I  
+        \item -n  
+        \item -0  
+    \end{enumerate}
+
+    \item In a pipeline, which program skips duplicate lines?  
+    \begin{enumerate}[A)]
+        \item wc  
+        \item tee  
+        \item uniq  
+        \item grep  
+    \end{enumerate}
+
+    \item Which of the following can capture only the standard output of a process in a pipeline?  
+    \begin{enumerate}[A)]
+        \item pipe (\texttt{|})  
+        \item Redirect (\texttt{>})  
+        \item uniq  
+        \item grep  
+    \end{enumerate}
+
+    \item Which \texttt{xargs} option allows substituting input values anywhere in the target command?  
+    \begin{enumerate}[A)]
+        \item -n  
+        \item -L  
+        \item -I  
+        \item -0  
+    \end{enumerate}
+
+    \item Command substitution in Bash allows you to \_\_\_.  
+    \begin{enumerate}[A)]
+        \item Send stderr to stdout  
+        \item Use command output as an argument  
+        \item Redirect stdin to a file  
+        \item Save stdout in a file  
+    \end{enumerate}
+
+    \item The \texttt{-exec} option in \texttt{find} \_\_\_.  
+    \begin{enumerate}[A)]
+        \item Runs a command for each search result  
+        \item Sorts the output of find  
+        \item Moves files to a directory  
+        \item Saves search results to a file  
+    \end{enumerate}
+
+    \item When using \texttt{xargs}, what option limits the number of lines used as arguments per execution?  
+    \begin{enumerate}[A)]
+        \item -print0  
+        \item -L  
+        \item -n  
+        \item -exec  
+    \end{enumerate}
+
+    \item How can you ensure the \texttt{xargs} command processes paths with special characters?  
+    \begin{enumerate}[A)]
+        \item Use -n 1  
+        \item Use -print0 and -0  
+        \item Use tee  
+        \item Use uniq  
+    \end{enumerate}
+
+    \item Which of the following combines input redirection and piping?  
+    \begin{enumerate}[A)]
+        \item \texttt{cat /proc/cpuinfo | wc}  
+        \item \texttt{grep 'model name' </proc/cpuinfo | uniq}  
+        \item \texttt{uniq | wc}  
+        \item \texttt{tee}  
+    \end{enumerate}
+
+    \item What does the \texttt{-a} option in the \texttt{tee} command do?  
+    \begin{enumerate}[A)]
+        \item Appends output to a file  
+        \item Prevents overwriting a file  
+        \item Redirects output to stderr  
+        \item Filters duplicate lines  
+    \end{enumerate}
+
+    \item The \texttt{find} option \texttt{-mindepth 2} instructs the command to \_\_\_.  
+    \begin{enumerate}[A)]
+        \item Process files only at a specified depth  
+        \item Include hidden files in the results  
+        \item Skip symbolic links in the search  
+        \item Sort results by size  
+    \end{enumerate}
+
+    \item What is the purpose of using \texttt{xargs} with \texttt{-I} in a pipeline?  
+    \begin{enumerate}[A)]
+        \item Handle special characters  
+        \item Use the input value at a specific position  
+        \item Limit arguments per command  
+        \item Run a command for each result  
+    \end{enumerate}
+
+\end{enumerate}
 
 %-------------------------------------------------------
 % Fill-in-the-Blank Questions (103.4)
@@ -4869,6 +5532,171 @@ dd if=testfile of=testfile_copy bs=1K status=progress
 %-------------------------------------------------------
 % Multiple-Choice Questions for (103.5)
 %-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 103.5}
+\begin{enumerate}[1.]
+
+    \item What command is used to run a process in the background directly while starting it?  
+    \begin{enumerate}[A)]
+        \item fg  
+        \item \&  
+        \item nohup  
+        \item jobs  
+    \end{enumerate}
+
+    \item Which command is used to send a job to the foreground?  
+    \begin{enumerate}[A)]
+        \item fg  
+        \item bg  
+        \item kill  
+        \item nohup  
+    \end{enumerate}
+
+    \item Which signal is sent by default if no specific signal is mentioned while using the \texttt{kill} command?  
+    \begin{enumerate}[A)]
+        \item SIGSTOP  
+        \item SIGHUP  
+        \item SIGTERM  
+        \item SIGKILL  
+    \end{enumerate}
+
+    \item What does the \texttt{-n} option in the \texttt{watch} command do?  
+    \begin{enumerate}[A)]
+        \item Changes the update interval  
+        \item Displays the process ID  
+        \item Lists only running jobs  
+        \item Lists only stopped jobs  
+    \end{enumerate}
+
+    \item What key is pressed in \texttt{top} to sort the output by memory usage?  
+    \begin{enumerate}[A)]
+        \item T  
+        \item N  
+        \item R  
+        \item M  
+    \end{enumerate}
+
+    \item What is the purpose of the \texttt{nohup} command?  
+    \begin{enumerate}[A)]
+        \item To bring a job to the foreground  
+        \item To monitor active processes  
+        \item To detach a job so it continues running after logout  
+        \item To kill a specific process by PID  
+    \end{enumerate}
+
+    \item Which command is used to kill all instances of a specific process by name?  
+    \begin{enumerate}[A)]
+        \item killall  
+        \item pkill  
+        \item kill  
+        \item nohup  
+    \end{enumerate}
+
+    \item What is the role of the \texttt{jobs} command in Linux?  
+    \begin{enumerate}[A)]
+        \item To display all running processes  
+        \item To list active jobs started by the current shell  
+        \item To terminate jobs  
+        \item To monitor memory usage  
+    \end{enumerate}
+
+    \item What does the \texttt{free} command display?  
+    \begin{enumerate}[A)]
+        \item Load averages  
+        \item Memory usage statistics  
+        \item Running jobs  
+        \item Network statistics  
+    \end{enumerate}
+
+    \item Which option in the \texttt{ps} command shows all processes regardless of terminal attachment?  
+    \begin{enumerate}[A)]
+        \item -u  
+        \item x  
+        \item a  
+        \item aux  
+    \end{enumerate}
+
+    \item What is a key feature of terminal multiplexers like GNU Screen and tmux?  
+    \begin{enumerate}[A)]
+        \item They replace terminal emulators entirely.  
+        \item They are used exclusively for SSH connections.  
+        \item They allow multiple terminal sessions within a single terminal window.  
+        \item They are required to run graphical applications.  
+    \end{enumerate}
+
+    \item Which command in tmux splits the current window into vertical panes?  
+    \begin{enumerate}[A)]
+        \item Ctrl + b - "  
+        \item Ctrl + b - q  
+        \item Ctrl + b - \%  
+        \item Ctrl + b - |  
+    \end{enumerate}
+
+    \item What is the default command prefix for GNU Screen?  
+    \begin{enumerate}[A)]
+        \item Ctrl + a  
+        \item Ctrl + b  
+        \item Ctrl + c  
+        \item Ctrl + d  
+    \end{enumerate}
+
+    \item In tmux, which command creates a new session with a specific name?  
+    \begin{enumerate}[A)]
+        \item tmux new -n NAME  
+        \item tmux create NAME  
+        \item tmux new -s NAME  
+        \item tmux start -n NAME  
+    \end{enumerate}
+
+    \item Which of the following commands terminates the current pane in tmux?  
+    \begin{enumerate}[A)]
+        \item Ctrl + b - \&  
+        \item Ctrl + b - X  
+        \item Ctrl + b - q  
+        \item Ctrl + b - x  
+    \end{enumerate}
+
+    \item How do you reattach to a detached session in tmux?  
+    \begin{enumerate}[A)]
+        \item tmux attach-session  
+        \item tmux attach  
+        \item tmux -r  
+        \item tmux reconnect  
+    \end{enumerate}
+
+    \item What is the main difference between screen "regions" and tmux "panes"?  
+    \begin{enumerate}[A)]
+        \item Panes are more customizable than regions.  
+        \item Panes are independent pseudo-terminals, while regions are not.  
+        \item Panes are temporary, but regions persist between sessions.  
+        \item Panes require a session to be detached to function.  
+    \end{enumerate}
+
+    \item In GNU Screen, which command prefix is used to rename a window?  
+    \begin{enumerate}[A)]
+        \item Ctrl + a - r  
+        \item Ctrl + a - A  
+        \item Ctrl + a - n  
+        \item Ctrl + a - "  
+    \end{enumerate}
+
+    \item Which tmux key combination detaches a session?  
+    \begin{enumerate}[A)]
+        \item Ctrl + b - a  
+        \item Ctrl + b - d  
+        \item Ctrl + b - t  
+        \item Ctrl + b - m  
+    \end{enumerate}
+
+    \item Which configuration file can be used to customize tmux on a per-user basis?  
+    \begin{enumerate}[A)]
+        \item /etc/tmux.conf  
+        \item ~/.tmux.conf  
+        \item /usr/share/tmux/tmux.conf  
+        \item ~/.tmux.config  
+    \end{enumerate}
+
+\end{enumerate}
 
 %-------------------------------------------------------
 % Fill-in-the-Blank Questions (103.5)
@@ -4881,14 +5709,205 @@ dd if=testfile of=testfile_copy bs=1K status=progress
 \section*{103.6 Modify process execution priorities}
 \addcontentsline{toc}{section}{103.6 Modify process execution priorities}
 
+
+
 %-------------------------------------------------------
 % Multiple-Choice Questions for (103.6)
 %-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 103.6}
 
+\begin{enumerate}[1.]
+
+    \item What is the default nice value assigned to a process in Linux?  
+    \begin{enumerate}[A)]
+        \item -20  
+        \item 0  
+        \item 10  
+        \item 19  
+    \end{enumerate}
+
+    \item How are real-time processes prioritized compared to normal processes in Linux?  
+    \begin{enumerate}[A)]
+        \item They are ignored.  
+        \item They have the same priority as normal processes.  
+        \item They have higher priority than normal processes.  
+        \item They have lower priority than normal processes.  
+    \end{enumerate}
+
+    \item What command is used to check the static priority of a process?  
+    \begin{enumerate}[A)]
+        \item top  
+        \item renice  
+        \item ps  
+        \item grep  
+    \end{enumerate}
+
+    \item In the ps command output, what column represents the priority?  
+    \begin{enumerate}[A)]
+        \item ADDR  
+        \item CMD  
+        \item PRI  
+        \item NI  
+    \end{enumerate}
+
+    \item Which of the following is a valid nice value range?  
+    \begin{enumerate}[A)]
+        \item -30 to 30  
+        \item -20 to 20  
+        \item 0 to 100  
+        \item -20 to 19  
+    \end{enumerate}
+
+    \item What is the default nice value assigned by the nice command if no option is specified?  
+    \begin{enumerate}[A)]
+        \item -20  
+        \item 0  
+        \item 19  
+        \item 10  
+    \end{enumerate}
+
+    \item How can the nice value of an already running process be changed?  
+    \begin{enumerate}[A)]
+        \item By using the nice command.  
+        \item By restarting the process.  
+        \item By using the kill command.  
+        \item By using the renice command.  
+    \end{enumerate}
+
+    \item What happens when a process with a lower nice value is introduced?  
+    \begin{enumerate}[A)]
+        \item It runs with a higher priority.  
+        \item It waits for other processes to complete.  
+        \item It gets executed last.  
+        \item Its priority remains unchanged.  
+    \end{enumerate}
+
+    \item Which scheduling priority range is assigned to normal processes?  
+    \begin{enumerate}[A)]
+        \item 0 to 99  
+        \item 0 to 120  
+        \item 100 to 139  
+        \item -20 to 19  
+    \end{enumerate}
+
+    \item What command can display dynamic priority changes continuously?  
+    \begin{enumerate}[A)]
+        \item ps  
+        \item top  
+        \item grep  
+        \item nice  
+    \end{enumerate}
+
+    \item Which key is used in the top command to modify a process's priority?  
+    \begin{enumerate}[A)]
+        \item r  
+        \item n  
+        \item p  
+        \item q  
+    \end{enumerate}
+
+    \item What does a nice value of -10 imply?  
+    \begin{enumerate}[A)]
+        \item Higher priority than default.  
+        \item Default priority.  
+        \item Lower priority than default.  
+        \item The process cannot run.  
+    \end{enumerate}
+
+    \item What is the function of the -p option in the renice command?  
+    \begin{enumerate}[A)]
+        \item Modify priority of all processes.  
+        \item Modify priority of all processes by a user.  
+        \item Specify a PID for priority modification.  
+        \item View current priorities.  
+    \end{enumerate}
+
+    \item What priority level corresponds to a real-time process with a static priority of 5?  
+    \begin{enumerate}[A)]
+        \item 135  
+        \item 5  
+        \item 40  
+        \item -5  
+    \end{enumerate}
+
+    \item Which process attribute dictates execution priority in a normal scheduling policy?  
+    \begin{enumerate}[A)]
+        \item Static priority  
+        \item Nice value  
+        \item System calls  
+        \item File descriptors  
+    \end{enumerate}
+
+    \item What command shows the static priority of the systemd process?  
+    \begin{enumerate}[A)]
+        \item ps -e  
+        \item top  
+        \item grep \^prio /proc/1/sched  
+        \item nice -n 0  
+    \end{enumerate}
+
+    \item In the ps command, which column displays the nice value?  
+    \begin{enumerate}[A)]
+        \item CMD  
+        \item PRI  
+        \item NI  
+        \item SZ  
+    \end{enumerate}
+
+    \item How does renice modify priorities for a user’s processes?  
+    \begin{enumerate}[A)]
+        \item -n  
+        \item -p  
+        \item -u  
+        \item -g  
+    \end{enumerate}
+
+    \item What term describes Linux’s ability to switch processes without waiting for system calls?  
+    \begin{enumerate}[A)]
+        \item Nice value  
+        \item Priority inversion  
+        \item Preemption  
+        \item Static scheduling  
+    \end{enumerate}
+
+    \item What does a nice value of 19 imply?  
+    \begin{enumerate}[A)]
+        \item High priority.  
+        \item Default priority.  
+        \item Low priority.  
+        \item Real-time scheduling.  
+    \end{enumerate}
+
+\end{enumerate}
 %-------------------------------------------------------
 % Fill-in-the-Blank Questions (103.6)
 %-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 103.6}
 
+\begin{enumerate}[1.]
+    \item B
+    \item C
+    \item C
+    \item C
+    \item D
+    \item B
+    \item D
+    \item A
+    \item C
+    \item B
+    \item A
+    \item A
+    \item C
+    \item D
+    \item B
+    \item C
+    \item C
+    \item C
+    \item A
+    \item C
+\end{enumerate}
 %-------------------------------------------------------
 % 103.7 Search text files using regular expressions
 %-------------------------------------------------------
@@ -5468,26 +6487,192 @@ dd if=testfile of=testfile_copy bs=1K status=progress
 % Answer-Sheet (103.1)
 %-------------------------------------------------------
 
+\subsection*{103.1 Work on the command line}
+\subsubsection*{Multiple-Choice Questions (103.1)}
+
+\begin{enumerate}[1.]
+    \item D
+    \item B
+    \item D
+    \item C
+    \item B
+    \item A
+    \item A
+    \item A
+    \item B
+    \item B
+    \item B
+    \item A
+    \item C
+    \item B
+    \item B
+    \item D
+    \item A
+    \item D
+    \item D
+    \item D
+\end{enumerate}
+
+
+\subsubsection*{Fill-in-the-Blank Questions (103.1)}
 %-------------------------------------------------------
 % Answer-Sheet (103.2)
 %-------------------------------------------------------
 
+\subsection*{103.2 Process text streams using filters}
+\subsubsection*{Multiple-Choice Questions (103.2)}
+
+\begin{enumerate}[1.]
+    \item D
+    \item A
+    \item C
+    \item A
+    \item B
+    \item A
+    \item D
+    \item C
+    \item D
+    \item C
+    \item D
+    \item A
+    \item B
+    \item C
+    \item B
+    \item C
+    \item A
+    \item B
+    \item B
+    \item D
+\end{enumerate}
+
+
+\subsubsection*{Fill-in-the-Blank Questions (103.2)}
 %-------------------------------------------------------
 % Answer-Sheet (103.3)
 %-------------------------------------------------------
+\subsection*{103.3 Perform basic file management}
+\subsubsection*{Multiple-Choice Questions (103.3)}
+
+\begin{enumerate}[1.]
+    \item A
+    \item C
+    \item A
+    \item B
+    \item D
+    \item D
+    \item A
+    \item B
+    \item A
+    \item A
+    \item C
+    \item D
+    \item C
+    \item A
+    \item C
+    \item D
+    \item B
+    \item B
+    \item A
+    \item B
+\end{enumerate}
+
+\subsubsection*{Fill-in-the-Blank Questions (103.3)}
 
 %-------------------------------------------------------
 % Answer-Sheet (103.4)
 %-------------------------------------------------------
 
+\subsection*{103.4 Use streams, pipes and redirects}
+\subsubsection*{Multiple-Choice Questions (103.4)}
+
+\begin{enumerate}[1.]
+    \item C
+    \item D
+    \item A
+    \item B
+    \item B
+    \item B
+    \item C
+    \item C
+    \item C
+    \item C
+    \item A
+    \item C
+    \item B
+    \item A
+    \item B
+    \item B
+    \item B
+    \item A
+    \item C
+    \item B
+\end{enumerate}
+
+\subsubsection*{Fill-in-the-Blank Questions (103.4)}
+
 %-------------------------------------------------------
 % Answer-Sheet (103.5)
 %-------------------------------------------------------
 
+\subsection*{103.5 Create, monitor and kill processes}
+\subsubsection*{Multiple-Choice Questions (103.5)}
+\begin{enumerate}[1.]
+    \item B
+    \item A
+    \item C
+    \item A
+    \item D
+    \item C
+    \item A
+    \item B
+    \item B
+    \item B
+    \item C
+    \item C
+    \item A
+    \item C
+    \item D
+    \item B
+    \item B
+    \item B
+    \item D
+    \item B
+\end{enumerate}
+
+
+\subsubsection*{Fill-in-the-Blank Questions (103.5)}
 %-------------------------------------------------------
 % Answer-Sheet (103.6)
 %-------------------------------------------------------
 
+\subsection*{103.6 Modify process execution priorities}
+\subsubsection*{Multiple-Choice Questions (103.6)}
+\begin{enumerate}[1.]
+    \item B
+    \item C
+    \item C
+    \item C
+    \item D
+    \item B
+    \item D
+    \item A
+    \item C
+    \item B
+    \item A
+    \item A
+    \item C
+    \item D
+    \item B
+    \item C
+    \item C
+    \item C
+    \item A
+    \item C
+\end{enumerate}
+
+
+
+\subsubsection*{Fill-in-the-Blank Questions (103.5)}
 %-------------------------------------------------------
 % Answer-Sheet (103.7)
 %-------------------------------------------------------
