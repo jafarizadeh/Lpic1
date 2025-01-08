@@ -7703,6 +7703,169 @@ export EDITOR=nano
 %-------------------------------------------------------
 \newpage
 \section*{Multiple-Choice Questions for 104.1}
+\begin{enumerate}[1.]
+
+    \item What command is used to manage MBR partitions on Linux?  
+    \begin{enumerate}[A)]
+        \item \texttt{gdisk}  
+        \item \texttt{parted}  
+        \item \texttt{mkfs}  
+        \item \texttt{fdisk}  
+    \end{enumerate}
+
+    \item Which of the following is a limitation of MBR partitioning?  
+    \begin{enumerate}[A)]
+        \item Cannot create swap partitions  
+        \item Limited to 2 primary partitions  
+        \item Cannot address disks over 2 TB  
+        \item Does not support Linux file systems  
+    \end{enumerate}
+
+    \item What is the maximum number of primary partitions allowed on an MBR disk?  
+    \begin{enumerate}[A)]
+        \item 2  
+        \item 4  
+        \item 6  
+        \item Unlimited  
+    \end{enumerate}
+
+    \item Which command in \texttt{fdisk} is used to display the current partition table?  
+    \begin{enumerate}[A)]
+        \item \texttt{p}  
+        \item \texttt{w}  
+        \item \texttt{d}  
+        \item \texttt{n}  
+    \end{enumerate}
+
+    \item What does the 't' command in \texttt{fdisk} do?  
+    \begin{enumerate}[A)]
+        \item Deletes a partition  
+        \item Creates a new partition  
+        \item Changes the partition type  
+        \item Prints the partition table  
+    \end{enumerate}
+
+    \item What is the partition type code for Linux swap in \texttt{fdisk}?  
+    \begin{enumerate}[A)]
+        \item 80  
+        \item 82  
+        \item 83  
+        \item 85  
+    \end{enumerate}
+
+    \item How is the GUID Partition Table (GPT) different from MBR?  
+    \begin{enumerate}[A)]
+        \item It supports more than 4 partitions  
+        \item It cannot be used with UEFI  
+        \item It stores the partition table in the last sector only  
+        \item It has a limit of 2 TB disk size  
+    \end{enumerate}
+
+    \item Which command in \texttt{gdisk} is used to print the current partition table?  
+    \begin{enumerate}[A)]
+        \item \texttt{p}  
+        \item \texttt{d}  
+        \item \texttt{r}  
+        \item \texttt{w}  
+    \end{enumerate}
+
+    \item What utility is used to create a Btrfs filesystem?  
+    \begin{enumerate}[A)]
+        \item \texttt{mkfs.ext4}  
+        \item \texttt{mkfs.fat}  
+        \item \texttt{mkfs.xfs}  
+        \item \texttt{mkfs.btrfs}  
+    \end{enumerate}
+
+    \item Which flag is required to create a read-only snapshot in Btrfs?  
+    \begin{enumerate}[A)]
+        \item \texttt{-o}  
+        \item \texttt{-f}  
+        \item \texttt{-r}  
+        \item \texttt{-n}  
+    \end{enumerate}
+
+    \item What is the primary tool for managing partitions with GPT?  
+    \begin{enumerate}[A)]
+        \item \texttt{parted}  
+        \item \texttt{fdisk}  
+        \item \texttt{gdisk}  
+        \item \texttt{mkfs}  
+    \end{enumerate}
+
+    \item Which option in the \texttt{mkfs.ext4} command simulates filesystem creation?  
+    \begin{enumerate}[A)]
+        \item \texttt{-n}  
+        \item \texttt{-q}  
+        \item \texttt{-c}  
+        \item \texttt{-L}  
+    \end{enumerate}
+
+    \item Which filesystem is the default for most Linux distributions?  
+    \begin{enumerate}[A)]
+        \item XFS  
+        \item ext4  
+        \item VFAT  
+        \item NTFS  
+    \end{enumerate}
+
+    \item What does the \texttt{resize2fs} command do?  
+    \begin{enumerate}[A)]
+        \item Resizes partitions  
+        \item Resizes ext2/3/4 filesystems  
+        \item Checks for filesystem errors  
+        \item Formats partitions  
+    \end{enumerate}
+
+    \item Which filesystem is designed to support multiple devices and transparent compression?  
+    \begin{enumerate}[A)]
+        \item ext4  
+        \item NTFS  
+        \item XFS  
+        \item Btrfs  
+    \end{enumerate}
+
+    \item What command is used to create a swap partition in Linux?  
+    \begin{enumerate}[A)]
+        \item \texttt{mkfs}  
+        \item \texttt{mkswap}  
+        \item \texttt{swapon}  
+        \item \texttt{parted}  
+    \end{enumerate}
+
+    \item Which command in \texttt{parted} creates a partition table?  
+    \begin{enumerate}[A)]
+        \item \texttt{mkpart}  
+        \item \texttt{mklabel}  
+        \item \texttt{resizepart}  
+        \item \texttt{print}  
+    \end{enumerate}
+
+    \item Which of these is a feature of the Btrfs filesystem?  
+    \begin{enumerate}[A)]
+        \item Supports only a single device  
+        \item Copy-on-write functionality  
+        \item Limited to 4 TB disk size  
+        \item Requires manual journaling  
+    \end{enumerate}
+
+    \item What is the primary use of the \texttt{mkfs.fat} command?  
+    \begin{enumerate}[A)]
+        \item Creating NTFS filesystems  
+        \item Creating FAT/VFAT filesystems  
+        \item Creating ext4 filesystems  
+        \item Creating swap partitions  
+    \end{enumerate}
+
+    \item Which Linux command enables a swap partition after it is created?  
+    \begin{enumerate}[A)]
+        \item \texttt{mkfs}  
+        \item \texttt{mkswap}  
+        \item \texttt{swapon}  
+        \item \texttt{swapoff}  
+    \end{enumerate}
+
+\end{enumerate}
 
 %-------------------------------------------------------
 % Fill-in-the-Blank Questions (104.1)
@@ -7718,10 +7881,173 @@ export EDITOR=nano
 \addcontentsline{toc}{section}{104.2 Maintain the integrity of filesystems}
 
 %-------------------------------------------------------
-% Multiple-Choice Questions for (104.2)
+% Multiple-Choice Questions for 104.2
 %-------------------------------------------------------
 \newpage
 \section*{Multiple-Choice Questions for 104.2}
+\begin{enumerate}[1.]
+
+    \item Which command displays disk usage in a human-readable format?  
+    \begin{enumerate}[A)]
+        \item \texttt{df}  
+        \item \texttt{fsck}  
+        \item \texttt{tune2fs}  
+        \item \texttt{du -h}  
+    \end{enumerate}
+
+    \item What parameter is used with the \texttt{du} command to include a total summary in the output?  
+    \begin{enumerate}[A)]
+        \item \texttt{-t}  
+        \item \texttt{-a}  
+        \item \texttt{-d}  
+        \item \texttt{-c}  
+    \end{enumerate}
+
+    \item Which command is used to check free space at the filesystem level?  
+    \begin{enumerate}[A)]
+        \item \texttt{du}  
+        \item \texttt{tune2fs}  
+        \item \texttt{df}  
+        \item \texttt{xfs\_repair}  
+    \end{enumerate}
+
+    \item What does the \texttt{-T} option in the \texttt{df} command display?  
+    \begin{enumerate}[A)]
+        \item Disk usage per user  
+        \item File system inode details  
+        \item Total disk space used  
+        \item File system type  
+    \end{enumerate}
+
+    \item What is the recommended utility for repairing XFS file systems?  
+    \begin{enumerate}[A)]
+        \item \texttt{tune2fs}  
+        \item \texttt{fsck}  
+        \item \texttt{df}  
+        \item \texttt{xfs\_repair}  
+    \end{enumerate}
+
+    \item What is the \texttt{fsck} utility primarily used for?  
+    \begin{enumerate}[A)]
+        \item Monitoring free space  
+        \item Listing mounted filesystems  
+        \item Checking and repairing filesystems  
+        \item Defragmenting filesystems  
+    \end{enumerate}
+
+    \item What does the \texttt{-y} option do in \texttt{e2fsck}?  
+    \begin{enumerate}[A)]
+        \item Automatically answers "no" to all prompts  
+        \item Displays verbose output  
+        \item Runs checks on mounted filesystems  
+        \item Automatically answers "yes" to all prompts  
+    \end{enumerate}
+
+    \item Which command adjusts parameters of ext2, ext3, and ext4 filesystems?  
+    \begin{enumerate}[A)]
+        \item \texttt{df}  
+        \item \texttt{du}  
+        \item \texttt{tune2fs}  
+        \item \texttt{xfs\_db}  
+    \end{enumerate}
+
+    \item What does the \texttt{-j} option in \texttt{tune2fs} do?  
+    \begin{enumerate}[A)]
+        \item Enables verbose logging  
+        \item Displays filesystem parameters  
+        \item Creates a journal for the filesystem  
+        \item Converts ext4 to ext2  
+    \end{enumerate}
+
+    \item What should you avoid when using \texttt{fsck}?  
+    \begin{enumerate}[A)]
+        \item Running it on mounted filesystems  
+        \item Using it with ext4 filesystems  
+        \item Specifying filesystem types  
+        \item Viewing verbose output  
+    \end{enumerate}
+
+    \item Which command can be used to exclude tmpfs filesystems in \texttt{df} output?  
+    \begin{enumerate}[A)]
+        \item \texttt{df -x tmpfs}  
+        \item \texttt{df -T tmpfs}  
+        \item \texttt{df -h tmpfs}  
+        \item \texttt{df -t tmpfs}  
+    \end{enumerate}
+
+    \item What parameter forces \texttt{e2fsck} to check a clean filesystem?  
+    \begin{enumerate}[A)]
+        \item \texttt{-f}  
+        \item \texttt{-p}  
+        \item \texttt{-y}  
+        \item \texttt{-n}  
+    \end{enumerate}
+
+    \item Which \texttt{tune2fs} option defines the maximum number of mounts before a filesystem check is forced?  
+    \begin{enumerate}[A)]
+        \item \texttt{-c}  
+        \item \texttt{-C}  
+        \item \texttt{-f}  
+        \item \texttt{-L}  
+    \end{enumerate}
+
+    \item What is the output of \texttt{xfs\_repair -n}?  
+    \begin{enumerate}[A)]
+        \item Displays file contents  
+        \item Checks for errors without modifying the filesystem  
+        \item Repairs the filesystem  
+        \item Lists all filesystems  
+    \end{enumerate}
+
+    \item Which option in \texttt{xfs\_repair} zeroes out a corrupt log?  
+    \begin{enumerate}[A)]
+        \item \texttt{-m}  
+        \item \texttt{-L}  
+        \item \texttt{-v}  
+        \item \texttt{-d}  
+    \end{enumerate}
+
+    \item What does the \texttt{-R} option in \texttt{fsck} do?  
+    \begin{enumerate}[A)]
+        \item Checks all mounted filesystems  
+        \item Ignores user prompts  
+        \item Skips the root filesystem when used with \texttt{-A}  
+        \item Verbose mode  
+    \end{enumerate}
+
+    \item Which command is used to debug XFS filesystems?  
+    \begin{enumerate}[A)]
+        \item \texttt{xfs\_repair}  
+        \item \texttt{xfs\_db}  
+        \item \texttt{xfs\_fsr}  
+        \item \texttt{xfs\_check}  
+    \end{enumerate}
+
+    \item What does the \texttt{-h} option in \texttt{du} and \texttt{df} commands provide?  
+    \begin{enumerate}[A)]
+        \item File counts  
+        \item Human-readable sizes  
+        \item Usage in blocks  
+        \item Help information  
+    \end{enumerate}
+
+    \item What is the \texttt{-p} option in \texttt{e2fsck} used for?  
+    \begin{enumerate}[A)]
+        \item Interactive mode  
+        \item Previews filesystem changes  
+        \item Automatically fixes errors  
+        \item Displays inode information  
+    \end{enumerate}
+
+    \item Which command reorganizes an XFS filesystem to reduce fragmentation?  
+    \begin{enumerate}[A)]
+        \item \texttt{xfs\_repair}  
+        \item \texttt{xfs\_db}  
+        \item \texttt{fsck}  
+        \item \texttt{xfs\_fsr}  
+    \end{enumerate}
+
+\end{enumerate}
 
 %-------------------------------------------------------
 % Fill-in-the-Blank Questions (104.2)
@@ -7741,6 +8067,169 @@ export EDITOR=nano
 %-------------------------------------------------------
 \newpage
 \section*{Multiple-Choice Questions for 104.3}
+\begin{enumerate}[1.]
+
+    \item Which command is used to manually mount a filesystem in Linux?  
+    \begin{enumerate}[A)]
+        \item \texttt{mount}  
+        \item \texttt{umount}  
+        \item \texttt{blkid}  
+        \item \texttt{lsblk}  
+    \end{enumerate}
+
+    \item Which command is used to unmount a filesystem?  
+    \begin{enumerate}[A)]
+        \item \texttt{mount}  
+        \item \texttt{unmount}  
+        \item \texttt{umount}  
+        \item \texttt{lsblk}  
+    \end{enumerate}
+
+    \item What does the \texttt{-t} option specify in the \texttt{mount} command?  
+    \begin{enumerate}[A)]
+        \item The device name  
+        \item The mount point  
+        \item The options to be passed  
+        \item The filesystem type  
+    \end{enumerate}
+
+    \item What does the \texttt{\textasciitilde} symbol represent in a mount point path?  
+    \begin{enumerate}[A)]
+        \item The current user's home directory  
+        \item The root directory  
+        \item The system boot directory  
+        \item The \texttt{/media} directory  
+    \end{enumerate}
+
+    \item What file contains the configuration for mounting filesystems during boot?  
+    \begin{enumerate}[A)]
+        \item \texttt{/media/USER/LABEL}  
+        \item \texttt{/mnt}  
+        \item \texttt{/dev/UUID}  
+        \item \texttt{/etc/fstab}  
+    \end{enumerate}
+
+    \item What does the \texttt{-o} option do in the \texttt{mount} command?  
+    \begin{enumerate}[A)]
+        \item Mount all filesystems listed in \texttt{/etc/fstab}  
+        \item Pass mount options as a comma-separated list  
+        \item Mount the filesystem as read-only  
+        \item Mount the filesystem as writable  
+    \end{enumerate}
+
+    \item Which parameter forces the unmounting of a filesystem?  
+    \begin{enumerate}[A)]
+        \item \texttt{-f}  
+        \item \texttt{-a}  
+        \item \texttt{-r}  
+        \item \texttt{-w}  
+    \end{enumerate}
+
+    \item Which command can be used to check which processes are accessing a filesystem?  
+    \begin{enumerate}[A)]
+        \item \texttt{lsof}  
+        \item \texttt{ps}  
+        \item \texttt{top}  
+        \item \texttt{kill}  
+    \end{enumerate}
+
+    \item What is the default mount point for user-removable devices in modern Linux systems?  
+    \begin{enumerate}[A)]
+        \item \texttt{/media}  
+        \item \texttt{/mnt}  
+        \item \texttt{/dev}  
+        \item \texttt{/home}  
+    \end{enumerate}
+
+    \item Which option in \texttt{/etc/fstab} specifies whether a filesystem should be considered for backup?  
+    \begin{enumerate}[A)]
+        \item TYPE  
+        \item MOUNTPOINT  
+        \item OPTIONS  
+        \item DUMP  
+    \end{enumerate}
+
+    \item What does the \texttt{noatime} option do when mounting a filesystem?  
+    \begin{enumerate}[A)]
+        \item Enables access time updates  
+        \item Disables access time updates  
+        \item Enables write permissions  
+        \item Disables write permissions  
+    \end{enumerate}
+
+    \item How can you specify a device by its UUID in the \texttt{mount} command?  
+    \begin{enumerate}[A)]
+        \item Use \texttt{-u} option  
+        \item Use \texttt{UUID=} option  
+        \item Use \texttt{-t UUID}  
+        \item Use \texttt{--uuid}  
+    \end{enumerate}
+
+    \item Which command lists all block devices along with their filesystem labels and UUIDs?  
+    \begin{enumerate}[A)]
+        \item \texttt{blkid -u}  
+        \item \texttt{mount -f}  
+        \item \texttt{lsblk -o}  
+        \item \texttt{lsblk -f}  
+    \end{enumerate}
+
+    \item What is the purpose of the \texttt{systemctl daemon-reload} command?  
+    \begin{enumerate}[A)]
+        \item Reload the kernel  
+        \item Reload systemd configuration files  
+        \item Restart all running services  
+        \item Reload mount units  
+    \end{enumerate}
+
+    \item What is the recommended directory for manually mounting filesystems?  
+    \begin{enumerate}[A)]
+        \item \texttt{/dev}  
+        \item \texttt{/home}  
+        \item \texttt{/mnt}  
+        \item \texttt{/media}  
+    \end{enumerate}
+
+    \item What should the filename of a systemd mount unit match?  
+    \begin{enumerate}[A)]
+        \item The mount point  
+        \item The UUID of the device  
+        \item The label of the filesystem  
+        \item The partition type  
+    \end{enumerate}
+
+    \item What does the \texttt{defaults} option in \texttt{/etc/fstab} imply?  
+    \begin{enumerate}[A)]
+        \item Read-write, auto-mount, async  
+        \item Read-only, user-mount, sync  
+        \item No-execute, auto-mount, async  
+        \item Read-write, no-auto, async  
+    \end{enumerate}
+
+    \item Which option allows a user to mount a filesystem?  
+    \begin{enumerate}[A)]
+        \item \texttt{noexec}  
+        \item \texttt{user}  
+        \item \texttt{nouser}  
+        \item \texttt{exec}  
+    \end{enumerate}
+
+    \item Which systemd target ensures a mount unit is active in multi-user mode?  
+    \begin{enumerate}[A)]
+        \item \texttt{default.target}  
+        \item \texttt{graphical.target}  
+        \item \texttt{basic.target}  
+        \item \texttt{multi-user.target}  
+    \end{enumerate}
+
+    \item How can you enable a systemd mount unit to be active at boot?  
+    \begin{enumerate}[A)]
+        \item Use \texttt{systemctl start}  
+        \item Use \texttt{systemctl reload}  
+        \item Use \texttt{systemctl enable}  
+        \item Use \texttt{systemctl restart}  
+    \end{enumerate}
+
+\end{enumerate}
 
 %-------------------------------------------------------
 % Fill-in-the-Blank Questions (104.3)
@@ -7760,7 +8249,169 @@ export EDITOR=nano
 %-------------------------------------------------------
 \newpage
 \section*{Multiple-Choice Questions for 104.5}
+\begin{enumerate}[1.]
 
+    \item Which command is used to view detailed information about files and directories?  
+    \begin{enumerate}[A)]
+        \item \texttt{ls -a}  
+        \item \texttt{ls -h}  
+        \item \texttt{ls -l}  
+        \item \texttt{ls -s}  
+    \end{enumerate}
+
+    \item What does the first character in the \texttt{ls -l} output represent?  
+    \begin{enumerate}[A)]
+        \item Permissions  
+        \item File owner  
+        \item File type  
+        \item File size  
+    \end{enumerate}
+
+    \item In the \texttt{ls -l} output, what does \texttt{r--} signify?  
+    \begin{enumerate}[A)]
+        \item Read and execute permissions  
+        \item Read-only permissions  
+        \item No write or execute permissions  
+        \item Read, write, and execute permissions  
+    \end{enumerate}
+
+    \item Which permission is required to list files in a directory?  
+    \begin{enumerate}[A)]
+        \item Execute  
+        \item Write  
+        \item Modify  
+        \item Read  
+    \end{enumerate}
+
+    \item What does the sticky bit do when applied to a directory?  
+    \begin{enumerate}[A)]
+        \item Prevents deletion of files by non-owners  
+        \item Grants execute permission to all users  
+        \item Allows only the owner to rename files  
+        \item Limits read access to the directory  
+    \end{enumerate}
+
+    \item Which command is used to change the owner of a file?  
+    \begin{enumerate}[A)]
+        \item \texttt{chown}  
+        \item \texttt{chmod}  
+        \item \texttt{umask}  
+        \item \texttt{touch}  
+    \end{enumerate}
+
+    \item What does the command \texttt{chmod u+x file.sh} do?  
+    \begin{enumerate}[A)]
+        \item Removes execute permission for the user  
+        \item Adds read permission for the group  
+        \item Adds execute permission for all users  
+        \item Adds execute permission for the user  
+    \end{enumerate}
+
+    \item What is the symbolic representation for a file permission of 640?  
+    \begin{enumerate}[A)]
+        \item \texttt{rwx------}  
+        \item \texttt{rw-r--r--}  
+        \item \texttt{rw-r-----}  
+        \item \texttt{rwxr--r--}  
+    \end{enumerate}
+
+    \item Which command will recursively modify permissions for all files in a directory?  
+    \begin{enumerate}[A)]
+        \item \texttt{chmod -R}  
+        \item \texttt{chmod -a}  
+        \item \texttt{chmod -h}  
+        \item \texttt{chmod -l}  
+    \end{enumerate}
+
+    \item How can you combine multiple parameters for the \texttt{ls} command?  
+    \begin{enumerate}[A)]
+        \item Use commas  
+        \item Use semicolons  
+        \item Combine them without spaces  
+        \item Use brackets  
+    \end{enumerate}
+
+    \item What is the octal value of the execute permission?  
+    \begin{enumerate}[A)]
+        \item 4  
+        \item 1  
+        \item 2  
+        \item 7  
+    \end{enumerate}
+
+    \item What is the default \texttt{umask} value for files with permissions \texttt{rw-r--r--}?  
+    \begin{enumerate}[A)]
+        \item 022  
+        \item 644  
+        \item 007  
+        \item 755  
+    \end{enumerate}
+
+    \item Which permission is required to enter a directory?  
+    \begin{enumerate}[A)]
+        \item Execute  
+        \item Write  
+        \item Modify  
+        \item Read  
+    \end{enumerate}
+
+    \item Which special permission is applied when using \texttt{chmod 4755} on a file?  
+    \begin{enumerate}[A)]
+        \item SGID  
+        \item SUID  
+        \item Sticky bit  
+        \item No special permissions  
+    \end{enumerate}
+
+    \item What does the \texttt{-R} option in \texttt{chmod} do?  
+    \begin{enumerate}[A)]
+        \item Reverses permissions  
+        \item Removes permissions  
+        \item Recursively applies changes  
+        \item Lists permissions recursively  
+    \end{enumerate}
+
+    \item What command shows all hidden files in a directory?  
+    \begin{enumerate}[A)]
+        \item \texttt{ls -h}  
+        \item \texttt{ls -lh}  
+        \item \texttt{ls -R}  
+        \item \texttt{ls -a}  
+    \end{enumerate}
+
+    \item What is the octal value of the permission set \texttt{rwxr-xr-x}?  
+    \begin{enumerate}[A)]
+        \item 640  
+        \item 755  
+        \item 622  
+        \item 777  
+    \end{enumerate}
+
+    \item Which command changes a file's group ownership to \texttt{students}?  
+    \begin{enumerate}[A)]
+        \item \texttt{chown :students filename}  
+        \item \texttt{chmod g+students filename}  
+        \item \texttt{chgrp students filename}  
+        \item \texttt{chmod g=students filename}  
+    \end{enumerate}
+
+    \item What does the SGID bit do for directories?  
+    \begin{enumerate}[A)]
+        \item Ensures all users can modify files  
+        \item Sets group ownership for new files in the directory  
+        \item Prevents non-owners from deleting files  
+        \item Disables write permissions for others  
+    \end{enumerate}
+
+    \item Which file type is represented by the character \texttt{d} in \texttt{ls -l}?  
+    \begin{enumerate}[A)]
+        \item Socket  
+        \item File  
+        \item Directory  
+        \item Symbolic link  
+    \end{enumerate}
+
+\end{enumerate}
 %-------------------------------------------------------
 % Fill-in-the-Blank Questions (104.5)
 %-------------------------------------------------------
@@ -7779,6 +8430,170 @@ export EDITOR=nano
 %-------------------------------------------------------
 \newpage
 \section*{Multiple-Choice Questions for 104.6}
+\begin{enumerate}[1.]
+
+    \item What command is used to create a hard link in Linux?  
+    \begin{enumerate}[A)]
+        \item \texttt{ln -s}  
+        \item \texttt{ln}  
+        \item \texttt{link}  
+        \item \texttt{hardln}  
+    \end{enumerate}
+
+    \item What attribute does a hard link share with its target file?  
+    \begin{enumerate}[A)]
+        \item File name  
+        \item Inode number  
+        \item File size  
+        \item Permissions  
+    \end{enumerate}
+
+    \item What happens if you delete the original file of a hard link?  
+    \begin{enumerate}[A)]
+        \item The hard link stops working.  
+        \item The data remains accessible via the hard link.  
+        \item Both the original file and hard link are deleted.  
+        \item The file system becomes corrupted.  
+    \end{enumerate}
+
+    \item Which command parameter is used with \texttt{ln} to create symbolic links?  
+    \begin{enumerate}[A)]
+        \item \texttt{-h}  
+        \item \texttt{-i}  
+        \item \texttt{-v}  
+        \item \texttt{-s}  
+    \end{enumerate}
+
+    \item What does the inode number represent in a file system?  
+    \begin{enumerate}[A)]
+        \item The size of a file  
+        \item The permissions of a file  
+        \item The attributes and location of a file's data  
+        \item The file's last modification date  
+    \end{enumerate}
+
+    \item What is the default link count of a file in Linux?  
+    \begin{enumerate}[A)]
+        \item 0  
+        \item 1  
+        \item 2  
+        \item 3  
+    \end{enumerate}
+
+    \item What is the maximum scope for creating a hard link?  
+    \begin{enumerate}[A)]
+        \item Across different file systems  
+        \item Within the same file system  
+        \item Between partitions  
+        \item Across network file systems  
+    \end{enumerate}
+
+    \item What symbol indicates a symbolic link in \texttt{ls -lh} output?  
+    \begin{enumerate}[A)]
+        \item \texttt{-}  
+        \item \texttt{l}  
+        \item \texttt{s}  
+        \item \texttt{h}  
+    \end{enumerate}
+
+    \item What happens when a symbolic link’s target is deleted?  
+    \begin{enumerate}[A)]
+        \item The symbolic link automatically updates.  
+        \item The symbolic link stops working.  
+        \item The symbolic link is converted to a hard link.  
+        \item Both the target and the symbolic link are deleted.  
+    \end{enumerate}
+
+    \item What does \texttt{ln -s target.txt softlink} create?  
+    \begin{enumerate}[A)]
+        \item A hard link named \texttt{softlink}  
+        \item A symbolic link named \texttt{target.txt}  
+        \item A symbolic link named \texttt{softlink}  
+        \item A copy of \texttt{target.txt}  
+    \end{enumerate}
+
+    \item Which type of link allows cross-filesystem linking?  
+    \begin{enumerate}[A)]
+        \item Hard links  
+        \item Symbolic links  
+        \item Directory links  
+        \item Junction points  
+    \end{enumerate}
+
+    \item What is a key difference between hard and symbolic links?  
+    \begin{enumerate}[A)]
+        \item Symbolic links are case-sensitive, but hard links are not.  
+        \item Hard links can link directories, but symbolic links cannot.  
+        \item Symbolic links can span different filesystems, but hard links cannot.  
+        \item Hard links support multiple targets, but symbolic links do not.  
+    \end{enumerate}
+
+    \item What happens if a relative symbolic link is moved?  
+    \begin{enumerate}[A)]
+        \item It works as expected.  
+        \item It breaks if the target path changes.  
+        \item It changes to an absolute link.  
+        \item The link is deleted automatically.  
+    \end{enumerate}
+
+    \item How can you create a hard link to a file named \texttt{file.txt} in the current directory?  
+    \begin{enumerate}[A)]
+        \item \texttt{ln -h file.txt}  
+        \item \texttt{ln file.txt file\_link}  
+        \item \texttt{ln -i file.txt}  
+        \item \texttt{ln -s file.txt file\_link}  
+    \end{enumerate}
+
+    \item What file attribute is increased when a hard link is created?  
+    \begin{enumerate}[A)]
+        \item Inode number  
+        \item Link count  
+        \item File permissions  
+        \item File size  
+    \end{enumerate}
+
+    \item Which command shows the inode number of files?  
+    \begin{enumerate}[A)]
+        \item \texttt{ls -h}  
+        \item \texttt{ln -i}  
+        \item \texttt{ls -li}  
+        \item \texttt{stat -i}  
+    \end{enumerate}
+
+    \item What happens when you use \texttt{mv} on a hard link?  
+    \begin{enumerate}[A)]
+        \item It breaks the link.  
+        \item The link is moved, but its function remains unchanged.  
+        \item It converts to a symbolic link.  
+        \item The link stops pointing to the inode.  
+    \end{enumerate}
+
+    \item What is indicated by the output \texttt{lrwxrwxrwx} for a file in \texttt{ls -l}?  
+    \begin{enumerate}[A)]
+        \item A directory  
+        \item A hard link  
+        \item A symbolic link  
+        \item A special file  
+    \end{enumerate}
+
+    \item What happens if you use \texttt{rm} on a symbolic link?  
+    \begin{enumerate}[A)]
+        \item Both the link and its target are deleted.  
+        \item Only the symbolic link is deleted.  
+        \item The target file is renamed.  
+        \item The link converts to a hard link.  
+    \end{enumerate}
+
+    \item What command would create a symbolic link to \texttt{/etc/fstab} called \texttt{mylink}?  
+    \begin{enumerate}[A)]
+        \item \texttt{ln -h /etc/fstab mylink}  
+        \item \texttt{ln /etc/fstab mylink}  
+        \item \texttt{ln -s /etc/fstab mylink}  
+        \item \texttt{link /etc/fstab mylink}  
+    \end{enumerate}
+
+\end{enumerate}
+
 
 %-------------------------------------------------------
 % Fill-in-the-Blank Questions (104.6)
@@ -7798,6 +8613,169 @@ export EDITOR=nano
 %-------------------------------------------------------
 \newpage
 \section*{Multiple-Choice Questions for 104.7}
+\begin{enumerate}[1.]
+
+    \item What is the root directory of the filesystem hierarchy in Linux?  
+    \begin{enumerate}[A)]
+        \item \texttt{/home}  
+        \item \texttt{/root}  
+        \item \texttt{/boot}  
+        \item \texttt{/}  
+    \end{enumerate}
+
+    \item Which directory contains host-specific configuration files?  
+    \begin{enumerate}[A)]
+        \item \texttt{/usr}  
+        \item \texttt{/etc}  
+        \item \texttt{/var}  
+        \item \texttt{/tmp}  
+    \end{enumerate}
+
+    \item What is the purpose of the \texttt{/dev} directory?  
+    \begin{enumerate}[A)]
+        \item Contains essential binaries  
+        \item Contains device files  
+        \item Stores temporary files  
+        \item Contains user home directories  
+    \end{enumerate}
+
+    \item Which directory is the home directory for the superuser?  
+    \begin{enumerate}[A)]
+        \item \texttt{/root}  
+        \item \texttt{/home}  
+        \item \texttt{/etc}  
+        \item \texttt{/usr}  
+    \end{enumerate}
+
+    \item Where are removable media devices, such as flash drives, typically mounted?  
+    \begin{enumerate}[A)]
+        \item \texttt{/tmp}  
+        \item \texttt{/media}  
+        \item \texttt{/mnt}  
+        \item \texttt{/run}  
+    \end{enumerate}
+
+    \item Which directory stores shared libraries required to boot the system?  
+    \begin{enumerate}[A)]
+        \item \texttt{/lib}  
+        \item \texttt{/usr}  
+        \item \texttt{/boot}  
+        \item \texttt{/var}  
+    \end{enumerate}
+
+    \item What is the purpose of the \texttt{/var/tmp} directory?  
+    \begin{enumerate}[A)]
+        \item Temporary files that persist between reboots  
+        \item Files related to running processes  
+        \item Variable data written during system operation  
+        \item Temporary files erased during boot-up  
+    \end{enumerate}
+
+    \item Which command is used to locate the binary for a specific command?  
+    \begin{enumerate}[A)]
+        \item \texttt{whereis}  
+        \item \texttt{locate}  
+        \item \texttt{which}  
+        \item \texttt{find}  
+    \end{enumerate}
+
+    \item Which file controls the behavior of the \texttt{updatedb} command?  
+    \begin{enumerate}[A)]
+        \item \texttt{/etc/updatedb}  
+        \item \texttt{/var/updatedb}  
+        \item \texttt{/etc/updatedb.conf}  
+        \item \texttt{/usr/updatedb.conf}  
+    \end{enumerate}
+
+    \item What is the purpose of the \texttt{-iname} parameter in the \texttt{find} command?  
+    \begin{enumerate}[A)]
+        \item Limits the search depth  
+        \item Performs a case-insensitive search  
+        \item Matches executable files only  
+        \item Matches empty files and directories  
+    \end{enumerate}
+
+    \item Which of the following matches files that are executable by the current user?  
+    \begin{enumerate}[A)]
+        \item \texttt{-readable}  
+        \item \texttt{-empty}  
+        \item \texttt{-executable}  
+        \item \texttt{-perm}  
+    \end{enumerate}
+
+    \item What does the \texttt{locate} command rely on to perform its searches?  
+    \begin{enumerate}[A)]
+        \item Filesystem metadata  
+        \item A pre-built database  
+        \item Real-time file system scanning  
+        \item System logs  
+    \end{enumerate}
+
+    \item What is the effect of the \texttt{-c} option in the \texttt{locate} command?  
+    \begin{enumerate}[A)]
+        \item Searches case-insensitively  
+        \item Counts matching files  
+        \item Checks file existence before displaying  
+        \item Limits the search depth  
+    \end{enumerate}
+
+    \item What does the \texttt{type} command display?  
+    \begin{enumerate}[A)]
+        \item The type and location of a binary  
+        \item A list of file types  
+        \item The permissions of a file  
+        \item The contents of the PATH variable  
+    \end{enumerate}
+
+    \item Which directory is reserved for application software packages?  
+    \begin{enumerate}[A)]
+        \item \texttt{/srv}  
+        \item \texttt{/usr}  
+        \item \texttt{/lib}  
+        \item \texttt{/opt}  
+    \end{enumerate}
+
+    \item What does the \texttt{-size} parameter in the \texttt{find} command match?  
+    \begin{enumerate}[A)]
+        \item Files with a specific owner  
+        \item Files of a specified size  
+        \item Files of a specific type  
+        \item Files with a specific name  
+    \end{enumerate}
+
+    \item Which \texttt{find} parameter searches for files that have been accessed 10 days ago?  
+    \begin{enumerate}[A)]
+        \item \texttt{-cmin}  
+        \item \texttt{-amin}  
+        \item \texttt{-atime}  
+        \item \texttt{-mtime}  
+    \end{enumerate}
+
+    \item What command shows all paths to an executable?  
+    \begin{enumerate}[A)]
+        \item \texttt{locate}  
+        \item \texttt{whereis}  
+        \item \texttt{which -a}  
+        \item \texttt{find}  
+    \end{enumerate}
+
+    \item What parameter prevents the \texttt{find} command from searching in mounted filesystems?  
+    \begin{enumerate}[A)]
+        \item \texttt{-maxdepth}  
+        \item \texttt{-mount}  
+        \item \texttt{-fstype}  
+        \item \texttt{-iname}  
+    \end{enumerate}
+
+    \item Which directory is cleared during system boot-up by default?  
+    \begin{enumerate}[A)]
+        \item \texttt{/tmp}  
+        \item \texttt{/var/tmp}  
+        \item \texttt{/run}  
+        \item \texttt{/media}  
+    \end{enumerate}
+
+\end{enumerate}
 
 %-------------------------------------------------------
 % Fill-in-the-Blank Questions (104.7)
@@ -8911,7 +9889,7 @@ export EDITOR=nano
 % Answer-Sheet (103.7)
 %-------------------------------------------------------
 
-\subsection*{103.6 Modify process execution priorities}
+\subsection*{103.7 Search text files using regular expressions}
 \subsubsection*{Multiple-Choice Questions (103.7)}
 \begin{enumerate}[1.]
     \item A
@@ -8952,7 +9930,7 @@ export EDITOR=nano
 %-------------------------------------------------------
 % Answer-Sheet (103.8)
 %-------------------------------------------------------
-\subsection*{103.8 Modify process execution priorities}
+\subsection*{103.8 Basic file editing}
 \subsubsection*{Multiple-Choice Questions (103.8)}
 \begin{enumerate}[1.]
     \item C
@@ -9000,57 +9978,180 @@ export EDITOR=nano
 %-------------------------------------------------------
 % Answer-Sheet (104.1)
 %-------------------------------------------------------
-\subsection*{104.1 Modify process execution priorities}
+\subsection*{104.1 Create partitions and filesystems}
 \subsubsection*{Multiple-Choice Questions (104.1)}
+\begin{enumerate}[1.]
+    \item D
+    \item C
+    \item B
+    \item A
+    \item C
+    \item B
+    \item A
+    \item A
+    \item D
+    \item C
+    \item C
+    \item A
+    \item B
+    \item B
+    \item D
+    \item B
+    \item B
+    \item B
+    \item B
+    \item C
+\end{enumerate}
 
 \subsubsection*{Fill-in-the-Blank Questions (104.1)}
 
 %-------------------------------------------------------
 % Answer-Sheet (104.2)
 %-------------------------------------------------------
-\subsection*{104.1 Modify process execution priorities}
+\subsection*{104.2 Maintain the integrity of filesystems}
 \subsubsection*{Multiple-Choice Questions (104.2)}
+\begin{enumerate}[1.]
+    \item D
+    \item A
+    \item C
+    \item D
+    \item D
+    \item C
+    \item D
+    \item C
+    \item C
+    \item A
+    \item A
+    \item A
+    \item A
+    \item B
+    \item B
+    \item C
+    \item B
+    \item B
+    \item C
+    \item D
+\end{enumerate}
 
 \subsubsection*{Fill-in-the-Blank Questions (104.2)}
 
 %-------------------------------------------------------
 % Answer-Sheet (104.3)
 %-------------------------------------------------------
-\subsection*{104.3 Modify process execution priorities}
+\subsection*{104.3 Control mounting and unmounting of filesystems}
 \subsubsection*{Multiple-Choice Questions (104.3)}
+\begin{enumerate}[1.]
+    \item A
+    \item C
+    \item D
+    \item A
+    \item D
+    \item B
+    \item A
+    \item A
+    \item A
+    \item D
+    \item B
+    \item B
+    \item D
+    \item B
+    \item C
+    \item A
+    \item A
+    \item B
+    \item D
+    \item C
+\end{enumerate}
 
 \subsubsection*{Fill-in-the-Blank Questions (104.3)}
 
 %-------------------------------------------------------
-% Answer-Sheet (104.4)
-%-------------------------------------------------------
-\subsection*{104.4 Modify process execution priorities}
-\subsubsection*{Multiple-Choice Questions (104.4)}
-
-\subsubsection*{Fill-in-the-Blank Questions (104.4)}
-
-%-------------------------------------------------------
 % Answer-Sheet (104.5)
 %-------------------------------------------------------
-\subsection*{104.5 Modify process execution priorities}
+\subsection*{104.5 Manage file permissions and ownership}
 \subsubsection*{Multiple-Choice Questions (104.5)}
+\begin{enumerate}[1.]
+    \item C
+    \item A
+    \item B
+    \item D
+    \item C
+    \item A
+    \item D
+    \item C
+    \item A
+    \item C
+    \item B
+    \item C
+    \item A
+    \item B
+    \item C
+    \item D
+    \item B
+    \item B
+    \item C
+    \item C
+\end{enumerate}
 
 \subsubsection*{Fill-in-the-Blank Questions (104.5)}
 
 %-------------------------------------------------------
 % Answer-Sheet (104.6)
 %-------------------------------------------------------
-\subsection*{104.6 Modify process execution priorities}
+\subsection*{104.6 Create and change hard and symbolic links}
 \subsubsection*{Multiple-Choice Questions (104.6)}
+\begin{enumerate}[1.]
+    \item B
+    \item B
+    \item B
+    \item D
+    \item C
+    \item C
+    \item B
+    \item B
+    \item B
+    \item C
+    \item B
+    \item C
+    \item B
+    \item B
+    \item B
+    \item C
+    \item B
+    \item C
+    \item B
+    \item C
+\end{enumerate}
 
 \subsubsection*{Fill-in-the-Blank Questions (104.6)}
 
 %-------------------------------------------------------
 % Answer-Sheet (104.7)
 %-------------------------------------------------------
-\subsection*{104.7 Modify process execution priorities}
+\subsection*{104.7 Find system files and place files in the correct location}
 \subsubsection*{Multiple-Choice Questions (104.7)}
-
+\begin{enumerate}[1.]
+    \item D
+    \item B
+    \item B
+    \item A
+    \item B
+    \item A
+    \item A
+    \item C
+    \item C
+    \item B
+    \item C
+    \item B
+    \item B
+    \item A
+    \item D
+    \item B
+    \item C
+    \item C
+    \item A
+    \item A
+\end{enumerate}
 \subsubsection*{Fill-in-the-Blank Questions (104.7)}
 
 %=======================================================
@@ -9063,7 +10164,7 @@ export EDITOR=nano
 %-------------------------------------------------------
 % Answer-Sheet (105.1)
 %-------------------------------------------------------
-\subsection*{105.1 Modify process execution priorities}
+\subsection*{105.1 Customize and use the shell environment}
 \subsubsection*{Multiple-Choice Questions (105.1)}
 
 \subsubsection*{Fill-in-the-Blank Questions (105.1)}
@@ -9071,7 +10172,7 @@ export EDITOR=nano
 %-------------------------------------------------------
 % Answer-Sheet (105.2)
 %-------------------------------------------------------
-\subsection*{105.2 Modify process execution priorities}
+\subsection*{105.2 Customize or write simple scripts}
 \subsubsection*{Multiple-Choice Questions (105.2)}
 
 \subsubsection*{Fill-in-the-Blank Questions (105.2)}
@@ -9086,7 +10187,7 @@ export EDITOR=nano
 %-------------------------------------------------------
 % Answer-Sheet (106.1)
 %-------------------------------------------------------
-\subsection*{106.1 Modify process execution priorities}
+\subsection*{106.1 Install and configure X11}
 \subsubsection*{Multiple-Choice Questions (106.1)}
 
 \subsubsection*{Fill-in-the-Blank Questions (106.1)}
@@ -9094,7 +10195,7 @@ export EDITOR=nano
 %-------------------------------------------------------
 % Answer-Sheet (106.2)
 %-------------------------------------------------------
-\subsection*{106.2 Modify process execution priorities}
+\subsection*{106.2 Graphical Desktops}
 \subsubsection*{Multiple-Choice Questions (106.2)}
 
 \subsubsection*{Fill-in-the-Blank Questions (106.2)}
@@ -9102,7 +10203,7 @@ export EDITOR=nano
 %-------------------------------------------------------
 % Answer-Sheet (106.3)
 %-------------------------------------------------------
-\subsection*{106.3 Modify process execution priorities}
+\subsection*{106.3 Accessibility}
 \subsubsection*{Multiple-Choice Questions (106.3)}
 
 \subsubsection*{Fill-in-the-Blank Questions (106.3)}
@@ -9117,7 +10218,7 @@ export EDITOR=nano
 %-------------------------------------------------------
 % Answer-Sheet (107.1)
 %-------------------------------------------------------
-\subsection*{107.1 Modify process execution priorities}
+\subsection*{107.1 Manage user and group accounts and related system files}
 \subsubsection*{Multiple-Choice Questions (107.1)}
 
 \subsubsection*{Fill-in-the-Blank Questions (107.1)}
@@ -9125,7 +10226,7 @@ export EDITOR=nano
 %-------------------------------------------------------
 % Answer-Sheet (107.2)
 %-------------------------------------------------------
-\subsection*{107.2 Modify process execution priorities}
+\subsection*{107.2 Automate system administration tasks by scheduling jobs}
 \subsubsection*{Multiple-Choice Questions (107.2)}
 
 \subsubsection*{Fill-in-the-Blank Questions (107.2)}
@@ -9133,7 +10234,7 @@ export EDITOR=nano
 %-------------------------------------------------------
 % Answer-Sheet (107.3)
 %-------------------------------------------------------
-\subsection*{107.3 Modify process execution priorities}
+\subsection*{107.3 Localisation and internationalisation}
 \subsubsection*{Multiple-Choice Questions (107.3)}
 
 \subsubsection*{Fill-in-the-Blank Questions (107.3)}
@@ -9148,7 +10249,7 @@ export EDITOR=nano
 %-------------------------------------------------------
 % Answer-Sheet (108.1)
 %-------------------------------------------------------
-\subsection*{108.1 Modify process execution priorities}
+\subsection*{108.1 Maintain system time}
 \subsubsection*{Multiple-Choice Questions (108.1)}
 
 \subsubsection*{Fill-in-the-Blank Questions (108.1)}
@@ -9156,7 +10257,7 @@ export EDITOR=nano
 %-------------------------------------------------------
 % Answer-Sheet (108.2)
 %-------------------------------------------------------
-\subsection*{108.2 Modify process execution priorities}
+\subsection*{108.2 System logging}
 \subsubsection*{Multiple-Choice Questions (108.2)}
 
 \subsubsection*{Fill-in-the-Blank Questions (108.2)}
@@ -9164,7 +10265,7 @@ export EDITOR=nano
 %-------------------------------------------------------
 % Answer-Sheet (108.3)
 %-------------------------------------------------------
-\subsection*{108.3 Modify process execution priorities}
+\subsection*{108.3 Mail Transfer Agent (MTA) basics}
 \subsubsection*{Multiple-Choice Questions (108.3)}
 
 \subsubsection*{Fill-in-the-Blank Questions (108.3)}
@@ -9172,7 +10273,7 @@ export EDITOR=nano
 %-------------------------------------------------------
 % Answer-Sheet (108.4)
 %-------------------------------------------------------
-\subsection*{108.4 Modify process execution priorities}
+\subsection*{108.4 Manage printers and printing}
 \subsubsection*{Multiple-Choice Questions (108.4)}
 
 \subsubsection*{Fill-in-the-Blank Questions (108.4)}
@@ -9187,7 +10288,7 @@ export EDITOR=nano
 %-------------------------------------------------------
 % Answer-Sheet (109.1)
 %-------------------------------------------------------
-\subsection*{109.1 Modify process execution priorities}
+\subsection*{109.1 Fundamentals of internet protocols}
 \subsubsection*{Multiple-Choice Questions (109.1)}
 
 \subsubsection*{Fill-in-the-Blank Questions (109.1)}
@@ -9195,7 +10296,7 @@ export EDITOR=nano
 %-------------------------------------------------------
 % Answer-Sheet (109.2)
 %-------------------------------------------------------
-\subsection*{109.2 Modify process execution priorities}
+\subsection*{109.2 Persistent network configuration}
 \subsubsection*{Multiple-Choice Questions (109.2)}
 
 \subsubsection*{Fill-in-the-Blank Questions (109.2)}
@@ -9203,7 +10304,7 @@ export EDITOR=nano
 %-------------------------------------------------------
 % Answer-Sheet (109.3)
 %-------------------------------------------------------
-\subsection*{109.3 Modify process execution priorities}
+\subsection*{109.3 Basic network troubleshooting}
 \subsubsection*{Multiple-Choice Questions (109.3)}
 
 \subsubsection*{Fill-in-the-Blank Questions (109.3)}
@@ -9211,7 +10312,7 @@ export EDITOR=nano
 %-------------------------------------------------------
 % Answer-Sheet (109.4)
 %-------------------------------------------------------
-\subsection*{109.4 Modify process execution priorities}
+\subsection*{109.4 Configure client side DNS}
 \subsubsection*{Multiple-Choice Questions (109.4)}
 
 \subsubsection*{Fill-in-the-Blank Questions (109.4)}
@@ -9226,7 +10327,7 @@ export EDITOR=nano
 %-------------------------------------------------------
 % Answer-Sheet (110.1)
 %-------------------------------------------------------
-\subsection*{110.1 Modify process execution priorities}
+\subsection*{110.1 Perform security administration tasks}
 \subsubsection*{Multiple-Choice Questions (110.1)}
 
 \subsubsection*{Fill-in-the-Blank Questions (110.1)}
@@ -9234,7 +10335,7 @@ export EDITOR=nano
 %-------------------------------------------------------
 % Answer-Sheet (110.2)
 %-------------------------------------------------------
-\subsection*{110.2 Modify process execution priorities}
+\subsection*{110.2 Setup host security}
 \subsubsection*{Multiple-Choice Questions (110.2)}
 
 \subsubsection*{Fill-in-the-Blank Questions (110.2)}
@@ -9242,7 +10343,7 @@ export EDITOR=nano
 %-------------------------------------------------------
 % Answer-Sheet (110.3)
 %-------------------------------------------------------
-\subsection*{110.3 Modify process execution priorities}
+\subsection*{110.3 Securing data with encryption}
 \subsubsection*{Multiple-Choice Questions (110.3)}
 
 \subsubsection*{Fill-in-the-Blank Questions (110.3)}

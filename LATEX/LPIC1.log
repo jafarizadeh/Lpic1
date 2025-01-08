@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.8.31)  8 JAN 2025 16:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.8.31)  8 JAN 2025 23:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -385,7 +385,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.37 ...sks by scheduling jobs}{188}{section*.348}
+l.37 ...sks by scheduling jobs}{200}{section*.348}
                                                   % [1
 
 ])
@@ -493,56 +493,56 @@ LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
 Chapter 4.
 [148
 
-] [149] [150] [151] [152] [153] [154] [155] [156] [157] [158] [159] [160] [161] [162] [163] [164] [165] [166]
+] [149] [150] [151] [152] [153] [154] [155] [156] [157] [158] [159] [160] [161] [162] [163] [164] [165] [166] [167] [168] [169] [170] [171] [172] [173] [174] [175] [176] [177] [178]
 Chapter 5.
-[167
+[179
 
-] [168] [169] [170] [171] [172] [173]
+] [180] [181] [182] [183] [184] [185]
 Chapter 6.
-[174
+[186
 
-] [175] [176] [177] [178] [179] [180] [181] [182] [183]
+] [187] [188] [189] [190] [191] [192] [193] [194] [195]
 Chapter 7.
-[184
+[196
 
-] [185] [186] [187] [188] [189] [190] [191] [192] [193]
+] [197] [198] [199] [200] [201] [202] [203] [204] [205]
 Chapter 8.
-[194
+[206
 
-] [195] [196] [197] [198] [199] [200] [201] [202] [203] [204] [205] [206]
+] [207] [208] [209] [210] [211] [212] [213] [214] [215] [216] [217] [218]
 Chapter 9.
-[207
+[219
 
-] [208] [209] [210] [211] [212] [213] [214] [215] [216] [217] [218] [219]
+] [220] [221] [222] [223] [224] [225] [226] [227] [228] [229] [230] [231]
 Chapter 10.
-[220
+[232
 
-] [221] [222] [223] [224] [225] [226] [227] [228] [229] [230
+] [233] [234] [235] [236] [237] [238] [239] [240] [241] [242
 
 
-] [231] [232] [233] [234] [235] [236] [237] [238] [239] [240] [241] [242] [243] [244] [245] [246] [247]
-Overfull \vbox (1163.51587pt too high) has occurred while \output is active []
+] [243] [244] [245] [246] [247] [248] [249] [250] [251] [252] [253] [254] [255] [256] [257] [258] [259] [260] [261] [262] [263]
+Overfull \vbox (697.88211pt too high) has occurred while \output is active []
 
- [248] (LPIC1.aux)
+ [264] (LPIC1.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
 Package rerunfilecheck Info: File `LPIC1.out' has not changed.
-(rerunfilecheck)             Checksum: E22407F568E33BF210B1298E88C4902A;16101.
+(rerunfilecheck)             Checksum: 606F1635078DF1DDE09EF5E6F01806B6;16101.
  ) 
 Here is how much of TeX's memory you used:
- 16625 strings out of 474486
- 227574 string characters out of 5744227
+ 17358 strings out of 474486
+ 234146 string characters out of 5744227
  2040542 words of memory out of 5000000
  34913 multiletter control sequences out of 15000+600000
  571820 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,8n,79p,581b,2160s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecit1000.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1000.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1440.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt1000.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt0900.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1000.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2074.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk><C:/Users/Lord/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Lord/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on LPIC1.pdf (249 pages, 1114336 bytes).
+Output written on LPIC1.pdf (265 pages, 1227318 bytes).
 PDF statistics:
- 6409 PDF objects out of 7423 (max. 8388607)
- 3838 named destinations out of 4296 (max. 500000)
+ 7342 PDF objects out of 7423 (max. 8388607)
+ 4571 named destinations out of 5155 (max. 500000)
  505 words of extra memory for PDF output out of 10000 (max. 10000000)
 

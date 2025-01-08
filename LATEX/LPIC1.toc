@@ -20,44 +20,44 @@
 \contentsline {section}{103.8 Basic file editing}{140}{section*.294}%
 \contentsline {chapter}{\numberline {4}Topic 104: Devices, Linux Filesystems, Filesystem Hierarchy Standard}{148}{chapter.4}%
 \contentsline {section}{104.1 Create partitions and filesystems}{149}{section*.312}%
-\contentsline {section}{104.2 Maintain the integrity of filesystems}{152}{section*.315}%
-\contentsline {section}{104.3 Control mounting and unmounting of filesystems}{155}{section*.318}%
-\contentsline {section}{104.5 Manage file permissions and ownership}{158}{section*.321}%
-\contentsline {section}{104.6 Create and change hard and symbolic links}{161}{section*.324}%
-\contentsline {section}{104.7 Find system files and place files in the correct location}{164}{section*.327}%
-\contentsline {chapter}{\numberline {5}Topic 105: Shells and Shell Scripting}{167}{chapter.5}%
-\contentsline {section}{105.1 Customize and use the shell environment}{168}{section*.330}%
-\contentsline {section}{105.2 Customize or write simple scripts}{171}{section*.333}%
-\contentsline {chapter}{\numberline {6}Topic 106: User Interfaces and Desktops}{174}{chapter.6}%
-\contentsline {section}{106.1 Install and configure X11}{175}{section*.336}%
-\contentsline {section}{106.2 Graphical Desktops}{178}{section*.339}%
-\contentsline {section}{106.3 Accessibility}{181}{section*.342}%
-\contentsline {chapter}{\numberline {7}Topic 107: Administrative Tasks}{184}{chapter.7}%
-\contentsline {section}{107.1 Manage user and group accounts and related system files}{185}{section*.345}%
-\contentsline {section}{107.2 Automate system administration tasks by scheduling jobs}{188}{section*.348}%
-\contentsline {section}{107.3 Localisation and internationalisation}{191}{section*.351}%
-\contentsline {chapter}{\numberline {8}Topic 108: Essential System Services}{194}{chapter.8}%
-\contentsline {section}{108.1 Maintain system time}{195}{section*.354}%
-\contentsline {section}{108.2 System logging}{198}{section*.357}%
-\contentsline {section}{108.3 Mail Transfer Agent (MTA) basics}{201}{section*.360}%
-\contentsline {section}{108.4 Manage printers and printing}{204}{section*.363}%
-\contentsline {chapter}{\numberline {9}Topic 109: Networking Fundamentals}{207}{chapter.9}%
-\contentsline {section}{109.1 Fundamentals of internet protocols}{208}{section*.366}%
-\contentsline {section}{109.2 Persistent network configuration}{211}{section*.369}%
-\contentsline {section}{109.3 Basic network troubleshooting}{214}{section*.372}%
-\contentsline {section}{109.4 Configure client side DNS}{217}{section*.375}%
-\contentsline {chapter}{\numberline {10}Topic 110: Security}{220}{chapter.10}%
-\contentsline {section}{110.1 Perform security administration tasks}{221}{section*.378}%
-\contentsline {section}{110.2 Setup host security}{224}{section*.381}%
-\contentsline {section}{110.3 Securing data with encryption}{227}{section*.384}%
-\contentsline {chapter}{Answers}{230}{chapter*.387}%
-\contentsline {section}{Topic 101: System Architecture}{230}{section*.388}%
-\contentsline {section}{Topic 102: Linux Installation and Package Management}{233}{section*.398}%
-\contentsline {section}{Topic 103: GNU and Unix Commands}{239}{section*.417}%
-\contentsline {section}{Topic 104: Devices, Linux Filesystems, Filesystem Hierarchy Standard}{248}{section*.442}%
-\contentsline {section}{Topic 105: Shells and Shell Scripting}{248}{section*.464}%
-\contentsline {section}{Topic 106: User Interfaces and Desktops}{248}{section*.471}%
-\contentsline {section}{Topic 107: Administrative Tasks}{248}{section*.481}%
-\contentsline {section}{Topic 108: Essential System Services}{248}{section*.491}%
-\contentsline {section}{Topic 109: Networking Fundamentals}{248}{section*.504}%
-\contentsline {section}{Topic 110: Security}{248}{section*.517}%
+\contentsline {section}{104.2 Maintain the integrity of filesystems}{154}{section*.315}%
+\contentsline {section}{104.3 Control mounting and unmounting of filesystems}{159}{section*.318}%
+\contentsline {section}{104.5 Manage file permissions and ownership}{164}{section*.321}%
+\contentsline {section}{104.6 Create and change hard and symbolic links}{169}{section*.324}%
+\contentsline {section}{104.7 Find system files and place files in the correct location}{174}{section*.327}%
+\contentsline {chapter}{\numberline {5}Topic 105: Shells and Shell Scripting}{179}{chapter.5}%
+\contentsline {section}{105.1 Customize and use the shell environment}{180}{section*.330}%
+\contentsline {section}{105.2 Customize or write simple scripts}{183}{section*.333}%
+\contentsline {chapter}{\numberline {6}Topic 106: User Interfaces and Desktops}{186}{chapter.6}%
+\contentsline {section}{106.1 Install and configure X11}{187}{section*.336}%
+\contentsline {section}{106.2 Graphical Desktops}{190}{section*.339}%
+\contentsline {section}{106.3 Accessibility}{193}{section*.342}%
+\contentsline {chapter}{\numberline {7}Topic 107: Administrative Tasks}{196}{chapter.7}%
+\contentsline {section}{107.1 Manage user and group accounts and related system files}{197}{section*.345}%
+\contentsline {section}{107.2 Automate system administration tasks by scheduling jobs}{200}{section*.348}%
+\contentsline {section}{107.3 Localisation and internationalisation}{203}{section*.351}%
+\contentsline {chapter}{\numberline {8}Topic 108: Essential System Services}{206}{chapter.8}%
+\contentsline {section}{108.1 Maintain system time}{207}{section*.354}%
+\contentsline {section}{108.2 System logging}{210}{section*.357}%
+\contentsline {section}{108.3 Mail Transfer Agent (MTA) basics}{213}{section*.360}%
+\contentsline {section}{108.4 Manage printers and printing}{216}{section*.363}%
+\contentsline {chapter}{\numberline {9}Topic 109: Networking Fundamentals}{219}{chapter.9}%
+\contentsline {section}{109.1 Fundamentals of internet protocols}{220}{section*.366}%
+\contentsline {section}{109.2 Persistent network configuration}{223}{section*.369}%
+\contentsline {section}{109.3 Basic network troubleshooting}{226}{section*.372}%
+\contentsline {section}{109.4 Configure client side DNS}{229}{section*.375}%
+\contentsline {chapter}{\numberline {10}Topic 110: Security}{232}{chapter.10}%
+\contentsline {section}{110.1 Perform security administration tasks}{233}{section*.378}%
+\contentsline {section}{110.2 Setup host security}{236}{section*.381}%
+\contentsline {section}{110.3 Securing data with encryption}{239}{section*.384}%
+\contentsline {chapter}{Answers}{242}{chapter*.387}%
+\contentsline {section}{Topic 101: System Architecture}{242}{section*.388}%
+\contentsline {section}{Topic 102: Linux Installation and Package Management}{245}{section*.398}%
+\contentsline {section}{Topic 103: GNU and Unix Commands}{251}{section*.417}%
+\contentsline {section}{Topic 104: Devices, Linux Filesystems, Filesystem Hierarchy Standard}{259}{section*.442}%
+\contentsline {section}{Topic 105: Shells and Shell Scripting}{264}{section*.461}%
+\contentsline {section}{Topic 106: User Interfaces and Desktops}{264}{section*.468}%
+\contentsline {section}{Topic 107: Administrative Tasks}{264}{section*.478}%
+\contentsline {section}{Topic 108: Essential System Services}{264}{section*.488}%
+\contentsline {section}{Topic 109: Networking Fundamentals}{264}{section*.501}%
+\contentsline {section}{Topic 110: Security}{264}{section*.514}%
