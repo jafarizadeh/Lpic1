@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.8.31)  8 JAN 2025 23:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.8.31)  8 JAN 2025 23:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -493,7 +493,22 @@ LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
 Chapter 4.
 [148
 
-] [149] [150] [151] [152] [153] [154] [155] [156] [157] [158] [159] [160] [161] [162] [163] [164] [165] [166] [167] [168] [169] [170] [171] [172] [173] [174] [175] [176] [177] [178]
+] [149] [150] [151] [152] [153] [154] [155] [156] [157] [158] [159] [160] [161] [162] [163] [164] [165] [166] [167]
+Overfull \hbox (4.95201pt too wide) in paragraph at lines 8496--8497
+[]\T1/cmr/m/n/10 In sym-bolic mode, the char-ac-ter used to rep-re-sent "oth-ers" when mod-i-fy-ing per-mis-sions is $[]$. 
+ []
+
+[168] [169] [170] [171] [172]
+Overfull \hbox (9.58977pt too wide) in paragraph at lines 8697--8698
+[]\T1/cmr/m/n/10 In the out-put of the \T1/cmtt/m/n/10 ls -li \T1/cmr/m/n/10 com-mand, the num-ber be-fore the file per-mis-sions rep-re-sents the $[]$
+ []
+
+[173] [174] [175] [176] [177]
+Overfull \hbox (0.20317pt too wide) in paragraph at lines 8897--8898
+[]\T1/cmr/m/n/10 The di-rec-tory that serves as the root of the filesys-tem hi-er-ar-chy in Linux is rep-re-sented as $[]$. 
+ []
+
+[178]
 Chapter 5.
 [179
 
@@ -520,10 +535,10 @@ Chapter 10.
 ] [233] [234] [235] [236] [237] [238] [239] [240] [241] [242
 
 
-] [243] [244] [245] [246] [247] [248] [249] [250] [251] [252] [253] [254] [255] [256] [257] [258] [259] [260] [261] [262] [263]
-Overfull \vbox (697.88211pt too high) has occurred while \output is active []
+] [243] [244] [245] [246] [247] [248] [249] [250] [251] [252] [253] [254] [255] [256] [257] [258] [259] [260] [261] [262] [263] [264] [265]
+Overfull \vbox (670.72546pt too high) has occurred while \output is active []
 
- [264] (LPIC1.aux)
+ [266] (LPIC1.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
@@ -532,17 +547,17 @@ Package rerunfilecheck Info: File `LPIC1.out' has not changed.
 (rerunfilecheck)             Checksum: 606F1635078DF1DDE09EF5E6F01806B6;16101.
  ) 
 Here is how much of TeX's memory you used:
- 17358 strings out of 474486
- 234146 string characters out of 5744227
+ 17480 strings out of 474486
+ 235242 string characters out of 5744227
  2040542 words of memory out of 5000000
  34913 multiletter control sequences out of 15000+600000
  571820 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,8n,79p,581b,2160s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecit1000.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1000.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1440.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt1000.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt0900.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1000.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2074.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\Lord\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk><C:/Users/Lord/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Lord/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on LPIC1.pdf (265 pages, 1227318 bytes).
+Output written on LPIC1.pdf (267 pages, 1250275 bytes).
 PDF statistics:
- 7342 PDF objects out of 7423 (max. 8388607)
- 4571 named destinations out of 5155 (max. 500000)
+ 7495 PDF objects out of 8907 (max. 8388607)
+ 4693 named destinations out of 5155 (max. 500000)
  505 words of extra memory for PDF output out of 10000 (max. 10000000)
 

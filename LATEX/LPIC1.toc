@@ -55,9 +55,9 @@
 \contentsline {section}{Topic 102: Linux Installation and Package Management}{245}{section*.398}%
 \contentsline {section}{Topic 103: GNU and Unix Commands}{251}{section*.417}%
 \contentsline {section}{Topic 104: Devices, Linux Filesystems, Filesystem Hierarchy Standard}{259}{section*.442}%
-\contentsline {section}{Topic 105: Shells and Shell Scripting}{264}{section*.461}%
-\contentsline {section}{Topic 106: User Interfaces and Desktops}{264}{section*.468}%
-\contentsline {section}{Topic 107: Administrative Tasks}{264}{section*.478}%
-\contentsline {section}{Topic 108: Essential System Services}{264}{section*.488}%
-\contentsline {section}{Topic 109: Networking Fundamentals}{264}{section*.501}%
-\contentsline {section}{Topic 110: Security}{264}{section*.514}%
+\contentsline {section}{Topic 105: Shells and Shell Scripting}{266}{section*.461}%
+\contentsline {section}{Topic 106: User Interfaces and Desktops}{266}{section*.468}%
+\contentsline {section}{Topic 107: Administrative Tasks}{266}{section*.478}%
+\contentsline {section}{Topic 108: Essential System Services}{266}{section*.488}%
+\contentsline {section}{Topic 109: Networking Fundamentals}{266}{section*.501}%
+\contentsline {section}{Topic 110: Security}{266}{section*.514}%

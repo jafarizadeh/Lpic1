@@ -7873,6 +7873,28 @@ export EDITOR=nano
 \newpage
 \section*{Fill-in-the-Blank Questions for 104.1}
 
+\begin{enumerate}[1.]
+\item The Master Boot Record (MBR) can only support up to \underline{\hspace{2cm}} primary partitions per disk.
+
+\item To create a new partition using \texttt{fdisk}, the command \underline{\hspace{2cm}} is used.
+
+\item A partition labeled as type \underline{\hspace{2cm}} in \texttt{fdisk} is designated for Linux swap space.
+
+\item The GUID Partition Table (GPT) can support up to \underline{\hspace{2cm}} partitions, limited only by the operating system.
+
+\item The command to simulate the creation of a filesystem with \texttt{mkfs.ext4} is \underline{\hspace{2cm}}.
+
+\item The utility used to create a Btrfs filesystem is \underline{\hspace{2cm}}.
+
+\item In \texttt{parted}, the command \underline{\hspace{2cm}} is used to create a new partition table.
+
+\item Btrfs supports a feature called \underline{\hspace{2cm}}, which allows creating a writable directory-like structure inside the filesystem.
+
+\item To create a FAT or VFAT filesystem, the utility \underline{\hspace{2cm}} is used.
+
+\item After creating a swap partition, the command \underline{\hspace{2cm}} is used to enable it for use.
+\end{enumerate}
+
 %-------------------------------------------------------
 % 104.2 Maintain the integrity of filesystems
 %-------------------------------------------------------
@@ -8054,6 +8076,28 @@ export EDITOR=nano
 %-------------------------------------------------------
 \newpage
 \section*{Fill-in-the-Blank Questions for 104.2}
+
+\begin{enumerate}[1.]
+\item The \underline{\hspace{2cm}} command is used to recursively display disk usage for directories and subdirectories.
+
+\item To check free space and inode usage on a filesystem, the \underline{\hspace{2cm}} command is used.
+
+\item The \texttt{-h} option in both \texttt{du} and \texttt{df} commands stands for \underline{\hspace{2cm}} output.
+
+\item The utility used to check and repair \texttt{ext2}, \texttt{ext3}, and \texttt{ext4} filesystems is \underline{\hspace{2cm}}.
+
+\item The parameter \underline{\hspace{2cm}} in \texttt{e2fsck} automatically fixes all errors without user interaction.
+
+\item The \underline{\hspace{2cm}} command allows tuning of \texttt{ext2}, \texttt{ext3}, and \texttt{ext4} filesystem parameters.
+
+\item The \underline{\hspace{2cm}} command repairs \texttt{XFS} filesystems and should not be run on mounted filesystems.
+
+\item The \texttt{--exclude="PATTERN"} option in the \underline{\hspace{2cm}} command omits specific files or directories from the output.
+
+\item The \texttt{-T} option in the \texttt{df} command displays the type of the \underline{\hspace{2cm}} being used by the filesystem.
+
+\item The \underline{\hspace{2cm}} command can be used to defragment \texttt{XFS} filesystems.
+\end{enumerate}
 
 %-------------------------------------------------------
 % 104.3 Control mounting and unmounting of filesystems
@@ -8237,6 +8281,28 @@ export EDITOR=nano
 \newpage
 \section*{Fill-in-the-Blank Questions for 104.3}
 
+\begin{enumerate}[1.]
+    \item The command used to manually mount a filesystem is \underline{\hspace{2cm}}.
+    
+    \item The file \underline{\hspace{2cm}} contains configurations for filesystems that should be mounted during system boot.
+    
+    \item The \underline{\hspace{2cm}} command is used to unmount a filesystem.
+    
+    \item The \underline{\hspace{2cm}} directory is the default location for automatically mounted user-removable devices in modern Linux systems.
+    
+    \item In the \texttt{/etc/fstab} file, the field that specifies the type of filesystem is \underline{\hspace{2cm}}.
+    
+    \item To list processes accessing a specific filesystem, the command \underline{\hspace{2cm}} can be used.
+    
+    \item The \underline{\hspace{2cm}} option in the \texttt{/etc/fstab} file disables updates to the file's access time, improving I/O performance.
+    
+    \item The \underline{\hspace{2cm}} utility displays information about block devices, including labels and UUIDs, with the \texttt{-f} parameter.
+    
+    \item Systemd mount units should be saved in the directory \underline{\hspace{2cm}}.
+    
+    \item The command \underline{\hspace{2cm}} is used to reload the systemd daemon configuration after editing unit files.
+    \end{enumerate}
+
 %-------------------------------------------------------
 % 104.5 Manage file permissions and ownership
 %-------------------------------------------------------
@@ -8417,6 +8483,28 @@ export EDITOR=nano
 %-------------------------------------------------------
 \newpage
 \section*{Fill-in-the-Blank Questions for 104.5}
+
+\begin{enumerate}[1.]
+    \item The command used to change the permissions of a file is \underline{\hspace{2cm}}.
+    
+    \item To recursively modify the permissions of all files and directories, the \texttt{chmod} command must include the \underline{\hspace{2cm}} option.
+    
+    \item The octal value for the permission set \texttt{rw-r--r--} is \underline{\hspace{2cm}}.
+    
+    \item The \underline{\hspace{2cm}} command is used to change the owner of a file.
+    
+    \item In symbolic mode, the character used to represent "others" when modifying permissions is \underline{\hspace{2cm}}.
+    
+    \item The special permission that ensures a directory's files cannot be deleted by users who do not own them is called the \underline{\hspace{2cm}}.
+    
+    \item The default permissions for newly created files are determined by the \underline{\hspace{2cm}} value.
+    
+    \item The file type for a symbolic link is represented by the character \underline{\hspace{2cm}} in the output of \texttt{ls -l}.
+    
+    \item The permission that allows a user to execute a file or enter a directory is \underline{\hspace{2cm}}.
+    
+    \item The \underline{\hspace{2cm}} command is used to view all hidden files in a directory.
+    \end{enumerate}
 
 %-------------------------------------------------------
 % 104.6 Create and change hard and symbolic links
@@ -8601,6 +8689,28 @@ export EDITOR=nano
 \newpage
 \section*{Fill-in-the-Blank Questions for 104.6}
 
+\begin{enumerate}[1.]
+    \item A hard link is an additional entry in the filesystem that points to the same \underline{\hspace{2cm}} as the target file.
+    
+    \item The command to create a symbolic link is \texttt{ln} with the \underline{\hspace{2cm}} option.
+    
+    \item In the output of the \texttt{ls -li} command, the number before the file permissions represents the \underline{\hspace{2cm}} number.
+    
+    \item A symbolic link can point to files or directories, even across different \underline{\hspace{2cm}}.
+    
+    \item To create a hard link, the \underline{\hspace{2cm}} file must already exist.
+    
+    \item When you delete a hard link, the data remains accessible if there is at least one other \underline{\hspace{2cm}} pointing to the same inode.
+    
+    \item The permissions displayed for a symbolic link in \texttt{ls} output always show \underline{\hspace{2cm}} for all users.
+    
+    \item The relative path of a symbolic link is interpreted as relative to the location of the \underline{\hspace{2cm}}.
+    
+    \item Hard links cannot be created for \underline{\hspace{2cm}}, and both the link and target must reside on the same filesystem.
+    
+    \item The \texttt{ln target.txt linkname} command creates a \underline{\hspace{2cm}} link to the target file.
+    \end{enumerate}
+
 %-------------------------------------------------------
 % 104.7 Find system files and place files in the correct location
 %-------------------------------------------------------
@@ -8782,6 +8892,28 @@ export EDITOR=nano
 %-------------------------------------------------------
 \newpage
 \section*{Fill-in-the-Blank Questions for 104.7}
+
+\begin{enumerate}[1.]
+    \item The directory that serves as the root of the filesystem hierarchy in Linux is represented as \underline{\hspace{2cm}}.
+    
+    \item The \underline{\hspace{2cm}} directory contains host-specific configuration files for programs.
+    
+    \item Temporary files that persist across reboots are stored in the \underline{\hspace{2cm}} directory.
+    
+    \item The command \underline{\hspace{2cm}} is used to find the full path of an executable file on the system.
+    
+    \item The \underline{\hspace{2cm}} file controls the behavior of the \texttt{updatedb} command and allows you to configure ignored filesystems and paths.
+    
+    \item Files under the \underline{\hspace{2cm}} directory are used to store user-specific data and configurations.
+    
+    \item The \underline{\hspace{2cm}} command is used to search for files based on attributes like permissions, size, and last access time.
+    
+    \item In the Filesystem Hierarchy Standard, device files such as \texttt{/dev/sda} are located in the \underline{\hspace{2cm}} directory.
+    
+    \item To search for files case-insensitively using the \texttt{find} command, the parameter \underline{\hspace{2cm}} is used.
+    
+    \item The directory \underline{\hspace{2cm}} is used for user-mountable removable media, such as USB drives.
+    \end{enumerate}
 
 
 %=======================================================
@@ -10004,6 +10136,19 @@ export EDITOR=nano
 \end{enumerate}
 
 \subsubsection*{Fill-in-the-Blank Questions (104.1)}
+\begin{enumerate}[1.]
+    \item 4
+    \item n
+    \item 82
+    \item 128 or more
+    \item mkfs.ext4 -n
+    \item mkfs.btrfs
+    \item mklabel
+    \item subvolume
+    \item mkfs.vfat
+    \item mkswap
+\end{enumerate}
+
 
 %-------------------------------------------------------
 % Answer-Sheet (104.2)
@@ -10034,6 +10179,19 @@ export EDITOR=nano
 \end{enumerate}
 
 \subsubsection*{Fill-in-the-Blank Questions (104.2)}
+\begin{enumerate}[1.]
+    \item du
+    \item df
+    \item human-readable
+    \item e2fsck
+    \item -y
+    \item tune2fs
+    \item xfs\_repair
+    \item du
+    \item filesystem
+    \item xfs\_fsr
+\end{enumerate}
+
 
 %-------------------------------------------------------
 % Answer-Sheet (104.3)
@@ -10064,6 +10222,18 @@ export EDITOR=nano
 \end{enumerate}
 
 \subsubsection*{Fill-in-the-Blank Questions (104.3)}
+\begin{enumerate}[1.]
+    \item mount
+    \item /etc/fstab
+    \item umount
+    \item /media
+    \item fs\_type
+    \item lsof
+    \item noatime
+    \item blkid
+    \item /etc/systemd/system
+    \item systemctl daemon-reload
+\end{enumerate}
 
 %-------------------------------------------------------
 % Answer-Sheet (104.5)
@@ -10094,6 +10264,18 @@ export EDITOR=nano
 \end{enumerate}
 
 \subsubsection*{Fill-in-the-Blank Questions (104.5)}
+\begin{enumerate}[1.]
+    \item chmod
+    \item -R
+    \item 644
+    \item chown
+    \item o
+    \item sticky bit
+    \item umask
+    \item l
+    \item execute
+    \item ls -a
+\end{enumerate}
 
 %-------------------------------------------------------
 % Answer-Sheet (104.6)
@@ -10124,6 +10306,18 @@ export EDITOR=nano
 \end{enumerate}
 
 \subsubsection*{Fill-in-the-Blank Questions (104.6)}
+\begin{enumerate}[1.]
+    \item inode
+    \item -s
+    \item inode
+    \item filesystems
+    \item target
+    \item link
+    \item rwx
+    \item link
+    \item directories
+    \item hard
+\end{enumerate}
 
 %-------------------------------------------------------
 % Answer-Sheet (104.7)
@@ -10152,7 +10346,20 @@ export EDITOR=nano
     \item A
     \item A
 \end{enumerate}
+
 \subsubsection*{Fill-in-the-Blank Questions (104.7)}
+\begin{enumerate}[1.]
+    \item /
+    \item /etc
+    \item /var/tmp
+    \item which
+    \item /etc/updatedb.conf
+    \item /home
+    \item find
+    \item /dev
+    \item -iname
+    \item /media
+\end{enumerate}
 
 %=======================================================
 % ANSWERS FOR TOPIC 105
