@@ -2970,13 +2970,13 @@ apt-file search /bin/somefile
 \item If you have missing dependencies after a failed install, you can attempt to fix them with:\newline
 \texttt{apt-get install \underline{\hspace{2cm}}}.
 
-\item You can use `dpkg` with the \textbf{-I} parameter to get \underline{\hspace{2cm}} about a .deb package file.
+\item You can use \texttt{dpkg} with the \textbf{-I} parameter to get \underline{\hspace{2cm}} about a .deb package file.
 
 \item The package list that APT uses is also known as the APT \underline{\hspace{2cm}}.
 
-\item The parameter `dpkg -L` lets you list the \underline{\hspace{2cm}} installed by a particular package.
+\item The parameter \texttt{dpkg -L} lets you list the \underline{\hspace{2cm}} installed by a particular package.
 
-\item Lines beginning with a \underline{\hspace{2cm}} character in `/etc/apt/sources.list` are ignored because they are comments.
+\item Lines beginning with a \underline{\hspace{2cm}} character in \texttt{/etc/apt/sources.list} are ignored because they are comments.
 
 \item The command:\newline
 \texttt{apt-\underline{\hspace{2cm}} search p7zip}\newline
@@ -2985,7 +2985,7 @@ is used to search for a package containing the term “p7zip.”
 \item To remove all downloaded package files and reclaim disk space, you run:\newline
 \texttt{apt-get \underline{\hspace{2cm}}}.
 
-\item The configuration files are only completely removed when you use the dpkg parameter `-P`, which stands for:\newline
+\item The configuration files are only completely removed when you use the dpkg parameter \texttt{-P}, which stands for:\newline
 \texttt{dpkg -P \underline{\hspace{2cm}}}.
 
 \end{enumerate}
@@ -4459,6 +4459,30 @@ touch my\ big\ file
 %-------------------------------------------------------
 % Fill-in-the-Blank Questions (103.1)
 %-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 103.1}
+
+\begin{enumerate}[1.]
+\item The command \underline{\hspace{2cm}} is used to display the system’s manual pages for a given command.
+
+\item To search through the descriptions of available man pages by keyword, you would use the \underline{\hspace{2cm}} command.
+
+\item By default, the \underline{\hspace{2cm}} command displays a list of all previously executed commands in the current shell session.
+
+\item The environment variable that contains a list of directories where executables can be found without specifying a full path is \underline{\hspace{2cm}}.
+
+\item The command \underline{\hspace{2cm}} prints your current working directory.
+
+\item When you type `bash` inside an existing Bash shell, you start a new (child) shell; typing \underline{\hspace{2cm}} exits that child shell.
+
+\item The \underline{\hspace{2cm}} command will display the value of a variable if you put a `\$` in front of the variable name.
+
+\item When you run `type` on a command like `uname`, and it says “uname is hashed,” it means the command is stored in the shell’s \underline{\hspace{2cm}}.
+
+\item The file name \underline{\hspace{2cm}} in your home directory contains a record of recent Bash commands when you exit the shell.
+
+\item The command \underline{\hspace{2cm}} can be used to remove or unset an existing environment variable from the current session.
+\end{enumerate}
 
 %-------------------------------------------------------
 % 103.2 Process text streams using filters
@@ -4860,7 +4884,30 @@ sha256sum -c sha256.txt
 %-------------------------------------------------------
 % Fill-in-the-Blank Questions (103.2)
 %-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 103.2}
 
+\begin{enumerate}[1.]
+    \item When you use the command \texttt{\underline{\hspace{2cm}} ftu.txt.gz}, it will decompress and display the file’s contents on the screen without creating an uncompressed file.
+    
+    \item The command \texttt{\underline{\hspace{2cm}}} can be used to extract lines from a file that match a given pattern, and it supports the \texttt{-i} option for case-insensitive searches.
+    
+    \item By default, \texttt{\underline{\hspace{2cm}}} shows the first ten lines of a file, whereas \texttt{tail} shows the last ten lines.
+    
+    \item The command \texttt{\underline{\hspace{2cm}}} can perform in-place edits on a file when combined with the \texttt{-i} option, and it is known as a stream editor.
+    
+    \item Using \texttt{> myfile} redirects the standard output of a command to a file, whereas \texttt{\underline{\hspace{2cm}} myfile} appends it without overwriting.
+    
+    \item The command \texttt{\underline{\hspace{2cm}}} computes a 128-bit cryptographic hash value of a file, often displayed as a 32-character hexadecimal number.
+    
+    \item Typing \texttt{cat ftu.txt | \underline{\hspace{2cm}} 'this'} will output lines containing "this" in the file, ignoring character-case differences if the \texttt{-i} switch is used.
+    
+    \item The command \texttt{\underline{\hspace{2cm}}} can be used to paginate output one screen at a time, allowing you to scroll using arrow keys or vi-like shortcuts.
+    
+    \item To display the contents of a compressed file created by \texttt{bzip2} without decompressing it to disk, you should use the \texttt{\underline{\hspace{2cm}}} command.
+    
+    \item When you run \texttt{\underline{\hspace{2cm}} -c sha256.txt}, it compares the saved SHA256 sum with the current file’s hash value to verify data integrity.
+    \end{enumerate}
 %-------------------------------------------------------
 % 103.3 Perform basic file management
 %-------------------------------------------------------
@@ -5341,7 +5388,30 @@ dd if=testfile of=testfile_copy bs=1K status=progress
 %-------------------------------------------------------
 % Fill-in-the-Blank Questions (103.3)
 %-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 103.3}
 
+\begin{enumerate}[1.]
+\item The \texttt{\underline{\hspace{2cm}}} command can be used to \textbf{rename} a file or move it to a new location.
+
+\item The command \texttt{\underline{\hspace{2cm}} -r mydir newdir} \textbf{copies} a directory recursively.
+
+\item The wildcard character \texttt{\underline{\hspace{2cm}}} matches \textbf{exactly one character}.
+
+\item To find files \textbf{larger than 2G}, you can use \texttt{\underline{\hspace{2cm}} /var -size +2G}.
+
+\item The command \texttt{tar \underline{\hspace{2cm}} archive.tar data} is used to \textbf{create} an archive.
+
+\item To \textbf{extract} a \texttt{.tar.gz} file with \texttt{tar}, you replace the \texttt{-c} option with \texttt{\underline{\hspace{2cm}}}.
+
+\item The \texttt{\underline{\hspace{2cm}}} command is used to \textbf{remove empty directories}.
+
+\item A \texttt{\underline{\hspace{2cm}}} is basically a container of multiple files bundled together by the \texttt{tar} command.
+
+\item In the context of the \textbf{find} command with \texttt{-exec}, the placeholder \texttt{\underline{\hspace{2cm}}} refers to the \textbf{currently found file}.
+
+\item The \texttt{\underline{\hspace{2cm}}} command is used to \textbf{uncompress} \texttt{.gz} files (and removes the original \texttt{.gz} file by default).
+\end{enumerate}
 %-------------------------------------------------------
 % 103.4 Use streams, pipes and redirects
 %-------------------------------------------------------
@@ -5787,6 +5857,30 @@ find . -name "file*" -print0 | xargs -0 rm
 %-------------------------------------------------------
 % Fill-in-the-Blank Questions (103.4)
 %-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 103.4}
+
+\begin{enumerate}[1.]
+    \item The \underline{\hspace{2cm}} character is used to create a pipeline that connects the output of one command to the input of another.
+    
+    \item In Bash, the \underline{\hspace{2cm}} syntax or backticks can be used for command substitution to use the output of a command as an argument.
+    
+    \item The \underline{\hspace{2cm}} command can display the output of a pipeline on the screen and save it to a file simultaneously.
+    
+    \item To correctly handle filenames with spaces, the \texttt{find} command should use the \underline{\hspace{2cm}} option along with the \texttt{-0} option in \texttt{xargs}.
+    
+    \item The \underline{\hspace{2cm}} option in \texttt{xargs} specifies a substitution placeholder for input values to be placed in specific locations in a command.
+    
+    \item In the pipeline \texttt{cat /proc/cpuinfo | grep 'model name' | uniq}, the \underline{\hspace{2cm}} command filters out repeated lines.
+    
+    \item To append data to a file instead of overwriting it, the \underline{\hspace{2cm}} option should be used with the \texttt{tee} command.
+    
+    \item When redirecting both \texttt{stdout} and \texttt{stderr} to a file, the \underline{\hspace{2cm}} operator should be used before the pipe.
+    
+    \item The \underline{\hspace{2cm}} command is used to sort numerical output in ascending order in a pipeline.
+    
+    \item The \underline{\hspace{2cm}} command can be used instead of \texttt{xargs} to execute a command for each result produced by \texttt{find}.
+    \end{enumerate}
 
 %-------------------------------------------------------
 % 103.5 Create, monitor and kill processes
@@ -6277,6 +6371,30 @@ kill %1  # kills job #1
 %-------------------------------------------------------
 % Fill-in-the-Blank Questions (103.5)
 %-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 103.5}
+
+\begin{enumerate}[1.]
+\item The \underline{\hspace{2cm}} command is used to run processes in the background by appending it to the end of the command.
+
+\item The command \texttt{nohup} is used to detach jobs from the current terminal session and save the output to a default file named \underline{\hspace{2cm}}.
+
+\item The \underline{\hspace{2cm}} command is used to terminate a process by sending it a signal such as \texttt{SIGTERM}.
+
+\item To bring a background process to the foreground, the command \underline{\hspace{2cm}} followed by the job ID is used.
+
+\item The \underline{\hspace{2cm}} command is used to periodically execute a program and display its output, with the default interval being 2 seconds.
+
+\item In \texttt{tmux}, the default command prefix is \underline{\hspace{2cm}}, which is used before entering other commands.
+
+\item To create a new session in \texttt{screen}, the command \underline{\hspace{2cm}} is used, followed by a session name.
+
+\item In \texttt{screen}, the combination \texttt{Ctrl + a - \underline{\hspace{2cm}}} is used to detach the current session.
+
+\item The configuration file for customizing \texttt{tmux} is typically located at \underline{\hspace{2cm}} for user-level settings.
+
+\item To split a \texttt{tmux} window into vertical panes, the key combination \texttt{Ctrl + b - \underline{\hspace{2cm}}} is used.
+\end{enumerate}
 
 %-------------------------------------------------------
 % 103.6 Modify process execution priorities
@@ -6620,27 +6738,27 @@ renice +10 -p <PID>
 \section*{Fill-in-the-Blank Questions for 103.6}
 
 \begin{enumerate}[1.]
-    \item B
-    \item C
-    \item C
-    \item C
-    \item D
-    \item B
-    \item D
-    \item A
-    \item C
-    \item B
-    \item A
-    \item A
-    \item C
-    \item D
-    \item B
-    \item C
-    \item C
-    \item C
-    \item A
-    \item C
-\end{enumerate}
+    \item In Linux, the priority of a process under normal scheduling policies is determined by its \underline{\hspace{2cm}} value.
+    
+    \item The \underline{\hspace{2cm}} command is used to change the priority of a running process.
+    
+    \item The priority values for normal processes in Linux range from \underline{\hspace{2cm}} to \underline{\hspace{2cm}}.
+    
+    \item A real-time process has a static priority range of \underline{\hspace{2cm}} to \underline{\hspace{2cm}}.
+    
+    \item The default nice value for a process in Linux is \underline{\hspace{2cm}}.
+    
+    \item In the \texttt{ps} command output, the \underline{\hspace{2cm}} column represents the nice value of a process.
+    
+    \item To start a process with a modified nice value, the \underline{\hspace{2cm}} command is used with the \texttt{-n} option.
+    
+    \item In the \texttt{top} command, pressing the \underline{\hspace{2cm}} key allows you to modify the niceness of a process.
+    
+    \item Lower nice values correspond to \underline{\hspace{2cm}} priorities for a process.
+    
+    \item Only the \underline{\hspace{2cm}} user can decrease the nice value of a process below zero.
+    \end{enumerate}
+
 %-------------------------------------------------------
 % 103.7 Search text files using regular expressions
 %-------------------------------------------------------
@@ -6929,10 +7047,199 @@ lastb -n 10 -d -a --time-format notime \
 %-------------------------------------------------------
 % Multiple-Choice Questions for (103.7)
 %-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 103.7}
+\begin{enumerate}[1.]
 
+    \item Which of the following atoms matches any character in a regular expression?  
+    \begin{enumerate}[A)]
+        \item \texttt{.}  
+        \item \texttt{\^}  
+        \item \texttt{\$}  
+        \item \texttt{*}  
+    \end{enumerate}
+
+    \item What does the \texttt{\^} atom signify in a regular expression?  
+    \begin{enumerate}[A)]
+        \item End of a line  
+        \item Beginning of a line  
+        \item Matches any character  
+        \item Literal caret character  
+    \end{enumerate}
+
+    \item Which bracket expression matches any uppercase letter?  
+    \begin{enumerate}[A)]
+        \item \texttt{[A-Z]}  
+        \item \texttt{[:upper:]}  
+        \item \texttt{[[:upper:]]}  
+        \item \texttt{[a-z]}  
+    \end{enumerate}
+
+    \item What is the effect of the \texttt{*} quantifier in both basic and extended regular expressions?  
+    \begin{enumerate}[A)]
+        \item Matches exactly one occurrence  
+        \item Matches zero or more occurrences  
+        \item Matches one or more occurrences  
+        \item Matches no occurrences  
+    \end{enumerate}
+
+    \item What is the function of the \texttt{?} quantifier in extended regular expressions?  
+    \begin{enumerate}[A)]
+        \item Matches one or more occurrences  
+        \item Matches zero or one occurrence  
+        \item Matches zero or more occurrences  
+        \item Matches exactly one occurrence  
+    \end{enumerate}
+
+    \item How do you specify a quantifier in basic regular expressions?  
+    \begin{enumerate}[A)]
+        \item Directly using \texttt{\{\}}  
+        \item Preceded by a slash \texttt{/}  
+        \item Preceded by a backslash \texttt{\textbackslash}  
+        \item Using parentheses \texttt{()}  
+    \end{enumerate}
+
+    \item Which of the following commands enables extended regular expressions in the \texttt{find} command?  
+    \begin{enumerate}[A)]
+        \item \texttt{-regex}  
+        \item \texttt{-iregex}  
+        \item \texttt{-regex posix-extended}  
+        \item \texttt{-regextype posix-extended}  
+    \end{enumerate}
+
+    \item What is the function of a back reference in extended regular expressions?  
+    \begin{enumerate}[A)]
+        \item Matches any previous pattern  
+        \item Denotes the start of a line  
+        \item Indicates case sensitivity  
+        \item Refers to a parenthesized subexpression  
+    \end{enumerate}
+
+    \item Which regular expression matches a sequence of exactly two blank characters?  
+    \begin{enumerate}[A)]
+        \item \texttt{[[:blank:]]\{2\}}  
+        \item \texttt{[[:space:]]*}  
+        \item \texttt{[[:blank:]]\{2,\}}  
+        \item \texttt{[[:space:]]\{1,2\}}  
+    \end{enumerate}
+
+    \item What is the default regular expression type used by the \texttt{find} command?  
+    \begin{enumerate}[A)]
+        \item POSIX-extended  
+        \item findutils-default  
+        \item egrep style  
+        \item None of the above  
+    \end{enumerate}
+
+    \item Which command is used to display lines matching a specific pattern within a file?  
+    \begin{enumerate}[A)]
+        \item \texttt{grep}  
+        \item \texttt{sed}  
+        \item \texttt{awk}  
+        \item \texttt{find}  
+    \end{enumerate}
+
+    \item What does the \texttt{-c} option do when used with the \texttt{grep} command?  
+    \begin{enumerate}[A)]
+        \item Counts the number of matching files  
+        \item Displays line numbers of matches  
+        \item Counts the number of matching lines  
+        \item Displays matching lines with filenames  
+    \end{enumerate}
+
+    \item Which option in \texttt{grep} is used to perform a case-insensitive search?  
+    \begin{enumerate}[A)]
+        \item \texttt{-c}  
+        \item \texttt{-n}  
+        \item \texttt{-i}  
+        \item \texttt{-H}  
+    \end{enumerate}
+
+    \item Which program is designed to modify text in a non-interactive manner?  
+    \begin{enumerate}[A)]
+        \item \texttt{sed}  
+        \item \texttt{grep}  
+        \item \texttt{awk}  
+        \item \texttt{cut}  
+    \end{enumerate}
+
+    \item What does the \texttt{-H} option in \texttt{grep} do?  
+    \begin{enumerate}[A)]
+        \item Suppresses output filenames  
+        \item Displays the search pattern used  
+        \item Outputs the number of matched patterns  
+        \item Displays filenames with matched lines  
+    \end{enumerate}
+
+    \item Which command in \texttt{sed} replaces the first match of \texttt{hda} with \texttt{sda}?  
+    \begin{enumerate}[A)]
+        \item \texttt{sda/hda}  
+        \item \texttt{hda/sda/g}  
+        \item \texttt{s/hda/sda/}  
+        \item \texttt{g/sda/hda/}  
+    \end{enumerate}
+
+    \item What does the \texttt{-E} option enable in the \texttt{grep} command?  
+    \begin{enumerate}[A)]
+        \item Basic regular expressions  
+        \item Extended regular expressions  
+        \item File searching  
+        \item Null-separated data handling  
+    \end{enumerate}
+
+    \item In \texttt{sed}, what instruction is used to delete a line that matches a specific pattern?  
+    \begin{enumerate}[A)]
+        \item \texttt{c}  
+        \item \texttt{r}  
+        \item \texttt{g}  
+        \item \texttt{d}  
+    \end{enumerate}
+
+    \item Which command chain identifies failed login attempts and removes lines without hostnames?  
+    \begin{enumerate}[A)]
+        \item \texttt{lastb | sed 'd'}  
+        \item \texttt{grep -c failed}  
+        \item \texttt{lastb | grep -E hostname}  
+        \item \texttt{lastb -d -a | grep -v '[0-9]\$'}  
+    \end{enumerate}
+
+    \item Which program ignores regular expressions and matches only literal strings?  
+    \begin{enumerate}[A)]
+        \item \texttt{egrep}  
+        \item \texttt{sed}  
+        \item \texttt{grep}  
+        \item \texttt{fgrep}  
+    \end{enumerate}
+
+\end{enumerate}
 %-------------------------------------------------------
 % Fill-in-the-Blank Questions (103.7)
 %-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 103.7}
+
+\begin{enumerate}[1.]
+\item A regular expression atom that matches with the beginning of a line is represented by the symbol \underline{\hspace{2cm}}.
+
+\item The character class \underline{\hspace{2cm}} is used to represent any printable character, including spaces.
+
+\item In extended regular expressions, branches are separated by the \underline{\hspace{2cm}} symbol.
+
+\item To match a sequence of one or more occurrences of an atom in an extended regular expression, the quantifier \underline{\hspace{2cm}} is used.
+
+\item In the \texttt{find} command, the option \underline{\hspace{2cm}} enables extended regular expressions.
+
+\item The command \underline{\hspace{2cm}} is used to modify text in a non-interactive way, often in pipelines.
+
+\item In the \texttt{grep} command, the \underline{\hspace{2cm}} option enables case-insensitive searches.
+
+\item The \underline{\hspace{2cm}} program is equivalent to \texttt{grep -E}, enabling extended regular expressions.
+
+\item To count the number of lines that match a pattern using \texttt{grep}, the \underline{\hspace{2cm}} option is used.
+
+\item In \texttt{sed}, the \underline{\hspace{2cm}} command deletes lines that match a specified pattern or address.
+\end{enumerate}
+
 
 %-------------------------------------------------------
 % 103.8 Basic file editing
@@ -7183,11 +7490,200 @@ export EDITOR=nano
 %-------------------------------------------------------
 % Multiple-Choice Questions for (103.8)
 %-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 103.8}
+\begin{enumerate}[1.]
+
+    \item Which command opens a file in \texttt{vi} and places the cursor at the 10th line?  
+    \begin{enumerate}[A)]
+        \item \texttt{vi -l 10 filename}  
+        \item \texttt{vi 10 filename}  
+        \item \texttt{vi +10 filename}  
+        \item \texttt{vi :10 filename}  
+    \end{enumerate}
+
+    \item What is the function of the \texttt{Esc} key in \texttt{vi}?  
+    \begin{enumerate}[A)]
+        \item Saves the file  
+        \item Closes \texttt{vi}  
+        \item Exits insert mode  
+        \item Deletes the current line  
+    \end{enumerate}
+
+    \item Which \texttt{vi} mode allows direct text input?  
+    \begin{enumerate}[A)]
+        \item Insert mode  
+        \item Normal mode  
+        \item Command mode  
+        \item Visual mode  
+    \end{enumerate}
+
+    \item How do you save and exit a file in \texttt{vi}?  
+    \begin{enumerate}[A)]
+        \item \texttt{:x!}  
+        \item \texttt{:exit}  
+        \item \texttt{:wq}  
+        \item \texttt{ZZ}  
+    \end{enumerate}
+
+    \item What does the \texttt{dd} command do in \texttt{vi}?  
+    \begin{enumerate}[A)]
+        \item Deletes a character  
+        \item Copies a word  
+        \item Deletes a line  
+        \item Pastes text  
+    \end{enumerate}
+
+    \item Which command navigates to the beginning of a line in \texttt{vi}?  
+    \begin{enumerate}[A)]
+        \item \texttt{\$}  
+        \item \texttt{0}  
+        \item \texttt{G}  
+        \item \texttt{\^}  
+    \end{enumerate}
+
+    \item What is the command to undo the last action in \texttt{vi}?  
+    \begin{enumerate}[A)]
+        \item \texttt{Ctrl-R}  
+        \item \texttt{u}  
+        \item \texttt{z}  
+        \item \texttt{U}  
+    \end{enumerate}
+
+    \item How would you search for the word "example" forward in a \texttt{vi} document?  
+    \begin{enumerate}[A)]
+        \item \texttt{?example}  
+        \item \texttt{/example}  
+        \item \texttt{search example}  
+        \item \texttt{find example}  
+    \end{enumerate}
+
+    \item Which of the following runs a shell command from \texttt{vi}?  
+    \begin{enumerate}[A)]
+        \item \texttt{:sh}  
+        \item \texttt{:bash}  
+        \item \texttt{:exec}  
+        \item \texttt{:!}  
+    \end{enumerate}
+
+    \item How can you paste text before the current position in \texttt{vi}?  
+    \begin{enumerate}[A)]
+        \item \texttt{P}  
+        \item \texttt{p}  
+        \item \texttt{d}  
+        \item \texttt{y}  
+    \end{enumerate}
+
+    \item What does the \texttt{:q!} command do?  
+    \begin{enumerate}[A)]
+        \item Saves and exits  
+        \item Exits without saving  
+        \item Restarts \texttt{vi}  
+        \item Opens a new file  
+    \end{enumerate}
+
+    \item How do you delete the current word and the next four words in \texttt{vi}?  
+    \begin{enumerate}[A)]
+        \item \texttt{dw4}  
+        \item \texttt{d5w}  
+        \item \texttt{d4w}  
+        \item \texttt{ddw4}  
+    \end{enumerate}
+
+    \item What is the purpose of the command \texttt{vimtutor}?  
+    \begin{enumerate}[A)]
+        \item To teach \texttt{vim} commands interactively  
+        \item To start \texttt{vim} in tutorial mode  
+        \item To open a \texttt{vim} help document  
+        \item To list all available \texttt{vim} commands  
+    \end{enumerate}
+
+    \item How do you yank (copy) an entire line in \texttt{vi}?  
+    \begin{enumerate}[A)]
+        \item \texttt{v}  
+        \item \texttt{c}  
+        \item \texttt{d}  
+        \item \texttt{yy}  
+    \end{enumerate}
+
+    \item Which editor supports syntax highlighting and multilevel undo?  
+    \begin{enumerate}[A)]
+        \item \texttt{vi}  
+        \item \texttt{nano}  
+        \item \texttt{vim}  
+        \item \texttt{emacs}  
+    \end{enumerate}
+
+    \item How do you navigate to the last line of a file in \texttt{vi}?  
+    \begin{enumerate}[A)]
+        \item \texttt{:G}  
+        \item \texttt{G}  
+        \item \texttt{:end}  
+        \item \texttt{\$}  
+    \end{enumerate}
+
+    \item How do you start a selection in \texttt{vi}?  
+    \begin{enumerate}[A)]
+        \item \texttt{:select}  
+        \item \texttt{s}  
+        \item \texttt{v}  
+        \item \texttt{Ctrl-S}  
+    \end{enumerate}
+
+    \item What is the default file for persistent \texttt{vim} configurations?  
+    \begin{enumerate}[A)]
+        \item \texttt{\textasciitilde/.bashrc}  
+        \item \texttt{\textasciitilde/.vimrc}  
+        \item \texttt{\textasciitilde/.vimconfig}  
+        \item \texttt{\textasciitilde/.config/vim}  
+    \end{enumerate}
+
+    \item What is the effect of \texttt{3yy} in \texttt{vi}?  
+    \begin{enumerate}[A)]
+        \item Deletes the current line and two more  
+        \item Yanks (copies) three lines  
+        \item Pastes the last yanked content three times  
+        \item Repeats the last command three times  
+    \end{enumerate}
+
+    \item Which of the following commands in \texttt{nano} starts a new selection?  
+    \begin{enumerate}[A)]
+        \item \texttt{Meta-A}  
+        \item \texttt{Ctrl-S}  
+        \item \texttt{Shift-S}  
+        \item \texttt{Ctrl-K}  
+    \end{enumerate}
+
+\end{enumerate}
+
 
 %-------------------------------------------------------
 % Fill-in-the-Blank Questions (103.8)
 %-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 103.8}
 
+\begin{enumerate}[1.]
+\item The \texttt{vi} command to jump directly to the 15th line of a file is \underline{\hspace{2cm}} /path/to/file.
+
+\item To save changes and exit \texttt{vi}, the command \underline{\hspace{2cm}} or \texttt{ZZ} is used.
+
+\item The \texttt{vi} mode where you can directly insert text into the document is called \underline{\hspace{2cm}}.
+
+\item To delete the current line in \texttt{vi}, the command \underline{\hspace{2cm}} is used.
+
+\item The \underline{\hspace{2cm}} command in \texttt{vi} allows you to undo the last action.
+
+\item In \texttt{vi}, to search backward in a document, you use the command \underline{\hspace{2cm}}.
+
+\item To replace the character under the cursor in \texttt{vi}, the \underline{\hspace{2cm}} command is used.
+
+\item A persistent \texttt{vim} macro can be stored in the configuration file \underline{\hspace{2cm}}.
+
+\item In \texttt{nano}, the key combination \underline{\hspace{2cm}} is used to undo an action.
+
+\item The default environment variable that defines the text editor for shell commands is \underline{\hspace{2cm}}.
+\end{enumerate}
 
 %=======================================================
 % TOPIC 104: DEVICES, LINUX FILESYSTEMS, FHS
@@ -7195,107 +7691,521 @@ export EDITOR=nano
 \newpage
 \chapter{Topic 104: Devices, Linux Filesystems, Filesystem Hierarchy Standard}
 
-\section{104.1 Create partitions and filesystems}
-\textit{[Brief syllabus and questions to be added here]}
+%-------------------------------------------------------
+% 104.1 Create partitions and filesystems
+%-------------------------------------------------------
+\newpage
+\section*{104.1 Create partitions and filesystems}
+\addcontentsline{toc}{section}{104.1 Create partitions and filesystems}
 
-\section{104.2 Maintain the integrity of filesystems}
-\textit{[Brief syllabus and questions to be added here]}
+%-------------------------------------------------------
+% Multiple-Choice Questions for (104.1)
+%-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 104.1}
 
-\section{104.3 Control mounting and unmounting of filesystems}
-\textit{[Brief syllabus and questions to be added here]}
+%-------------------------------------------------------
+% Fill-in-the-Blank Questions (104.1)
+%-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 104.1}
 
-\section{104.5 Manage file permissions and ownership}
-\textit{[Brief syllabus and questions to be added here]}
+%-------------------------------------------------------
+% 104.2 Maintain the integrity of filesystems
+%-------------------------------------------------------
+\newpage
+\section*{104.2 Maintain the integrity of filesystems}
+\addcontentsline{toc}{section}{104.2 Maintain the integrity of filesystems}
 
-\subsection*{104.5 Lesson 1}
-\textit{[Brief syllabus and questions to be added here]}
+%-------------------------------------------------------
+% Multiple-Choice Questions for (104.2)
+%-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 104.2}
 
-\section{104.6 Create and change hard and symbolic links}
-\textit{[Brief syllabus and questions to be added here]}
+%-------------------------------------------------------
+% Fill-in-the-Blank Questions (104.2)
+%-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 104.2}
 
-\section{104.7 Find system files and place files in the correct location}
-\textit{[Brief syllabus and questions to be added here]}
+%-------------------------------------------------------
+% 104.3 Control mounting and unmounting of filesystems
+%-------------------------------------------------------
+\newpage
+\section*{104.3 Control mounting and unmounting of filesystems}
+\addcontentsline{toc}{section}{104.3 Control mounting and unmounting of filesystems}
+
+%-------------------------------------------------------
+% Multiple-Choice Questions for (104.3)
+%-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 104.3}
+
+%-------------------------------------------------------
+% Fill-in-the-Blank Questions (104.3)
+%-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 104.3}
+
+%-------------------------------------------------------
+% 104.5 Manage file permissions and ownership
+%-------------------------------------------------------
+\newpage
+\section*{104.5 Manage file permissions and ownership}
+\addcontentsline{toc}{section}{104.5 Manage file permissions and ownership}
+
+%-------------------------------------------------------
+% Multiple-Choice Questions for (104.5)
+%-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 104.5}
+
+%-------------------------------------------------------
+% Fill-in-the-Blank Questions (104.5)
+%-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 104.5}
+
+%-------------------------------------------------------
+% 104.6 Create and change hard and symbolic links
+%-------------------------------------------------------
+\newpage
+\section*{104.6 Create and change hard and symbolic links}
+\addcontentsline{toc}{section}{104.6 Create and change hard and symbolic links}
+
+%-------------------------------------------------------
+% Multiple-Choice Questions for (104.6)
+%-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 104.6}
+
+%-------------------------------------------------------
+% Fill-in-the-Blank Questions (104.6)
+%-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 104.6}
+
+%-------------------------------------------------------
+% 104.7 Find system files and place files in the correct location
+%-------------------------------------------------------
+\newpage
+\section*{104.7 Find system files and place files in the correct location}
+\addcontentsline{toc}{section}{104.7 Find system files and place files in the correct location}
+
+%-------------------------------------------------------
+% Multiple-Choice Questions for (104.7)
+%-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 104.7}
+
+%-------------------------------------------------------
+% Fill-in-the-Blank Questions (104.7)
+%-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 104.7}
+
 
 %=======================================================
 % TOPIC 105: SHELLS AND SHELL SCRIPTING
 %=======================================================
+\newpage
 \chapter{Topic 105: Shells and Shell Scripting}
-\section{105.1 Customize and use the shell environment}
-\textit{[Brief syllabus and questions to be added here]}
 
-\section{105.2 Customize or write simple scripts}
-\textit{[Brief syllabus and questions to be added here]}
+%-------------------------------------------------------
+% 105.1 Customize and use the shell environment
+%-------------------------------------------------------
+\newpage
+\section*{105.1 Customize and use the shell environment}
+\addcontentsline{toc}{section}{105.1 Customize and use the shell environment}
+
+%-------------------------------------------------------
+% Multiple-Choice Questions for (105.1)
+%-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 105.1}
+
+%-------------------------------------------------------
+% Fill-in-the-Blank Questions (105.1)
+%-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 105.1}
+
+%-------------------------------------------------------
+% 105.2 Customize or write simple scripts
+%-------------------------------------------------------
+\newpage
+\section*{105.2 Customize or write simple scripts}
+\addcontentsline{toc}{section}{105.2 Customize or write simple scripts}
+
+%-------------------------------------------------------
+% Multiple-Choice Questions for (105.2)
+%-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 105.2}
+
+%-------------------------------------------------------
+% Fill-in-the-Blank Questions (105.2)
+%-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 105.2}
+
 
 %=======================================================
 % TOPIC 106: USER INTERFACES AND DESKTOPS
 %=======================================================
+\newpage
 \chapter{Topic 106: User Interfaces and Desktops}
-\section{106.1 Install and configure X11}
-\textit{[Brief syllabus and questions to be added here]}
 
-\section{106.2 Graphical Desktops}
-\textit{[Brief syllabus and questions to be added here]}
 
-\section{106.3 Accessibility}
-\textit{[Brief syllabus and questions to be added here]}
+%-------------------------------------------------------
+% 106.1 Install and configure X11
+%-------------------------------------------------------
+\newpage
+\section*{106.1 Install and configure X11}
+\addcontentsline{toc}{section}{106.1 Install and configure X11}
+
+%-------------------------------------------------------
+% Multiple-Choice Questions for (106.1)
+%-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 106.1}
+
+%-------------------------------------------------------
+% Fill-in-the-Blank Questions (106.1)
+%-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 106.1}
+
+%-------------------------------------------------------
+% 106.2 Graphical Desktops
+%-------------------------------------------------------
+\newpage
+\section*{106.2 Graphical Desktops}
+\addcontentsline{toc}{section}{106.2 Graphical Desktops}
+
+%-------------------------------------------------------
+% Multiple-Choice Questions for (106.2)
+%-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 106.2}
+
+%-------------------------------------------------------
+% Fill-in-the-Blank Questions (106.2)
+%-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 106.2}
+
+%-------------------------------------------------------
+% 106.3 Accessibility
+%-------------------------------------------------------
+\newpage
+\section*{106.3 Accessibility}
+\addcontentsline{toc}{section}{106.3 Accessibility}
+
+%-------------------------------------------------------
+% Multiple-Choice Questions for (106.3)
+%-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 106.3}
+
+%-------------------------------------------------------
+% Fill-in-the-Blank Questions (106.3)
+%-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 106.3}
+
 
 %=======================================================
 % TOPIC 107: ADMINISTRATIVE TASKS
 %=======================================================
+\newpage
 \chapter{Topic 107: Administrative Tasks}
-\section{107.1 Manage user and group accounts and related system files}
-\textit{[Brief syllabus and questions to be added here]}
 
-\section{107.2 Automate system administration tasks by scheduling jobs}
-\textit{[Brief syllabus and questions to be added here]}
+%-------------------------------------------------------
+% 107.1 Manage user and group accounts and related system files
+%-------------------------------------------------------
+\newpage
+\section*{107.1 Manage user and group accounts and related system files}
+\addcontentsline{toc}{section}{107.1 Manage user and group accounts and related system files}
 
-\section{107.3 Localisation and internationalisation}
-\textit{[Brief syllabus and questions to be added here]}
+%-------------------------------------------------------
+% Multiple-Choice Questions for (107.1)
+%-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 107.1}
+
+%-------------------------------------------------------
+% Fill-in-the-Blank Questions for (107.1)
+%-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 107.1}
+
+%-------------------------------------------------------
+% 107.2 Automate system administration tasks by scheduling jobs
+%-------------------------------------------------------
+\newpage
+\section*{107.2 Automate system administration tasks by scheduling jobs}
+\addcontentsline{toc}{section}{107.2 Automate system administration tasks by scheduling jobs}
+
+%-------------------------------------------------------
+% Multiple-Choice Questions for (107.2)
+%-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 107.2}
+
+%-------------------------------------------------------
+% Fill-in-the-Blank Questions for (107.2)
+%-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 107.2}
+
+%-------------------------------------------------------
+% 107.3 Localisation and internationalisation
+%-------------------------------------------------------
+\newpage
+\section*{107.3 Localisation and internationalisation}
+\addcontentsline{toc}{section}{107.3 Localisation and internationalisation}
+
+%-------------------------------------------------------
+% Multiple-Choice Questions for (107.3)
+%-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 107.3}
+
+%-------------------------------------------------------
+% Fill-in-the-Blank Questions for (107.3)
+%-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 107.3}
+
 
 %=======================================================
 % TOPIC 108: ESSENTIAL SYSTEM SERVICES
 %=======================================================
+\newpage
 \chapter{Topic 108: Essential System Services}
-\section{108.1 Maintain system time}
-\textit{[Brief syllabus and questions to be added here]}
 
-\section{108.2 System logging}
-\textit{[Brief syllabus and questions to be added here]}
+%-------------------------------------------------------
+% 108.1 Maintain system time
+%-------------------------------------------------------
+\newpage
+\section*{108.1 Maintain system time}
+\addcontentsline{toc}{section}{108.1 Maintain system time}
 
-\section{108.3 Mail Transfer Agent (MTA) basics}
-\textit{[Brief syllabus and questions to be added here]}
+%-------------------------------------------------------
+% Multiple-Choice Questions for (108.1)
+%-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 108.1}
 
-\section{108.4 Manage printers and printing}
-\textit{[Brief syllabus and questions to be added here]}
+%-------------------------------------------------------
+% Fill-in-the-Blank Questions for (108.1)
+%-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 108.1}
+
+%-------------------------------------------------------
+% 108.2 System logging
+%-------------------------------------------------------
+\newpage
+\section*{108.2 System logging}
+\addcontentsline{toc}{section}{108.2 System logging}
+
+%-------------------------------------------------------
+% Multiple-Choice Questions for (108.2)
+%-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 108.2}
+
+%-------------------------------------------------------
+% Fill-in-the-Blank Questions for (108.2)
+%-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 108.2}
+
+%-------------------------------------------------------
+% 108.3 Mail Transfer Agent (MTA) basics
+%-------------------------------------------------------
+\newpage
+\section*{108.3 Mail Transfer Agent (MTA) basics}
+\addcontentsline{toc}{section}{108.3 Mail Transfer Agent (MTA) basics}
+
+%-------------------------------------------------------
+% Multiple-Choice Questions for (108.3)
+%-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 108.3}
+
+%-------------------------------------------------------
+% Fill-in-the-Blank Questions for (108.3)
+%-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 108.3}
+
+%-------------------------------------------------------
+% 108.4 Manage printers and printing
+%-------------------------------------------------------
+\newpage
+\section*{108.4 Manage printers and printing}
+\addcontentsline{toc}{section}{108.4 Manage printers and printing}
+
+%-------------------------------------------------------
+% Multiple-Choice Questions for (108.4)
+%-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 108.4}
+
+%-------------------------------------------------------
+% Fill-in-the-Blank Questions for (108.4)
+%-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 108.4}
 
 %=======================================================
 % TOPIC 109: NETWORKING FUNDAMENTALS
 %=======================================================
+\newpage
 \chapter{Topic 109: Networking Fundamentals}
-\section{109.1 Fundamentals of internet protocols}
-\textit{[Brief syllabus and questions to be added here]}
 
-\section{109.2 Persistent network configuration}
-\textit{[Brief syllabus and questions to be added here]}
+%-------------------------------------------------------
+% 109.1 Fundamentals of internet protocols
+%-------------------------------------------------------
+\newpage
+\section*{109.1 Fundamentals of internet protocols}
+\addcontentsline{toc}{section}{109.1 Fundamentals of internet protocols}
 
-\section{109.3 Basic network troubleshooting}
-\textit{[Brief syllabus and questions to be added here]}
+%-------------------------------------------------------
+% Multiple-Choice Questions for (109.1)
+%-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 109.1}
 
-\section{109.4 Configure client side DNS}
-\textit{[Brief syllabus and questions to be added here]}
+%-------------------------------------------------------
+% Fill-in-the-Blank Questions for (109.1)
+%-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 109.1}
+
+%-------------------------------------------------------
+% 109.2 Persistent network configuration
+%-------------------------------------------------------
+\newpage
+\section*{109.2 Persistent network configuration}
+\addcontentsline{toc}{section}{109.2 Persistent network configuration}
+
+%-------------------------------------------------------
+% Multiple-Choice Questions for (109.2)
+%-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 109.2}
+
+%-------------------------------------------------------
+% Fill-in-the-Blank Questions for (109.2)
+%-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 109.2}
+
+%-------------------------------------------------------
+% 109.3 Basic network troubleshooting
+%-------------------------------------------------------
+\newpage
+\section*{109.3 Basic network troubleshooting}
+\addcontentsline{toc}{section}{109.3 Basic network troubleshooting}
+
+%-------------------------------------------------------
+% Multiple-Choice Questions for (109.3)
+%-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 109.3}
+
+%-------------------------------------------------------
+% Fill-in-the-Blank Questions for (109.3)
+%-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 109.3}
+
+%-------------------------------------------------------
+% 109.4 Configure client side DNS
+%-------------------------------------------------------
+\newpage
+\section*{109.4 Configure client side DNS}
+\addcontentsline{toc}{section}{109.4 Configure client side DNS}
+
+%-------------------------------------------------------
+% Multiple-Choice Questions for (109.4)
+%-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 109.4}
+
+%-------------------------------------------------------
+% Fill-in-the-Blank Questions for (109.4)
+%-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 109.4}
 
 %=======================================================
 % TOPIC 110: SECURITY
 %=======================================================
+\newpage
 \chapter{Topic 110: Security}
-\section{110.1 Perform security administration tasks}
-\textit{[Brief syllabus and questions to be added here]}
 
-\section{110.2 Setup host security}
-\textit{[Brief syllabus and questions to be added here]}
+%-------------------------------------------------------
+% 110.1 Perform security administration tasks
+%-------------------------------------------------------
+\newpage
+\section*{110.1 Perform security administration tasks}
+\addcontentsline{toc}{section}{110.1 Perform security administration tasks}
 
-\section{110.3 Securing data with encryption}
-\textit{[Brief syllabus and questions to be added here]}
+%-------------------------------------------------------
+% Multiple-Choice Questions for (110.1)
+%-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 110.1}
+
+%-------------------------------------------------------
+% Fill-in-the-Blank Questions for (110.1)
+%-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 110.1}
+
+%-------------------------------------------------------
+% 110.2 Setup host security
+%-------------------------------------------------------
+\newpage
+\section*{110.2 Setup host security}
+\addcontentsline{toc}{section}{110.2 Setup host security}
+
+%-------------------------------------------------------
+% Multiple-Choice Questions for (110.2)
+%-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 110.2}
+
+%-------------------------------------------------------
+% Fill-in-the-Blank Questions for (110.2)
+%-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 110.2}
+
+%-------------------------------------------------------
+% 110.3 Securing data with encryption
+%-------------------------------------------------------
+\newpage
+\section*{110.3 Securing data with encryption}
+\addcontentsline{toc}{section}{110.3 Securing data with encryption}
+
+%-------------------------------------------------------
+% Multiple-Choice Questions for (110.3)
+%-------------------------------------------------------
+\newpage
+\section*{Multiple-Choice Questions for 110.3}
+
+%-------------------------------------------------------
+% Fill-in-the-Blank Questions for (110.3)
+%-------------------------------------------------------
+\newpage
+\section*{Fill-in-the-Blank Questions for 110.3}
 
 %-------------------------------------------------------
 % ANSWERS SECTION
@@ -7765,6 +8675,20 @@ export EDITOR=nano
 
 
 \subsubsection*{Fill-in-the-Blank Questions (103.1)}
+
+\begin{enumerate}[1.]
+    \item man
+    \item apropos
+    \item history
+    \item PATH
+    \item pwd
+    \item exit
+    \item echo
+    \item hash
+    \item .bash\_history
+    \item unset
+\end{enumerate}
+
 %-------------------------------------------------------
 % Answer-Sheet (103.2)
 %-------------------------------------------------------
@@ -7797,6 +8721,18 @@ export EDITOR=nano
 
 
 \subsubsection*{Fill-in-the-Blank Questions (103.2)}
+\begin{enumerate}[1.]
+    \item zcat
+    \item grep
+    \item head
+    \item sed
+    \item >>
+    \item md5sum
+    \item grep
+    \item less
+    \item bzcat
+    \item sha256sum
+\end{enumerate}
 %-------------------------------------------------------
 % Answer-Sheet (103.3)
 %-------------------------------------------------------
@@ -7827,6 +8763,18 @@ export EDITOR=nano
 \end{enumerate}
 
 \subsubsection*{Fill-in-the-Blank Questions (103.3)}
+\begin{enumerate}[1.]
+    \item mv
+    \item cp
+    \item ?
+    \item find
+    \item -cvf
+    \item -x
+    \item rmdir
+    \item tar archive
+    \item {}
+    \item gunzip
+\end{enumerate}
 
 %-------------------------------------------------------
 % Answer-Sheet (103.4)
@@ -7859,6 +8807,18 @@ export EDITOR=nano
 \end{enumerate}
 
 \subsubsection*{Fill-in-the-Blank Questions (103.4)}
+\begin{enumerate}[1.]
+    \item |
+    \item \$()
+    \item tee
+    \item -print0
+    \item -I
+    \item uniq
+    \item -a
+    \item 2>\&1
+    \item sort -n
+    \item -exec
+\end{enumerate}
 
 %-------------------------------------------------------
 % Answer-Sheet (103.5)
@@ -7891,6 +8851,19 @@ export EDITOR=nano
 
 
 \subsubsection*{Fill-in-the-Blank Questions (103.5)}
+\begin{enumerate}[1.]
+    \item \&
+    \item nohup.out
+    \item kill
+    \item fg
+    \item watch
+    \item Ctrl + b
+    \item screen -S
+    \item d
+    \item ~/.tmux.conf
+    \item \%
+\end{enumerate}
+
 %-------------------------------------------------------
 % Answer-Sheet (103.6)
 %-------------------------------------------------------
@@ -7920,17 +8893,103 @@ export EDITOR=nano
     \item C
 \end{enumerate}
 
+\subsubsection*{Fill-in-the-Blank Questions (103.6)}
+\begin{enumerate}[1.]
+    \item nice
+    \item renice
+    \item 100, 139
+    \item 0, 99
+    \item 0
+    \item NI
+    \item nice
+    \item r
+    \item higher
+    \item root
+\end{enumerate}
 
-
-\subsubsection*{Fill-in-the-Blank Questions (103.5)}
 %-------------------------------------------------------
 % Answer-Sheet (103.7)
 %-------------------------------------------------------
 
+\subsection*{103.6 Modify process execution priorities}
+\subsubsection*{Multiple-Choice Questions (103.7)}
+\begin{enumerate}[1.]
+    \item A
+    \item B
+    \item C
+    \item B
+    \item B
+    \item C
+    \item D
+    \item D
+    \item A
+    \item B
+    \item A
+    \item C
+    \item C
+    \item A
+    \item D
+    \item C
+    \item B
+    \item D
+    \item D
+    \item D
+\end{enumerate}
+
+\subsubsection*{Fill-in-the-Blank Questions (103.7)}
+\begin{enumerate}[1.]
+    \item \texttt{\^}
+    \item \texttt{[:print:]}
+    \item |
+    \item +
+    \item -regextype posix-extended
+    \item sed
+    \item -i
+    \item egrep
+    \item -c
+    \item d
+\end{enumerate}
 %-------------------------------------------------------
 % Answer-Sheet (103.8)
 %-------------------------------------------------------
+\subsection*{103.6 Modify process execution priorities}
+\subsubsection*{Multiple-Choice Questions (103.8)}
+\begin{enumerate}[1.]
+    \item C
+    \item C
+    \item A
+    \item C
+    \item C
+    \item B
+    \item B
+    \item B
+    \item D
+    \item A
+    \item B
+    \item C
+    \item A
+    \item D
+    \item C
+    \item B
+    \item C
+    \item B
+    \item B
+    \item A
+\end{enumerate}
 
+\subsubsection*{Fill-in-the-Blank Questions (103.8)}
+\begin{enumerate}[1.]
+    \item vi +15
+    \item :wq
+    \item insert mode
+    \item dd
+    \item u
+    \item ?
+    \item r
+    \item \texttt{\textasciitilde/.vimrc}
+    \item Meta-U
+    \item EDITOR
+\end{enumerate}
 %=======================================================
 % ANSWERS FOR TOPIC 104
 %=======================================================
@@ -7941,30 +9000,58 @@ export EDITOR=nano
 %-------------------------------------------------------
 % Answer-Sheet (104.1)
 %-------------------------------------------------------
+\subsection*{104.1 Modify process execution priorities}
+\subsubsection*{Multiple-Choice Questions (104.1)}
+
+\subsubsection*{Fill-in-the-Blank Questions (104.1)}
 
 %-------------------------------------------------------
 % Answer-Sheet (104.2)
 %-------------------------------------------------------
+\subsection*{104.1 Modify process execution priorities}
+\subsubsection*{Multiple-Choice Questions (104.2)}
+
+\subsubsection*{Fill-in-the-Blank Questions (104.2)}
 
 %-------------------------------------------------------
 % Answer-Sheet (104.3)
 %-------------------------------------------------------
+\subsection*{104.3 Modify process execution priorities}
+\subsubsection*{Multiple-Choice Questions (104.3)}
+
+\subsubsection*{Fill-in-the-Blank Questions (104.3)}
 
 %-------------------------------------------------------
 % Answer-Sheet (104.4)
 %-------------------------------------------------------
+\subsection*{104.4 Modify process execution priorities}
+\subsubsection*{Multiple-Choice Questions (104.4)}
+
+\subsubsection*{Fill-in-the-Blank Questions (104.4)}
 
 %-------------------------------------------------------
 % Answer-Sheet (104.5)
 %-------------------------------------------------------
+\subsection*{104.5 Modify process execution priorities}
+\subsubsection*{Multiple-Choice Questions (104.5)}
+
+\subsubsection*{Fill-in-the-Blank Questions (104.5)}
 
 %-------------------------------------------------------
 % Answer-Sheet (104.6)
 %-------------------------------------------------------
+\subsection*{104.6 Modify process execution priorities}
+\subsubsection*{Multiple-Choice Questions (104.6)}
+
+\subsubsection*{Fill-in-the-Blank Questions (104.6)}
 
 %-------------------------------------------------------
 % Answer-Sheet (104.7)
 %-------------------------------------------------------
+\subsection*{104.7 Modify process execution priorities}
+\subsubsection*{Multiple-Choice Questions (104.7)}
+
+\subsubsection*{Fill-in-the-Blank Questions (104.7)}
 
 %=======================================================
 % ANSWERS FOR TOPIC 105
@@ -7976,10 +9063,18 @@ export EDITOR=nano
 %-------------------------------------------------------
 % Answer-Sheet (105.1)
 %-------------------------------------------------------
+\subsection*{105.1 Modify process execution priorities}
+\subsubsection*{Multiple-Choice Questions (105.1)}
+
+\subsubsection*{Fill-in-the-Blank Questions (105.1)}
 
 %-------------------------------------------------------
 % Answer-Sheet (105.2)
 %-------------------------------------------------------
+\subsection*{105.2 Modify process execution priorities}
+\subsubsection*{Multiple-Choice Questions (105.2)}
+
+\subsubsection*{Fill-in-the-Blank Questions (105.2)}
 
 %=======================================================
 % ANSWERS FOR TOPIC 106
@@ -7991,14 +9086,26 @@ export EDITOR=nano
 %-------------------------------------------------------
 % Answer-Sheet (106.1)
 %-------------------------------------------------------
+\subsection*{106.1 Modify process execution priorities}
+\subsubsection*{Multiple-Choice Questions (106.1)}
+
+\subsubsection*{Fill-in-the-Blank Questions (106.1)}
 
 %-------------------------------------------------------
 % Answer-Sheet (106.2)
 %-------------------------------------------------------
+\subsection*{106.2 Modify process execution priorities}
+\subsubsection*{Multiple-Choice Questions (106.2)}
+
+\subsubsection*{Fill-in-the-Blank Questions (106.2)}
 
 %-------------------------------------------------------
 % Answer-Sheet (106.3)
 %-------------------------------------------------------
+\subsection*{106.3 Modify process execution priorities}
+\subsubsection*{Multiple-Choice Questions (106.3)}
+
+\subsubsection*{Fill-in-the-Blank Questions (106.3)}
 
 %=======================================================
 % ANSWERS FOR TOPIC 107
@@ -8010,14 +9117,26 @@ export EDITOR=nano
 %-------------------------------------------------------
 % Answer-Sheet (107.1)
 %-------------------------------------------------------
+\subsection*{107.1 Modify process execution priorities}
+\subsubsection*{Multiple-Choice Questions (107.1)}
+
+\subsubsection*{Fill-in-the-Blank Questions (107.1)}
 
 %-------------------------------------------------------
 % Answer-Sheet (107.2)
 %-------------------------------------------------------
+\subsection*{107.2 Modify process execution priorities}
+\subsubsection*{Multiple-Choice Questions (107.2)}
+
+\subsubsection*{Fill-in-the-Blank Questions (107.2)}
 
 %-------------------------------------------------------
 % Answer-Sheet (107.3)
 %-------------------------------------------------------
+\subsection*{107.3 Modify process execution priorities}
+\subsubsection*{Multiple-Choice Questions (107.3)}
+
+\subsubsection*{Fill-in-the-Blank Questions (107.3)}
 
 %=======================================================
 % ANSWERS FOR TOPIC 108
@@ -8029,18 +9148,34 @@ export EDITOR=nano
 %-------------------------------------------------------
 % Answer-Sheet (108.1)
 %-------------------------------------------------------
+\subsection*{108.1 Modify process execution priorities}
+\subsubsection*{Multiple-Choice Questions (108.1)}
+
+\subsubsection*{Fill-in-the-Blank Questions (108.1)}
 
 %-------------------------------------------------------
 % Answer-Sheet (108.2)
 %-------------------------------------------------------
+\subsection*{108.2 Modify process execution priorities}
+\subsubsection*{Multiple-Choice Questions (108.2)}
+
+\subsubsection*{Fill-in-the-Blank Questions (108.2)}
 
 %-------------------------------------------------------
 % Answer-Sheet (108.3)
 %-------------------------------------------------------
+\subsection*{108.3 Modify process execution priorities}
+\subsubsection*{Multiple-Choice Questions (108.3)}
+
+\subsubsection*{Fill-in-the-Blank Questions (108.3)}
 
 %-------------------------------------------------------
 % Answer-Sheet (108.4)
 %-------------------------------------------------------
+\subsection*{108.4 Modify process execution priorities}
+\subsubsection*{Multiple-Choice Questions (108.4)}
+
+\subsubsection*{Fill-in-the-Blank Questions (108.4)}
 
 %=======================================================
 % ANSWERS FOR TOPIC 109
@@ -8052,18 +9187,34 @@ export EDITOR=nano
 %-------------------------------------------------------
 % Answer-Sheet (109.1)
 %-------------------------------------------------------
+\subsection*{109.1 Modify process execution priorities}
+\subsubsection*{Multiple-Choice Questions (109.1)}
+
+\subsubsection*{Fill-in-the-Blank Questions (109.1)}
 
 %-------------------------------------------------------
 % Answer-Sheet (109.2)
 %-------------------------------------------------------
+\subsection*{109.2 Modify process execution priorities}
+\subsubsection*{Multiple-Choice Questions (109.2)}
+
+\subsubsection*{Fill-in-the-Blank Questions (109.2)}
 
 %-------------------------------------------------------
 % Answer-Sheet (109.3)
 %-------------------------------------------------------
+\subsection*{109.3 Modify process execution priorities}
+\subsubsection*{Multiple-Choice Questions (109.3)}
+
+\subsubsection*{Fill-in-the-Blank Questions (109.3)}
 
 %-------------------------------------------------------
 % Answer-Sheet (109.4)
 %-------------------------------------------------------
+\subsection*{109.4 Modify process execution priorities}
+\subsubsection*{Multiple-Choice Questions (109.4)}
+
+\subsubsection*{Fill-in-the-Blank Questions (109.4)}
 
 %=======================================================
 % ANSWERS FOR TOPIC 110
@@ -8075,14 +9226,26 @@ export EDITOR=nano
 %-------------------------------------------------------
 % Answer-Sheet (110.1)
 %-------------------------------------------------------
+\subsection*{110.1 Modify process execution priorities}
+\subsubsection*{Multiple-Choice Questions (110.1)}
+
+\subsubsection*{Fill-in-the-Blank Questions (110.1)}
 
 %-------------------------------------------------------
 % Answer-Sheet (110.2)
 %-------------------------------------------------------
+\subsection*{110.2 Modify process execution priorities}
+\subsubsection*{Multiple-Choice Questions (110.2)}
+
+\subsubsection*{Fill-in-the-Blank Questions (110.2)}
 
 %-------------------------------------------------------
 % Answer-Sheet (110.3)
 %-------------------------------------------------------
+\subsection*{110.3 Modify process execution priorities}
+\subsubsection*{Multiple-Choice Questions (110.3)}
+
+\subsubsection*{Fill-in-the-Blank Questions (110.3)}
 
 
 \end{document}
