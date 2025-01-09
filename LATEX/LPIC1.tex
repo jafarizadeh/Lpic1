@@ -10,6 +10,8 @@
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{amsthm}
+\usepackage{xspace}
+
 \newtheorem*{noteenv}{Note}
 
 
@@ -4945,10 +4947,10 @@ sha256sum -c sha256.txt
     \item \texttt{ls} lists contents of a directory.
     \item Common options:
     \begin{itemize}
-        \item \texttt{-l} -- long listing (permissions, owner, size, date/time).
-        \item \texttt{-a} -- include hidden files (dotfiles).
-        \item \texttt{-h} -- human-readable sizes.
-        \item \texttt{-R} -- list contents recursively.
+        \item \texttt{-l} \text{-}- long listing (permissions, owner, size, date/time).
+        \item \texttt{-a} \text{-}- include hidden files (dotfiles).
+        \item \texttt{-h} \text{-}- human-readable sizes.
+        \item \texttt{-R} \text{-}- list contents recursively.
     \end{itemize}
     \item Example:
 \begin{lstlisting}[language=bash]
@@ -4970,46 +4972,46 @@ touch myfile.txt
 \subsection*{1. \texttt{mkdir}}
 \begin{itemize}
     \item Make new directories.
-    \item \texttt{mkdir dir1} -- creates \texttt{dir1}.
-    \item \texttt{mkdir -p parents/children} -- creates a nested directory path if it doesn’t already exist.
+    \item \texttt{mkdir dir1} \text{-}- creates \texttt{dir1}.
+    \item \texttt{mkdir -p parents/children} \text{-}- creates a nested directory path if it doesn’t already exist.
 \end{itemize}
 
 \subsection*{2. \texttt{rmdir}}
 \begin{itemize}
     \item Remove empty directories.
     \item Fails if directory is not empty.
-    \item \texttt{rmdir -p parents/children} -- removes nested directories if all are empty.
+    \item \texttt{rmdir -p parents/children} \text{-}- removes nested directories if all are empty.
 \end{itemize}
 
 \section*{3. Copying, Moving, and Deleting Files}
 \subsection*{1. \texttt{cp} (Copy)}
 \begin{itemize}
-    \item \texttt{cp file1 dir2} -- copy \texttt{file1} into \texttt{dir2}.
-    \item \texttt{cp -r dir1 dir2} -- copy directory \texttt{dir1} recursively into \texttt{dir2}.
+    \item \texttt{cp file1 dir2} \text{-}- copy \texttt{file1} into \texttt{dir2}.
+    \item \texttt{cp -r dir1 dir2} \text{-}- copy directory \texttt{dir1} recursively into \texttt{dir2}.
     \item Useful options:
     \begin{itemize}
-        \item \texttt{-i} -- prompt before overwrite.
-        \item \texttt{-f} -- force overwrite.
+        \item \texttt{-i} \text{-}- prompt before overwrite.
+        \item \texttt{-f} \text{-}- force overwrite.
     \end{itemize}
 \end{itemize}
 
 \subsection*{2. \texttt{mv} (Move / Rename)}
 \begin{itemize}
-    \item \texttt{mv file1 dir2} -- move \texttt{file1} into \texttt{dir2}.
-    \item \texttt{mv oldname newname} -- rename a file.
+    \item \texttt{mv file1 dir2} \text{-}- move \texttt{file1} into \texttt{dir2}.
+    \item \texttt{mv oldname newname} \text{-}- rename a file.
     \item Options:
     \begin{itemize}
-        \item \texttt{-i} -- prompt before overwrite.
-        \item \texttt{-f} -- force.
+        \item \texttt{-i} \text{-}- prompt before overwrite.
+        \item \texttt{-f} \text{-}- force.
     \end{itemize}
 \end{itemize}
 
 \subsection*{3. \texttt{rm} (Remove)}
 \begin{itemize}
-    \item \texttt{rm file1 file2} -- remove multiple files.
-    \item \texttt{rm -r dir1} -- remove \texttt{dir1} and its contents recursively.
-    \item \texttt{rm -i file1} -- prompt before removal.
-    \item \texttt{rm -f file1} -- force removal (no prompt).
+    \item \texttt{rm file1 file2} \text{-}- remove multiple files.
+    \item \texttt{rm -r dir1} \text{-}- remove \texttt{dir1} and its contents recursively.
+    \item \texttt{rm -i file1} \text{-}- prompt before removal.
+    \item \texttt{rm -f file1} \text{-}- force removal (no prompt).
     \item \textbf{WARNING}: \texttt{rm -rf /} is very dangerous.
 \end{itemize}
 
@@ -5017,15 +5019,15 @@ touch myfile.txt
 \begin{itemize}
     \item \textbf{\texttt{*}} (asterisk): matches zero or more characters.
     \begin{itemize}
-        \item Example: \texttt{ls *.txt} -- lists all \texttt{.txt} files.
+        \item Example: \texttt{ls *.txt} \text{-}- lists all \texttt{.txt} files.
     \end{itemize}
     \item \textbf{\texttt{?}} (question mark): matches exactly one character.
     \begin{itemize}
-        \item Example: \texttt{ls l?st.txt} -- matches \texttt{last.txt}, \texttt{lest.txt}, \texttt{list.txt}.
+        \item Example: \texttt{ls l?st.txt} \text{-}- matches \texttt{last.txt}, \texttt{lest.txt}, \texttt{list.txt}.
     \end{itemize}
     \item \textbf{\texttt{[ ]}} (brackets): matches any one character from the group/range inside.
     \begin{itemize}
-        \item Example: \texttt{ls file[1-3].txt} -- matches \texttt{file1.txt}, \texttt{file2.txt}, \texttt{file3.txt}.
+        \item Example: \texttt{ls file[1-3].txt} \text{-}- matches \texttt{file1.txt}, \texttt{file2.txt}, \texttt{file3.txt}.
     \end{itemize}
 \end{itemize}
 Wildcards can be combined:
@@ -5042,8 +5044,8 @@ find STARTING_PATH [OPTIONS] [EXPRESSION]
 
 \subsection*{1. Search by Name}
 \begin{itemize}
-    \item \texttt{find . -name "myfile.txt"} -- find \texttt{myfile.txt} in current directory.
-    \item \texttt{find /home -iname "*.png"} -- case-insensitive, all \texttt{.png} under \texttt{/home}.
+    \item \texttt{find . -name "myfile.txt"} \text{-}- find \texttt{myfile.txt} in current directory.
+    \item \texttt{find /home -iname "*.png"} \text{-}- case-insensitive, all \texttt{.png} under \texttt{/home}.
 \end{itemize}
 
 \subsection*{2. Search by Type}
@@ -5074,7 +5076,7 @@ find /etc -name "*.conf" -mtime -3
 
 \subsection*{5. Act on Results (\texttt{-exec})}
 \begin{itemize}
-    \item \texttt{-exec COMMAND \{\} \;} -- run a command on each match.
+    \item \texttt{-exec COMMAND \{\} \;} \text{-}- run a command on each match.
     \item Example:
 \begin{lstlisting}[language=bash]
 find . -name "*.bak" -exec rm {} \;
@@ -5326,9 +5328,9 @@ dd if=testfile of=testfile_copy bs=1K status=progress
     \end{enumerate}
 
     \item What does the following command do?  
-    \begin{verbatim}
+    \begin{lstlisting}[language=bash]
     cp -r myfiles/ backups/
-    \end{verbatim}
+    \end{lstlisting}
     \begin{enumerate}[A)]
         \item Copies the entire \texttt{myfiles} directory, including its contents, to \texttt{backups}  
         \item Moves all content from \texttt{backups} to \texttt{myfiles}  
@@ -7698,6 +7700,163 @@ export EDITOR=nano
 \section*{104.1 Create partitions and filesystems}
 \addcontentsline{toc}{section}{104.1 Create partitions and filesystems}
 
+\textbf{Reference to LPI Objectives}
+\begin{itemize}
+    \item \textbf{LPIC-1 v5, Exam 101, Objective 104.1}
+    \item \textbf{Weight:} 2
+\end{itemize}
+
+\section*{Key Knowledge Areas}
+\begin{itemize}
+    \item Manage MBR and GPT partition tables.
+    \item Use \texttt{mkfs} commands to create filesystems (e.g., ext2/ext3/ext4, XFS, VFAT, exFAT).
+    \item Basic features of Btrfs (multi-device filesystems, compression, subvolumes).
+\end{itemize}
+
+\section*{Important Commands and Files}
+\begin{itemize}
+    \item \textbf{fdisk, gdisk, parted} – manage partitions.
+    \item \textbf{mkfs, mkswap} – create filesystems and swap.
+    \item \textbf{btrfs} – manage Btrfs filesystems and features.
+\end{itemize}
+
+\section*{Lesson Overview}
+Disks must be partitioned and formatted with a filesystem before use. This lesson covers partitioning with tools like \texttt{fdisk}, \texttt{gdisk}, and \texttt{parted}, creating various filesystems, and setting up swap partitions or files.
+
+\section*{1. Understanding MBR and GPT Partition Tables}
+\begin{enumerate}
+
+    \item \textbf{MBR (Master Boot Record)}
+\begin{itemize}
+    \item Legacy partitioning scheme (4 primary partitions, max 2TB).
+    \item Stores the partition table and boot loader in the first sector.
+\end{itemize}
+
+\item \textbf{GPT (GUID Partition Table)}
+\begin{itemize}
+    \item Modern alternative to MBR, supports large disks and partitions.
+    \item Up to 128 partitions, unique disk GUIDs for mounting.
+\end{itemize}
+\end{enumerate}
+
+\section*{2. Partition Management Tools}
+
+\begin{enumerate}
+    \item\textbf{fdisk (MBR)}
+\begin{itemize}
+    \item Command-line utility for MBR disks.
+    \item Key commands:
+    \begin{itemize}
+        \item \texttt{p}: print partition table.
+        \item \texttt{n}: create partition.
+        \item \texttt{d}: delete partition.
+    \end{itemize}
+\end{itemize}
+
+\item\textbf{gdisk (GPT)}
+\begin{itemize}
+    \item Similar interface to \texttt{fdisk} but for GPT disks.
+\end{itemize}
+
+\item\textbf{parted}
+\begin{itemize}
+    \item Works with both MBR and GPT.
+    \item Immediate changes (no "write" command needed).
+    \item Key commands:
+    \begin{itemize}
+        \item \texttt{mklabel}: create partition table.
+        \item \texttt{mkpart}: create a partition.
+        \item \texttt{resizepart}: resize partitions.
+    \end{itemize}
+\end{itemize}
+\end{enumerate}
+
+\section*{3. Creating Filesystems}
+
+\begin{enumerate}
+
+    \item\textbf{ext2/ext3/ext4 Filesystems}
+\begin{itemize}
+    \item Command: \texttt{mkfs.ext4 /dev/sdX}.
+    \item Options:
+    \begin{itemize}
+        \item \texttt{-L}: set volume label.
+        \item \texttt{-c}: check for bad blocks.
+    \end{itemize}
+\end{itemize}
+
+\item\textbf{XFS Filesystem}
+\begin{itemize}
+    \item High-performance journaling filesystem.
+    \item Command: \texttt{mkfs.xfs /dev/sdX}.
+\end{itemize}
+
+\item\textbf{VFAT and exFAT}
+\begin{itemize}
+    \item For compatibility with non-Linux systems.
+    \item Commands: \texttt{mkfs.vfat /dev/sdX}, \texttt{mkfs.exfat /dev/sdX}.
+\end{itemize}
+
+\item\textbf{Btrfs Filesystem}
+\begin{itemize}
+    \item Features: compression, subvolumes, snapshots.
+    \item Command: \texttt{mkfs.btrfs /dev/sdX}.
+\end{itemize}
+\end{enumerate}
+
+\section*{4. Swap Setup}
+\begin{enumerate}
+    \item\textbf{Create Swap Partition}
+\begin{itemize}
+    \item Partition type: Linux swap (\texttt{82} for \texttt{fdisk}, \texttt{8200} for \texttt{gdisk}).
+    \item Command: \texttt{mkswap /dev/sdX}.
+    \item Enable: \texttt{swapon /dev/sdX}.
+\end{itemize}
+
+\item\textbf{Create Swap File}
+Example commands:
+\begin{lstlisting}[language=bash]
+dd if=/dev/zero of=swapfile bs=1M count=1024
+mkswap swapfile
+swapon swapfile
+\end{lstlisting}
+\end{enumerate}
+\section*{Workbook Exercises}
+
+\begin{enumerate}
+    \item \textbf{List Disk Partitions}
+    \begin{itemize}
+        \item Use \texttt{fdisk -l} or \texttt{parted /dev/sdX print}.
+    \end{itemize}
+    \item \textbf{Create and Format Partitions}
+    \begin{itemize}
+        \item Use \texttt{fdisk} or \texttt{parted} to create partitions.
+        \item Format with \texttt{mkfs.ext4}, \texttt{mkfs.xfs}, or other appropriate tools.
+    \end{itemize}
+    \item \textbf{Resize a Partition}
+    \begin{itemize}
+        \item Use \texttt{resizepart} in \texttt{parted} and adjust the filesystem with \texttt{resize2fs}.
+    \end{itemize}
+    \item \textbf{Set Up Swap}
+    \begin{itemize}
+        \item Create a swap partition and enable it.
+    \end{itemize}
+    \item \textbf{Work with Btrfs Features}
+    \begin{itemize}
+        \item Create subvolumes and snapshots.
+    \end{itemize}
+\end{enumerate}
+
+\section*{Summary}
+\begin{itemize}
+    \item Understand and manage partition tables (MBR, GPT).
+    \item Create and configure various filesystems (ext4, XFS, VFAT, Btrfs).
+    \item Set up and manage swap partitions and files.
+    \item Use tools like \texttt{fdisk}, \texttt{gdisk}, \texttt{parted}, and \texttt{mkfs} effectively.
+\end{itemize}
+
+
+
 %-------------------------------------------------------
 % Multiple-Choice Questions for (104.1)
 %-------------------------------------------------------
@@ -7901,6 +8060,142 @@ export EDITOR=nano
 \newpage
 \section*{104.2 Maintain the integrity of filesystems}
 \addcontentsline{toc}{section}{104.2 Maintain the integrity of filesystems}
+
+\textbf{Reference to LPI Objectives:}
+\begin{itemize}
+    \item \textbf{LPIC-1 v5, Exam 101, Objective 104.2}
+    \item \textbf{Weight:} 2
+\end{itemize}
+
+\subsection*{Key Knowledge Areas}
+\begin{itemize}
+    \item Verify filesystem integrity.
+    \item Monitor free space and inodes.
+    \item Repair simple filesystem issues.
+\end{itemize}
+
+\subsection*{Important Commands and Files}
+\begin{itemize}
+    \item \textbf{du, df} \text{-}- check disk usage and free space.
+    \item \textbf{fsck, e2fsck} \text{-}- verify and repair ext filesystems.
+    \item \textbf{tune2fs} \text{-}- optimize ext filesystems.
+    \item \textbf{xfs\_repair, xfs\_fsr, xfs\_db} \text{-}- maintain XFS filesystems.
+\end{itemize}
+
+\section*{Lesson Overview}
+
+Modern Linux filesystems are journaled, reducing corruption risks. Administrators must monitor filesystem usage and repair issues as needed using tools like \texttt{fsck} and \texttt{xfs\_repair}.
+
+\section*{1. Checking Disk Usage}
+
+\subsection*{1. Disk Usage Command (\texttt{du})}
+\begin{itemize}
+    \item Recursive: shows directory and file sizes.
+    \item Common options:
+    \begin{itemize}
+        \item \textbf{-h}: human-readable sizes.
+        \item \textbf{-a}: show individual file sizes.
+        \item \textbf{\text{-}- exclude="PATTERN"}: exclude files matching a pattern.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{2. Filesystem Usage Command (\texttt{df})}
+\begin{itemize}
+    \item Displays filesystem-level information.
+    \item Common options:
+    \begin{itemize}
+        \item \textbf{-h}: human-readable sizes.
+        \item \textbf{-i}: show inode usage.
+        \item \textbf{-T}: display filesystem type.
+    \end{itemize}
+\end{itemize}
+
+\section*{2. Maintaining ext2/ext3/ext4 Filesystems}
+
+\subsection*{1. Filesystem Check (\texttt{fsck})}
+\begin{itemize}
+    \item Checks for errors; calls appropriate tools like \texttt{e2fsck} for ext filesystems.
+    \item Common options:
+    \begin{itemize}
+        \item \textbf{-A}: check all filesystems in \texttt{/etc/fstab}.
+        \item \textbf{-N}: simulate actions without making changes.
+        \item \textbf{-y}: automatically answer "yes" to prompts.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{2. Filesystem Tuning (\texttt{tune2fs})}
+\begin{itemize}
+    \item Adjusts ext filesystem parameters.
+    \item Common options:
+    \begin{itemize}
+        \item \textbf{-l}: list filesystem parameters.
+        \item \textbf{-L}: set a label.
+        \item \textbf{-i 10d}: set time interval for checks (e.g., every 10 days).
+        \item \textbf{-j}: add journaling to an ext2 filesystem.
+    \end{itemize}
+\end{itemize}
+
+\section*{3. Maintaining XFS Filesystems}
+
+\subsection*{1. Filesystem Repair (\texttt{xfs\_repair})}
+\begin{itemize}
+    \item Scans and repairs XFS filesystems.
+    \item Common options:
+    \begin{itemize}
+        \item \textbf{-n}: no modifications (scan only).
+        \item \textbf{-L}: zero out a corrupt log (last resort).
+        \item \textbf{-m N}: limit memory usage.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{2. Filesystem Debugging (\texttt{xfs\_db})}
+\begin{itemize}
+    \item Inspect XFS filesystem parameters interactively.
+\end{itemize}
+
+\subsection*{3. Filesystem Defragmentation (\texttt{xfs\_fsr})}
+\begin{itemize}
+    \item Defragments mounted XFS filesystems.
+\end{itemize}
+
+\section*{Workbook Exercises}
+
+\begin{enumerate}
+    \item \textbf{Check Disk Usage}
+    \begin{itemize}
+        \item Use \texttt{du} to analyze a directory.
+        \item Exclude specific file types (e.g., \texttt{du --exclude="*.log"}).
+    \end{itemize}
+    \item \textbf{Monitor Filesystem Space}
+    \begin{itemize}
+        \item Use \texttt{df -h} to review available space on mounted filesystems.
+        \item Check inode usage with \texttt{df -i}.
+    \end{itemize}
+    \item \textbf{Repair Filesystems}
+    \begin{itemize}
+        \item Simulate repairs on \texttt{/dev/sdX1} with \texttt{fsck -N /dev/sdX1}.
+        \item Repair an ext4 filesystem interactively using \texttt{e2fsck /dev/sdX1}.
+    \end{itemize}
+    \item \textbf{Tune Filesystem Parameters}
+    \begin{itemize}
+        \item Set a maximum mount count of 20: \texttt{tune2fs -c 20 /dev/sdX1}.
+        \item Assign a label: \texttt{tune2fs -L MyDisk /dev/sdX1}.
+    \end{itemize}
+    \item \textbf{Maintain XFS Filesystems}
+    \begin{itemize}
+        \item Scan for issues using \texttt{xfs\_repair -n /dev/sdX1}.
+        \item Defragment using \texttt{xfs\_fsr /dev/sdX1}.
+    \end{itemize}
+\end{enumerate}
+
+\section*{Summary}
+\begin{itemize}
+    \item Use \texttt{du} and \texttt{df} to monitor disk usage and free space.
+    \item Repair ext filesystems with \texttt{fsck} and tune parameters with \texttt{tune2fs}.
+    \item For XFS filesystems, rely on \texttt{xfs\_repair} and \texttt{xfs\_fsr} for maintenance.
+\end{itemize}
+
+
 
 %-------------------------------------------------------
 % Multiple-Choice Questions for 104.2
@@ -8106,6 +8401,157 @@ export EDITOR=nano
 \section*{104.3 Control mounting and unmounting of filesystems}
 \addcontentsline{toc}{section}{104.3 Control mounting and unmounting of filesystems}
 
+\textbf{Reference to LPI Objectives:}
+\begin{itemize}
+    \item \textbf{LPIC-1 v5, Exam 101, Objective 104.3}
+    \item \textbf{Weight:} 3
+\end{itemize}
+
+\subsection*{Key Knowledge Areas}
+\begin{itemize}
+    \item Manually mount and unmount filesystems.
+    \item Configure filesystem mounting at boot.
+    \item Use labels and UUIDs for mounting filesystems.
+    \item Awareness of systemd mount units.
+\end{itemize}
+
+\subsection*{Important Commands and Files}
+\begin{itemize}
+    \item \textbf{mount, umount} \text{-}- mount and unmount filesystems.
+    \item \textbf{blkid, lsblk} \text{-}- query disk information (UUIDs, labels, etc.).
+    \item \textbf{/etc/fstab} \text{-}- configure persistent mounts.
+\end{itemize}
+
+\section*{Lesson Overview}
+
+Linux requires filesystems to be mounted before access. Mounting can be done manually, automatically at boot, or managed dynamically using tools like \texttt{systemd}.
+
+\section*{1. Mounting and Unmounting Filesystems}
+
+\subsection*{1. Manual Mounting (\texttt{mount})}
+\begin{itemize}
+    \item Syntax: \texttt{mount -t TYPE DEVICE MOUNTPOINT}.
+    \item Options:
+    \begin{itemize}
+        \item \textbf{-r}: read-only.
+        \item \textbf{-o}: specify mount options (e.g., \texttt{noexec, ro}).
+    \end{itemize}
+\end{itemize}
+
+\subsection*{2. Unmounting (\texttt{umount})}
+\begin{itemize}
+    \item Syntax: \texttt{umount DEVICE} or \texttt{MOUNTPOINT}.
+    \item Options:
+    \begin{itemize}
+        \item \textbf{-f}: force unmount.
+        \item \textbf{-a}: unmount all filesystems in \texttt{/etc/fstab}.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{3. Handling Busy Filesystems}
+\begin{itemize}
+    \item Use \texttt{lsof DEVICE} to find open files.
+\end{itemize}
+
+\section*{2. Persistent Mounts with \texttt{/etc/fstab}}
+
+\subsection*{1. \texttt{/etc/fstab} Format}
+\begin{itemize}
+    \item Fields:
+    \begin{itemize}
+        \item \textbf{FILESYSTEM}: Device, UUID, or label.
+        \item \textbf{MOUNTPOINT}: Where to mount.
+        \item \textbf{TYPE}: Filesystem type.
+        \item \textbf{OPTIONS}: Comma-separated mount options.
+        \item \textbf{DUMP}: Backup indicator (0 to ignore).
+        \item \textbf{PASS}: Check order during boot (0 to skip).
+    \end{itemize}
+\end{itemize}
+
+\subsection*{2. Examples}
+\begin{lstlisting}[language=bash]
+UUID=1234-5678 / ext4 defaults 0 1
+LABEL=BackupDisk /mnt/backup ext4 noauto,user 0 2
+\end{lstlisting}
+
+\section*{3. Using UUIDs and Labels}
+
+\subsection*{1. Finding UUIDs and Labels}
+\begin{itemize}
+    \item Use \texttt{blkid} or \texttt{lsblk -f}.
+\end{itemize}
+
+\subsection*{2. Mounting by UUID or Label}
+Example:
+\begin{lstlisting}[language=bash]
+mount UUID=1234-5678 /mnt/data
+\end{lstlisting}
+
+\section*{4. Mounting with systemd}
+
+\subsection*{1. Mount Units}
+Configuration file (\texttt{.mount}) example:
+\begin{lstlisting}[language=bash]
+[Unit]
+Description=External Data Disk
+
+[Mount]
+What=/dev/disk/by-uuid/1234-5678
+Where=/mnt/data
+Type=ext4
+
+[Install]
+WantedBy=multi-user.target
+\end{lstlisting}
+
+\subsection*{2. Automount Units}
+\begin{itemize}
+    \item Add \texttt{.automount} for on-demand mounting.
+\end{itemize}
+
+\subsection*{3. Commands}
+\begin{itemize}
+    \item Reload: \texttt{systemctl daemon-reload}.
+    \item Start: \texttt{systemctl start UNIT\_NAME}.
+    \item Enable: \texttt{systemctl enable UNIT\_NAME}.
+\end{itemize}
+
+\section*{Workbook Exercises}
+
+\begin{enumerate}
+    \item \textbf{Manual Mounting}
+    \begin{itemize}
+        \item Mount \texttt{/dev/sdb1} to \texttt{/mnt/usb} using \texttt{mount}.
+        \item Use \texttt{umount} to safely unmount.
+    \end{itemize}
+
+    \item \textbf{Persistent Mounts}
+    \begin{itemize}
+        \item Add an entry to \texttt{/etc/fstab} for a USB device by label.
+        \item Test mounting with \texttt{mount -a}.
+    \end{itemize}
+
+    \item \textbf{UUID Usage}
+    \begin{itemize}
+        \item Find the UUID of a device using \texttt{blkid}.
+        \item Use it to mount a disk.
+    \end{itemize}
+
+    \item \textbf{Systemd Mount Units}
+    \begin{itemize}
+        \item Create a \texttt{.mount} unit for \texttt{/mnt/external}.
+        \item Enable automounting with \texttt{.automount}.
+    \end{itemize}
+\end{enumerate}
+
+\section*{Summary}
+\begin{itemize}
+    \item Filesystems must be mounted to access their contents.
+    \item Use \texttt{/etc/fstab} for persistent mounting, with UUIDs or labels for reliable identification.
+    \item \texttt{systemd} provides a flexible approach for managing mounts dynamically or on-demand.
+\end{itemize}
+
+
 %-------------------------------------------------------
 % Multiple-Choice Questions for (104.3)
 %-------------------------------------------------------
@@ -8310,6 +8756,152 @@ export EDITOR=nano
 \section*{104.5 Manage file permissions and ownership}
 \addcontentsline{toc}{section}{104.5 Manage file permissions and ownership}
 
+\textbf{Reference to LPI Objectives:}
+\begin{itemize}
+    \item \textbf{LPIC-1 v5, Exam 101, Objective 104.5}
+    \item \textbf{Weight:} 3
+\end{itemize}
+
+\subsection*{Key Knowledge Areas}
+\begin{itemize}
+    \item Manage file and directory permissions.
+    \item Use \textbf{suid}, \textbf{sgid}, and sticky bit for security.
+    \item Modify file ownership and group membership.
+    \item Configure default permissions with \texttt{umask}.
+\end{itemize}
+
+\subsection*{Important Commands and Files}
+\begin{itemize}
+    \item \textbf{chmod} \text{-}- change file permissions.
+    \item \textbf{chown} \text{-}- change file ownership.
+    \item \textbf{chgrp} \text{-}- change group ownership.
+    \item \textbf{umask} \text{-}- set default file permissions.
+\end{itemize}
+
+\section*{Lesson Overview}
+
+Linux files are secured using a permission system that controls read, write, and execute access for the file owner, group, and others. Special permissions such as \textbf{suid}, \textbf{sgid}, and the sticky bit enhance functionality and security.
+
+\section*{1. File and Directory Permissions}
+
+\subsection*{1. Permission Groups}
+\begin{itemize}
+    \item \textbf{Owner (u)}: User who owns the file.
+    \item \textbf{Group (g)}: Users in the file's group.
+    \item \textbf{Others (o)}: All other users.
+\end{itemize}
+
+\subsection*{2. Permission Types}
+\begin{itemize}
+    \item \textbf{r}: Read (4).
+    \item \textbf{w}: Write (2).
+    \item \textbf{x}: Execute (1).
+\end{itemize}
+
+\subsection*{3. Examples}
+\begin{itemize}
+    \item \textbf{rw-r--r--}: Read/write for owner, read-only for group and others.
+    \item Use \texttt{ls -l} to view permissions.
+\end{itemize}
+
+\section*{2. Changing Permissions}
+
+\subsection*{1. Symbolic Mode (\texttt{chmod})}
+\begin{itemize}
+    \item Grant write to group: \texttt{chmod g+w file.txt}.
+    \item Remove execute for all: \texttt{chmod a-x file.txt}.
+\end{itemize}
+
+\subsection*{2. Octal Mode (\texttt{chmod})}
+\begin{itemize}
+    \item Set \textbf{rw-r - - r - -}: \texttt{chmod 644 file.txt}.
+    \item Recursive change: \texttt{chmod -R 755 dir/}.
+\end{itemize}
+
+\section*{3. Special Permissions}
+
+\subsection*{1. Sticky Bit (\texttt{chmod +t})}
+\begin{itemize}
+    \item Restricts deletion in directories.
+    \item Example: \texttt{chmod 1777 /tmp}.
+\end{itemize}
+
+\subsection*{2. Set Group ID (SGID, \texttt{chmod g+s})}
+\begin{itemize}
+    \item Files inherit group of the parent directory.
+\end{itemize}
+
+\subsection*{3. Set User ID (SUID, \texttt{chmod u+s})}
+\begin{itemize}
+    \item Processes run with the owner’s privileges.
+\end{itemize}
+
+\section*{4. File Ownership}
+
+\subsection*{1. Change Ownership (\texttt{chown})}
+\begin{itemize}
+    \item Example: \texttt{chown user:group file.txt}.
+\end{itemize}
+
+\subsection*{2. Change Group (\texttt{chgrp})}
+\begin{itemize}
+    \item Example: \texttt{chgrp group file.txt}.
+\end{itemize}
+
+\subsection*{3. Query Groups}
+\begin{itemize}
+    \item List all groups: \texttt{getent group}.
+    \item Show user’s groups: \texttt{groups username}.
+\end{itemize}
+
+\section*{5. Default Permissions with \texttt{umask}}
+
+\subsection*{1. Default Permissions}
+\begin{itemize}
+    \item Files: \textbf{rw\text{-}r\text{-}-r\text{-}-}
+    (644).
+    \item Directories: \textbf{rwxr-xr-x} (755).
+\end{itemize}
+
+\subsection*{2. Changing \texttt{umask}}
+\begin{itemize}
+    \item Example: \texttt{umask 0027} (removes write for group and all for others).
+\end{itemize}
+
+\section*{Workbook Exercises}
+
+\begin{enumerate}
+    \item \textbf{Modify Permissions}
+    \begin{itemize}
+        \item Create a file, view permissions, and set them to \textbf{\textbf{rw\text{-}r\text{-}-r\text{-}-}
+        } using \texttt{chmod}.
+    \end{itemize}
+
+    \item \textbf{Test Special Permissions}
+    \begin{itemize}
+        \item Add sticky bit to a directory and verify with \texttt{ls -ld}.
+        \item Apply SGID to a directory and check group inheritance.
+    \end{itemize}
+
+    \item \textbf{Change Ownership}
+    \begin{itemize}
+        \item Use \texttt{chown} and \texttt{chgrp} to modify file ownership and group.
+    \end{itemize}
+
+    \item \textbf{Configure \texttt{umask}}
+    \begin{itemize}
+        \item Experiment with different \texttt{umask} values and observe changes in default permissions.
+    \end{itemize}
+\end{enumerate}
+
+\section*{Summary}
+\begin{itemize}
+    \item Use \texttt{chmod} to adjust file and directory permissions.
+    \item Apply special permissions like \textbf{suid}, \textbf{sgid}, and sticky bit for added control.
+    \item Modify ownership with \texttt{chown} and \texttt{chgrp}.
+    \item Control default permissions with \texttt{umask}.
+\end{itemize}
+
 %-------------------------------------------------------
 % Multiple-Choice Questions for (104.5)
 %-------------------------------------------------------
@@ -8512,6 +9104,135 @@ export EDITOR=nano
 \newpage
 \section*{104.6 Create and change hard and symbolic links}
 \addcontentsline{toc}{section}{104.6 Create and change hard and symbolic links}
+
+\textbf{Reference to LPI Objectives:}
+\begin{itemize}
+    \item \textbf{LPIC-1 v5, Exam 101, Objective 104.6}
+    \item \textbf{Weight:} 2
+\end{itemize}
+
+\subsection*{Key Knowledge Areas}
+\begin{itemize}
+    \item Create hard and symbolic (soft) links.
+    \item Understand the difference between hard and symbolic links.
+    \item Use links effectively for system administration tasks.
+\end{itemize}
+
+\subsection*{Important Commands and Files}
+\begin{itemize}
+    \item \textbf{ln} -- create links.
+    \item \textbf{ls} -- inspect links and file information.
+\end{itemize}
+
+\section*{Lesson Overview}
+
+Links in Linux are special file types that reference other files. Hard links point to the same inode as the target file, while symbolic links reference a file's path. Understanding links allows efficient file management and system administration.
+
+\section*{1. Hard Links}
+
+\subsection*{1. Definition}
+\begin{itemize}
+    \item Hard links are additional names for the same file.
+    \item All hard links share the same inode and file content.
+\end{itemize}
+
+\subsection*{2. Creating Hard Links}
+\begin{itemize}
+    \item Syntax: \texttt{ln TARGET LINK\_NAME}.
+    \item Example:
+    \begin{lstlisting}[language=bash]
+ln file.txt /path/hardlink
+    \end{lstlisting}
+\end{itemize}
+
+\subsection*{3. Managing Hard Links}
+\begin{itemize}
+    \item Use \texttt{ls -li} to view inode numbers.
+    \item Deleting one hard link does not remove the file as long as other links exist.
+\end{itemize}
+
+\section*{2. Symbolic Links}
+
+\subsection*{1. Definition}
+\begin{itemize}
+    \item Symbolic links (soft links) point to a file path.
+    \item Can reference files or directories, even across different filesystems.
+\end{itemize}
+
+\subsection*{2. Creating Symbolic Links}
+\begin{itemize}
+    \item Syntax: \texttt{ln -s TARGET LINK\_NAME}.
+    \item Example:
+    \begin{lstlisting}[language=bash]
+ln -s /path/target.txt softlink
+    \end{lstlisting}
+\end{itemize}
+
+\subsection*{3. Managing Symbolic Links}
+\begin{itemize}
+    \item Use \texttt{ls -lh} to view link targets.
+    \item Broken links occur if the target is deleted or moved.
+\end{itemize}
+
+\section*{3. Key Differences: Hard vs. Symbolic Links}
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Feature}          & \textbf{Hard Link}                 & \textbf{Symbolic Link}          \\ \hline
+\textbf{Target Type}      & Files only                        & Files or directories            \\ \hline
+\textbf{File System}      & Same filesystem only              & Can span filesystems            \\ \hline
+\textbf{Dependence}       & Independent of target existence   & Breaks if the target is moved or deleted \\ \hline
+\textbf{Inode Sharing}    & Shares inode with target          & Separate inode                  \\ \hline
+\end{tabular}
+\end{center}
+
+\section*{4. Moving and Deleting Links}
+
+\subsection*{1. Hard Links}
+\begin{itemize}
+    \item Renaming/moving does not affect functionality.
+    \item Deleted using \texttt{rm}.
+\end{itemize}
+
+\subsection*{2. Symbolic Links}
+\begin{itemize}
+    \item Relative paths can break when moved.
+    \item Use absolute paths to avoid issues.
+\end{itemize}
+
+\section*{Workbook Exercises}
+
+\begin{enumerate}
+    \item \textbf{Create Links}
+    \begin{itemize}
+        \item Create a hard link and a symbolic link to a file.
+        \item Verify using \texttt{ls -li} and \texttt{ls -lh}.
+    \end{itemize}
+
+    \item \textbf{Test Link Behavior}
+    \begin{itemize}
+        \item Modify the file content via one link and observe changes in other links.
+        \item Delete the original file and test the functionality of each link type.
+    \end{itemize}
+
+    \item \textbf{Fix Broken Links}
+    \begin{itemize}
+        \item Create a symbolic link with a relative path, move it, and fix it by recreating with an absolute path.
+    \end{itemize}
+
+    \item \textbf{Use Links in System Administration}
+    \begin{itemize}
+        \item Link common configuration files to shared directories for efficient updates.
+    \end{itemize}
+\end{enumerate}
+
+\section*{Summary}
+\begin{itemize}
+    \item Hard links share file content, while symbolic links reference file paths.
+    \item Use \texttt{ln} to create links and \texttt{ls} to inspect them.
+    \item Prefer symbolic links for flexibility, but use hard links when you need stability and redundancy.
+\end{itemize}
 
 %-------------------------------------------------------
 % Multiple-Choice Questions for (104.6)
@@ -8717,6 +9438,122 @@ export EDITOR=nano
 \newpage
 \section*{104.7 Find system files and place files in the correct location}
 \addcontentsline{toc}{section}{104.7 Find system files and place files in the correct location}
+
+\textbf{Reference to LPI Objectives:}
+\begin{itemize}
+    \item \textbf{LPIC-1 v5, Exam 101, Objective 104.7}
+    \item \textbf{Weight:} 2
+\end{itemize}
+
+\subsection*{Key Knowledge Areas}
+\begin{itemize}
+    \item Understand the Filesystem Hierarchy Standard (FHS).
+    \item Locate files and commands in a Linux system.
+    \item Know the location and purpose of important directories.
+\end{itemize}
+
+\subsection*{Important Commands and Files}
+\begin{itemize}
+    \item \textbf{find} -- locate files with advanced search options.
+    \item \textbf{locate, updatedb} -- search files using a prebuilt database.
+    \item \textbf{which, type, whereis} -- find commands, binaries, and manuals.
+    \item \textbf{/etc/updatedb.conf} -- configuration for \texttt{updatedb}.
+\end{itemize}
+
+\section*{Lesson Overview}
+
+The Filesystem Hierarchy Standard (FHS) defines a standardized directory structure for Linux, enabling consistent placement of system files. Tools like \texttt{find}, \texttt{locate}, and \texttt{which} assist in locating files and commands.
+
+\section*{1. Filesystem Hierarchy Standard (FHS)}
+
+\subsection*{1. Common Directories}
+\begin{itemize}
+    \item \textbf{/}: Root directory, the base of the filesystem.
+    \item \textbf{/bin}: Essential binaries for all users.
+    \item \textbf{/etc}: Host-specific configuration files.
+    \item \textbf{/var}: Variable data (logs, print queues, etc.).
+    \item \textbf{/tmp, /var/tmp}: Temporary files.
+\end{itemize}
+
+\subsection*{2. Temporary Files}
+\begin{itemize}
+    \item \textbf{/tmp}: Cleared at boot, short-lived.
+    \item \textbf{/var/tmp}: Persistent across reboots.
+    \item \textbf{/run}: Runtime process data (cleared at boot).
+\end{itemize}
+
+\section*{2. Finding Files}
+
+\subsection*{1. Using \texttt{find}}
+\begin{itemize}
+    \item Syntax: \texttt{find START\_DIR -name PATTERN}.
+    \item Common options:
+    \begin{itemize}
+        \item \textbf{-name}: Case-sensitive search.
+        \item \textbf{-iname}: Case-insensitive search.
+        \item \textbf{-perm}: Search by permissions.
+        \item \textbf{-size}: Search by file size (e.g., \texttt{+1M}).
+        \item \textbf{-mtime/-atime}: Search by modification/access time.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{2. Using \texttt{locate}}
+\begin{itemize}
+    \item Faster than \texttt{find}, uses a database updated by \texttt{updatedb}.
+    \item Syntax: \texttt{locate PATTERN}.
+    \item Update database: \texttt{sudo updatedb}.
+\end{itemize}
+
+\subsection*{3. Other Commands}
+\begin{itemize}
+    \item \textbf{which}: Find executable in \texttt{PATH}.
+    \item \textbf{type}: Show command type and location.
+    \item \textbf{whereis}: Locate binaries, manuals, and source code.
+\end{itemize}
+
+\section*{Workbook Exercises}
+
+\begin{enumerate}
+    \item \textbf{Search Files with \texttt{find}}
+    \begin{itemize}
+        \item Find all \texttt{.txt} files in \texttt{/home}:
+        \begin{lstlisting}[language=bash]
+find /home -name "*.txt"
+        \end{lstlisting}
+        \item Locate files modified in the last 24 hours:
+        \begin{lstlisting}[language=bash]
+find / -mtime -1
+        \end{lstlisting}
+    \end{itemize}
+
+    \item \textbf{Use \texttt{locate} for Quick Searches}
+    \begin{itemize}
+        \item Search for \texttt{.jpg} files:
+        \begin{lstlisting}[language=bash]
+locate -i .jpg
+        \end{lstlisting}
+        \item Update the database and repeat the search.
+    \end{itemize}
+
+    \item \textbf{Identify Commands}
+    \begin{itemize}
+        \item Locate the \texttt{bash} binary:
+        \begin{lstlisting}[language=bash]
+which bash
+        \end{lstlisting}
+        \item Find the location of \texttt{ls} with manuals:
+        \begin{lstlisting}[language=bash]
+whereis ls
+        \end{lstlisting}
+    \end{itemize}
+\end{enumerate}
+
+\section*{Summary}
+\begin{itemize}
+    \item Use the FHS to understand file locations in Linux.
+    \item Use \texttt{find} for deep searches, \texttt{locate} for quick results, and \texttt{which}/\texttt{whereis} for commands and binaries.
+    \item Configure \texttt{updatedb} for efficient \texttt{locate} searches.
+\end{itemize}
 
 %-------------------------------------------------------
 % Multiple-Choice Questions for (104.7)
